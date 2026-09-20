@@ -1,0 +1,134 @@
+{
+  "s46": {
+    "file": "assets/s46.png",
+    "caption": "Изображение из каталога",
+    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
+    "page": 25
+  },
+  "p51": {
+    "file": "assets/p51.png",
+    "caption": "Изображение из каталога",
+    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
+    "page": 27
+  },
+  "p30a": {
+    "file": "assets/p30a.png",
+    "caption": "Изображение из каталога",
+    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
+    "page": 28
+  },
+  "p73": {
+    "file": "assets/p73.png",
+    "caption": "Изображение из каталога",
+    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
+    "page": 22
+  },
+  "p76": {
+    "file": "assets/p76.png",
+    "caption": "Изображение из каталога",
+    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
+    "page": 23
+  },
+  "p79": {
+    "file": "assets/p79.png",
+    "caption": "Изображение из каталога",
+    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
+    "page": 29
+  },
+  "p84": {
+    "file": "assets/p84.png",
+    "caption": "Изображение из каталога",
+    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
+    "page": 30
+  },
+  "p50b": {
+    "file": "assets/p50b.png",
+    "caption": "Изображение производителя",
+    "source": "https://www.molicel.com/inr-21700-p50b/",
+    "image_url": "https://www.molicel.com/wp-content/uploads/molicel_p50b_battery_mobile.png"
+  },
+  "p45b": {
+    "file": "assets/p45b.png",
+    "caption": "Изображение производителя",
+    "source": "https://www.molicel.com/inr-21700-p45b/",
+    "image_url": "https://www.molicel.com/wp-content/uploads/molicel-battery.png"
+  },
+  "m65a": {
+    "file": "assets/m65a.png",
+    "caption": "Изображение производителя",
+    "source": "https://www.molicel.com/inr-21700-m65a/",
+    "image_url": "https://www.molicel.com/wp-content/uploads/m65a-m.png"
+  },
+  "p30b": {
+    "file": "assets/p30b.png",
+    "caption": "Изображение производителя",
+    "source": "https://www.molicel.com/inr-18650-p30b/",
+    "image_url": "https://www.molicel.com/wp-content/uploads/INR18650-P30B-product.png"
+  },
+  "lrle": {
+    "file": "assets/lrle.png",
+    "caption": "Изображение производителя",
+    "source": "https://en.lishen.com.cn/content/details_616_2816.html",
+    "image_url": "https://en.lishen.com.cn/upload/image/2026/01/26/455970f5-2553-407c-a6cf-ddea48d66190.png"
+  },
+  "h52a": {
+    "file": "assets/h52a.png",
+    "caption": "Изображение из исследования",
+    "source": "https://www.aboutenergy.io/post/lg-h52a-battery-performance-analysis-aerospace",
+    "image_url": "https://static.wixstatic.com/media/92f430_07e21462dd93480b8425d9526f4d0fb6~mv2.png/v1/fill/w_2500,h_1406,al_c/92f430_07e21462dd93480b8425d9526f4d0fb6~mv2.png"
+  },
+  "s50u": {
+    "file": "assets/s50u.png",
+    "source": "https://www.aboutenergy.io/post/samsung-50u-battery-performance-analysis-aerospace",
+    "image_url": "https://static.wixstatic.com/media/92f430_084f299cab9e4ff4852c6549e3a5985f~mv2.png/v1/fill/w_2500,h_1406,al_c/92f430_084f299cab9e4ff4852c6549e3a5985f~mv2.png",
+    "caption": "Изображение из исследования"
+  },
+  "s50s": {
+    "file": "assets/s50s.png",
+    "source": "https://18650pro.ru/blog/test/samsung-inr21700-50s-obzor/",
+    "image_url": "https://18650pro.ru/upload/medialibrary/c7a/9atsgb3f0jfidfaw1n3xd6fzev7undnz.png",
+    "caption": "Фото из обзора"
+  },
+  "t50sg": {
+    "file": "assets/t50sg.png",
+    "source": "https://www.machineu.com/lithiumlifepo4-battery/pz71ec4e6-tenpower-inr21700-50sg-rechargeable-lithium-battery-5000mah-20a-high-discharge.html",
+    "image_url": "https://img.machineu.com/nimg/91/1c/484130eb493a93483c73b5783b6f-600x600-0/tenpower_inr21700_50sg_rechargeable_lithium_battery_5000mah_20a_high_discharge.jpg",
+    "caption": "Фото продавца"
+  },
+  "lg": {
+    "file": "assets/lg.png",
+    "source": "https://www.liionbatterybms.com/sale-35900385-lithium-ion-cell-21700-3-7v-5000mah-discharge-rechargeable.html",
+    "image_url": "https://www.liionbatterybms.com/photo/liionbatterybms/editor/20221124160307_68220.jpg",
+    "caption": "Фото продавца"
+  },
+  "p42a": {
+    "file": "assets/p42a.png",
+    "source": "https://www.falconpev.com.sg/products/molicel-p42a-21700-battery-cell",
+    "image_url": "https://www.falconpev.com.sg/cdn/shop/products/molicel_21700_p42a.jpg?v=1658811832",
+    "caption": "Фото продавца"
+  },
+  "m35a": {
+    "file": "assets/m35a.png",
+    "source": "https://18650pro.ru/blog/test/molicel-inr18650-m35a-obzor-i-testirovanie/",
+    "image_url": "https://18650pro.ru/upload/medialibrary/7f6/371wtaepvz8qrzbhnos4zpquda7sey5c.png",
+    "caption": "Фото из обзора"
+  },
+  "bak50d2": {
+    "file": "assets/bak50d2.jpg",
+    "caption": "Фото линейки BAK; 50D2 справа от центра",
+    "source": "https://www.evlithiumcharger.com/News/bak-battery-2170-50d2-all-tab-cihf-2026.html",
+    "image_url": "https://www.evlithiumcharger.com/ueditor/php/upload/image/20260325/1774409281733409.jpg"
+  },
+  "rs50": {
+    "file": "assets/rs50.jpg",
+    "caption": "Фото RS50, DIY500AMP",
+    "source": "https://diy500amp.com/products/reliance-21700-rs50-5000mah-70a-lithium-ion-battery-tabless-cell-high-performance",
+    "image_url": "https://diy500amp.com/cdn/shop/files/reliance-rs50-21700-5000mah-70a-tabless-lithium-ion-battery-cell-front-side-view.jpg?v=1775573502"
+  },
+  "eve50pl": {
+    "file": "assets/eve50pl.jpg",
+    "caption": "Фото 50PL; партия может отличаться",
+    "source": "https://diy500amp.com/products/eve-50pl-21700-battery",
+    "image_url": "https://diy500amp.com/cdn/shop/files/IMG-7531.jpg?v=1766867572&width=3024"
+  }
+}

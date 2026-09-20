@@ -1,0 +1,444 @@
+{
+  "models": {
+    "s50u": {
+      "name": "Samsung 50U",
+      "type": "21700 Li-ion",
+      "ah": 5,
+      "v": 3.6,
+      "vmax": 4.2,
+      "wh": 18,
+      "kg": 0.072,
+      "dims": [
+        21.4,
+        21.4,
+        70.62
+      ],
+      "reported_current": 60,
+      "source": "S50U",
+      "res": "Открытого паспортного DCIR не найдено",
+      "note": "Предварительные параметры из оригинального исследования About:Energy, май 2026: 5 А·ч, 18 Вт·ч, max 72 г, 60 А с отсечением 80 °C. Исходный паспорт Samsung не получен. Не переносить результаты охлаждаемой лабораторной модели на закрытый блок; 60 А не означают полный разряд без перегрева."
+    },
+    "p45b": {
+      "name": "Molicel P45B",
+      "type": "21700 Li-ion",
+      "ah": 4.5,
+      "v": 3.6,
+      "vmax": 4.2,
+      "wh": 16.2,
+      "kg": 0.07,
+      "dims": [
+        21.55,
+        21.55,
+        70.15
+      ],
+      "continuous": 45,
+      "thermal_cut": 80,
+      "dc": 15,
+      "source": "P45",
+      "res": "DCIR тип. 15 мОм при 50% SOC; ACIR 7 мОм при 30% SOC",
+      "note": "Паспорт v1.4: 45 А с отсечением 80 °C. На странице продукта DCIR 13,8 мОм; для расчёта выбран паспорт 15 мОм. Согласовать редакцию поставки. Максимальная масса 70 г."
+    },
+    "p42a": {
+      "name": "Molicel P42A",
+      "type": "21700 Li-ion",
+      "ah": 4.2,
+      "v": 3.6,
+      "vmax": 4.2,
+      "wh": 15.5,
+      "kg": 0.07,
+      "dims": [
+        21.7,
+        21.7,
+        70.2
+      ],
+      "continuous": 45,
+      "dc": 16,
+      "source": "P42",
+      "res": "DCIR 16 мОм, 10 А / 1 с; ACIR 10 мОм, 1 кГц",
+      "note": "Паспорт: 45 А continuous, разряд −40…60 °C. 15,5 Вт·ч — отдельное паспортное значение. DCIR измерен импульсом 1 с; сравнение с 10-секундными значениями других ячеек условно."
+    },
+    "s50s": {
+      "name": "Samsung 50S",
+      "type": "21700 Li-ion",
+      "ah": 5,
+      "v": 3.6,
+      "vmax": 4.2,
+      "kg": 0.072,
+      "dims": [
+        21.25,
+        21.25,
+        70.62
+      ],
+      "continuous": 25,
+      "conditional_current": 45,
+      "source": "S50S",
+      "res": "ACIR ≤14 мОм, 1 кГц; DCIR не указан",
+      "note": "25 А непрерывно; 45 А с отсечкой 80 °C. При 26S16P и 30 кВт на валу около 19,6–23,8 А/яч. при 109,2–90 В под нагрузкой. Ресурсный тест 25 А: ≥2,94 А·ч после 250 циклов (60%, не 80% SOH)."
+    },
+    "h51": {
+      "name": "LG H51",
+      "type": "21700 Li-ion",
+      "ah": 5,
+      "v": 3.64,
+      "vmax": 4.2,
+      "wh": 18.2,
+      "kg": 0.0705,
+      "dims": [
+        21.27,
+        21.27,
+        70.6
+      ],
+      "continuous": 20,
+      "dc": 20,
+      "dcmin": 14,
+      "dcmax": 26,
+      "source": "H51",
+      "res": "DCIR 20±6 мОм, 25 °C / 50% SOC / 0,5C / 10 с; ACIR 12±6",
+      "note": "LG Rev.3, 17.10.2024, promotional/TBD. Ток: 25 А при 10…25 °C; 20 А при 25…45 °C; 7,5 А выше 45 °C (до пределов среды/поверхности). H51 ≠ H51T. Для field use отсечка 2,85 В, для паспортной энергии 2,50 В. Масса max 70,5 г, TBD."
+    },
+    "t50sg": {
+      "name": "Tenpower 50SG",
+      "type": "21700 Li-ion",
+      "ah": 5,
+      "v": 3.6,
+      "vmax": 4.2,
+      "kg": 0.071,
+      "dims": [
+        21.35,
+        21.35,
+        70.6
+      ],
+      "continuous": 20,
+      "source": "T50SG",
+      "res": "ACIR ≤14 мОм, 1 кГц / 25±3 °C; DCIR не указан",
+      "note": "20 А непрерывно; температура поверхности до 60 °C. При 26S16P полный пик 30 кВт возможен только около полного заряда и с малой просадкой, далее снижается. Не путать с 50XG."
+    },
+    "lrle": {
+      "name": "Lishen LR2170LE",
+      "type": "21700 Li-ion",
+      "ah": 5,
+      "v": 3.6,
+      "vmax": 4.2,
+      "wh": 18,
+      "kg": 0.075,
+      "dims": [
+        21.3,
+        21.3,
+        70.7
+      ],
+      "conditional_current": 45,
+      "source": "LRLE",
+      "res": "ACIR ≤14 мОм, 1 кГц / 25 °C; DCIR не указан",
+      "note": "Паспорт REV0 19.07.2025: max 45 А с отсечением 80 °C, масса bare ≤75 г. Официальная веб-карточка пишет 30 А: редакции не согласованы. При 25/30 А паспорт гарантирует лишь ≥60/40% ёмкости относительно 10 А. До согласования партии силовая пригодность условна; 85% энергии под высоким током не гарантированы."
+    },
+    "h52a": {
+      "name": "LG H52A",
+      "type": "21700 Li-ion",
+      "ah": 5,
+      "v": 3.6,
+      "vmax": 4.2,
+      "wh": 18,
+      "kg": 0.066,
+      "dims": [
+        21.4,
+        21.4,
+        70.42
+      ],
+      "reported_current": 40,
+      "source": "H52A",
+      "res": "Открытого паспортного DCIR не найдено",
+      "note": "Предварительные параметры из оригинального исследования About:Energy, май 2026: 5 А·ч, 18 Вт·ч, max 66 г, 40 А с тепловым ограничением 80 °C. Исходный паспорт LG не получен; ток не помечен как подтверждённый производителем. Их модель охлаждаемой отдельной ячейки не переносится на герметичный блок."
+    },
+    "bak50d2": {
+      "name": "BAK 50D2",
+      "type": "21700 Li-ion",
+      "ah": 5,
+      "v": 3.6,
+      "vmax": 4.2,
+      "kg": 0.069,
+      "dims": [
+        21.45,
+        21.45,
+        70.75
+      ],
+      "conditional_current": 60,
+      "source": "BAK",
+      "ac": 5,
+      "dc_test": 5.28,
+      "res": "ACIR ≤5 мОм; DCIR в паспорте нет",
+      "note": "Паспорт A/00: 4,95 А·ч номинально / 5,00 тип.; 60 А с отсечкой 80 °C, max 69 г. На карточке NKON строка 15 А относится по паспорту к максимальному заряду. DCIR 5,12–5,44 мОм измерен Mooch на двух образцах, возможно предсерийных; это не гарантия партии."
+    },
+    "rs50": {
+      "name": "Reliance RS50",
+      "type": "21700 Li-ion",
+      "ah": 4.95,
+      "v": 3.6,
+      "vmax": 4.2,
+      "kg": 0.067,
+      "dims": [
+        21.25,
+        21.25,
+        70.35
+      ],
+      "conditional_current": 70,
+      "source": "RS50",
+      "ac": 4,
+      "dc_test": 5.54,
+      "res": "ACIR ≤4 мОм; DCIR в паспорте нет",
+      "note": "Паспорт A1-3: минимум 4,95 А·ч, 70 А с отсечкой 80 °C; ACIR ≤4 мОм. Принята минимальная ёмкость. Mooch, партия G3E (март 2026): DCIR 5,52–5,56 мОм; образцы предоставлены производителем."
+    },
+    "eve50pl": {
+      "name": "EVE 50PL",
+      "type": "21700 Li-ion",
+      "ah": 5,
+      "v": 3.6,
+      "vmax": 4.2,
+      "kg": 0.068,
+      "dims": [
+        21.25,
+        21.25,
+        70.3
+      ],
+      "conditional_current": 70,
+      "source": "EVE25",
+      "ac": 5,
+      "dc_test": 7.6,
+      "res": "ACIR ≤5 мОм; DCIR в паспорте нет",
+      "note": "Выбрана редакция из NKON «2025»: min 5 А·ч, max 68 г, 70 А / рекомендованная отсечка 75 °C, абсолютная 80 °C. Старый PDF: min 4,8 А·ч, 72 г, 125 А / 80 °C. Тест серийной версии CCC (Mooch, январь 2026) с другим паспортом 50 А: DCIR 7,6 мОм. Перенос на предлагаемую партию условен; верх массы при 72 г выше на 1,66 кг/16P."
+    },
+    "t50xg": {
+      "name": "Tenpower 50XG",
+      "type": "21700 Li-ion",
+      "ah": 5,
+      "v": 3.6,
+      "vmax": 4.2,
+      "kg": 0.071,
+      "dims": [
+        21.5,
+        21.5,
+        70.5
+      ],
+      "continuous": 40,
+      "conditional_current": 90,
+      "thermal_cut": 75,
+      "dc_test": 6.9,
+      "source": "T50XG",
+      "res": "Mooch: DCIR 6.7/7.1 мОм при полном заряде; среднее 6.9",
+      "note": "Mooch, 24.10.2025: возможная предсерия без CCC, 40 А непрерывно и 90 А только до 75 °C. Масса/габариты — максимумы из паспорта, приведённые автором. Batemo: образец 69.1 г, Ø21.3×70.2 мм, 18.4 Вт·ч C/10; 35.4 А по методике до 72 °C, пик 49.8 А на 5 мин до 80 °C. Условия различаются. Модель использует 5 А·ч, 3.6 В, 71 г и независимый DCIR 6.9; это предварительный перенос на батарею."
+    }
+  },
+  "variants": [
+    {
+      "id": "C08",
+      "model": "p45b"
+    },
+    {
+      "id": "C09",
+      "model": "p42a"
+    },
+    {
+      "id": "C10",
+      "model": "s50s"
+    },
+    {
+      "id": "C11",
+      "model": "h51"
+    },
+    {
+      "id": "C12",
+      "model": "t50sg"
+    },
+    {
+      "id": "C13",
+      "model": "lrle"
+    },
+    {
+      "id": "C14",
+      "model": "h52a"
+    },
+    {
+      "id": "C15",
+      "model": "s50u"
+    },
+    {
+      "id": "C16",
+      "model": "bak50d2"
+    },
+    {
+      "id": "C17",
+      "model": "rs50"
+    },
+    {
+      "id": "C18",
+      "model": "eve50pl"
+    },
+    {
+      "id": "C19",
+      "model": "t50xg"
+    }
+  ],
+  "sources": [
+    {
+      "id": "S50U",
+      "title": "About:Energy, Samsung 50U for Electric Aviation and Space, май 2026",
+      "url": "https://www.aboutenergy.io/post/samsung-50u-battery-performance-analysis-aerospace",
+      "note": "Оригинальное исследование: лабораторная проверка ёмкости и моделирование. Геометрия, масса и номиналы предварительные, исходный паспорт Samsung не получен. Тепловой коэффициент отдельной ячейки 50 Вт/(м²·К) не равен принятой здесь проводимости всего блока 5 Вт/К."
+    },
+    {
+      "id": "P45",
+      "title": "Molicel P45B, Product Data Sheet v1.4",
+      "url": "https://www.molicel.com/wp-content/uploads/%E7%84%A6%E9%BB%9E%E7%94%A2%E5%93%81INR21700P45B_1.4_Product-Data-Sheet-of-INR-21700-P45B-80109.pdf",
+      "note": "Официальный PDF: DCIR 15 мОм. На странице https://www.molicel.com/inr-21700-p45b/ указано 13,8 мОм; это расхождение отмечено, значения не смешиваются."
+    },
+    {
+      "id": "P42",
+      "title": "Molicel P42A, Product Data Sheet V4, 80092",
+      "url": "https://www.molicel.com/wp-content/uploads/INR21700P42A-V4-80092.pdf",
+      "note": "Официальный PDF по ссылке пользователя. DCIR 16 мОм при 10 А / 1 с, типичная энергия 15,5 Вт·ч."
+    },
+    {
+      "id": "S50S",
+      "title": "Samsung SDI INR21700-50S, v1.0, 15.01.2021",
+      "url": "https://cdn03.plentyone.com/i9a0e0hd8l6w/frontend/Datenblaeter/Samsung/INR21700-50S/INR21700-50S_Cell_Specification__v1.0_210115_1_.pdf",
+      "note": "Первичный документ Samsung на сервере продавца. Два режима: 25 А и 45 А с температурной отсечкой. В расчёт сопротивления ACIR не подставлен."
+    },
+    {
+      "id": "H51",
+      "title": "LG INR21700H51, Rev.3, 17.10.2024",
+      "url": "https://www.nkon.nl/de/amfile/file/download/file/896/product/5906/",
+      "note": "Первичный предварительный паспорт LG у NKON; температурная карта тока на с. 6, DCIR на с. 10. Не паспорт H51T."
+    },
+    {
+      "id": "T50SG",
+      "title": "Tenpower INR21700-50SG, V0.2",
+      "url": "https://www.nkon.nl/novat/amfile/file/download/file/802/product/5884/",
+      "note": "Первичный документ Tenpower у NKON. Несмотря на ошибочный заголовок поисковика, в документе указан INR21700-50SG: 20 А непрерывно."
+    },
+    {
+      "id": "LRLE",
+      "title": "Lishen LR2170LE, REV0, 19.07.2025",
+      "url": "https://akbstore.com/upload/iblock/13d/2u6c70l97451coh1ny1gs3xg1er8zsy5.pdf",
+      "note": "Первичный паспорт Lishen у продавца: 45 А / 80 °C. Официальная карточка https://en.lishen.com.cn/content/details_616_2816.html указывает 30 А. Требуется согласование версии; меньшая масса, выведенная из удельной энергии карточки, не принята вместо максимальных 75 г."
+    },
+    {
+      "id": "H52A",
+      "title": "About:Energy, LG H52A in Electric Aviation and Space, май 2026",
+      "url": "https://www.aboutenergy.io/post/lg-h52a-battery-performance-analysis-aerospace",
+      "note": "Оригинальное исследование с лабораторной проверкой ёмкости и собственным моделированием. Использовано как предварительный источник, не как полученный паспорт LG. Измеренные 5,35 А·ч при C/30 не приняты за гарантированную ёмкость партии."
+    },
+    {
+      "id": "WMTC",
+      "title": "UNECE, UN GTR No.2 — Worldwide Motorcycle Test Cycle",
+      "url": "https://unece.org/fileadmin/DAM/trans/main/wp29/wp29wgs/wp29gen/wp29registry/ECE-TRANS-180a2e.pdf",
+      "note": "Первичный нормативный источник о WMTC; сервер ограничивает загрузку, документ найден в поисковом индексе. В отчёте объяснён принцип, без приписывания конкретного класса/редакции циклу BRP. WMTC первоначально разработан для выбросов и расхода топлива; ссылка BRP на WMTC не раскрывает полный протокол измерения электрического пробега."
+    },
+    {
+      "id": "BAK",
+      "title": "BAK INR2170-50D2, A/00, документ NKON",
+      "url": "https://www.nkon.nl/novat/amfile/file/download/file/1946/product/6119/",
+      "note": "Стр. PDF 6–9: размеры, энергия, токи, ACIR. DCIR не указан."
+    },
+    {
+      "id": "RS50",
+      "title": "Reliance RS50, A1-3, документ NKON",
+      "url": "https://www.nkon.nl/novat/amfile/file/download/file/1494/product/5764/",
+      "note": "Стр. 5–10: min 4950 мА·ч; 70 А / 80 °C; при 20 А ≥96% относительной ёмкости, при 30 А ≥95%. Это ёмкость, не энергия."
+    },
+    {
+      "id": "EVE25",
+      "title": "EVE 50PL, документ NKON «2025», D06-01 A",
+      "url": "https://www.nkon.nl/novat/amfile/file/download/file/1777/product/5643/",
+      "note": "Стр. PDF 6: минимум 5000 мА·ч, 68 г max, 70 А с рекомендованной отсечкой 75 °C. Согласовать паспорт конкретной партии."
+    },
+    {
+      "id": "EVEOLD",
+      "title": "EVE 50PL, прежний документ NKON",
+      "url": "https://www.nkon.nl/novat/amfile/file/download/file/796/product/5643/",
+      "note": "Другая редакция: 4800 мА·ч minimum, 72 г, 125 А с температурной отсечкой. Не объединять со свежими данными в один идеальный элемент."
+    },
+    {
+      "id": "TBAK",
+      "title": "Mooch: BAK 50D2, 07.05.2026",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-50d2-60a-4950mah-full-tab-21700.994042/",
+      "note": "Первичное независимое испытание двух образцов; вероятная предсерия. DCIR 5,12 и 5,44 мОм; около 75 °C на 40 А. Образцы от DIY500AMP."
+    },
+    {
+      "id": "TRS",
+      "title": "Mooch: Reliance RS50, повторный тест 21.05.2026",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-retest-results-reliance-rs50-70a-4950mah-full-tab-21700.994194/",
+      "note": "Два образца партии G3E: DCIR 5,52 и 5,56 мОм. Около 78 °C на 40 А; образцы от Reliance. Не испытание готовой батареи."
+    },
+    {
+      "id": "TEVE",
+      "title": "Mooch: серийная EVE 50PL CCC, 14.01.2026",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-eve-50pl-50a-5000mah-21700-with-ccc-logo-and-ce-mark.992920/",
+      "note": "Средний DCIR 7,6 мОм против 6,6 у предсерии. Паспорт тестируемой версии: 50 А / 80 °C. Отсечка части графиков 2,8 В, ёмкость 1 А измерена до 2,5 В."
+    },
+    {
+      "id": "TP50",
+      "title": "Mooch: серийная Molicel P50B, 23.01.2025",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-molicel-p50b-60a-5000mah-21700.988690/",
+      "note": "DCIR двух экземпляров 8,2 мОм, паспорт 12,8 мОм при иной процедуре. Основная модель использует паспорт; чувствительность отдельно."
+    },
+    {
+      "id": "TEST40",
+      "title": "Nelvick Berrios / DIY500AMP: сравнение на 40 А",
+      "url": "https://www.reddit.com/r/18650masterrace/comments/1nk0vcu/21700_power_cells_faceoff_tabless_vs_nontabless/",
+      "note": "18.09.2025, тест продавца. RS50 17,24 Вт·ч / 74,3 °C; EVE 50PL 16,53 / 72,5; P50B 13,45 / 86,0; 50S 5,77 / 86,7. В этом тесте BAK 45D, а не 50D2; превышение паспортной отсечки 80 °C не является разрешённым режимом."
+    },
+    {
+      "id": "TEST50",
+      "title": "Nelvick Berrios: сравнение на 50 А, 30.12.2025",
+      "url": "https://nelvick.com/50A/",
+      "note": "Открытые интерактивные графики; отдельно предсерийная и серийная EVE. Высокий ток не заменяет проверку на 20–25 А."
+    },
+    {
+      "id": "TEST20",
+      "title": "HKJ / Lygte: Molicel P42A, в том числе 20 А",
+      "url": "https://lygte-info.dk/review/batteries2012/Molicel%20INR21700-P42A%204200mAh%20(Gray)%20UK.html",
+      "note": "Оригинальный стендовый тест: графики напряжения, энергии, температуры на 20 и 30 А; температурный датчик для первой ячейки отсутствовал."
+    },
+    {
+      "id": "NKP50",
+      "title": "Molicel P50B v1.1, копия в «Документах» NKON",
+      "url": "https://www.nkon.nl/novat/amfile/file/download/file/1169/product/5518/",
+      "note": "Подтверждает 71 г max, 60 А / 80 °C, DCIR 12,8 мОм. Заголовок карточки NKON «50 А» и масса 68 г не заменяют PDF."
+    },
+    {
+      "id": "TEST25",
+      "title": "Mooch: Samsung 50S, 11.08.2022",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-50s-25a-5000mah-21700.975569/",
+      "note": "Оригинальный повторный тест: более 85 °C при полном разряде 25 А до 2,5 В; автор рекомендует не более 20 А длительно. Испытана прежняя версия 50S; не переносить автоматически на 50S2."
+    },
+    {
+      "id": "T50XG",
+      "title": "Mooch: Tenpower 50XG",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-50xg-40a-90a-5000mah-21700-pre-production.992040/",
+      "note": "24.10.2025: возможная предсерия, DCIR двух образцов, 40 А / 90 А до 75 °C."
+    },
+    {
+      "id": "BT50XG",
+      "title": "Batemo: Tenpower 50XG",
+      "url": "https://www.batemo.com/products/batemo-cell-explorer/tenpower-inr21700-50xg/",
+      "note": "5.12 А·ч и 18.4 Вт·ч C/10; 35.4 А continuous по условиям Batemo. Отличается от метода Mooch."
+    },
+    {
+      "id": "ECF",
+      "title": "Battery Mooch: Batteries and Chargers",
+      "url": "https://www.e-cigarette-forum.com/forums/batteries-and-chargers.828/",
+      "note": "Сбор 20.09.2026: 39 тем, 6 прочитанных статей; полный архив ограничен CAPTCHA. Фото 11.08.2026 содержит 41 строку >4 А·ч."
+    },
+    {
+      "id": "L50T",
+      "title": "Mooch: Linkdata 50T",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-50t-60a-5000mah-21700.995258/",
+      "note": "06.09.2026: DCIR 4.52 мОм; 50 А до 2.5 В при ~77–78 °C. Нет E-Scores в извлечённом тексте."
+    },
+    {
+      "id": "GP60Q",
+      "title": "Mooch: Great Power 60Q",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-great-power-60q-60a-110a-6000mah-21700.995238/",
+      "note": "03.09.2026: DCIR 5.20/4.96 мОм; оценка 35 А, 40 А превышают предел 75 °C."
+    }
+  ]
+}

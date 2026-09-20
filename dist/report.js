@@ -62,7 +62,7 @@ function columns(){
   col('reserve','Обвязка до 40 кг',r=>`${num(40-r.mass,2)} кг`,r=>40-r.mass)]);
  if(state.view==='electrical')return base.concat([
   col('volt','Uном / Uзаряд',r=>`${num(r.voltage)} / ${num(r.vmax)} В`,r=>r.voltage),
-  col('cell-current','А/яч.: 30 кВт',r=>`${num(34.290909*1000/109.2/r.p)}–${num(34.290909*1000/90/r.p)}<span class="sub">При 109,2 → 90 В; запрос до ограничений</span>`,r=>34.290909*1000/90/r.p),
+  col('cell-current','А/яч.: 30 кВт',r=>`${num(34290.909/r.voltage/r.p)}<span class="sub">При Uном ${num(r.voltage)} В; до просадки и ограничений</span>`,r=>34290.909/r.voltage/r.p),
   col('rating','Паспорт тока',r=>rating(MODELS[r.model]),r=>MODELS[r.model].continuous??MODELS[r.model].conditional_current??MODELS[r.model].pulse??null),
   col('dc','DCIR / источник',r=>`${num(r.dc_model,2)} мОм<span class="sub">${esc(r.dc_basis)}</span>`,r=>r.dc_model),
   col('res','Ветвь / вся линия',r=>r.r_total==null?`${r.s}r / ${num(r.s/r.p,3)}r + 1 мОм`:`${num(r.r_string,2)} / ${num(r.r_total,2)} мОм`,r=>r.r_total),
@@ -84,7 +84,7 @@ function columns(){
   col('rating','Ток одного элемента',r=>rating(MODELS[r.model]),r=>MODELS[r.model].continuous??MODELS[r.model].conditional_current??MODELS[r.model].pulse??null),
   col('note','Примечание',r=>esc(MODELS[r.model].note),r=>MODELS[r.model].note),col('source','Документ',r=>sourceLink(r.source),r=>r.source)]);
 }
-function rating(m){let s=[];if(m.continuous)s.push(`${num(m.continuous,0)} А${m.thermal_cut||['P50','M65','P30'].includes(m.source)?' с тепловой отсечкой':' непр.'}`);if(m.conditional_current)s.push(`${m.conditional_current} А / 80 °C`);if(m.pulse)s.push(`${num(m.pulse,0)} А / ${m.seconds} с`);if(m.reported_current)s.push(`${m.reported_current} А по исследованию`);return esc(s.join('; ')||'Не подтверждён');}
+function rating(m){let s=[];if(m.continuous)s.push(`${num(m.continuous,0)} А${m.thermal_cut||['P50','M65','P30'].includes(m.source)?' с тепловой отсечкой':' непр.'}`);if(m.conditional_current)s.push(`${m.conditional_current} А / ${m.thermal_cut||80} °C`);if(m.pulse)s.push(`${num(m.pulse,0)} А / ${m.seconds} с`);if(m.reported_current)s.push(`${m.reported_current} А по исследованию`);return esc(s.join('; ')||'Не подтверждён');}
 function renderTable(){let rows=ROWS;if(state.view==='cells'){const seen=new Set();rows=rows.filter(r=>{if(seen.has(r.model))return false;seen.add(r.model);return true;});}const cs=columns();rows=sortedRows(rows,state.sort,state.ascending);
  $('table-head').innerHTML='<tr>'+cs.map(c=>`<th scope="col" aria-sort="${state.sort===c.key?(state.ascending?'ascending':'descending'):'none'}"><button data-sort="${c.key}" ${['name','photo'].includes(c.key)?'title="Вернуть исходный порядок: тип → производитель → модель"':''}>${esc(c.label)}</button></th>`).join('')+'</tr>';
  let group='';$('table-body').innerHTML=rows.map(r=>{let title='';const g=r.format+' · '+r.manufacturer;if(!state.sort&&g!==group){title=`<tr class="group-row"><td colspan="${cs.length}">${esc(g)}</td></tr>`;group=g;}return title+`<tr data-row="${r.id}">`+cs.map(c=>`<td class="${c.key==='photo'?'photo-cell':''}">${c.render(r)}</td>`).join('')+'</tr>';}).join('');

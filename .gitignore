@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+calculated.json
+node_modules/
+*.inspect.ndjson
+test-results/

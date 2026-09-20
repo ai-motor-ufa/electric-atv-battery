@@ -1,0 +1,54 @@
+{
+  "release": "20260920-r6",
+  "date": "2026-09-20",
+  "models": 28,
+  "configurations": 33,
+  "photo_rows": 41,
+  "comparison_rows": 43,
+  "forum_threads": 39,
+  "full_text_articles": 6,
+  "forum_archive_complete": false,
+  "pdf_pages": 32,
+  "files": {
+    "index.html": {
+      "bytes": 4798389,
+      "sha256": "be49161501f0a6ce447f6f127456358e7cbeeeff2ee9d68c1d3cbeb7e4c12b73"
+    },
+    "report.js": {
+      "bytes": 17101,
+      "sha256": "555c0d496846e655a4519b44769aeff44b3d7be1a4bb2e8f317c97fa06f9f717"
+    },
+    "report.css": {
+      "bytes": 11494,
+      "sha256": "6d67163064985d9020d2029691e4bffbdc7c513ba88763a9b4c2a82ec0515603"
+    },
+    "mooch.js": {
+      "bytes": 1329,
+      "sha256": "9ae4098b7c2fc71c9ba759f33a519cf4fc6f78dfe3bcf40e54d2fda95923748c"
+    },
+    "mooch_data.json": {
+      "bytes": 93965,
+      "sha256": "60020873467f9d680843696656262c17513b501e63389fe4a5cb9b82c9b0aad6"
+    },
+    "mooch_21700_photo.csv": {
+      "bytes": 13632,
+      "sha256": "d740ff6b2846489680a36cf91345339672eb1e72eb960911a2856abcafb058ad"
+    },
+    "mooch_21700_forum.csv": {
+      "bytes": 13048,
+      "sha256": "9f4309a8dd331865bf04f13c4642d26897d664c35c04ddc1fd8fe6dd0084a618"
+    },
+    "mooch_21700_comparison.csv": {
+      "bytes": 14852,
+      "sha256": "3e227bbddaca8aa7d65dcab1cc458e8f6f5df7b4648e79bb8f93cd1cfe9143b9"
+    },
+    "Mooch_21700_2026-09-20.xlsx": {
+      "bytes": 19834,
+      "sha256": "bb20fe93f466bc32b3dfb2a1a70e4031276d010c4558f48bf4f1faf2e5332ec9"
+    },
+    "AKB_96V_Comparative_Study_2026-09-20.pdf": {
+      "bytes": 576326,
+      "sha256": "01fbf82760f6cd0378b6377ef3b9c45555df959afbe68ee86f7badbf34b1379b"
+    }
+  }
+}
