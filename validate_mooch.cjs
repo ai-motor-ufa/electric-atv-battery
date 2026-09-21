@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 const d=JSON.parse(fs.readFileSync('dist/mooch_data.json'));
-assert.equal(d.photo.length,41);assert.equal(d.forum.length,39);assert.equal(d.combined.length,43);
+assert.equal(d.photo.length,41);assert.equal(d.forum.length,50);assert.equal(d.forum.filter(r=>r.status==='Текст статьи прочитан').length,47);assert.equal(d.combined.length,43);
 for(const r of d.photo){assert((r.rated_mAh??r.tested_mAh)>4000);assert.equal(r.cutoff_energy_V,2.8);assert.equal(r.E50_Wh,null);}
 assert.equal(d.photo.find(r=>r.model==='Tenpower 50XG').E20_Wh,16.1);
 assert.equal(d.photo.find(r=>r.model==='Reliance RS50 (CCC logo, batch G3E)').DCIR_mOhm,6.5);

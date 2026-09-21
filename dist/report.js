@@ -10,20 +10,32 @@ const state={metric:'range',blocks:2,profile:'mixed',cooling:5,selection:'all',v
 const getSim=r=>r.simulations[`${state.blocks}_${state.cooling}_${state.profile}`];
 const sources=Object.fromEntries(DATA.sources.map(s=>[s.id,s]));
 const sourceLink=id=>sources[id]?.url?`<a href="${esc(sources[id].url)}" target="_blank" rel="noopener">${esc(id)} ↗</a>`:esc(id);
+const metricValue=(r,metric)=>{const s=getSim(r);return metric==='range'?(s?s.wmtc_equiv:r.energy_ceiling_wmtc*state.blocks):metric==='runtime'?(s?s.minutes:null):(s?s.heat_mean:null);};
+function marketInfo(m){
+ const market=m.market;if(!market)return '<span class="unknown">Нет данных в выгрузке 21.09.2026</span>';
+ const links=[];
+ if(market.cell_saviors_url)links.push(`<a href="${esc(market.cell_saviors_url)}" target="_blank" rel="noopener">CellSaviors ↗</a>`);
+ if(market.ecf_url)links.push(`<a href="${esc(market.ecf_url)}" target="_blank" rel="noopener">ECF ↗</a>`);
+ if(market.datasheet?.url)links.push(`<a href="${esc(market.datasheet.url)}" target="_blank" rel="noopener">Datasheet ↗</a>`);
+ const nk=market.nkon;
+ if(nk?.url){const price=nk.price==null?'цена не подтверждена':`${num(nk.price,2)} ${esc(nk.currency||'EUR')}`;links.push(`<a href="${esc(nk.url)}" target="_blank" rel="noopener">NKON: ${price} ↗</a><span class="sub">${esc(nk.availability||'статус не указан')} · ${esc(nk.observed_at||'')}</span>`);}
+ return links.join('<br>')||'<span class="unknown">Ссылки отсутствуют</span>';
+}
 
 function sortedRows(rows,key,ascending=true){
  if(!key||key==='photo'||key==='name')return [...rows].sort((a,b)=>a.order-b.order);
  const c=columns().find(x=>x.key===key);if(!c)return [...rows];
  return [...rows].sort((a,b)=>{const x=c.sort(a),y=c.sort(b);if(x==null)return y==null?a.order-b.order:1;if(y==null)return -1;const v=typeof x==='number'?x-y:String(x).localeCompare(String(y),'ru',{numeric:true});return (ascending?1:-1)*v||a.order-b.order;});
 }
-function setMetric(metric){state.metric=metric;document.querySelectorAll('[data-metric]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.metric===metric)));renderChart();}
+function setMetric(metric){state.metric=metric;if(state.view==='modes'){state.sort=metric;state.ascending=metric==='heat';}document.querySelectorAll('[data-metric]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.metric===metric)));render();}
 function renderChart(){
- const candidates=ROWS.filter(r=>r.candidate), rows=state.selection==='all'?candidates:candidates.filter(r=>r.id===state.selection);
+ const candidates=ROWS.filter(r=>r.candidate).sort((a,b)=>{const x=metricValue(a,state.metric),y=metricValue(b,state.metric);if(x==null)return y==null?a.order-b.order:1;if(y==null)return -1;return (state.metric==='heat'?x-y:y-x)||a.order-b.order;});
+ const rows=state.selection==='all'?candidates:candidates.filter(r=>r.id===state.selection);
  const title={range:'WMTC: энергетический эквивалент',runtime:'Время до ограничения и до резерва',heat:'Среднее тепло в ячейках одного блока'}[state.metric];
  $('chart-title').textContent=title;$('back-all').hidden=state.selection==='all';
  $('chart-note').textContent=state.metric==='range'?'Километры — пересчёт выданной энергии по индексу BRP, а не моделирование графика скорости WMTC. Штриховка: только граница по энергии, без проверки неизвестных потерь и тока.':'Сценарная модель при 25 °C. Время после снижения мощности не равно работе с прежней тягой. Пустое значение означает нехватку данных, а не нулевой нагрев.';
  $('chart-legend').innerHTML=state.metric==='runtime'?'<span>Без снижения запроса</span><span class="rest">После снижения, до резерва</span>':'<span>Модель с ограничениями</span><span class="uncertain">Только энергетическая граница / данных нет</span>';
- const vals=rows.map(r=>{const s=getSim(r);return state.metric==='range'?(s?s.wmtc_equiv:r.energy_ceiling_wmtc*state.blocks):state.metric==='runtime'?(s?s.minutes:null):(s?s.heat_mean:null);});
+ const vals=rows.map(r=>metricValue(r,state.metric));
  const max=Math.max(...vals.filter(x=>x!=null),1)*1.07;
  $('bars').innerHTML=rows.map((r,i)=>{const s=getSim(r),v=vals[i],uncertain=!s;let bar='';
   if(v!=null){if(state.metric==='runtime')bar=`<i class="bar-total" style="width:${v/max*100}%"></i><i class="bar-full" style="width:${s.full_minutes/max*100}%"></i>`;else bar=`<i class="bar-fill ${uncertain?'estimate':''}" style="width:${v/max*100}%"></i>`;}
@@ -83,21 +95,22 @@ function columns(){
   col('chem','Химия / исполнение',r=>esc(MODELS[r.model].type),r=>MODELS[r.model].type),
   col('passport','Сопротивление в паспорте',r=>esc(MODELS[r.model].res),r=>MODELS[r.model].dc??null),
   col('rating','Ток одного элемента',r=>rating(MODELS[r.model]),r=>MODELS[r.model].continuous??MODELS[r.model].conditional_current??MODELS[r.model].pulse??null),
+  col('market','Рынок и источники',r=>marketInfo(MODELS[r.model]),r=>MODELS[r.model].market?.nkon?.price??null),
   col('note','Примечание',r=>esc(MODELS[r.model].note),r=>MODELS[r.model].note),col('source','Документ',r=>sourceLink(r.source),r=>r.source)]);
 }
 function rating(m){let s=[];if(m.continuous)s.push(`${num(m.continuous,0)} А${m.thermal_cut||['P50','M65','P30'].includes(m.source)?' с тепловой отсечкой':' непр.'}`);if(m.conditional_current)s.push(`${m.conditional_current} А / ${m.thermal_cut||80} °C`);if(m.pulse)s.push(`${num(m.pulse,0)} А / ${m.seconds} с`);if(m.reported_current)s.push(`${m.reported_current} А по исследованию`);return esc(s.join('; ')||'Не подтверждён');}
-function renderTable(){let rows=ROWS;if(state.view==='cells'){const seen=new Set();rows=rows.filter(r=>{if(seen.has(r.model))return false;seen.add(r.model);return true;});}const cs=columns();rows=sortedRows(rows,state.sort,state.ascending);
+function renderTable(){let rows=ROWS;if(state.view==='cells'){const seen=new Set();rows=rows.filter(r=>{if(seen.has(r.model))return false;seen.add(r.model);return true;});}const cs=columns();const sortKey=state.sort||(state.view==='modes'?state.metric:null),ascending=state.sort?state.ascending:state.metric==='heat';rows=sortedRows(rows,sortKey,ascending);
  $('table-head').innerHTML='<tr>'+cs.map(c=>`<th scope="col" aria-sort="${state.sort===c.key?(state.ascending?'ascending':'descending'):'none'}"><button data-sort="${c.key}" ${['name','photo'].includes(c.key)?'title="Вернуть исходный порядок: тип → производитель → модель"':''}>${esc(c.label)}</button></th>`).join('')+'</tr>';
  let group='';$('table-body').innerHTML=rows.map(r=>{let title='';const g=r.format+' · '+r.manufacturer;if(!state.sort&&g!==group){title=`<tr class="group-row"><td colspan="${cs.length}">${esc(g)}</td></tr>`;group=g;}return title+`<tr data-row="${r.id}">`+cs.map(c=>`<td class="${c.key==='photo'?'photo-cell':''}">${c.render(r)}</td>`).join('')+'</tr>';}).join('');
- $('table-state').textContent=`${rows.length} ${state.view==='cells'?'моделей':'сборок'} · ${state.sort?'Сортировка: '+cs.find(c=>c.key===state.sort)?.label:'Исходный порядок: тип → производитель → модель'}${state.view==='modes'?` · ${state.blocks} блок(а), ${DATA.profiles.find(p=>p.id===state.profile).name}, G=${state.cooling} Вт/К`:''}`;
+ $('table-state').textContent=`${rows.length} ${state.view==='cells'?'моделей':'сборок'} · ${sortKey?'Сортировка: '+cs.find(c=>c.key===sortKey)?.label+' ('+(ascending?'по возрастанию':'по убыванию')+')':'Исходный порядок: тип → производитель → модель'}${state.view==='modes'?` · ${state.blocks} блок(а), ${DATA.profiles.find(p=>p.id===state.profile).name}, G=${state.cooling} Вт/К`:''}`;
 }
 function render(){renderChart();renderTable();}
 document.querySelectorAll('[data-metric]').forEach(b=>b.addEventListener('click',()=>setMetric(b.dataset.metric)));
-document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{state.view=b.dataset.view;state.sort=null;document.querySelectorAll('[data-view]').forEach(a=>a.setAttribute('aria-pressed',String(a===b)));renderTable();}));
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{state.view=b.dataset.view;state.sort=state.view==='modes'?state.metric:null;state.ascending=state.metric==='heat';document.querySelectorAll('[data-view]').forEach(a=>a.setAttribute('aria-pressed',String(a===b)));renderTable();}));
 for(const [id,key] of [['blocks','blocks'],['profile','profile'],['cooling','cooling'],['selection','selection']])$(id).addEventListener('change',e=>{state[key]=['blocks','cooling'].includes(key)?Number(e.target.value):e.target.value;render();});
 $('bars').addEventListener('click',e=>{const row=e.target.closest('[data-select]');if(row){state.selection=row.dataset.select;$('selection').value=state.selection;renderChart();}});
 $('back-all').addEventListener('click',()=>{state.selection='all';$('selection').value='all';renderChart();});
-$('reset-sort').addEventListener('click',()=>{state.sort=null;renderTable();});
+$('reset-sort').addEventListener('click',()=>{state.sort=state.view==='modes'?state.metric:null;state.ascending=state.metric==='heat';renderTable();});
 $('table-head').addEventListener('click',e=>{const b=e.target.closest('[data-sort]');if(!b)return;const k=b.dataset.sort;if(k==='photo'||k==='name'){state.sort=null;state.ascending=true;}else{state.ascending=state.sort===k?!state.ascending:true;state.sort=k;}renderTable();});
 render();
 // Small pure sorting surface used by the local regression check.

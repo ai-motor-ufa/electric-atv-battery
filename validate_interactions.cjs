@@ -12,8 +12,15 @@ const ctx={document,console};vm.createContext(ctx);vm.runInContext(fs.readFileSy
 const api=ctx.reportTesting;
 const displayed=()=>Array.from(node('table-body').innerHTML.matchAll(/data-row="([^"]+)"/g),m=>m[1]);
 const initial=displayed();assert.equal(initial.length,data.rows.length);assert.equal((node('bars').innerHTML.match(/data-select=/g)||[]).length,data.rows.filter(r=>r.candidate).length);
+assert.equal(data.rows.filter(r=>r.candidate&&r.format==='21700').length,15);assert.equal(data.rows.filter(r=>r.candidate&&r.format==='Pouch').length,6);
+let barIds=Array.from(node('bars').innerHTML.matchAll(/data-select="([^"]+)"/g),m=>m[1]);
+let barValues=barIds.map(id=>{const r=data.rows.find(x=>x.id===id),s=r.simulations['2_5_mixed'];return s?s.wmtc_equiv:r.energy_ceiling_wmtc*2;});
+assert(barValues.every((v,i)=>!i||v<=barValues[i-1]),'Range chart must be descending');
+assert(html.includes('Выбор ячеек для<br>тяговой АКБ 96 В'));assert(!html.includes('Энергия для<br>вашего маршрута.'));assert(!html.includes('Сравните свой запас.'));
 function header(key){node('table-head').handlers.click({target:{closest:()=>({dataset:{sort:key}})}});}
 function change(id,value){node(id).handlers.change({target:{value}});}
+node('view-modes').handlers.click();let modeValues=displayed().map(id=>{const r=data.rows.find(x=>x.id===id),s=r.simulations['2_5_mixed'];return s?.wmtc_equiv??null;}).filter(v=>v!=null);assert(modeValues.every((v,i)=>!i||v<=modeValues[i-1]),'Range table must be descending');
+node('view-energy').handlers.click();
 header('energy');let seq=displayed().map(id=>data.rows.find(r=>r.id===id).energy);assert(seq.every((v,i)=>!i||v>=seq[i-1]));
 header('energy');seq=displayed().map(id=>data.rows.find(r=>r.id===id).energy);assert(seq.every((v,i)=>!i||v<=seq[i-1]));
 header('photo');assert.deepStrictEqual(displayed(),initial);

@@ -46,4 +46,4 @@ console.log((await wb.inspect({kind:'match',searchTerm:'#REF!|#DIV/0!|#VALUE!|#N
 for(const [sheetName,range,file] of [['Фото 11.08.2026','A1:H12','photo'],['Фото 11.08.2026','I1:Q12','energy'],['Форум','A1:I10','forum'],['Методика','A1:B13','method']]){
  const blob=await wb.render({sheetName,range,scale:1.5});await fs.writeFile(`/tmp/battery-workbook/${file}.png`,new Uint8Array(await blob.arrayBuffer()));
 }
-const file=await SpreadsheetFile.exportXlsx(wb);await file.save(`${root}/dist/Mooch_21700_2026-09-20.xlsx`);
+const file=await SpreadsheetFile.exportXlsx(wb);await file.save(`${root}/dist/Mooch_21700_2026-09-21.xlsx`);

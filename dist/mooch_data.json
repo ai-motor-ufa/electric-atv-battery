@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-20",
+  "date": "2026-09-21",
   "photo_date": "2026-08-11",
   "photo": [
     {
@@ -26,7 +26,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-ampace-jp50p1-no-ccc-logo-40a-60a-5000mah-21700.993063/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Amprius INR21700/50Q (5000Q?)",
@@ -52,7 +52,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-amprius-inr21700-50q-no-ccc-50a-5000mah-21700-is-it-5000q.993503/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Amprius INR21700/65 (SA112)",
@@ -78,7 +78,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-amprius-inr21700-65-sa112-no-ccc-logo-13a-6500mah-21700.993201/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "BAK 45D",
@@ -103,8 +103,8 @@
       "source_kind": "Фото",
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-45d-30a-60a-4500mah-21700.988135/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "url": "",
+      "article_status": "Ссылка на точную версию не установлена"
     },
     {
       "model": "BAK 50D2",
@@ -130,7 +130,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-50d2-60a-4950mah-full-tab-21700.994042/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "BAK 65E",
@@ -156,7 +156,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-65e-25-4a-6500mah-21700.993668/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "BAK N21700CD-53E",
@@ -233,8 +233,8 @@
       "source_kind": "Фото",
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-retest-results-btcap-42p-tabless-70%CE%91-4200mah-21700-pre-production-samples.992208/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "url": "",
+      "article_status": "Ссылка на точную версию не установлена"
     },
     {
       "model": "EVE 50E (CCC logo)",
@@ -260,7 +260,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-retest-results-eve-50e-ccc-logo-15a-5000mah-21700.992147/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "EVE 50PL (CCC logo)",
@@ -286,7 +286,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-eve-50pl-50a-5000mah-21700-with-ccc-logo-and-ce-mark.992920/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "EVE 58E",
@@ -312,7 +312,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-eve-58e-16-8a-5700mah-21700.990414/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "FEB 21700G (68E)",
@@ -338,7 +338,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-feb-21700g-68e-13a-6500mah-21700.993807/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Great Power (GPHN) 50Q",
@@ -364,7 +364,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-great-power-50q-50a-5000mah-21700.994348/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "LG H50",
@@ -416,7 +416,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lg-h51t-20a-5000mah-21700-pre-production.992064/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "LG M50LT",
@@ -494,7 +494,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lg-m58t-12-5a-5570mah-21700.990859/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Linkdata 55P",
@@ -520,7 +520,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-55p-40a-50a-5500mah-21700.995029/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Linkdata 60P",
@@ -546,7 +546,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-60p-60a-6000mah-21700.994389/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Linkdata 65P",
@@ -572,7 +572,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-65p-52a-6500mah-21700.994761/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Lishen LR2170SD (pink)",
@@ -650,7 +650,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lishen-lr2170sk-16-95a-5800mah-21700.990568/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Molicel P45B (2024-dated)",
@@ -675,8 +675,8 @@
       "source_kind": "Фото",
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-molicel-p45b-45a-4500mah-21700-2024-retest.988596/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "url": "",
+      "article_status": "Ссылка на точную версию не установлена"
     },
     {
       "model": "Molicel P50B (2024-dated)",
@@ -754,7 +754,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rh60-20a-5850mah-21700.993997/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Reliance RS50 (CCC logo, batch G3E)",
@@ -780,7 +780,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-retest-results-reliance-rs50-70a-4950mah-full-tab-21700.994194/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Reliance RS60 (direct from Reliance)",
@@ -806,7 +806,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rs60-50a-5850mah-21700.994495/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Samsung 45T (CC4503F101 Ver C)",
@@ -831,8 +831,8 @@
       "source_kind": "Фото",
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-45t-cc4503f101-ver-c-35a-50a-4500mah-21700.989513/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "url": "",
+      "article_status": "Ссылка на точную версию не установлена"
     },
     {
       "model": "Samsung 50E2",
@@ -884,7 +884,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-50s2-25a-45a-5000mah-21700.988832/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Samsung 53G",
@@ -910,7 +910,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-53g-1-10-6a-5300mah-21700.987143/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Samsung 50GB",
@@ -988,7 +988,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-50sg-20a-50a-5000mah-21700.995125/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Tenpower 50XG",
@@ -1040,7 +1040,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-60xg-40a-60a-6000mah-21700.994796/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Vapcell F66",
@@ -1071,397 +1071,703 @@
   ],
   "forum": [
     {
-      "title": "Bench Test Results: Linkdata 50T - 60A 5000mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-50t-60a-5000mah-21700.995258/",
+      "title": "Bench Test Results: Ampace JP50P1 (no CCC logo) - 40A/60A 5000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-ampace-jp50p1-no-ccc-logo-40a-60a-5000mah-21700.993063/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
+      "accessed": "2026-09-21",
       "rated_mAh": 5000,
-      "model": "Linkdata 50T",
+      "model": "Ampace JP50P1",
       "status": "Текст статьи прочитан",
-      "date": "2026-09-06",
-      "dc1_mOhm": 4.52,
-      "dc2_mOhm": 4.52,
-      "estimated_CDR_A": 50,
-      "note": "Тест при 50 А до 2.5 В: около 77–78 °C; предел 80 °C. Паспортный ток 60 А вызывает около 85 °C. Паспортная масса 68.5±1.5 г. E-Scores в доступном тексте отсутствуют."
-    },
-    {
-      "title": "Bench Test Results: Great Power 60Q - 60A/110A 6000mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-great-power-60q-60a-110a-6000mah-21700.995238/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 6000,
-      "model": "Great Power 60Q",
-      "status": "Текст статьи прочитан",
-      "date": "2026-09-03",
-      "sample1_mAh": 6040,
-      "sample2_mAh": 6018,
-      "dc1_mOhm": 5.2,
-      "dc2_mOhm": 4.96,
-      "estimated_CDR_A": 35,
-      "rated_TL_A": 110,
-      "note": "CCC, июль 2026. При 40 А до 2.5 В около 77 °C против предела 75 °C; Mooch рекомендует ≤35 А. 110 А с отсечкой 80 °C — иной режим. E-Scores в доступном тексте отсутствуют."
-    },
-    {
-      "title": "Bench Test Results: Tenpower 50SG - 20A/50A 5000mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-50sg-20a-50a-5000mah-21700.995125/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5000,
-      "model": "Tenpower 50SG",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Linkdata 55P - 40A/50A 5500mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-55p-40a-50a-5500mah-21700.995029/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5500,
-      "model": "Linkdata 55P",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Tenpower 60XG - 40A/60A 6000mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-60xg-40a-60a-6000mah-21700.994796/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 6000,
-      "model": "Tenpower 60XG",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Linkdata 65P - 52A 6500mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-65p-52a-6500mah-21700.994761/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 6500,
-      "model": "Linkdata 65P",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Linkdata 60P - 60A 6000mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-60p-60a-6000mah-21700.994389/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 6000,
-      "model": "Linkdata 60P",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Molicel P50B - 60A 5000mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-molicel-p50b-60a-5000mah-21700.986092/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5000,
-      "model": "Molicel P50B",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Reliance RS60 - 50A 5850mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rs60-50a-5850mah-21700.994495/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5850,
-      "model": "Reliance RS60",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Great Power 50Q - 50A 5000mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-great-power-50q-50a-5000mah-21700.994348/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5000,
-      "model": "Great Power 50Q",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Retest Results: Reliance RS50 - 70A 4950mAh full-tab 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-retest-results-reliance-rs50-70a-4950mah-full-tab-21700.994194/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 4950,
-      "model": "Reliance RS50",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: BAK 50D2 - 60A 4950mAh full-tab 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-50d2-60a-4950mah-full-tab-21700.994042/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 4950,
-      "model": "BAK 50D2",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Reliance RH60 - 20A 5850mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rh60-20a-5850mah-21700.993997/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5850,
-      "model": "Reliance RH60",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: FEB 21700G (68E) - 13A 6500mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-feb-21700g-68e-13a-6500mah-21700.993807/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 6500,
-      "model": "FEB 21700G (68E)",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: BAK 65E - 25.4A 6500mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-65e-25-4a-6500mah-21700.993668/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 6500,
-      "model": "BAK 65E",
-      "status": "Только заголовок; текст не извлечён"
+      "publication_date": "2026-01-26T22:46:20+0000",
+      "date": "2026-01-26",
+      "DCIR_mOhm": 5.65,
+      "dc1_mOhm": 5.6,
+      "dc2_mOhm": 5.7,
+      "estimated_CDR_A": 40,
+      "rated_TL_A": 60,
+      "note": "pre-production"
     },
     {
       "title": "Bench Test Results: Amprius INR21700/50Q (no CCC) - 50A 5000mAh 21700 - Is it 5000Q?",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-amprius-inr21700-50q-no-ccc-50a-5000mah-21700-is-it-5000q.993503/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
+      "accessed": "2026-09-21",
       "rated_mAh": 5000,
-      "model": "Amprius INR21700/50Q (no CCC)",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: EVE 50PL - 50A 5000mAh 21700 (with CCC logo and CE mark)",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-eve-50pl-50a-5000mah-21700-with-ccc-logo-and-ce-mark.992920/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5000,
-      "model": "EVE 50PL",
-      "status": "Только заголовок; текст не извлечён"
+      "model": "Amprius INR21700-50Q",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-03-12T14:55:00+0000",
+      "date": "2026-03-12",
+      "DCIR_mOhm": 6.78,
+      "dc1_mOhm": 6.92,
+      "dc2_mOhm": 6.64,
+      "estimated_CDR_A": 40,
+      "rated_TL_A": 100,
+      "note": "pre-production"
     },
     {
       "title": "Bench Test Results: Amprius INR21700/65 (SA112) - no CCC logo - 13A 6500mAh 21700",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-amprius-inr21700-65-sa112-no-ccc-logo-13a-6500mah-21700.993201/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
+      "accessed": "2026-09-21",
       "rated_mAh": 6500,
-      "model": "Amprius INR21700/65 (SA112)",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Ampace JP50P1 (no CCC logo) - 40A/60A 5000mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-ampace-jp50p1-no-ccc-logo-40a-60a-5000mah-21700.993063/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5000,
-      "model": "Ampace JP50P1 (no CCC logo)",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Retest Results: BTCAP 42P - tabless 70Α 4200mAh 21700 pre-production samples",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-retest-results-btcap-42p-tabless-70%CE%91-4200mah-21700-pre-production-samples.992208/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 4200,
-      "model": "BTCAP 42P",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Retest Results: EVE 50E (CCC logo) - 15A 5000mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-retest-results-eve-50e-ccc-logo-15a-5000mah-21700.992147/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5000,
-      "model": "EVE 50E (CCC logo)",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Reliance RS50 (CCC logo) - 70A 4950mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rs50-ccc-logo-70a-4950mah-21700.992097/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 4950,
-      "model": "Reliance RS50 (CCC, 2025)",
+      "model": "Amprius INR21700-65",
       "status": "Текст статьи прочитан",
-      "date": "2025-10-28",
-      "sample1_mAh": 5194,
-      "sample2_mAh": 5195,
-      "dc1_mOhm": 6.5,
-      "dc2_mOhm": 6.6,
-      "estimated_CDR_A": 40,
-      "rated_TL_A": 70,
-      "note": "DCIR — границы диапазона четырёх образцов; ёмкость двух образцов. 70 А ограничены 80 °C; 40 А — оценка непрерывного тока. Отдельная версия от G3E 2026."
+      "publication_date": "2026-02-09T19:17:54+0000",
+      "date": "2026-02-09",
+      "note": "pre-production"
     },
     {
-      "title": "Bench Test Results: LG H51T - 20A 5000mAh 21700 (pre-production?)",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lg-h51t-20a-5000mah-21700-pre-production.992064/",
+      "title": "Bench Test Results: AWT 35A 4800mAh 21700...obscenely overrated, DO NOT BUY",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-awt-35a-4800mah-21700-obscenely-overrated-do-not-buy.888415/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5000,
-      "model": "LG H51T",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Tenpower 50XG - 40A/90A 5000mAh 21700 (pre-production?)",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-50xg-40a-90a-5000mah-21700-pre-production.992040/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5000,
-      "model": "Tenpower 50XG",
+      "accessed": "2026-09-21",
+      "rated_mAh": 4800,
+      "model": "AWT 21700 35A 4800mAh",
       "status": "Текст статьи прочитан",
-      "date": "2025-10-24",
-      "sample1_mAh": 5052,
-      "sample2_mAh": 5083,
-      "dc1_mOhm": 7.1,
-      "dc2_mOhm": 6.7,
-      "estimated_CDR_A": 40,
-      "rated_TL_A": 90,
-      "note": "Возможная предсерия без CCC. 90 А ограничены 75 °C. Паспортные максимумы по статье: 71 г; Ø21.50×70.50 мм. Не заменять паспортное значение ёмкости результатами двух образцов."
+      "publication_date": "2018-11-28T05:20:11+0000",
+      "date": "2018-11-28",
+      "note": "do not buy; overrated; pre-production"
     },
     {
-      "title": "Bench Test Results: Reliance RS50 - 70A 4950mAh 21700 pre-production samples",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rs50-70a-4950mah-21700-pre-production-samples.991482/",
+      "title": "Bench Test Results: BAK 53E - 10.6A 5300mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-53e-10-6a-5300mah-21700.987731/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 4950,
-      "model": "Reliance RS50 (pre-production)",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5300,
+      "model": "BAK 53E",
       "status": "Текст статьи прочитан",
-      "date": "2025-08-24",
-      "sample1_mAh": 5169,
-      "sample2_mAh": 5173,
-      "dc1_mOhm": 5.0,
-      "dc2_mOhm": 5.3,
-      "estimated_CDR_A": 40,
-      "rated_TL_A": 70,
-      "note": "Предсерия. DCIR — диапазон четырёх образцов; ёмкость двух образцов. 70 А ограничены 80 °C. Не объединять с серийной CCC и G3E."
+      "publication_date": "2024-11-12T05:40:19+0000",
+      "date": "2024-11-12",
+      "DCIR_mOhm": 19.4,
+      "dc1_mOhm": 19.3,
+      "dc2_mOhm": 19.5
     },
     {
-      "title": "Bench Test Results: Samsung 55E (CC5493F101, Ver A) - 10.6A 5490MAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-55e-cc5493f101-ver-a-10-6a-5490mah-21700.989309/",
+      "title": "Bench Test Results: BAK 65E - 25.4A 6500mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-65e-25-4a-6500mah-21700.993668/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5490,
-      "model": "Samsung 55E (CC5493F101, Ver A)",
-      "status": "Только заголовок; текст не извлечён"
+      "accessed": "2026-09-21",
+      "rated_mAh": 6500,
+      "model": "BAK 65E",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-03-29T16:07:05+0100",
+      "date": "2026-03-29",
+      "DCIR_mOhm": 10.72,
+      "dc1_mOhm": 10.76,
+      "dc2_mOhm": 10.68,
+      "note": "pre-production"
     },
     {
-      "title": "Bench Test Results: LG M58T - 12.5A 5570mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lg-m58t-12-5a-5570mah-21700.990859/",
+      "title": "Bench Test Results: BAK N21700CG-50 – 15A 5000mAh 21700…decent performer, equal to Samsung 50E3",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-n21700cg-50-%E2%80%93-15a-5000mah-21700%E2%80%A6decent-performer-equal-to-samsung-50e3.968623/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5570,
-      "model": "LG M58T",
-      "status": "Только заголовок; текст не извлечён"
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "BAK N21700CG",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2021-09-29T08:59:19+0100",
+      "date": "2021-09-29"
     },
     {
-      "title": "Bench Test Results: Vapcell F63 - 12.5A 6250mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-vapcell-f63-12-5a-6250mah-21700.990700/",
+      "title": "Bench Test Results: Efest 10A 5000mAh 21700...only 7.3A 4900mAh but good performer, probably LG M50",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-efest-10a-5000mah-21700-only-7-3a-4900mah-but-good-performer-probably-lg-m50.872411/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 6250,
-      "model": "Vapcell F63",
-      "status": "Только заголовок; текст не извлечён"
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Efest 21700 5000mAh 10A",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2018-07-22T08:56:31+0100",
+      "date": "2018-07-22",
+      "note": "overrated"
     },
     {
-      "title": "Bench Test Results: Vapcell S41 - 45A/70A 4100mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-vapcell-s41-45a-70a-4100mah-21700.990589/",
+      "title": "Bench Test Results: Epoch 10A 5000mAh 21700...great performer, slightly overrated capacity",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-epoch-10a-5000mah-21700-great-performer-slightly-overrated-capacity.947935/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 4100,
-      "model": "Vapcell S41",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Lishen LR2170SK - 16.95A 5800mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lishen-lr2170sk-16-95a-5800mah-21700.990568/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5800,
-      "model": "Lishen LR2170SK",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: EVE 58E - 16.8A 5700mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-eve-58e-16-8a-5700mah-21700.990414/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5700,
-      "model": "EVE 58E",
-      "status": "Только заголовок; текст не извлечён"
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Epoch 21700 5000mAh",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2020-08-10T07:54:48+0100",
+      "date": "2020-08-10",
+      "note": "overrated; great performer"
     },
     {
       "title": "Bench Test Results: “EVE 50PL” (unconfirmed) - 50A/125A 5000mAh 21700",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-%E2%80%9Ceve-50pl%E2%80%9D-unconfirmed-50a-125a-5000mah-21700.990079/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
+      "accessed": "2026-09-21",
       "rated_mAh": 5000,
-      "model": "“EVE 50PL” (unconfirmed)",
-      "status": "Только заголовок; текст не извлечён"
+      "model": "EVE INR21700-50PL",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2025-05-11T19:48:40+0100",
+      "date": "2025-05-11",
+      "note": "pre-production; unconfirmed"
     },
     {
-      "title": "Bench Test Results: Samsung 45T (CC4503F101 Ver C) - 35A/50A 4500mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-45t-cc4503f101-ver-c-35a-50a-4500mah-21700.989513/",
+      "title": "Bench Test Results: EVE 58E - 16.8A 5700mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-eve-58e-16-8a-5700mah-21700.990414/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 4500,
-      "model": "Samsung 45T (CC4503F101 Ver C)",
-      "status": "Только заголовок; текст не извлечён"
+      "accessed": "2026-09-21",
+      "rated_mAh": 5700,
+      "model": "EVE INR21700-58E",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2025-06-03T22:15:20+0100",
+      "date": "2025-06-03"
     },
     {
-      "title": "Bench Test Results: Samsung 50S2 - 25A/45A 5000mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-50s2-25a-45a-5000mah-21700.988832/",
+      "title": "Bench Test Results: Great Power 50Q - 50A 5000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-great-power-50q-50a-5000mah-21700.994348/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
+      "accessed": "2026-09-21",
       "rated_mAh": 5000,
-      "model": "Samsung 50S2",
-      "status": "Только заголовок; текст не извлечён"
+      "model": "Great Power 50Q",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-06-04T05:58:18+0100",
+      "date": "2026-06-04",
+      "DCIR_mOhm": 6.24,
+      "dc1_mOhm": 6.24,
+      "dc2_mOhm": 6.24,
+      "estimated_CDR_A": 40,
+      "rated_TL_A": 100,
+      "note": "pre-production"
     },
     {
-      "title": "Bench Test Results: Samsung 53G(1) - 10.6A 5300mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-53g-1-10-6a-5300mah-21700.987143/",
+      "title": "https://www.e-cigarette-forum.com/threads/bench-test-results-imren-30a-4800mah-21700%E2%80%A6useless-30a-rating.844615/",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-imren-30a-4800mah-21700%E2%80%A6useless-30a-rating.844615/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 5300,
-      "model": "Samsung 53G(1)",
-      "status": "Только заголовок; текст не извлечён"
+      "accessed": "2026-09-21",
+      "rated_mAh": 4800,
+      "model": "Imren 21700 4800mAh 30A",
+      "status": "Только заголовок; текст не извлечён",
+      "publication_date": null,
+      "date": null
     },
     {
-      "title": "Bench Test Results: Molicel P50B - 60A 5000mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-molicel-p50b-60a-5000mah-21700.988690/",
+      "title": "Bench Test Results: LG H51T - 20A 5000mAh 21700 (pre-production?)",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lg-h51t-20a-5000mah-21700-pre-production.992064/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
+      "accessed": "2026-09-21",
       "rated_mAh": 5000,
-      "model": "Molicel P50B",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: Molicel P45B - 45A 4500mAh 21700 (2024 retest)",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-molicel-p45b-45a-4500mah-21700-2024-retest.988596/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 4500,
-      "model": "Molicel P45B",
-      "status": "Только заголовок; текст не извлечён"
-    },
-    {
-      "title": "Bench Test Results: BAK 45D - 30A/60A 4500mAh 21700",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-45d-30a-60a-4500mah-21700.988135/",
-      "source_kind": "Форум",
-      "accessed": "2026-09-20",
-      "rated_mAh": 4500,
-      "model": "BAK 45D",
-      "status": "Только заголовок; текст не извлечён"
+      "model": "LG H51T",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2025-10-26T03:44:55+0000",
+      "date": "2025-10-26",
+      "DCIR_mOhm": 18.4,
+      "dc1_mOhm": 18.2,
+      "dc2_mOhm": 18.6,
+      "note": "pre-production"
     },
     {
       "title": "Bench Test Results: LG M50LT - 14.4A 4932mAh 21700",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lg-m50lt-14-4a-4932mah-21700.979634/",
       "source_kind": "Форум",
-      "accessed": "2026-09-20",
+      "accessed": "2026-09-21",
       "rated_mAh": 4932,
       "model": "LG M50LT",
       "status": "Текст статьи прочитан",
+      "publication_date": "2023-04-25T17:37:47+0100",
       "date": "2023-04-25",
       "sample1_mAh": 4852,
       "sample2_mAh": 4878,
       "estimated_CDR_A": 14.4,
       "note": "14.4 А при окружающих 10–25 °C; 7.2 А при 25–55 °C. Для ресурса автор рекомендует ≤10 А даже при комнатной температуре. В таблице фото ёмкость округлена вниз до 4800 мА·ч."
+    },
+    {
+      "title": "Bench Test Results: LG M50T - 14.6A 5014mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lg-m50t-14-6a-5014mah-21700.979332/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5014,
+      "model": "LG M50T",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2023-04-10T10:53:52+0100",
+      "date": "2023-04-10"
+    },
+    {
+      "title": "Bench Test Results: LG M58T - 12.5A 5570mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lg-m58t-12-5a-5570mah-21700.990859/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5570,
+      "model": "LG M58T",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2025-06-29T05:54:32+0100",
+      "date": "2025-06-29",
+      "DCIR_mOhm": 18.85,
+      "dc1_mOhm": 18.6,
+      "dc2_mOhm": 19.1
+    },
+    {
+      "title": "Bench Test Results: Linkdata 55P - 40A/50A 5500mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-55p-40a-50a-5500mah-21700.995029/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5500,
+      "model": "Linkdata 55P",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-08-12T06:59:12+0100",
+      "date": "2026-08-12",
+      "DCIR_mOhm": 4.94,
+      "dc1_mOhm": 5.04,
+      "dc2_mOhm": 4.84,
+      "note": "pre-production"
+    },
+    {
+      "title": "Bench Test Results: Linkdata 60P - 60A 6000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-60p-60a-6000mah-21700.994389/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 6000,
+      "model": "Linkdata 60P",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-06-09T05:09:10+0100",
+      "date": "2026-06-09",
+      "DCIR_mOhm": 7.36,
+      "dc1_mOhm": 7.36,
+      "dc2_mOhm": 7.36,
+      "estimated_CDR_A": 30,
+      "rated_TL_A": 60,
+      "note": "pre-production"
+    },
+    {
+      "title": "Bench Test Results: Linkdata 65P - 52A 6500mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-65p-52a-6500mah-21700.994761/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 6500,
+      "model": "Linkdata 65P",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-07-14T05:25:40+0100",
+      "date": "2026-07-14",
+      "DCIR_mOhm": 6.22,
+      "dc1_mOhm": 6.28,
+      "dc2_mOhm": 6.16,
+      "estimated_CDR_A": 25,
+      "rated_TL_A": 52,
+      "note": "pre-production"
+    },
+    {
+      "title": "Bench Test Results: Lishen LR2170SD - 9.6A 5000mAh 21700…good performer, has bottom vent",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lishen-lr2170sd-9-6a-5000mah-21700%E2%80%A6good-performer-has-bottom-vent.971061/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Lishen LR2170SD",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2021-12-10T13:32:41+0000",
+      "date": "2021-12-10"
+    },
+    {
+      "title": "Bench Test Results: Lishen LR2170SK - 16.95A 5800mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lishen-lr2170sk-16-95a-5800mah-21700.990568/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5800,
+      "model": "Lishen LR2170SK",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2025-06-16T20:54:31+0100",
+      "date": "2025-06-16"
+    },
+    {
+      "title": "Bench Test Results: Molicel M50A – 15A 4800/5000mAh 21700...outperforms the Samsung 50E",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-molicel-m50a-%E2%80%93-15a-4800-5000mah-21700-outperforms-the-samsung-50e.950981/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Molicel M50A",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2020-09-25T13:50:51+0100",
+      "date": "2020-09-25",
+      "note": "pre-production"
+    },
+    {
+      "title": "Bench Test Results: Molicel P50B - 60A 5000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-molicel-p50b-60a-5000mah-21700.988690/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Molicel P50B",
+      "status": "Только заголовок; текст не извлечён",
+      "publication_date": null,
+      "date": null
+    },
+    {
+      "title": "Bench Test Results: Reliance RH60 - 20A 5850mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rh60-20a-5850mah-21700.993997/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5850,
+      "model": "Reliance RH60",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-05-02T21:23:59+0100",
+      "date": "2026-05-02",
+      "note": "pre-production"
+    },
+    {
+      "title": "Bench Test Results: Reliance RS50 (CCC logo) - 70A 4950mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rs50-ccc-logo-70a-4950mah-21700.992097/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 4950,
+      "model": "Reliance RS50 (CCC, 2025)",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2025-10-28T16:45:52+0000",
+      "date": "2025-10-28",
+      "DCIR_mOhm": 6.6,
+      "dc1_mOhm": 6.5,
+      "dc2_mOhm": 6.6,
+      "note": "DCIR — границы диапазона четырёх образцов; ёмкость двух образцов. 70 А ограничены 80 °C; 40 А — оценка непрерывного тока. Отдельная версия от G3E 2026.",
+      "sample1_mAh": 5194,
+      "sample2_mAh": 5195,
+      "estimated_CDR_A": 40,
+      "rated_TL_A": 70
+    },
+    {
+      "title": "Bench Test Results: Reliance RS60 - 50A 5850mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rs60-50a-5850mah-21700.994495/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5850,
+      "model": "Reliance RS60",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-06-19T18:20:46+0100",
+      "date": "2026-06-19",
+      "DCIR_mOhm": 6.16,
+      "dc1_mOhm": 6.16,
+      "dc2_mOhm": 6.16,
+      "estimated_CDR_A": 30,
+      "rated_TL_A": 50,
+      "note": "pre-production"
+    },
+    {
+      "title": "Bench Test Results: Samsung 50GB - 9.8A 5000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-50gb-9-8a-5000mah-21700.987522/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Samsung INR21700-50GB",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2024-10-27T21:27:15+0000",
+      "date": "2024-10-27",
+      "DCIR_mOhm": 16.45,
+      "dc1_mOhm": 16.2,
+      "dc2_mOhm": 16.7
+    },
+    {
+      "title": "Bench Test Results: Samsung 53G(1) - 10.6A 5300mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-53g-1-10-6a-5300mah-21700.987143/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5300,
+      "model": "Samsung INR21700-53G",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2024-10-01T18:55:23+0100",
+      "date": "2024-10-01",
+      "DCIR_mOhm": 27.95,
+      "dc1_mOhm": 27.4,
+      "dc2_mOhm": 28.5
+    },
+    {
+      "title": "Bench Test Results: Samsung 55E (CC5493F101, Ver A) - 10.6A 5490MAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-55e-cc5493f101-ver-a-10-6a-5490mah-21700.989309/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5490,
+      "model": "Samsung INR21700-55E",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2025-03-14T22:08:19+0000",
+      "date": "2025-03-14",
+      "DCIR_mOhm": 15.55,
+      "dc1_mOhm": 15.5,
+      "dc2_mOhm": 15.6
+    },
+    {
+      "title": "Bench Test Results: Tenpower 50XG - 40A/90A 5000mAh 21700 (pre-production?)",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-50xg-40a-90a-5000mah-21700-pre-production.992040/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Tenpower 50XG",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2025-10-24T06:06:21+0100",
+      "date": "2025-10-24",
+      "DCIR_mOhm": 6.9,
+      "dc1_mOhm": 7.1,
+      "dc2_mOhm": 6.7,
+      "note": "Возможная предсерия без CCC. 90 А ограничены 75 °C. Паспортные максимумы по статье: 71 г; Ø21.50×70.50 мм. Не заменять паспортное значение ёмкости результатами двух образцов.",
+      "sample1_mAh": 5052,
+      "sample2_mAh": 5083,
+      "estimated_CDR_A": 40,
+      "rated_TL_A": 90
+    },
+    {
+      "title": "Bench Test Results: Tenpower 60XG - 40A/60A 6000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-60xg-40a-60a-6000mah-21700.994796/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 6000,
+      "model": "Tenpower 60XG",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-07-17T01:15:36+0100",
+      "date": "2026-07-17",
+      "DCIR_mOhm": 5.36,
+      "dc1_mOhm": 5.4,
+      "dc2_mOhm": 5.32,
+      "estimated_CDR_A": 35,
+      "rated_TL_A": 60,
+      "note": "pre-production; great performer"
+    },
+    {
+      "title": "Bench Test Results: Vapcell Blue 12A 5000mAh 21700...slightly exaggerated capacity, decent up to 35W",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-vapcell-blue-12a-5000mah-21700-slightly-exaggerated-capacity-decent-up-to-35w.934021/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Vapcell BLUE 12A 5000mAh",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2020-02-11T00:22:00+0000",
+      "date": "2020-02-11"
+    },
+    {
+      "title": "https://www.e-cigarette-forum.com/threads/bench-test-results-vapcell-f56-12-5a-5600mah-21700.981622/",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-vapcell-f56-12-5a-5600mah-21700.981622/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5600,
+      "model": "Vapcell F56",
+      "status": "Только заголовок; текст не извлечён",
+      "publication_date": null,
+      "date": null
+    },
+    {
+      "title": "Bench Test Results: Vapcell F60 - 12.5A 6000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-vapcell-f60-12-5a-6000mah-21700.983709/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 6000,
+      "model": "Vapcell F60",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2024-01-28T11:52:27+0000",
+      "date": "2024-01-28"
+    },
+    {
+      "title": "Bench Test Results: Vapcell F63 - 12.5A 6250mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-vapcell-f63-12-5a-6250mah-21700.990700/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 6250,
+      "model": "Vapcell F63",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2025-06-24T18:43:24+0100",
+      "date": "2025-06-24",
+      "DCIR_mOhm": 19.9,
+      "dc1_mOhm": 19.6,
+      "dc2_mOhm": 20.2
+    },
+    {
+      "title": "Bench Test Results: Vapcell G50 – 15A 5000mAh 21700...great performer but “max” rating issue",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-vapcell-g50-%E2%80%93-15a-5000mah-21700-great-performer-but-%E2%80%9Cmax%E2%80%9D-rating-issue.943067/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Vapcell G50",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2020-06-06T00:08:56+0100",
+      "date": "2020-06-06",
+      "note": "great performer"
+    },
+    {
+      "title": "Bench Test Results: Vapcell Red P50 - 15A 5000mAh 21700…a great performer, bit overrated capacity",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-vapcell-red-p50-15a-5000mah-21700%E2%80%A6a-great-performer-bit-overrated-capacity.966517/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Vapcell P50",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2021-07-27T08:10:52+0100",
+      "date": "2021-07-27",
+      "note": "overrated; great performer"
+    },
+    {
+      "title": "Bench Test Results: Vapcell Purple 10A 5000mAh 21700…10A but overrated mAh, runs longer than Samsung",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-vapcell-purple-10a-5000mah-21700%E2%80%A610a-but-overrated-mah-runs-longer-than-samsung.837717/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Vapcell PURPLE 10A 5000mAh",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2017-11-17T05:21:07+0000",
+      "date": "2017-11-17",
+      "note": "overrated"
+    },
+    {
+      "title": "Bench Test Results: Linkdata 50T - 60A 5000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-50t-60a-5000mah-21700.995258/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Linkdata 50T",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-09-06T05:47:04+0100",
+      "date": "2026-09-06",
+      "DCIR_mOhm": 4.52,
+      "dc1_mOhm": 4.52,
+      "dc2_mOhm": 4.52,
+      "note": "Тест при 50 А до 2.5 В: около 77–78 °C; предел 80 °C. Паспортный ток 60 А вызывает около 85 °C. Паспортная масса 68.5±1.5 г. E-Scores в доступном тексте отсутствуют.",
+      "estimated_CDR_A": 50
+    },
+    {
+      "title": "Bench Test Results: Great Power 60Q - 60A/110A 6000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-great-power-60q-60a-110a-6000mah-21700.995238/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 6000,
+      "model": "Great Power 60Q",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-09-03T05:32:41+0100",
+      "date": "2026-09-03",
+      "DCIR_mOhm": 5.08,
+      "dc1_mOhm": 5.2,
+      "dc2_mOhm": 4.96,
+      "note": "CCC, июль 2026. При 40 А до 2.5 В около 77 °C против предела 75 °C; Mooch рекомендует ≤35 А. 110 А с отсечкой 80 °C — иной режим. E-Scores в доступном тексте отсутствуют.",
+      "sample1_mAh": 6040,
+      "sample2_mAh": 6018,
+      "estimated_CDR_A": 35,
+      "rated_TL_A": 110
+    },
+    {
+      "title": "Bench Test Results: Tenpower 50SG - 20A/50A 5000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-50sg-20a-50a-5000mah-21700.995125/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Tenpower 50SG",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-08-22T01:02:30+0100",
+      "date": "2026-08-22",
+      "DCIR_mOhm": 11.255,
+      "dc1_mOhm": 11.22,
+      "dc2_mOhm": 11.29,
+      "note": "pre-production"
+    },
+    {
+      "title": "Bench Test Results: Molicel P50B - 60A 5000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-molicel-p50b-60a-5000mah-21700.986092/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Molicel P50B",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2024-07-30T18:12:58+0100",
+      "date": "2024-07-30",
+      "DCIR_mOhm": 9.45,
+      "dc1_mOhm": 9.52,
+      "dc2_mOhm": 9.46
+    },
+    {
+      "title": "Bench Retest Results: Reliance RS50 - 70A 4950mAh full-tab 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-retest-results-reliance-rs50-70a-4950mah-full-tab-21700.994194/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 4950,
+      "model": "Reliance RS50",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-05-21T00:21:22+0100",
+      "date": "2026-05-21",
+      "DCIR_mOhm": 5.56,
+      "dc1_mOhm": 5.56,
+      "dc2_mOhm": 5.56,
+      "note": "pre-production"
+    },
+    {
+      "title": "Bench Test Results: BAK 50D2 - 60A 4950mAh full-tab 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-50d2-60a-4950mah-full-tab-21700.994042/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 4950,
+      "model": "BAK 50D2",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-05-07T19:51:52+0100",
+      "date": "2026-05-07",
+      "DCIR_mOhm": 5.12,
+      "dc1_mOhm": 5.12,
+      "dc2_mOhm": 5.12,
+      "note": "pre-production"
+    },
+    {
+      "title": "Bench Test Results: FEB 21700G (68E) - 13A 6500mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-feb-21700g-68e-13a-6500mah-21700.993807/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 6500,
+      "model": "FEB 21700G (68E)",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-04-11T16:53:57+0100",
+      "date": "2026-04-11",
+      "DCIR_mOhm": 19.9,
+      "dc1_mOhm": 19.96,
+      "dc2_mOhm": 19.84,
+      "note": "pre-production"
+    },
+    {
+      "title": "Bench Test Results: EVE 50PL - 50A 5000mAh 21700 (with CCC logo and CE mark)",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-eve-50pl-50a-5000mah-21700-with-ccc-logo-and-ce-mark.992920/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "EVE 50PL",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2026-01-14T05:17:21+0000",
+      "date": "2026-01-14",
+      "note": "pre-production"
+    },
+    {
+      "title": "Bench Retest Results: EVE 50E (CCC logo) - 15A 5000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-retest-results-eve-50e-ccc-logo-15a-5000mah-21700.992147/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "EVE 50E (CCC logo)",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2025-11-01T05:31:02+0000",
+      "date": "2025-11-01",
+      "DCIR_mOhm": 25.35,
+      "dc1_mOhm": 25.2,
+      "dc2_mOhm": 25.5
+    },
+    {
+      "title": "Bench Test Results: Reliance RS50 - 70A 4950mAh 21700 pre-production samples",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rs50-70a-4950mah-21700-pre-production-samples.991482/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 4950,
+      "model": "Reliance RS50 (pre-production)",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2025-08-24T16:39:18+0100",
+      "date": "2025-08-24",
+      "DCIR_mOhm": 5.3,
+      "dc1_mOhm": 5.0,
+      "dc2_mOhm": 5.3,
+      "note": "Предсерия. DCIR — диапазон четырёх образцов; ёмкость двух образцов. 70 А ограничены 80 °C. Не объединять с серийной CCC и G3E.",
+      "sample1_mAh": 5169,
+      "sample2_mAh": 5173,
+      "estimated_CDR_A": 40,
+      "rated_TL_A": 70
+    },
+    {
+      "title": "Bench Test Results: Samsung 50S2 - 25A/45A 5000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-50s2-25a-45a-5000mah-21700.988832/",
+      "source_kind": "Форум",
+      "accessed": "2026-09-21",
+      "rated_mAh": 5000,
+      "model": "Samsung 50S2",
+      "status": "Текст статьи прочитан",
+      "publication_date": "2025-02-07T20:59:16+0000",
+      "date": "2025-02-07",
+      "DCIR_mOhm": 13.35,
+      "dc1_mOhm": 12.9,
+      "dc2_mOhm": 13.8
     }
   ],
   "combined": [
@@ -1489,7 +1795,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-ampace-jp50p1-no-ccc-logo-40a-60a-5000mah-21700.993063/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Amprius INR21700/50Q (5000Q?)",
@@ -1515,7 +1821,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-amprius-inr21700-50q-no-ccc-50a-5000mah-21700-is-it-5000q.993503/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Amprius INR21700/65 (SA112)",
@@ -1541,7 +1847,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-amprius-inr21700-65-sa112-no-ccc-logo-13a-6500mah-21700.993201/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "BAK 45D",
@@ -1566,8 +1872,8 @@
       "source_kind": "Фото",
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-45d-30a-60a-4500mah-21700.988135/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "url": "",
+      "article_status": "Ссылка на точную версию не установлена"
     },
     {
       "model": "BAK 50D2",
@@ -1593,7 +1899,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-50d2-60a-4950mah-full-tab-21700.994042/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "BAK 65E",
@@ -1619,7 +1925,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-bak-65e-25-4a-6500mah-21700.993668/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "BAK N21700CD-53E",
@@ -1696,8 +2002,8 @@
       "source_kind": "Фото",
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-retest-results-btcap-42p-tabless-70%CE%91-4200mah-21700-pre-production-samples.992208/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "url": "",
+      "article_status": "Ссылка на точную версию не установлена"
     },
     {
       "model": "EVE 50E (CCC logo)",
@@ -1723,7 +2029,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-retest-results-eve-50e-ccc-logo-15a-5000mah-21700.992147/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "EVE 50PL (CCC logo)",
@@ -1749,7 +2055,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-eve-50pl-50a-5000mah-21700-with-ccc-logo-and-ce-mark.992920/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "EVE 58E",
@@ -1775,7 +2081,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-eve-58e-16-8a-5700mah-21700.990414/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "FEB 21700G (68E)",
@@ -1801,7 +2107,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-feb-21700g-68e-13a-6500mah-21700.993807/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Great Power (GPHN) 50Q",
@@ -1827,7 +2133,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-great-power-50q-50a-5000mah-21700.994348/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "LG H50",
@@ -1879,7 +2185,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lg-h51t-20a-5000mah-21700-pre-production.992064/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "LG M50LT",
@@ -1957,7 +2263,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lg-m58t-12-5a-5570mah-21700.990859/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Linkdata 55P",
@@ -1983,7 +2289,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-55p-40a-50a-5500mah-21700.995029/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Linkdata 60P",
@@ -2009,7 +2315,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-60p-60a-6000mah-21700.994389/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Linkdata 65P",
@@ -2035,7 +2341,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-65p-52a-6500mah-21700.994761/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Lishen LR2170SD (pink)",
@@ -2113,7 +2419,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lishen-lr2170sk-16-95a-5800mah-21700.990568/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Molicel P45B (2024-dated)",
@@ -2138,8 +2444,8 @@
       "source_kind": "Фото",
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-molicel-p45b-45a-4500mah-21700-2024-retest.988596/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "url": "",
+      "article_status": "Ссылка на точную версию не установлена"
     },
     {
       "model": "Molicel P50B (2024-dated)",
@@ -2217,7 +2523,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rh60-20a-5850mah-21700.993997/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Reliance RS50 (CCC logo, batch G3E)",
@@ -2243,7 +2549,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-retest-results-reliance-rs50-70a-4950mah-full-tab-21700.994194/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Reliance RS60 (direct from Reliance)",
@@ -2269,7 +2575,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rs60-50a-5850mah-21700.994495/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Samsung 45T (CC4503F101 Ver C)",
@@ -2294,8 +2600,8 @@
       "source_kind": "Фото",
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
-      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-45t-cc4503f101-ver-c-35a-50a-4500mah-21700.989513/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "url": "",
+      "article_status": "Ссылка на точную версию не установлена"
     },
     {
       "model": "Samsung 50E2",
@@ -2347,7 +2653,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-50s2-25a-45a-5000mah-21700.988832/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Samsung 53G",
@@ -2373,7 +2679,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-samsung-53g-1-10-6a-5300mah-21700.987143/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Samsung 50GB",
@@ -2451,7 +2757,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-50sg-20a-50a-5000mah-21700.995125/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Tenpower 50XG",
@@ -2503,7 +2809,7 @@
       "cutoff_energy_V": 2.8,
       "capacity_basis": "rated_mAh",
       "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-60xg-40a-60a-6000mah-21700.994796/",
-      "article_status": "Только заголовок; текст не извлечён"
+      "article_status": "Текст статьи прочитан"
     },
     {
       "model": "Vapcell F66",
@@ -2563,11 +2869,11 @@
   "method": [
     [
       "Охват",
-      "41 строка фото с ёмкостью строго более 4000 мА·ч и 39 тем форума, найденных на первых четырёх страницах и в поиске. Полный архив не пройден: CAPTCHA."
+      "41 строка фото с ёмкостью строго более 4000 мА·ч и 50 тем форума. Полный текст структурирован у 47 статей; три записи остались ссылками без извлечения текста."
     ],
     [
       "Дата",
-      "Фото обновлено 11.08.2026; сбор страниц 20.09.2026. Дата испытания с фото не равна дате публикации статьи."
+      "Фото обновлено 11.08.2026; страницы форума сохранены и обработаны 21.09.2026. Дата испытания с фото не равна дате публикации статьи."
     ],
     [
       "Отбор",
@@ -2599,7 +2905,7 @@
     ],
     [
       "Доступность",
-      "Часть статей прочитана полностью, остальные содержат только заголовок и ссылку. Парсинг не подтверждает наличие товара в продаже."
+      "Структурированные данные извлечены из 47 статей; 3 записи содержат только заголовок и ссылку. Парсинг не подтверждает наличие товара в продаже."
     ],
     [
       "Перенос в сборку",

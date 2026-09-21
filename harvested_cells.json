@@ -1,0 +1,543 @@
+{
+  "source": "research_input/cell_market_data_2026-09-21.json",
+  "generated_at": "2026-09-21T17:32:52+00:00",
+  "selection_rule": "26S16P; capacity >= 4.8 Ah; known mass and 21700 envelope; reviewed CDR >= 25 A; DCIR from extracted ECF article",
+  "models": {
+    "jp50p1": {
+      "name": "Ampace JP50P1",
+      "type": "21700 Li-ion",
+      "ah": 5.0,
+      "v": 3.6,
+      "vmax": 4.2,
+      "wh": 18.0,
+      "kg": 0.072,
+      "dims": [
+        21.35,
+        21.35,
+        70.45
+      ],
+      "dims_label": "Размер из CellSaviors",
+      "continuous": 40,
+      "conditional_current": 60,
+      "thermal_cut": 80,
+      "dc_test": 5.65,
+      "source": "HC20",
+      "res": "DCIR Mooch: 5,6, 5,7 мОм; среднее 5.65 мОм",
+      "note": "Mooch: оценка CDR 40 А; 60 А только с температурным контролем до 80 °C. DCIR теста 5.65 мОм; статья ECF сохранена и разобрана. Предсерийные образцы; перенос на закупаемую партию требует проверки.",
+      "market": {
+        "cell_saviors_url": "https://cellsaviors.com/cell-database/ampace-jp50p1",
+        "ecf_url": "https://www.e-cigarette-forum.com/threads/bench-test-results-ampace-jp50p1-no-ccc-logo-40a-60a-5000mah-21700.993063/",
+        "datasheet": {
+          "url": "https://www.dnkpower.com/wp-content/uploads/2025/09/Full-Tab-Battery-Cell-3.58V-5000mAh-21700B-datasheet.pdf",
+          "provenance": "third_party_mirror"
+        },
+        "nkon": {
+          "cell": "Ampace JP50P1",
+          "url": "https://www.nkon.nl/en/ampace-inr21700-jp50-5000mah-60a.html",
+          "product_title": "Ampace INR21700-JP50 5000mAh - 60A",
+          "price": 3.95,
+          "currency": "EUR",
+          "availability": "expected_2026-10-30",
+          "quantity_tiers": [],
+          "observed_at": "2026-09-21",
+          "status": "review_required",
+          "exact_model_check": false,
+          "note": "Заголовок товара говорит JP50, документ на странице — JP50P1. Не объединять без проверки маркировки партии.",
+          "collection_method": "public_search_snapshot"
+        },
+        "harvested_at": "2026-09-21T17:32:52+00:00"
+      }
+    },
+    "amprius50q": {
+      "name": "Amprius INR21700-50Q",
+      "type": "21700 Li-ion",
+      "ah": 5.0,
+      "v": 3.6,
+      "vmax": 4.2,
+      "wh": 18.0,
+      "kg": 0.07,
+      "dims": [
+        21.7,
+        21.7,
+        70.8
+      ],
+      "dims_label": "Размер из CellSaviors",
+      "continuous": 40,
+      "conditional_current": 100,
+      "thermal_cut": 75,
+      "dc_test": 6.78,
+      "source": "HC21",
+      "res": "DCIR Mooch: 6,92, 6,64 мОм; среднее 6.78 мОм",
+      "note": "Mooch: оценка CDR 40 А; 100 А только с температурным контролем до 75 °C. DCIR теста 6.78 мОм; статья ECF сохранена и разобрана. Предсерийные образцы; перенос на закупаемую партию требует проверки.",
+      "market": {
+        "cell_saviors_url": "https://cellsaviors.com/cell-database/amprius-inr21700-50q",
+        "ecf_url": "https://www.e-cigarette-forum.com/threads/bench-test-results-amprius-inr21700-50q-no-ccc-50a-5000mah-21700-is-it-5000q.993503/",
+        "datasheet": {
+          "url": "https://amprius.com/documents/Amprius_Product_Catalog.pdf",
+          "provenance": "manufacturer_official"
+        },
+        "nkon": null,
+        "harvested_at": "2026-09-21T17:32:52+00:00"
+      }
+    },
+    "gp50q": {
+      "name": "Great Power 50Q",
+      "type": "21700 Li-ion",
+      "ah": 5.0,
+      "v": 3.6,
+      "vmax": 4.2,
+      "wh": 18.0,
+      "kg": 0.072,
+      "dims": [
+        21.7,
+        21.7,
+        70.8
+      ],
+      "dims_label": "Размер из CellSaviors",
+      "continuous": 40,
+      "conditional_current": 100,
+      "thermal_cut": 76,
+      "dc_test": 6.24,
+      "source": "HC22",
+      "res": "DCIR Mooch: 6,24 мОм; среднее 6.24 мОм",
+      "note": "Mooch: оценка CDR 40 А; 100 А только с температурным контролем до 76 °C. DCIR теста 6.24 мОм; статья ECF сохранена и разобрана. Предсерийные образцы; перенос на закупаемую партию требует проверки.",
+      "market": {
+        "cell_saviors_url": "https://cellsaviors.com/cell-database/great-power-50q",
+        "ecf_url": "https://www.e-cigarette-forum.com/threads/bench-test-results-great-power-50q-50a-5000mah-21700.994348/",
+        "datasheet": {
+          "url": null,
+          "provenance": "missing"
+        },
+        "nkon": null,
+        "harvested_at": "2026-09-21T17:32:52+00:00"
+      }
+    },
+    "link60p": {
+      "name": "Linkdata 60P",
+      "type": "21700 Li-ion",
+      "ah": 6.0,
+      "v": 3.6,
+      "vmax": 4.2,
+      "wh": 21.6,
+      "kg": 0.068,
+      "dims": [
+        21.35,
+        21.35,
+        70.8
+      ],
+      "dims_label": "Размер из CellSaviors",
+      "continuous": 30,
+      "conditional_current": 60,
+      "thermal_cut": 80,
+      "dc_test": 7.36,
+      "source": "HC23",
+      "res": "DCIR Mooch: 7,36 мОм; среднее 7.36 мОм",
+      "note": "Mooch: оценка CDR 30 А; 60 А только с температурным контролем до 80 °C. DCIR теста 7.36 мОм; статья ECF сохранена и разобрана. Предсерийные образцы; перенос на закупаемую партию требует проверки.",
+      "market": {
+        "cell_saviors_url": "https://cellsaviors.com/cell-database/linkdata-60p",
+        "ecf_url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-60p-60a-6000mah-21700.994389/",
+        "datasheet": {
+          "url": null,
+          "provenance": "missing"
+        },
+        "nkon": null,
+        "harvested_at": "2026-09-21T17:32:52+00:00"
+      }
+    },
+    "link65p": {
+      "name": "Linkdata 65P",
+      "type": "21700 Li-ion",
+      "ah": 6.5,
+      "v": 3.6,
+      "vmax": 4.2,
+      "wh": 23.400000000000002,
+      "kg": 0.0702,
+      "dims": [
+        21.7,
+        21.7,
+        71.0
+      ],
+      "dims_label": "Консервативный габаритный конверт формата 21700; точный чертёж не получен",
+      "continuous": 25,
+      "conditional_current": 52,
+      "thermal_cut": 70,
+      "dc_test": 6.22,
+      "source": "HC24",
+      "res": "DCIR Mooch: 6,28, 6,16 мОм; среднее 6.22 мОм",
+      "note": "Mooch: оценка CDR 25 А; 52 А только с температурным контролем до 70 °C. DCIR теста 6.22 мОм; статья ECF сохранена и разобрана. Предсерийные образцы; перенос на закупаемую партию требует проверки.",
+      "market": {
+        "cell_saviors_url": "https://cellsaviors.com/cell-database/linkdata-65p",
+        "ecf_url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-65p-52a-6500mah-21700.994761/",
+        "datasheet": {
+          "url": null,
+          "provenance": "missing"
+        },
+        "nkon": null,
+        "harvested_at": "2026-09-21T17:32:52+00:00"
+      }
+    },
+    "rs60": {
+      "name": "Reliance RS60",
+      "type": "21700 Li-ion",
+      "ah": 5.85,
+      "v": 3.6,
+      "vmax": 4.2,
+      "wh": 21.06,
+      "kg": 0.0715,
+      "dims": [
+        21.35,
+        21.35,
+        70.3
+      ],
+      "dims_label": "Размер из CellSaviors",
+      "continuous": 30,
+      "conditional_current": 50,
+      "thermal_cut": 80,
+      "dc_test": 6.16,
+      "source": "HC25",
+      "res": "DCIR Mooch: 6,16 мОм; среднее 6.16 мОм",
+      "note": "Mooch: оценка CDR 30 А; 50 А только с температурным контролем до 80 °C. DCIR теста 6.16 мОм; статья ECF сохранена и разобрана. Предсерийные образцы; перенос на закупаемую партию требует проверки.",
+      "market": {
+        "cell_saviors_url": "https://cellsaviors.com/cell-database/reliance-rs60",
+        "ecf_url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rs60-50a-5850mah-21700.994495/",
+        "datasheet": {
+          "url": null,
+          "provenance": "missing"
+        },
+        "nkon": null,
+        "harvested_at": "2026-09-21T17:32:52+00:00"
+      }
+    },
+    "tp60xg": {
+      "name": "Tenpower 60XG",
+      "type": "21700 Li-ion",
+      "ah": 6.0,
+      "v": 3.6,
+      "vmax": 4.2,
+      "wh": 21.6,
+      "kg": 0.072,
+      "dims": [
+        21.5,
+        21.5,
+        70.5
+      ],
+      "dims_label": "Размер из CellSaviors",
+      "continuous": 35,
+      "conditional_current": 60,
+      "thermal_cut": 75,
+      "dc_test": 5.36,
+      "source": "HC26",
+      "res": "DCIR Mooch: 5,4, 5,32 мОм; среднее 5.36 мОм",
+      "note": "Mooch: оценка CDR 35 А; 60 А только с температурным контролем до 75 °C. DCIR теста 5.36 мОм; статья ECF сохранена и разобрана. Предсерийные образцы; перенос на закупаемую партию требует проверки.",
+      "market": {
+        "cell_saviors_url": "https://cellsaviors.com/cell-database/tenpower-60xg",
+        "ecf_url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-60xg-40a-60a-6000mah-21700.994796/",
+        "datasheet": {
+          "url": "https://www.lithiumlifepo4-battery.com/photo/lithiumlifepo4-battery/document/103029/TENPOWER%C2%A0PRODUCT%C2%A0SPECIFICATION%C2%A0INR21700-60XG%C2%A0%C2%A0V0.1%C2%A0251209(1)(1)(1).pdf",
+          "provenance": "third_party_mirror"
+        },
+        "nkon": {
+          "cell": "Tenpower 60XG",
+          "url": "https://www.nkon.nl/en/tenpower-inr21700-50xg-6000mah-60a.html",
+          "product_title": "Tenpower INR21700-60XG 6000mAh - 60A",
+          "price": 5.45,
+          "currency": "EUR",
+          "availability": "expected_2026-10-09",
+          "quantity_tiers": [
+            {
+              "min_quantity": 10,
+              "unit_price": 5.25,
+              "currency": "EUR"
+            },
+            {
+              "min_quantity": 50,
+              "unit_price": 4.95,
+              "currency": "EUR"
+            }
+          ],
+          "observed_at": "2026-09-21",
+          "status": "ok",
+          "exact_model_check": true,
+          "note": "URL содержит 50XG, но заголовок и поле Model указывают 60XG.",
+          "collection_method": "public_search_snapshot"
+        },
+        "harvested_at": "2026-09-21T17:32:52+00:00"
+      }
+    }
+  },
+  "variants": [
+    {
+      "id": "C20",
+      "model": "jp50p1"
+    },
+    {
+      "id": "C21",
+      "model": "amprius50q"
+    },
+    {
+      "id": "C22",
+      "model": "gp50q"
+    },
+    {
+      "id": "C23",
+      "model": "link60p"
+    },
+    {
+      "id": "C24",
+      "model": "link65p"
+    },
+    {
+      "id": "C25",
+      "model": "rs60"
+    },
+    {
+      "id": "C26",
+      "model": "tp60xg"
+    }
+  ],
+  "sources": [
+    {
+      "id": "HC20",
+      "title": "Bench Test Results: Ampace JP50P1 (no CCC logo) - 40A/60A 5000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-ampace-jp50p1-no-ccc-logo-40a-60a-5000mah-21700.993063/",
+      "note": "CellSaviors: https://cellsaviors.com/cell-database/ampace-jp50p1 Datasheet: https://www.dnkpower.com/wp-content/uploads/2025/09/Full-Tab-Battery-Cell-3.58V-5000mAh-21700B-datasheet.pdf (third_party_mirror) NKON: 3.95 EUR; expected_2026-10-30; https://www.nkon.nl/en/ampace-inr21700-jp50-5000mah-60a.html"
+    },
+    {
+      "id": "HC21",
+      "title": "Bench Test Results: Amprius INR21700/50Q (no CCC) - 50A 5000mAh 21700 - Is it 5000Q?",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-amprius-inr21700-50q-no-ccc-50a-5000mah-21700-is-it-5000q.993503/",
+      "note": "CellSaviors: https://cellsaviors.com/cell-database/amprius-inr21700-50q Datasheet: https://amprius.com/documents/Amprius_Product_Catalog.pdf (manufacturer_official)"
+    },
+    {
+      "id": "HC22",
+      "title": "Bench Test Results: Great Power 50Q - 50A 5000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-great-power-50q-50a-5000mah-21700.994348/",
+      "note": "CellSaviors: https://cellsaviors.com/cell-database/great-power-50q"
+    },
+    {
+      "id": "HC23",
+      "title": "Bench Test Results: Linkdata 60P - 60A 6000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-60p-60a-6000mah-21700.994389/",
+      "note": "CellSaviors: https://cellsaviors.com/cell-database/linkdata-60p"
+    },
+    {
+      "id": "HC24",
+      "title": "Bench Test Results: Linkdata 65P - 52A 6500mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-linkdata-65p-52a-6500mah-21700.994761/",
+      "note": "CellSaviors: https://cellsaviors.com/cell-database/linkdata-65p"
+    },
+    {
+      "id": "HC25",
+      "title": "Bench Test Results: Reliance RS60 - 50A 5850mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rs60-50a-5850mah-21700.994495/",
+      "note": "CellSaviors: https://cellsaviors.com/cell-database/reliance-rs60"
+    },
+    {
+      "id": "HC26",
+      "title": "Bench Test Results: Tenpower 60XG - 40A/60A 6000mAh 21700",
+      "url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-60xg-40a-60a-6000mah-21700.994796/",
+      "note": "CellSaviors: https://cellsaviors.com/cell-database/tenpower-60xg Datasheet: https://www.lithiumlifepo4-battery.com/photo/lithiumlifepo4-battery/document/103029/TENPOWER%C2%A0PRODUCT%C2%A0SPECIFICATION%C2%A0INR21700-60XG%C2%A0%C2%A0V0.1%C2%A0251209(1)(1)(1).pdf (third_party_mirror) NKON: 5.45 EUR; expected_2026-10-09; https://www.nkon.nl/en/tenpower-inr21700-50xg-6000mah-60a.html"
+    }
+  ],
+  "existing_market": {
+    "lg": {
+      "cell_saviors_url": "https://cellsaviors.com/cell-database/lg-m50lt",
+      "ecf_url": "https://www.e-cigarette-forum.com/threads/bench-test-results-lg-m50lt-14-4a-4932mah-21700.979634/",
+      "datasheet": {
+        "url": "https://evwest.com/support/21700_M50LT_datasheet.pdf",
+        "provenance": "third_party_mirror"
+      },
+      "nkon": {
+        "cell": "LG M50LT",
+        "url": "https://www.nkon.nl/en/m50lt.html",
+        "product_title": "INR21700-M50LT 4930mAh - 14.4A",
+        "price": 2.89,
+        "currency": "EUR",
+        "availability": "out_of_stock",
+        "quantity_tiers": [
+          {
+            "min_quantity": 10,
+            "unit_price": 2.64,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 50,
+            "unit_price": 2.39,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 130,
+            "unit_price": 2.19,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 260,
+            "unit_price": 2.09,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 390,
+            "unit_price": 1.99,
+            "currency": "EUR"
+          }
+        ],
+        "observed_at": "2026-09-21",
+        "status": "ok",
+        "exact_model_check": true,
+        "note": "Страница указывает год производства 2024.",
+        "collection_method": "public_search_snapshot"
+      },
+      "harvested_at": "2026-09-21T17:32:52+00:00"
+    },
+    "p50b": {
+      "cell_saviors_url": "https://cellsaviors.com/cell-database/molicel-p50b",
+      "ecf_url": "https://www.e-cigarette-forum.com/threads/bench-test-results-molicel-p50b-60a-5000mah-21700.988690/",
+      "datasheet": {
+        "url": "https://www.molicel.com/wp-content/uploads/Product-Data-Sheet-of-INR-21700-P50B-80122.pdf",
+        "provenance": "manufacturer_official"
+      },
+      "nkon": {
+        "cell": "Molicel P50B",
+        "url": "https://www.nkon.nl/en/molicel-inr21700-p50b-5000mah-50a.html",
+        "product_title": "Molicel INR21700-P50B 5000mAh - 50A",
+        "price": 6.75,
+        "currency": "EUR",
+        "availability": "page_allows_add_to_cart",
+        "quantity_tiers": [
+          {
+            "min_quantity": 10,
+            "unit_price": 5.79,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 50,
+            "unit_price": 5.49,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 100,
+            "unit_price": 5.39,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 200,
+            "unit_price": 5.29,
+            "currency": "EUR"
+          }
+        ],
+        "observed_at": "2026-09-21",
+        "status": "ok",
+        "exact_model_check": true,
+        "note": "Проверять год и ревизию партии против версии испытания Mooch.",
+        "collection_method": "public_search_snapshot"
+      },
+      "harvested_at": "2026-09-21T17:32:52+00:00"
+    },
+    "rs50": {
+      "cell_saviors_url": "https://cellsaviors.com/cell-database/reliance-rs50",
+      "ecf_url": "https://www.e-cigarette-forum.com/threads/bench-test-results-reliance-rs50-ccc-logo-70a-4950mah-21700.992097/",
+      "datasheet": {
+        "url": "https://cdn.shopify.com/s/files/1/0588/8055/7127/files/Reliance_INR21700-RS50-datasheet.pdf?v=1753899901",
+        "provenance": "third_party_mirror"
+      },
+      "nkon": {
+        "cell": "Reliance RS50",
+        "url": "https://www.nkon.nl/en/reliance-inr21700-rs50-4950mah-70a.html",
+        "product_title": "Reliance INR21700-RS50 5000mAh - 70A",
+        "price": 4.65,
+        "currency": "EUR",
+        "availability": "expected_2026-09-24",
+        "quantity_tiers": [
+          {
+            "min_quantity": 50,
+            "unit_price": 4.25,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 130,
+            "unit_price": 4.15,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 390,
+            "unit_price": 4.05,
+            "currency": "EUR"
+          }
+        ],
+        "observed_at": "2026-09-21",
+        "status": "ok",
+        "exact_model_check": true,
+        "note": "Сохранять отдельно предсерийный тест, CCC и ретест партии.",
+        "collection_method": "public_search_snapshot"
+      },
+      "harvested_at": "2026-09-21T17:32:52+00:00"
+    },
+    "eve50pl": {
+      "cell_saviors_url": "https://cellsaviors.com/cell-database/eve-inr21700-50pl",
+      "ecf_url": "https://www.e-cigarette-forum.com/threads/bench-test-results-%E2%80%9Ceve-50pl%E2%80%9D-unconfirmed-50a-125a-5000mah-21700.990079/",
+      "datasheet": {
+        "url": "https://www.rcscomponents.kiev.ua/datasheets/EP-IATF-16-11A.pdf",
+        "provenance": "third_party_mirror"
+      },
+      "nkon": {
+        "cell": "EVE INR21700-50PL",
+        "url": "https://www.nkon.nl/en/eve-inr21700-50pl-5000mah-125a.html",
+        "product_title": "EVE INR21700-50PL 5000mAh - 125A (new version)",
+        "price": 3.95,
+        "currency": "EUR",
+        "availability": "expected_2026-10-28",
+        "quantity_tiers": [
+          {
+            "min_quantity": 10,
+            "unit_price": 3.69,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 130,
+            "unit_price": 3.49,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 390,
+            "unit_price": 3.39,
+            "currency": "EUR"
+          }
+        ],
+        "observed_at": "2026-09-21",
+        "status": "ok",
+        "exact_model_check": true,
+        "note": "Товар помечен как новая версия; не сопоставлять с предсерийным тестом без CCC.",
+        "collection_method": "public_search_snapshot"
+      },
+      "harvested_at": "2026-09-21T17:32:52+00:00"
+    },
+    "t50xg": {
+      "cell_saviors_url": "https://cellsaviors.com/cell-database/tenpower-50xg",
+      "ecf_url": "https://www.e-cigarette-forum.com/threads/bench-test-results-tenpower-50xg-40a-90a-5000mah-21700-pre-production.992040/",
+      "datasheet": {
+        "url": "https://birikimpilleri.net/documents/contract/7281F793-ACCC-E2AA-C857A5D754117254.PDF",
+        "provenance": "third_party_mirror"
+      },
+      "nkon": {
+        "cell": "Tenpower 50XG",
+        "url": "https://www.nkon.nl/en/tenpower-inr21700-50xg-5000mah-40a.html",
+        "product_title": "Tenpower INR21700-50XG 5000mAh - 40A",
+        "price": 4.18,
+        "currency": "EUR",
+        "availability": "expected_2026-10-30",
+        "quantity_tiers": [
+          {
+            "min_quantity": 390,
+            "unit_price": 4.14,
+            "currency": "EUR"
+          }
+        ],
+        "observed_at": "2026-09-21",
+        "status": "ok",
+        "exact_model_check": true,
+        "collection_method": "public_search_snapshot"
+      },
+      "harvested_at": "2026-09-21T17:32:52+00:00"
+    }
+  }
+}

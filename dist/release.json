@@ -1,22 +1,24 @@
 {
-  "release": "20260920-r7",
-  "date": "2026-09-20",
-  "models": 29,
-  "configurations": 34,
+  "release": "20260921-r8",
+  "date": "2026-09-21",
+  "models": 36,
+  "configurations": 41,
+  "overview_21700": 15,
+  "overview_pouch": 6,
   "photo_rows": 41,
   "comparison_rows": 43,
-  "forum_threads": 39,
-  "full_text_articles": 6,
+  "forum_threads": 50,
+  "full_text_articles": 47,
   "forum_archive_complete": false,
-  "pdf_pages": 47,
+  "pdf_pages": 51,
   "files": {
     "index.html": {
-      "bytes": 5199866,
-      "sha256": "d2d3d558db48602f3fdbd08b5ea91d013316428a3dcd1839232c14dfef76764e"
+      "bytes": 7968968,
+      "sha256": "5ae0844aa34e69e6877334cee704e05ff192ee88b5731ec02c6687a8f245d597"
     },
     "report.js": {
-      "bytes": 17481,
-      "sha256": "332ab4aa8b0d9138843016fcd0e238ecad46384e1d16c2ad89425af8c90a1474"
+      "bytes": 19264,
+      "sha256": "7824dd7bad6faf0b8465fde26ac5d65ecf30e42243291389e927f0df9443191f"
     },
     "report.css": {
       "bytes": 15556,
@@ -27,28 +29,28 @@
       "sha256": "9ae4098b7c2fc71c9ba759f33a519cf4fc6f78dfe3bcf40e54d2fda95923748c"
     },
     "mooch_data.json": {
-      "bytes": 93965,
-      "sha256": "60020873467f9d680843696656262c17513b501e63389fe4a5cb9b82c9b0aad6"
+      "bytes": 103279,
+      "sha256": "2ebec6f4e86610bd8d510a8dad2ed606d20b271f3cf459b07cd08312178e192f"
     },
     "mooch_21700_photo.csv": {
-      "bytes": 13632,
-      "sha256": "d740ff6b2846489680a36cf91345339672eb1e72eb960911a2856abcafb058ad"
+      "bytes": 12523,
+      "sha256": "1f6d527709b59552e9dd0808bb3671d6d999a90a3833d9c914732d43f9fac685"
     },
     "mooch_21700_forum.csv": {
-      "bytes": 13048,
-      "sha256": "9f4309a8dd331865bf04f13c4642d26897d664c35c04ddc1fd8fe6dd0084a618"
+      "bytes": 18185,
+      "sha256": "8832c3460d399f48efadb1141dd7e002ee34ce142e23c950cdae750cfea47e24"
     },
     "mooch_21700_comparison.csv": {
-      "bytes": 14852,
-      "sha256": "3e227bbddaca8aa7d65dcab1cc458e8f6f5df7b4648e79bb8f93cd1cfe9143b9"
+      "bytes": 13741,
+      "sha256": "9b9b0e16209fa4c6d340e4fd1aafe67d2c30c7c79a6fe6bcfd71a40870e47e83"
     },
-    "Mooch_21700_2026-09-20.xlsx": {
-      "bytes": 19834,
-      "sha256": "bb20fe93f466bc32b3dfb2a1a70e4031276d010c4558f48bf4f1faf2e5332ec9"
+    "Mooch_21700_2026-09-21.xlsx": {
+      "bytes": 21452,
+      "sha256": "e5f4a105f086f70867589280b3b043ca7e6e77dafa8dfbd0197e339ce2d6fa2f"
     },
-    "AKB_96V_Comparative_Study_2026-09-20.pdf": {
-      "bytes": 656330,
-      "sha256": "7c27a3638bab5c9282be5784e01e8c8418e9d95daec3936cfdd73f163bdd0597"
+    "AKB_96V_Comparative_Study_2026-09-21.pdf": {
+      "bytes": 671864,
+      "sha256": "2f98bd110136cd7a57cf1440414cdbd9a6df4ba8d114ce24b714ab0bbc6cdc5e"
     },
     "assets/t50xg.png": {
       "bytes": 217870,

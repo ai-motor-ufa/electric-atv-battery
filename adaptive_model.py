@@ -3,9 +3,20 @@ import json, math
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 D=json.loads((ROOT/'data.json').read_text()); NEW=json.loads((ROOT/'new_cells.json').read_text())
+HARVESTED=json.loads((ROOT/'harvested_cells.json').read_text())
 D['models'].update(NEW['models']); D['sources'].extend(NEW['sources'])
+D['models'].update(HARVESTED['models']); D['sources'].extend(HARVESTED['sources'])
+for key,market in HARVESTED.get('existing_market',{}).items():
+    if key in D['models']:D['models'][key]['market']=market
 assert all(not any(x in m['type'].upper() for x in ['LFP','LMFP']) for m in D['models'].values()), 'Phosphate chemistry is excluded from this study'
 for v in NEW['variants']:
+    m=D['models'][v['model']]; dia,_,h=m['dims']
+    v.update(s=26,p=16,box=[230,400,340],extra=[8,13],
+        layout=f'3 яруса 9S / 9S / 8S, шаг 22,5 мм; {180+dia:.1f}×{337.5+dia:.1f}×{3*h:.1f} мм',
+        fit='Предварительно входит; масса и теплоотвод требуют CAD',
+        comment='416 ячеек. Размер тел без межъярусных шин, держателей и теплоотводов.')
+    D['variants'].append(v)
+for v in HARVESTED['variants']:
     m=D['models'][v['model']]; dia,_,h=m['dims']
     v.update(s=26,p=16,box=[230,400,340],extra=[8,13],
         layout=f'3 яруса 9S / 9S / 8S, шаг 22,5 мм; {180+dia:.1f}×{337.5+dia:.1f}×{3*h:.1f} мм',
@@ -22,7 +33,11 @@ PROFILES=[
  {'id':'constant15','name':'Постоянный запрос 15 кВт','stages':[(1.,15)]},
  {'id':'constant30','name':'Запрос 30 кВт (проверочный)','stages':[(1.,30)]}]
 for p in PROFILES:p['battery_avg']=sum(w*(kw/ETA+AUX) for w,kw in p['stages'])
-SHORTLIST={'F02','F03','F07','F09','F10','C02','C03','C08','C09','C10','C13','C14','C15','C16','C17','C18','C19'}
+SHORTLIST={
+ 'C03','C08','C09','C10','C16','C17','C18','C19',
+ 'C20','C21','C22','C23','C24','C25','C26',
+ 'F02','F06','F08','F09','F10','F16',
+}
 def fmt_type(m):
     return '21700' if m['type'].startswith('21700') else '18650' if m['type'].startswith('18650') else 'Pouch'
 def interp(x,table):
