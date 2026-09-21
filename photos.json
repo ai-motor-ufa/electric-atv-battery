@@ -130,5 +130,17 @@
     "caption": "Фото 50PL; партия может отличаться",
     "source": "https://diy500amp.com/products/eve-50pl-21700-battery",
     "image_url": "https://diy500amp.com/cdn/shop/files/IMG-7531.jpg?v=1766867572&width=3024"
+  },
+  "t50xg": {
+    "file": "assets/t50xg.png",
+    "caption": "Фото ячейки, испытанной Batemo",
+    "source": "https://www.batemo.com/products/batemo-cell-explorer/tenpower-inr21700-50xg/",
+    "image_url": "https://www.batemo.com/wp-content/uploads/Tenpower_INR2170050XG_1.png"
+  },
+  "p73d": {
+    "file": "assets/p73d.jpg",
+    "caption": "Фото из карточки P73D продавца Misen; партия не подтверждена",
+    "source": "https://www.misenpower.com/Farasis-3-7V-73Ah-P73D-Pouch-Cell-NMC-Lithium-Polymer-Battery-pd521153548.html",
+    "image_url": "https://ilrorwxhjpjplk5p.leadongcdn.com/cloud/lmBprKiolpSRklikjmppkq/3-7v-73ah-cell-800-800.jpg"
   }
 }

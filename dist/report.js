@@ -57,6 +57,7 @@ function columns(){
  if(state.view==='energy')return base.concat([
   col('count','Элементов',r=>r.n,r=>r.n),col('energy','Энергия / блок',r=>`${num(r.energy,2)} кВт·ч<span class="sub">Два: ${num(2*r.energy,2)}</span>`,r=>r.energy),
   col('mass','Ячейки / готовый',r=>`${num(r.mass,2)} кг<span class="sub">${num(r.finished[0])}–${num(r.finished[1])} кг</span>`,r=>r.finished[0]),
+  col('cell-size','Размер ячейки, мм',r=>`${dim(MODELS[r.model].dims)}<span class="sub">${esc(MODELS[r.model].dims_label||'Габарит из источника')}</span>`,r=>MODELS[r.model].dims.reduce((a,b)=>a*b,1)),
   col('layout','Предлагаемое размещение',r=>esc(r.layout),r=>r.layout),col('fit','В 230×400×340 мм',r=>esc(r.fit),r=>r.fit),
   col('box','Корпус для CAD',r=>`${dim(r.box)} мм<span class="sub">Δ ${r.delta.map(x=>(x>=0?'+':'')+x).join(' / ')} мм</span>`,r=>r.box.reduce((a,b)=>a*b,1)),
   col('reserve','Обвязка до 40 кг',r=>`${num(40-r.mass,2)} кг`,r=>40-r.mass)]);
@@ -78,7 +79,7 @@ function columns(){
  return base.concat([
   col('capacity','Ёмкость ячейки',r=>`${num(MODELS[r.model].ah,2)} А·ч`,r=>MODELS[r.model].ah),
   col('cellmass','Масса ячейки',r=>`${num(MODELS[r.model].kg*1000,1)} г`,r=>MODELS[r.model].kg),
-  col('dims','Размер ячейки',r=>`${dim(MODELS[r.model].dims)} мм`,r=>MODELS[r.model].dims.reduce((a,b)=>a*b,1)),
+  col('dims','Размер ячейки',r=>`${dim(MODELS[r.model].dims)} мм<span class="sub">${esc(MODELS[r.model].dims_label||'Габарит из источника')} ${esc(MODELS[r.model].dimension_source||'')}</span>`,r=>MODELS[r.model].dims.reduce((a,b)=>a*b,1)),
   col('chem','Химия / исполнение',r=>esc(MODELS[r.model].type),r=>MODELS[r.model].type),
   col('passport','Сопротивление в паспорте',r=>esc(MODELS[r.model].res),r=>MODELS[r.model].dc??null),
   col('rating','Ток одного элемента',r=>rating(MODELS[r.model]),r=>MODELS[r.model].continuous??MODELS[r.model].conditional_current??MODELS[r.model].pulse??null),

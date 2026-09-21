@@ -1,26 +1,26 @@
 {
-  "release": "20260920-r6",
+  "release": "20260920-r7",
   "date": "2026-09-20",
-  "models": 28,
-  "configurations": 33,
+  "models": 29,
+  "configurations": 34,
   "photo_rows": 41,
   "comparison_rows": 43,
   "forum_threads": 39,
   "full_text_articles": 6,
   "forum_archive_complete": false,
-  "pdf_pages": 32,
+  "pdf_pages": 47,
   "files": {
     "index.html": {
-      "bytes": 4798389,
-      "sha256": "be49161501f0a6ce447f6f127456358e7cbeeeff2ee9d68c1d3cbeb7e4c12b73"
+      "bytes": 5199866,
+      "sha256": "d2d3d558db48602f3fdbd08b5ea91d013316428a3dcd1839232c14dfef76764e"
     },
     "report.js": {
-      "bytes": 17101,
-      "sha256": "555c0d496846e655a4519b44769aeff44b3d7be1a4bb2e8f317c97fa06f9f717"
+      "bytes": 17481,
+      "sha256": "332ab4aa8b0d9138843016fcd0e238ecad46384e1d16c2ad89425af8c90a1474"
     },
     "report.css": {
-      "bytes": 11494,
-      "sha256": "6d67163064985d9020d2029691e4bffbdc7c513ba88763a9b4c2a82ec0515603"
+      "bytes": 15556,
+      "sha256": "5b7327e0e6228f441b14a1b0bc3cb4f9bfcfb411149f0d234beef9b95b5d7f3d"
     },
     "mooch.js": {
       "bytes": 1329,
@@ -47,8 +47,23 @@
       "sha256": "bb20fe93f466bc32b3dfb2a1a70e4031276d010c4558f48bf4f1faf2e5332ec9"
     },
     "AKB_96V_Comparative_Study_2026-09-20.pdf": {
-      "bytes": 576326,
-      "sha256": "01fbf82760f6cd0378b6377ef3b9c45555df959afbe68ee86f7badbf34b1379b"
+      "bytes": 656330,
+      "sha256": "7c27a3638bab5c9282be5784e01e8c8418e9d95daec3936cfdd73f163bdd0597"
+    },
+    "assets/t50xg.png": {
+      "bytes": 217870,
+      "sha256": "d6df503632b353565b962e00568f18692eb0ee53f3be7c170594b5c492c560ba"
+    },
+    "assets/p73d.jpg": {
+      "bytes": 171086,
+      "sha256": "412312be4247765e2f0dbce19c34e5904c133e7e1f2aba45bbfdc1188bb10159"
     }
+  },
+  "conclusion": {
+    "top_21700": 5,
+    "attention_21700": 3,
+    "top_pouch": 5,
+    "sealed_immersion_cooling": true,
+    "farasis_dimensions_checked": true
   }
 }

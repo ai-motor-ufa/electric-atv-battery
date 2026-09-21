@@ -11,8 +11,9 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.graphics.shapes import Drawing,Rect,String,Line,PolyLine
 from report_content import SECTIONS,TEST_ROWS
+from recommendations import INTRO, METHOD, GEOMETRY, HEAT_METHOD, COOLING, DIMENSION_NOTE, POUCH_INTRO, POUCH, DECISION, ranked_groups, render_html
 from mooch_section import section as mooch_section
-ROOT=Path(__file__).resolve().parent; OUT=ROOT/'dist'; PDF='AKB_96V_Comparative_Study_2026-09-20.pdf'; RELEASE='20260920-r6'
+ROOT=Path(__file__).resolve().parent; OUT=ROOT/'dist'; PDF='AKB_96V_Comparative_Study_2026-09-20.pdf'; RELEASE='20260920-r7'
 data=json.loads((ROOT/'calculated.json').read_text()); rows=data['rows']; models=data['models']; photos=json.loads((ROOT/'photos.json').read_text())
 data['photos']=photos
 SOURCES={s['id']:s for s in data['sources']}
@@ -38,14 +39,10 @@ conclusion=SECTIONS[-1][2]
 source_html=''.join(f'<div class="source-item" id="source-{s["id"]}"><a href="{esc(s["url"])}" target="_blank" rel="noopener">[{s["id"]}] {esc(s["title"])}</a><p>{esc(s["note"])}</p></div>' if s['url'] else f'<div class="source-item" id="source-{s["id"]}"><strong>[{s["id"]}] {esc(s["title"])}</strong><p>{esc(s["note"])}</p></div>' for s in data['sources'])
 opts=''.join(f'<option value="{r["id"]}">{esc(r["name"])}</option>' for r in rows if r['candidate'])
 p_opts=''.join(f'<option value="{p["id"]}">{esc(p["name"])}</option>' for p in data['profiles'])
-cards=''.join(f'<article class="recommend"><img src="{pic(k)}" alt="{esc(models[k]["name"])}: {esc(photos[k]["caption"])}"><h3>{esc(models[k]["name"])}</h3><p>{txt}</p></article>' for k,txt in [
- ('rs50','<strong>Первым на испытание.</strong> Около 14,83 кВт·ч на два блока по минимальной ёмкости. Хороший запас массы и свежий независимый тест.'),
- ('bak50d2','<strong>Сильная альтернатива.</strong> Низкий измеренный DCIR. Проверить серийность и повторяемость партии. На фото — линейка BAK.'),
- ('eve50pl','<strong>После сверки партии.</strong> Перспективная мощность и масса. Паспорта и испытания разных версий нельзя объединять без проверки.')])
 embedded_data=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')
 doc=f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Сравнение аккумуляторов съёмного блока 96 В: компоновка, масса, энергоёмкость, ограничения мощности и тепловая оценка."><title>АКБ 96 В — энергия, мощность, маршрут</title><link rel="stylesheet" href="report.css?v={RELEASE}"></head><body>
 <nav class="nav" aria-label="Основная навигация"><div class="wrap"><a href="#" class="brand">АКБ 96 В</a><a href="#compare">Сравнение</a><a href="#mooch">Тесты 21700</a><a class="hide-mobile" href="#research">Исследование</a><a class="hide-mobile" href="#choice">Вывод</a><a class="pill" href="{PDF}">Скачать PDF</a></div></nav>
-<main><div class="wrap"><aside class="release-note" id="release"><strong>Обновление {RELEASE}</strong><span>{len(models)} моделей · {len(rows)} конфигурации · 43 записи Mooch</span><a href="#mooch">Тесты и выгрузки</a></aside><header class="hero"><div><p class="eyebrow">Редакция 6 · 20 сентября 2026</p><h1>Энергия для<br>вашего маршрута.</h1><p>Два съёмных блока. Один должен питать двигатель 15/30 кВт. Сравнение ячеек с учётом нагрева и ограничения мощности.</p></div><div class="hero-stats"><div><strong>230×400×340</strong><span>мм · наружные Ш×Г×В</span></div><div><strong>до 40 кг</strong><span>цель для готового блока</span></div><div><strong>≈15 кВт·ч</strong><span>цель для двух блоков</span></div><div><strong>26S</strong><span>109,2 В при заряде до 4,2 В/яч.</span></div></div></header></div>
+<main><div class="wrap"><aside class="release-note" id="release"><strong>Обновление {RELEASE}</strong><span>{len(models)} моделей · {len(rows)} конфигурации · 43 записи Mooch</span><a href="#mooch">Тесты и выгрузки</a></aside><header class="hero"><div><p class="eyebrow">Редакция 7 · 20 сентября 2026</p><h1>Энергия для<br>вашего маршрута.</h1><p>Два съёмных блока. Один должен питать двигатель 15/30 кВт. Сравнение ячеек с учётом нагрева и ограничения мощности.</p></div><div class="hero-stats"><div><strong>230×400×340</strong><span>мм · наружные Ш×Г×В</span></div><div><strong>до 40 кг</strong><span>цель для готового блока</span></div><div><strong>≈15 кВт·ч</strong><span>цель для двух блоков</span></div><div><strong>26S</strong><span>109,2 В при заряде до 4,2 В/яч.</span></div></div></header></div>
 <section class="soft section" id="compare"><div class="wrap"><div class="section-top"><div><p class="eyebrow">Сначала — общая картина</p><h2>Сравните свой запас.</h2><p>На графике — {sum(r['candidate'] for r in rows)} предварительных кандидатов. Выберите сборку, чтобы увидеть заряд, температуру и доступную мощность во времени.</p></div></div><div class="panel">
 <div class="toolbar"><div class="field"><label for="blocks">Подключено одновременно</label><select id="blocks"><option value="1">Один блок</option><option value="2" selected>Два одинаковых блока</option></select></div><div class="field"><label for="profile">Запрос мощности</label><select id="profile">{p_opts}</select></div><div class="field"><label for="cooling">Сценарий теплоотвода</label><select id="cooling"><option value="5">Слабый · G = 5 Вт/К</option><option value="20">Улучшенный · G = 20 Вт/К</option></select></div><div class="field wide"><label for="selection">Сборка</label><select id="selection"><option value="all">Все кандидаты</option>{opts}</select></div></div>
 <div class="segmented" aria-label="Показатель графика"><button data-metric="range" aria-pressed="true">Пробег</button><button data-metric="runtime" aria-pressed="false">Время работы</button><button data-metric="heat" aria-pressed="false">Нагрев</button></div><div class="chart-heading"><h3 id="chart-title"></h3><button class="text-button" id="back-all" hidden>← Все сборки</button></div><div id="chart-legend" class="legend"></div><div class="bars" id="bars"></div><div id="axis" class="axis"></div><p id="chart-note" class="note" style="margin-top:24px"></p><div class="detail" id="detail" hidden></div>
@@ -53,8 +50,8 @@ doc=f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="v
 </div></div></section>
 <section class="section" id="catalog"><div class="wrap"><p class="eyebrow">{len(models)} моделей · {len(rows)} конфигурации</p><h2>Все параметры.<br>В одном каталоге.</h2><div class="segmented" aria-label="Вид таблицы"><button data-view="energy" aria-pressed="true">Энергия и компоновка</button><button data-view="electrical" aria-pressed="false">Ток и сопротивление</button><button data-view="modes" aria-pressed="false">Режимы работы</button><button data-view="cells" aria-pressed="false">Паспорта элементов</button></div><div class="tables-intro"><p id="table-state"></p><button class="text-button" id="reset-sort">Вернуть исходный порядок ↺</button></div><p class="note">Нажмите заголовок для сортировки. «Фото» и «Элемент / сборка» возвращают исходную группировку по типу и производителю. В разделе режимов действуют настройки графика выше. Масса сортируется по нижней границе, корпус — по объёму. Пустые данные всегда в конце.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Сравнение сборок, таблицу можно прокручивать"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div><p class="note" style="margin-top:18px">* Граница по энергии без доказанной токоотдачи и нагрева. Размеры — для дальнейшей проработки в CAD. В цилиндрической схеме не учтены размеры ячеек с приваренными лепестками; фото могут относиться к иной партии.</p></div></section>
 {mooch_section()}<section class="soft section" id="research"><div class="wrap"><div class="knowledge"><p class="eyebrow">Откуда берутся цифры</p><h2>За каждым результатом<br>есть условия.</h2>{knowledge}</div></div></section>
-<section class="dark section" id="choice"><div class="wrap"><p class="eyebrow muted">Итог исследования</p><h2>Начать с секции.<br>Выбрать по измерениям.</h2><p class="muted">Первая группа для испытания: RS50, BAK 50D2, подтверждённая версия EVE 50PL и Tenpower 50XG. Свежие 50T/60Q — в каталоге тестов.</p><div class="recommendations">{cards}</div><div class="knowledge">{''.join('<p>'+linked(p)+'</p>' for p in conclusion)}</div></div></section>
-<section class="section" id="sources"><div class="wrap"><p class="eyebrow">Проверяемые источники</p><h2>Паспорта и испытания.</h2><div class="sources">{source_html}</div></div></section></main><footer class="footer"><div class="wrap">Редакция 6 · Предварительный инженерный отбор · <a href="{PDF}">Полный отчёт PDF</a></div></footer><noscript>Для интерактивного сравнения включите JavaScript. Все таблицы и расчёты также доступны в PDF по ссылке сверху.</noscript><script type="application/json" id="report-data">{embedded_data}</script><script src="report.js?v={RELEASE}" defer></script><script id="mooch-data" type="application/json">{(OUT/"mooch_data.json").read_text()}</script><script src="mooch.js?v={RELEASE}" defer></script></body></html>'''
+{render_html(esc,linked,photos,data)}
+<section class="section" id="sources"><div class="wrap"><p class="eyebrow">Проверяемые источники</p><h2>Паспорта и испытания.</h2><div class="sources">{source_html}</div></div></section></main><footer class="footer"><div class="wrap">Редакция 7 · Предварительный инженерный отбор · <a href="{PDF}">Полный отчёт PDF</a></div></footer><noscript>Для интерактивного сравнения включите JavaScript. Все таблицы и расчёты также доступны в PDF по ссылке сверху.</noscript><script type="application/json" id="report-data">{embedded_data}</script><script src="report.js?v={RELEASE}" defer></script><script id="mooch-data" type="application/json">{(OUT/"mooch_data.json").read_text()}</script><script src="mooch.js?v={RELEASE}" defer></script></body></html>'''
 (OUT/'index.html').write_text(doc)
 
 # PDF: broad tables separated into views, then model cards and complete methodology.
@@ -112,7 +109,7 @@ def chart(metric,b=2,g=5,p='mixed'):
  return dr
 
 add('АКБ квадроцикла','Cover');add('Энергия, мощность и температура','Heading1')
-add('Редакция 6 · 20.09.2026. Два съёмных блока; каждый должен самостоятельно питать двигатель 15/30 кВт. Наружные Ш×Г×В 230×400×340 мм, цель до 40 кг. Все токи относятся к DC-стороне батареи.')
+add('Редакция 7 · 20.09.2026. Два съёмных блока; каждый должен самостоятельно питать двигатель 15/30 кВт. Наружные Ш×Г×В 230×400×340 мм, цель до 40 кг. Все токи относятся к DC-стороне батареи.')
 table(['Объём блока','Целевая масса','Энергия двух блоков','Полный заряд 26S'],[['31,28 л','≤40 кг','Около 15 кВт·ч','109,2 В при 4,2 В/яч.; S45A до 113,1 В']],[1,1,1,2])
 for t in [
  'В первую очередь испытать Reliance RS50 26S16P и BAK 50D2 26S16P; добавить Tenpower 50XG в испытания партии. EVE 50PL интересна после согласования версии. Molicel P50B — документированный ориентир; Farasis S46/P79/P84 остаются кандидатами с недостающими токовыми и тепловыми данными.',
@@ -178,11 +175,43 @@ for s in data['sources']:
  entry=[para('['+s['id']+'] '+s['title'],'Heading3'),Spacer(1,8),para(s['note'],'Small'),Spacer(1,8)]
  if s['url']:entry.append(raw(f'<a href="{esc(s["url"])}" color="#0071e3">Открыть источник</a>','Small'))
  entry.append(Spacer(1,16));story.append(KeepTogether(entry))
-page('Итог: наиболее подходящие элементы')
-for t in conclusion:add(t)
-add('Перед заказом полного комплекта: согласовать паспорт и маркировку партии, измерить DCIR/разрядную энергию на целевых токах, выполнить тепловой тест секции и готового блока, проверить связь BMS с контроллером и рекуперацию. По имеющимся данным первым кандидатом остаётся Reliance RS50; окончательное подтверждение даёт испытание вашего блока.','Heading3')
+page('Итог: топ-5 21700, ещё 3 и топ-5 pouch')
+add(INTRO);add(METHOD,'Small');add(GEOMETRY,'Small')
+for title,cards in ranked_groups(data):
+ if title.startswith('Топ-5 · пакетные'):page('Сводная таблица: топ-5 pouch')
+ add(title,'Heading3')
+ table(['Элемент','Сборка','Энергия пары','Ячейки / блок','На обвязку','Тепло при 15 кВт'],[[c['title'],c['config'],c['energy'],c['mass'],c['budget'],c['heat_short']] for c in cards],[19,20,15,15,15,20])
+page('Как сравниваются тепло и габариты')
+add(HEAT_METHOD);add('Исправление размеров Farasis','Heading2');add(DIMENSION_NOTE)
+styles.add(ParagraphStyle('ChoiceBody',fontName='DV',fontSize=10.5,leading=15,textColor=colors.HexColor('#303039')))
+for title,cards in ranked_groups(data):
+ for offset in range(0,len(cards),2):
+  page(title)
+  panels=[]
+  for c in cards[offset:offset+2]:
+   panel=[para(c['role'],'Small'),para(c['title'],'Heading2'),para(c['config'],'Small'),Spacer(1,10)]
+   panel.extend(pdf_photo(c['key']));panel.append(Spacer(1,10))
+   panel.append(para('Энергия пары: '+c['energy']+' · ячейки/блок: '+c['mass']+' · на обвязку ≤'+c['budget'],'ChoiceBody'))
+   for label,key in [('Почему в списке','why'),('Масса','mass_note'),('Габариты','geometry'),('Тепло одного блока','heat'),('Охлаждение','cooling'),('Компромисс','trade'),('Что подтвердить','check')]:
+    panel.extend([Spacer(1,9),raw('<b>'+esc(label)+'.</b> '+linked(c[key],True),'ChoiceBody')])
+   panels.append(panel)
+  if len(panels)==1:panels.append('')
+  t=Table([panels],colWidths=[avail/2,avail/2],hAlign='LEFT')
+  t.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),12),('RIGHTPADDING',(0,0),(-1,-1),18),('LINEBEFORE',(1,0),(1,0),.5,colors.HexColor('#dddde5'))]))
+  story.append(t)
+page('Герметичный блок: охлаждение и погружение')
+for title,txt in COOLING:
+ add(title,'Heading3');add(txt,'ChoiceBody')
+for c in POUCH:
+ page('Ваш паспорт: '+c['title'])
+ add(POUCH_INTRO,'Small');add(c['verdict'],'Heading2');add(c['facts'])
+ add('Почему не закрывает исходное задание','Heading3');add(c['why'])
+ add('Если использовать — чем пожертвовать','Heading3');add(c['trade'])
+ add('Когда имеет смысл','Heading3');add(c['condition'])
+page('Решение для прототипа')
+add(DECISION)
 def footer(c,doc):
- c.setFont('DV',9);c.setFillColor(colors.HexColor('#626269'));c.drawString(margin,22,'АКБ 96 В · редакция 6 · 20.09.2026 · расчёт с ограничениями SOC / температуры');c.drawRightString(W-margin,22,str(doc.page))
+ c.setFont('DV',9);c.setFillColor(colors.HexColor('#626269'));c.drawString(margin,22,'АКБ 96 В · редакция 7 · 20.09.2026 · расчёт с ограничениями SOC / температуры');c.drawRightString(W-margin,22,str(doc.page))
 pdfdoc=SimpleDocTemplate(str(OUT/PDF),pagesize=(W,H),leftMargin=margin,rightMargin=margin,topMargin=35,bottomMargin=42,title='АКБ 96 В: энергия, мощность и температура',author='Исследование для проекта квадроцикла')
 pdfdoc.build(story,onFirstPage=footer,onLaterPages=footer)
 print('Built',len(rows),'configurations;',len(models),'models;',PDF)
