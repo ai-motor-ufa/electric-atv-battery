@@ -41,6 +41,8 @@ assert(!data.rows.some(r=>r.format.includes('LFP')));for(const k of ['bak50d2','
 assert(!Object.values(data.models).some(m=>/LFP|LMFP/i.test(m.type)));
 assert.deepStrictEqual([...new Set(data.rows.map(r=>r.model))].sort(),Object.keys(data.models).sort());
 for(const k of ['t50xg','e61v','e63b','e66a'])assert(data.models[k]);
+for(const k of ['bak50d2','s50s','p42a','p45b','rs60'])assert(data.models[k].market?.nkon?.price!=null,'Missing NKON price for '+k);
+for(const k of ['amprius50q','gp50q','link60p','link65p'])assert.equal(data.models[k].market?.nkon?.availability,'not_found_on_nkon');
 const anchorIds=new Set(Array.from(html.matchAll(/\bid="([^"]+)"/g),m=>m[1]));
 for(const m of html.matchAll(/href="#([^"]+)"/g))assert(anchorIds.has(m[1]),'Missing anchor '+m[1]);
 for(const p of Object.values(data.photos))assert(fs.existsSync('dist/'+p.file));

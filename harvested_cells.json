@@ -1,10 +1,11 @@
 {
   "source": "research_input/cell_market_data_2026-09-21.json",
+  "nkon_source": "research_input/nkon_candidate_prices_2026-09-21.json",
   "generated_at": "2026-09-21T17:32:52+00:00",
   "selection_rule": "26S16P; capacity >= 4.8 Ah; known mass and 21700 envelope; reviewed CDR >= 25 A; DCIR from extracted ECF article",
   "models": {
     "jp50p1": {
-      "name": "Ampace JP50P1",
+      "name": "Ampace JP50 (NKON) / JP50P1 (тест)",
       "type": "21700 Li-ion",
       "ah": 5.0,
       "v": 3.6,
@@ -32,7 +33,7 @@
           "provenance": "third_party_mirror"
         },
         "nkon": {
-          "cell": "Ampace JP50P1",
+          "cell": "Ampace JP50",
           "url": "https://www.nkon.nl/en/ampace-inr21700-jp50-5000mah-60a.html",
           "product_title": "Ampace INR21700-JP50 5000mAh - 60A",
           "price": 3.95,
@@ -40,10 +41,9 @@
           "availability": "expected_2026-10-30",
           "quantity_tiers": [],
           "observed_at": "2026-09-21",
-          "status": "review_required",
-          "exact_model_check": false,
-          "note": "Заголовок товара говорит JP50, документ на странице — JP50P1. Не объединять без проверки маркировки партии.",
-          "collection_method": "public_search_snapshot"
+          "status": "ok",
+          "exact_model_check": true,
+          "note": "Коммерческая карточка NKON относится к JP50. Независимый тест Mooch относится к JP50P1; результаты JP50P1 нельзя автоматически переносить на JP50."
         },
         "harvested_at": "2026-09-21T17:32:52+00:00"
       }
@@ -76,7 +76,17 @@
           "url": "https://amprius.com/documents/Amprius_Product_Catalog.pdf",
           "provenance": "manufacturer_official"
         },
-        "nkon": null,
+        "nkon": {
+          "cell": "Amprius INR21700-50Q",
+          "url": null,
+          "price": null,
+          "currency": "EUR",
+          "availability": "not_found_on_nkon",
+          "quantity_tiers": [],
+          "observed_at": "2026-09-21",
+          "status": "not_found",
+          "exact_model_check": false
+        },
         "harvested_at": "2026-09-21T17:32:52+00:00"
       }
     },
@@ -108,7 +118,17 @@
           "url": null,
           "provenance": "missing"
         },
-        "nkon": null,
+        "nkon": {
+          "cell": "Great Power 50Q",
+          "url": null,
+          "price": null,
+          "currency": "EUR",
+          "availability": "not_found_on_nkon",
+          "quantity_tiers": [],
+          "observed_at": "2026-09-21",
+          "status": "not_found",
+          "exact_model_check": false
+        },
         "harvested_at": "2026-09-21T17:32:52+00:00"
       }
     },
@@ -140,7 +160,18 @@
           "url": null,
           "provenance": "missing"
         },
-        "nkon": null,
+        "nkon": {
+          "cell": "Linkdata 60P",
+          "url": null,
+          "price": null,
+          "currency": "EUR",
+          "availability": "not_found_on_nkon",
+          "quantity_tiers": [],
+          "observed_at": "2026-09-21",
+          "status": "not_found",
+          "exact_model_check": false,
+          "note": "На NKON найдена другая модель Linkdata 50P; она не использована как предложение для 60P."
+        },
         "harvested_at": "2026-09-21T17:32:52+00:00"
       }
     },
@@ -172,7 +203,18 @@
           "url": null,
           "provenance": "missing"
         },
-        "nkon": null,
+        "nkon": {
+          "cell": "Linkdata 65P",
+          "url": null,
+          "price": null,
+          "currency": "EUR",
+          "availability": "not_found_on_nkon",
+          "quantity_tiers": [],
+          "observed_at": "2026-09-21",
+          "status": "not_found",
+          "exact_model_check": false,
+          "note": "На NKON найдена другая модель Linkdata 50P; она не использована как предложение для 65P."
+        },
         "harvested_at": "2026-09-21T17:32:52+00:00"
       }
     },
@@ -204,7 +246,19 @@
           "url": null,
           "provenance": "missing"
         },
-        "nkon": null,
+        "nkon": {
+          "cell": "Reliance INR21700-RS60",
+          "url": "https://www.nkon.nl/en/reliance-inr21700-rs60-6000mah-50a.html",
+          "product_title": "Reliance INR21700-RS60 6000mAh - 50A",
+          "price": 17.99,
+          "currency": "EUR",
+          "availability": "out_of_stock",
+          "quantity_tiers": [],
+          "observed_at": "2026-09-21",
+          "status": "ok",
+          "exact_model_check": true,
+          "note": "Редкая 6000 мА·ч модель; карточка без остатка, цена значительно выше серийных 5000 мА·ч кандидатов."
+        },
         "harvested_at": "2026-09-21T17:32:52+00:00"
       }
     },
@@ -258,8 +312,7 @@
           "observed_at": "2026-09-21",
           "status": "ok",
           "exact_model_check": true,
-          "note": "URL содержит 50XG, но заголовок и поле Model указывают 60XG.",
-          "collection_method": "public_search_snapshot"
+          "note": "URL содержит 50XG, но заголовок и поле модели карточки указывают 60XG; перед заказом требуется проверка артикула."
         },
         "harvested_at": "2026-09-21T17:32:52+00:00"
       }
@@ -427,9 +480,7 @@
         ],
         "observed_at": "2026-09-21",
         "status": "ok",
-        "exact_model_check": true,
-        "note": "Проверять год и ревизию партии против версии испытания Mooch.",
-        "collection_method": "public_search_snapshot"
+        "exact_model_check": true
       },
       "harvested_at": "2026-09-21T17:32:52+00:00"
     },
@@ -466,9 +517,7 @@
         ],
         "observed_at": "2026-09-21",
         "status": "ok",
-        "exact_model_check": true,
-        "note": "Сохранять отдельно предсерийный тест, CCC и ретест партии.",
-        "collection_method": "public_search_snapshot"
+        "exact_model_check": true
       },
       "harvested_at": "2026-09-21T17:32:52+00:00"
     },
@@ -506,8 +555,7 @@
         "observed_at": "2026-09-21",
         "status": "ok",
         "exact_model_check": true,
-        "note": "Товар помечен как новая версия; не сопоставлять с предсерийным тестом без CCC.",
-        "collection_method": "public_search_snapshot"
+        "note": "Карточка помечена как новая версия; паспорт и маркировку закупаемой партии нужно подтвердить."
       },
       "harvested_at": "2026-09-21T17:32:52+00:00"
     },
@@ -534,10 +582,125 @@
         ],
         "observed_at": "2026-09-21",
         "status": "ok",
-        "exact_model_check": true,
-        "collection_method": "public_search_snapshot"
+        "exact_model_check": true
       },
       "harvested_at": "2026-09-21T17:32:52+00:00"
+    },
+    "bak50d2": {
+      "harvested_at": "2026-09-21",
+      "nkon": {
+        "cell": "BAK INR2170-50D2",
+        "url": "https://www.nkon.nl/en/bak-inr21700-50d2-5000mah-60a.html",
+        "product_title": "BAK INR21700-50D2 5000mAh - 60A",
+        "price": 3.85,
+        "currency": "EUR",
+        "availability": "in_stock",
+        "quantity_tiers": [
+          {
+            "min_quantity": 10,
+            "unit_price": 3.65,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 50,
+            "unit_price": 3.59,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 100,
+            "unit_price": 3.39,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 600,
+            "unit_price": 3.28,
+            "currency": "EUR"
+          }
+        ],
+        "observed_at": "2026-09-21",
+        "status": "ok",
+        "exact_model_check": true,
+        "note": "Карточка различает 15 А без температурного условия и 60 А только с отсечкой 80 °C."
+      }
+    },
+    "p42a": {
+      "harvested_at": "2026-09-21",
+      "nkon": {
+        "cell": "Molicel INR21700-P42A",
+        "url": "https://www.nkon.nl/en/catalog/product/view/id/3427/s/molicel-21700a-4200mah-30a/category/2/",
+        "product_title": "Molicel INR21700-P42A 4200mAh - 45A",
+        "price": 3.55,
+        "currency": "EUR",
+        "availability": "in_stock",
+        "quantity_tiers": [],
+        "observed_at": "2026-09-21",
+        "status": "ok",
+        "exact_model_check": true
+      }
+    },
+    "p45b": {
+      "harvested_at": "2026-09-21",
+      "nkon": {
+        "cell": "Molicel INR21700-P45B",
+        "url": "https://www.nkon.nl/en/molicel-inr21700-p45b-4500mah-45a.html",
+        "product_title": "Molicel INR21700-P45B 4500mAh - 45A (mixed batch)",
+        "price": 4.55,
+        "currency": "EUR",
+        "availability": "out_of_stock",
+        "quantity_tiers": [
+          {
+            "min_quantity": 10,
+            "unit_price": 4.25,
+            "currency": "EUR"
+          }
+        ],
+        "observed_at": "2026-09-21",
+        "status": "ok",
+        "exact_model_check": true,
+        "note": "Карточка относится к смешанной партии и на дату снимка не имела остатка."
+      }
+    },
+    "s50s": {
+      "harvested_at": "2026-09-21",
+      "nkon": {
+        "cell": "Samsung INR21700-50S",
+        "url": "https://www.nkon.nl/en/samsung-inr21700-50s-5000mah-35a.html",
+        "product_title": "Samsung INR21700-50S 5000mAh - 35A",
+        "price": 3.75,
+        "currency": "EUR",
+        "availability": "in_stock",
+        "quantity_tiers": [
+          {
+            "min_quantity": 10,
+            "unit_price": 3.45,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 50,
+            "unit_price": 3.35,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 100,
+            "unit_price": 3.25,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 200,
+            "unit_price": 3.21,
+            "currency": "EUR"
+          },
+          {
+            "min_quantity": 600,
+            "unit_price": 3.16,
+            "currency": "EUR"
+          }
+        ],
+        "observed_at": "2026-09-21",
+        "status": "ok",
+        "exact_model_check": true,
+        "note": "Цена относится к 50S, не 50S2. Независимый тест Mooch 2022 также относится к 50S."
+      }
     }
   }
 }

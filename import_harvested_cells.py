@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / "research_input" / "cell_market_data_2026-09-21.json"
+NKON_CANDIDATES = ROOT / "research_input" / "nkon_candidate_prices_2026-09-21.json"
 OUTPUT = ROOT / "harvested_cells.json"
 
 SELECTION = {
@@ -55,6 +56,8 @@ def model_note(cell, spec, dcir):
 
 def build():
     raw = json.loads(SOURCE.read_text(encoding="utf-8"))
+    nkon_snapshot = json.loads(NKON_CANDIDATES.read_text(encoding="utf-8"))
+    candidate_offers = nkon_snapshot["offers"]
     cells = {cell["id"]: cell for cell in raw["cells"]}
     models, variants, sources = {}, [], []
     for cell_id, spec in SELECTION.items():
@@ -69,7 +72,8 @@ def build():
         dcir = sum(samples) / len(samples)
         source_id = "H" + spec["variant"]
         models[spec["key"]] = {
-            "name": f"{cell['manufacturer']} {cell['model']}",
+            "name": ("Ampace JP50 (NKON) / JP50P1 (тест)"
+                     if spec["key"] == "jp50p1" else f"{cell['manufacturer']} {cell['model']}"),
             "type": "21700 Li-ion",
             "ah": cell["capacity_mAh"] / 1000,
             "v": cell["nominal_V"],
@@ -94,6 +98,8 @@ def build():
                 "harvested_at": raw["generated_at"],
             },
         }
+        if spec["key"] in candidate_offers:
+            models[spec["key"]]["market"]["nkon"] = candidate_offers[spec["key"]]
         variants.append({"id": spec["variant"], "model": spec["key"]})
         sources.append({
             "id": source_id,
@@ -113,8 +119,18 @@ def build():
             "nkon": cell.get("nkon"),
             "harvested_at": raw["generated_at"],
         }
+    # The candidate price snapshot also covers models sourced from data.json and
+    # new_cells.json, which are not necessarily present in the harvested cell list.
+    for model_key, offer in candidate_offers.items():
+        if model_key in models:
+            continue
+        market = existing_market.setdefault(model_key, {
+            "harvested_at": nkon_snapshot["observed_at"],
+        })
+        market["nkon"] = offer
     payload = {
         "source": str(SOURCE.relative_to(ROOT)),
+        "nkon_source": str(NKON_CANDIDATES.relative_to(ROOT)),
         "generated_at": raw["generated_at"],
         "selection_rule": "26S16P; capacity >= 4.8 Ah; known mass and 21700 envelope; reviewed CDR >= 25 A; DCIR from extracted ECF article",
         "models": models,

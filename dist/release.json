@@ -1,5 +1,5 @@
 {
-  "release": "20260921-r8",
+  "release": "20260921-r9",
   "date": "2026-09-21",
   "models": 36,
   "configurations": 41,
@@ -7,18 +7,18 @@
   "overview_pouch": 6,
   "photo_rows": 41,
   "comparison_rows": 43,
-  "forum_threads": 50,
-  "full_text_articles": 47,
+  "forum_threads": 51,
+  "full_text_articles": 48,
   "forum_archive_complete": false,
   "pdf_pages": 51,
   "files": {
     "index.html": {
-      "bytes": 7968968,
-      "sha256": "5ae0844aa34e69e6877334cee704e05ff192ee88b5731ec02c6687a8f245d597"
+      "bytes": 7980591,
+      "sha256": "daf48fb0cbc2f58f97e42cb27d41bd009c4186eb323e9de5677f41547b6832d5"
     },
     "report.js": {
-      "bytes": 19264,
-      "sha256": "7824dd7bad6faf0b8465fde26ac5d65ecf30e42243291389e927f0df9443191f"
+      "bytes": 20942,
+      "sha256": "e5a5e7c99fa63c0e3222eab7a17be9639d2d52c591ee0c2eaba86118fa06962a"
     },
     "report.css": {
       "bytes": 15556,
@@ -29,28 +29,28 @@
       "sha256": "9ae4098b7c2fc71c9ba759f33a519cf4fc6f78dfe3bcf40e54d2fda95923748c"
     },
     "mooch_data.json": {
-      "bytes": 103279,
-      "sha256": "2ebec6f4e86610bd8d510a8dad2ed606d20b271f3cf459b07cd08312178e192f"
+      "bytes": 104196,
+      "sha256": "533bc024063657ca6670cfb3ac14b5d9cf853690e3b751d7b99648acfda2f357"
     },
     "mooch_21700_photo.csv": {
       "bytes": 12523,
       "sha256": "1f6d527709b59552e9dd0808bb3671d6d999a90a3833d9c914732d43f9fac685"
     },
     "mooch_21700_forum.csv": {
-      "bytes": 18185,
-      "sha256": "8832c3460d399f48efadb1141dd7e002ee34ce142e23c950cdae750cfea47e24"
+      "bytes": 18801,
+      "sha256": "51cc28d95ccf77b1743d9358b915712d1bbe2a945e69adb57b0e245383fa162d"
     },
     "mooch_21700_comparison.csv": {
       "bytes": 13741,
       "sha256": "9b9b0e16209fa4c6d340e4fd1aafe67d2c30c7c79a6fe6bcfd71a40870e47e83"
     },
     "Mooch_21700_2026-09-21.xlsx": {
-      "bytes": 21452,
-      "sha256": "e5f4a105f086f70867589280b3b043ca7e6e77dafa8dfbd0197e339ce2d6fa2f"
+      "bytes": 21676,
+      "sha256": "486fcfe6d0d7f2fced51296fdb37984b2714006901ffb86759690d12fe99aa44"
     },
     "AKB_96V_Comparative_Study_2026-09-21.pdf": {
-      "bytes": 671864,
-      "sha256": "2f98bd110136cd7a57cf1440414cdbd9a6df4ba8d114ce24b714ab0bbc6cdc5e"
+      "bytes": 676291,
+      "sha256": "b4584da45cc9b27160ebfeec9a45db259f407a5ce66ea9df0f54411f97c5209c"
     },
     "assets/t50xg.png": {
       "bytes": 217870,

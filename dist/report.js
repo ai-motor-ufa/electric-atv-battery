@@ -11,6 +11,13 @@ const getSim=r=>r.simulations[`${state.blocks}_${state.cooling}_${state.profile}
 const sources=Object.fromEntries(DATA.sources.map(s=>[s.id,s]));
 const sourceLink=id=>sources[id]?.url?`<a href="${esc(sources[id].url)}" target="_blank" rel="noopener">${esc(id)} ↗</a>`:esc(id);
 const metricValue=(r,metric)=>{const s=getSim(r);return metric==='range'?(s?s.wmtc_equiv:r.energy_ceiling_wmtc*state.blocks):metric==='runtime'?(s?s.minutes:null):(s?s.heat_mean:null);};
+const availabilityLabel=s=>({in_stock:'в наличии',out_of_stock:'нет в наличии',page_allows_add_to_cart:'доступно к заказу',not_found_on_nkon:'точная модель на NKON не найдена'}[s]||(s?.startsWith('expected_')?`ожидается ${s.slice(9).split('-').reverse().join('.')}`:s||'статус не указан'));
+const priceAt=(nk,qty)=>{
+ if(!nk||nk.price==null)return null;
+ let unit=nk.price;
+ for(const tier of [...(nk.quantity_tiers||[])].sort((a,b)=>a.min_quantity-b.min_quantity))if(qty>=tier.min_quantity)unit=tier.unit_price;
+ return {unit,total:unit*qty};
+};
 function marketInfo(m){
  const market=m.market;if(!market)return '<span class="unknown">Нет данных в выгрузке 21.09.2026</span>';
  const links=[];
@@ -18,8 +25,18 @@ function marketInfo(m){
  if(market.ecf_url)links.push(`<a href="${esc(market.ecf_url)}" target="_blank" rel="noopener">ECF ↗</a>`);
  if(market.datasheet?.url)links.push(`<a href="${esc(market.datasheet.url)}" target="_blank" rel="noopener">Datasheet ↗</a>`);
  const nk=market.nkon;
- if(nk?.url){const price=nk.price==null?'цена не подтверждена':`${num(nk.price,2)} ${esc(nk.currency||'EUR')}`;links.push(`<a href="${esc(nk.url)}" target="_blank" rel="noopener">NKON: ${price} ↗</a><span class="sub">${esc(nk.availability||'статус не указан')} · ${esc(nk.observed_at||'')}</span>`);}
+ if(nk){
+  const price=nk.price==null?'цена не найдена':`${num(nk.price,2)} ${esc(nk.currency||'EUR')}`;
+  const title=nk.url?`<a href="${esc(nk.url)}" target="_blank" rel="noopener">NKON: ${price} ↗</a>`:`<span class="unknown">NKON: ${price}</span>`;
+  const tiers=(nk.quantity_tiers||[]).map(t=>`от ${t.min_quantity}: ${num(t.unit_price,2)} ${esc(t.currency||nk.currency||'EUR')}`).join(' · ');
+  links.push(`${title}<span class="sub">${esc(availabilityLabel(nk.availability))} · снимок ${esc(nk.observed_at||'')}</span>${tiers?`<span class="sub">${tiers}</span>`:''}${nk.note?`<span class="sub">${esc(nk.note)}</span>`:''}`);
+ }
  return links.join('<br>')||'<span class="unknown">Ссылки отсутствуют</span>';
+}
+function marketCost(r){
+ const nk=MODELS[r.model].market?.nkon,one=priceAt(nk,r.n),two=priceAt(nk,2*r.n);
+ if(!one)return `<span class="unknown">${nk?.availability==='not_found_on_nkon'?'Карточка точной модели не найдена':'Нет цены NKON'}</span>`;
+ return `${num(one.total,2)} €<span class="sub">${num(one.unit,2)} €/яч. · ${r.n} шт.</span><span class="sub">Два блока: ${num(two.total,2)} € · ${num(two.unit,2)} €/яч.</span><span class="sub">${esc(availabilityLabel(nk.availability))}; без доставки</span>`;
 }
 
 function sortedRows(rows,key,ascending=true){
@@ -72,7 +89,8 @@ function columns(){
   col('cell-size','Размер ячейки, мм',r=>`${dim(MODELS[r.model].dims)}<span class="sub">${esc(MODELS[r.model].dims_label||'Габарит из источника')}</span>`,r=>MODELS[r.model].dims.reduce((a,b)=>a*b,1)),
   col('layout','Предлагаемое размещение',r=>esc(r.layout),r=>r.layout),col('fit','В 230×400×340 мм',r=>esc(r.fit),r=>r.fit),
   col('box','Корпус для CAD',r=>`${dim(r.box)} мм<span class="sub">Δ ${r.delta.map(x=>(x>=0?'+':'')+x).join(' / ')} мм</span>`,r=>r.box.reduce((a,b)=>a*b,1)),
-  col('reserve','Обвязка до 40 кг',r=>`${num(40-r.mass,2)} кг`,r=>40-r.mass)]);
+  col('reserve','Обвязка до 40 кг',r=>`${num(40-r.mass,2)} кг`,r=>40-r.mass),
+  col('market-cost','Стоимость NKON',r=>marketCost(r),r=>{const nk=MODELS[r.model].market?.nkon,p=priceAt(nk,r.n);return p?.total??null;})]);
  if(state.view==='electrical')return base.concat([
   col('volt','Uном / Uзаряд',r=>`${num(r.voltage)} / ${num(r.vmax)} В`,r=>r.voltage),
   col('cell-current','А/яч.: 30 кВт',r=>`${num(34290.909/r.voltage/r.p)}<span class="sub">При Uном ${num(r.voltage)} В; до просадки и ограничений</span>`,r=>34290.909/r.voltage/r.p),
