@@ -1,20 +1,20 @@
 {
-  "release": "20260921-r9",
-  "date": "2026-09-21",
-  "models": 36,
-  "configurations": 41,
-  "overview_21700": 15,
+  "release": "20260922-r10",
+  "date": "2026-09-22",
+  "models": 37,
+  "configurations": 42,
+  "overview_21700": 16,
   "overview_pouch": 6,
   "photo_rows": 41,
   "comparison_rows": 43,
   "forum_threads": 51,
   "full_text_articles": 48,
   "forum_archive_complete": false,
-  "pdf_pages": 51,
+  "pdf_pages": 52,
   "files": {
     "index.html": {
-      "bytes": 7980591,
-      "sha256": "daf48fb0cbc2f58f97e42cb27d41bd009c4186eb323e9de5677f41547b6832d5"
+      "bytes": 8690658,
+      "sha256": "424469a210cf1b1772cd2fe65ae563d0d333e28d14efb63da53c1510d9514201"
     },
     "report.js": {
       "bytes": 20942,
@@ -29,28 +29,28 @@
       "sha256": "9ae4098b7c2fc71c9ba759f33a519cf4fc6f78dfe3bcf40e54d2fda95923748c"
     },
     "mooch_data.json": {
-      "bytes": 104196,
-      "sha256": "533bc024063657ca6670cfb3ac14b5d9cf853690e3b751d7b99648acfda2f357"
+      "bytes": 105072,
+      "sha256": "1c34faef9eda4e76ec39fa7ab859b8bc519488bf0167a3fae98a9209aa7d1731"
     },
     "mooch_21700_photo.csv": {
       "bytes": 12523,
       "sha256": "1f6d527709b59552e9dd0808bb3671d6d999a90a3833d9c914732d43f9fac685"
     },
     "mooch_21700_forum.csv": {
-      "bytes": 18801,
-      "sha256": "51cc28d95ccf77b1743d9358b915712d1bbe2a945e69adb57b0e245383fa162d"
+      "bytes": 19566,
+      "sha256": "a304da33e14bdb172a3d605f0ba3ceaa2c6d63dd3ce537b071b4e97ec25c02c0"
     },
     "mooch_21700_comparison.csv": {
       "bytes": 13741,
       "sha256": "9b9b0e16209fa4c6d340e4fd1aafe67d2c30c7c79a6fe6bcfd71a40870e47e83"
     },
     "Mooch_21700_2026-09-21.xlsx": {
-      "bytes": 21676,
-      "sha256": "486fcfe6d0d7f2fced51296fdb37984b2714006901ffb86759690d12fe99aa44"
+      "bytes": 22035,
+      "sha256": "d7a73b201dc2947aaf1d46caff11787b3fae6c830be3ca1145ebd46f83f9e3b4"
     },
     "AKB_96V_Comparative_Study_2026-09-21.pdf": {
-      "bytes": 676291,
-      "sha256": "b4584da45cc9b27160ebfeec9a45db259f407a5ce66ea9df0f54411f97c5209c"
+      "bytes": 683898,
+      "sha256": "ba3eeb076556ab8d2bb6c95b8984ea8e07e6fae8a46f15e1eb29f235856d853a"
     },
     "assets/t50xg.png": {
       "bytes": 217870,
