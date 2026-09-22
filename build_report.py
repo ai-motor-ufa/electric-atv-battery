@@ -13,7 +13,7 @@ from reportlab.graphics.shapes import Drawing,Rect,String,Line,PolyLine
 from report_content import SECTIONS,TEST_ROWS
 from recommendations import INTRO, METHOD, GEOMETRY, HEAT_METHOD, COOLING, DIMENSION_NOTE, POUCH_INTRO, POUCH, DECISION, HIGH_CAPACITY_MARKET_NOTE, ranked_groups, render_html
 from mooch_section import section as mooch_section
-ROOT=Path(__file__).resolve().parent; OUT=ROOT/'dist'; PDF='AKB_96V_Comparative_Study_2026-09-21.pdf'; RELEASE='20260921-r9'
+ROOT=Path(__file__).resolve().parent; OUT=ROOT/'dist'; PDF='AKB_96V_Comparative_Study_2026-09-21.pdf'; RELEASE='20260922-r10'
 data=json.loads((ROOT/'calculated.json').read_text()); rows=data['rows']; models=data['models']; photos=json.loads((ROOT/'photos.json').read_text())
 mooch_json=(OUT/'mooch_data.json').read_text(); mooch_data=json.loads(mooch_json); forum_threads=len(mooch_data['forum'])
 data['photos']=photos
@@ -54,7 +54,7 @@ doc=f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="v
 <section class="section" id="catalog"><div class="wrap"><p class="eyebrow">{len(models)} моделей · {len(rows)} конфигурация</p><h2>Исходные данные и расчётные параметры</h2><div class="segmented" aria-label="Вид таблицы"><button data-view="energy" aria-pressed="true">Энергия и компоновка</button><button data-view="electrical" aria-pressed="false">Ток и сопротивление</button><button data-view="modes" aria-pressed="false">Режимы работы</button><button data-view="cells" aria-pressed="false">Паспорта элементов</button></div><div class="tables-intro"><p id="table-state"></p><button class="text-button" id="reset-sort">Сбросить сортировку ↺</button></div><p class="note">Сортировка выполняется нажатием на заголовок. Стоимость NKON рассчитывается по лучшей опубликованной ступени для числа ячеек в строке: один и два блока; доставка не включена, цена и наличие зафиксированы на дату снимка. Пустые значения всегда помещаются в конец таблицы.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Сравнение сборок, таблицу можно прокручивать"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div><p class="note" style="margin-top:18px">* Граница по энергии без подтверждённой токоотдачи и тепловой модели. Размеры используются для предварительной CAD-компоновки. Для цилиндрических ячеек не учтены держатели, шины и теплопроводящие элементы.</p></div></section>
 {mooch_section()}<section class="soft section" id="research"><div class="wrap"><div class="knowledge"><p class="eyebrow">Методика расчёта</p><h2>Допущения, ограничения и проверяемые параметры</h2>{knowledge}</div></div></section>
 {render_html(esc,linked,photos,data)}
-<section class="section" id="sources"><div class="wrap"><p class="eyebrow">Проверяемые источники</p><h2>Паспорта, каталоги и независимые испытания</h2><div class="sources">{source_html}</div></div></section></main><footer class="footer"><div class="wrap">Редакция 9 · Предварительный инженерный отбор · <a href="{PDF}">Полный отчёт PDF</a></div></footer><noscript>Для интерактивного сравнения включите JavaScript. Таблицы и расчёты также доступны в PDF.</noscript><script type="application/json" id="report-data">{embedded_data}</script><script src="report.js?v={RELEASE}" defer></script><script id="mooch-data" type="application/json">{mooch_json}</script><script src="mooch.js?v={RELEASE}" defer></script></body></html>'''
+<section class="section" id="sources"><div class="wrap"><p class="eyebrow">Проверяемые источники</p><h2>Паспорта, каталоги и независимые испытания</h2><div class="sources">{source_html}</div></div></section></main><footer class="footer"><div class="wrap">Редакция 10 · Предварительный инженерный отбор · <a href="{PDF}">Полный отчёт PDF</a></div></footer><noscript>Для интерактивного сравнения включите JavaScript. Таблицы и расчёты также доступны в PDF.</noscript><script type="application/json" id="report-data">{embedded_data}</script><script src="report.js?v={RELEASE}" defer></script><script id="mooch-data" type="application/json">{mooch_json}</script><script src="mooch.js?v={RELEASE}" defer></script></body></html>'''
 (OUT/'index.html').write_text(doc)
 
 # PDF: broad tables separated into views, then model cards and complete methodology.
@@ -112,7 +112,7 @@ def chart(metric,b=2,g=5,p='mixed'):
  return dr
 
 add('АКБ квадроцикла','Cover');add('Энергия, мощность и температура','Heading1')
-add('Редакция 9 · 21.09.2026. Два съёмных блока; каждый должен самостоятельно питать двигатель 15/30 кВт. Наружные Ш×Г×В 230×400×340 мм, цель до 40 кг. Все токи относятся к DC-стороне батареи.')
+add('Редакция 10 · 22.09.2026. Два съёмных блока; каждый должен самостоятельно питать двигатель 15/30 кВт. Наружные Ш×Г×В 230×400×340 мм, цель до 40 кг. Все токи относятся к DC-стороне батареи.')
 table(['Объём блока','Целевая масса','Энергия двух блоков','Полный заряд 26S'],[['31,28 л','≤40 кг','Около 15 кВт·ч','109,2 В при 4,2 В/яч.; S45A до 113,1 В']],[1,1,1,2])
 for t in [
  'В первую очередь испытать имеющийся на NKON BAK 50D2 26S16P и сравнить его с Reliance RS50 после поступления. EVE 50PL и Tenpower 50XG интересны после согласования версии и партии. Molicel P50B — документированный, но более дорогой ориентир; Samsung 50S — доступный контрольный образец с принятым пределом 20 А по тесту Mooch.',
@@ -215,7 +215,7 @@ for c in POUCH:
 page('Конфигурации для прототипирования')
 add(DECISION)
 def footer(c,doc):
- c.setFont('DV',9);c.setFillColor(colors.HexColor('#626269'));c.drawString(margin,22,'АКБ 96 В · редакция 9 · 21.09.2026 · расчёт с ограничениями SOC / температуры');c.drawRightString(W-margin,22,str(doc.page))
+ c.setFont('DV',9);c.setFillColor(colors.HexColor('#626269'));c.drawString(margin,22,'АКБ 96 В · редакция 10 · 22.09.2026 · расчёт с ограничениями SOC / температуры');c.drawRightString(W-margin,22,str(doc.page))
 pdfdoc=SimpleDocTemplate(str(OUT/PDF),pagesize=(W,H),leftMargin=margin,rightMargin=margin,topMargin=35,bottomMargin=42,title='Выбор ячеек для тяговой АКБ 96 В',author='Исследование для проекта квадроцикла')
 pdfdoc.build(story,onFirstPage=footer,onLaterPages=footer)
 print('Built',len(rows),'configurations;',len(models),'models;',PDF)

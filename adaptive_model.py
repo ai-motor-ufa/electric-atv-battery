@@ -35,7 +35,7 @@ PROFILES=[
 for p in PROFILES:p['battery_avg']=sum(w*(kw/ETA+AUX) for w,kw in p['stages'])
 SHORTLIST={
  'C03','C08','C09','C10','C16','C17','C18','C19',
- 'C20','C21','C22','C23','C24','C25','C26',
+ 'C20','C21','C22','C23','C24','C25','C26','C27',
  'F02','F06','F08','F09','F10','F16',
 }
 def fmt_type(m):
@@ -128,6 +128,7 @@ ASSUMPTIONS=dict(eta=ETA,aux_kw=AUX,energy_budget=USABLE,soc_start=.95,soc_end=.
  cp_J_kgK=CP,ambient_C=25,dt_s=DT,passive_G=5,enhanced_G=20,derate_start_C=45,stop_C=60,peak_soc=.5,
  voltage_min_per_cell=V_MIN,ocv_generic=OCV,
  range_method='Energy equivalent against BRP indexes; not a WMTC speed simulation',
+ capacity_rate_derating='Not applied per cell model. The 85% energy budget is a SOC/reserve window, not a correction for capacity loss at high C-rate.',
  unknown_data='No thermal simulation without DCIR and usable discharge-current rating')
 def calculate():
     for r in ROWS:

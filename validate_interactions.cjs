@@ -12,7 +12,7 @@ const ctx={document,console};vm.createContext(ctx);vm.runInContext(fs.readFileSy
 const api=ctx.reportTesting;
 const displayed=()=>Array.from(node('table-body').innerHTML.matchAll(/data-row="([^"]+)"/g),m=>m[1]);
 const initial=displayed();assert.equal(initial.length,data.rows.length);assert.equal((node('bars').innerHTML.match(/data-select=/g)||[]).length,data.rows.filter(r=>r.candidate).length);
-assert.equal(data.rows.filter(r=>r.candidate&&r.format==='21700').length,15);assert.equal(data.rows.filter(r=>r.candidate&&r.format==='Pouch').length,6);
+assert.equal(data.rows.filter(r=>r.candidate&&r.format==='21700').length,16);assert.equal(data.rows.filter(r=>r.candidate&&r.format==='Pouch').length,6);
 let barIds=Array.from(node('bars').innerHTML.matchAll(/data-select="([^"]+)"/g),m=>m[1]);
 let barValues=barIds.map(id=>{const r=data.rows.find(x=>x.id===id),s=r.simulations['2_5_mixed'];return s?s.wmtc_equiv:r.energy_ceiling_wmtc*2;});
 assert(barValues.every((v,i)=>!i||v<=barValues[i-1]),'Range chart must be descending');
@@ -41,6 +41,7 @@ assert(!data.rows.some(r=>r.format.includes('LFP')));for(const k of ['bak50d2','
 assert(!Object.values(data.models).some(m=>/LFP|LMFP/i.test(m.type)));
 assert.deepStrictEqual([...new Set(data.rows.map(r=>r.model))].sort(),Object.keys(data.models).sort());
 for(const k of ['t50xg','e61v','e63b','e66a'])assert(data.models[k]);
+assert.equal(data.models.s50s.dc_test,10);assert.equal(data.models.s50s2.dc_test,13.35);assert.deepStrictEqual(data.models.s50s2.test_capacity_ah,[5.111,5.143]);
 for(const k of ['bak50d2','s50s','p42a','p45b','rs60'])assert(data.models[k].market?.nkon?.price!=null,'Missing NKON price for '+k);
 for(const k of ['amprius50q','gp50q','link60p','link65p'])assert.equal(data.models[k].market?.nkon?.availability,'not_found_on_nkon');
 const anchorIds=new Set(Array.from(html.matchAll(/\bid="([^"]+)"/g),m=>m[1]));

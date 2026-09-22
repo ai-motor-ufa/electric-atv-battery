@@ -6,6 +6,7 @@ assert.equal(d.photo.find(r=>r.model==='Tenpower 50XG').E20_Wh,16.1);
 assert.equal(d.photo.find(r=>r.model==='Reliance RS50 (CCC logo, batch G3E)').DCIR_mOhm,6.5);
 assert.equal(d.photo.find(r=>r.model==='LG H50').rated_mAh,null);
 const s50=d.forum.find(r=>r.model==='Samsung 50S');assert.equal(s50.sample1_mAh,5049);assert.equal(s50.sample2_mAh,5071);assert.equal(s50.estimated_CDR_A,20);
+const s50s2=d.forum.find(r=>r.model==='Samsung 50S2');assert.equal(s50s2.sample1_mAh,5111);assert.equal(s50s2.sample2_mAh,5143);assert.equal(s50s2.dc1_mOhm,12.9);assert.equal(s50s2.dc2_mOhm,13.8);assert.equal(s50s2.estimated_CDR_A,25);
 const nodes=new Map();const node=id=>{if(!nodes.has(id))nodes.set(id,{value:'',textContent:'',rows:[],handlers:{},addEventListener(k,f){this.handlers[k]=f},replaceChildren(...rows){this.rows=rows}});return nodes.get(id)};
 node('mooch-data').textContent=JSON.stringify(d);node('mooch-body').rows=d.combined.map((_,i)=>i);node('mooch-current').value='0';node('mooch-sort').value='name';
 vm.runInNewContext(fs.readFileSync('dist/mooch.js','utf8'),{document:{getElementById:node}});
