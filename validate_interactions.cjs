@@ -31,7 +31,7 @@ for(const b of viewButtons){b.handlers.click();assert.equal(displayed().length,b
 }
 node('view-electrical').handlers.click();header('dc');header('dc');let unknown=false;
 for(const id of displayed()){const dc=data.rows.find(r=>r.id===id).dc_model;if(dc==null)unknown=true;else assert(!unknown,'Unknown DCIR must stay last in descending sort');}
-for(const b of [1,2])for(const g of [5,20])for(const p of data.profiles){change('blocks',b);change('cooling',g);change('profile',p.id);
+for(const b of [1,2])for(const g of [0,5,20])for(const p of data.profiles){change('blocks',b);change('cooling',g);change('profile',p.id);
  for(const m of metricButtons){m.handlers.click();assert(!/NaN|undefined|Infinity/.test(node('bars').innerHTML));}
 }
 change('selection','C17');assert.equal(node('detail').hidden,false);assert.equal((node('detail').innerHTML.match(/<svg/g)||[]).length,3);

@@ -13,7 +13,8 @@ from reportlab.graphics.shapes import Drawing,Rect,String,Line,PolyLine
 from report_content import SECTIONS,TEST_ROWS
 from recommendations import INTRO, METHOD, GEOMETRY, HEAT_METHOD, COOLING, DIMENSION_NOTE, POUCH_INTRO, POUCH, DECISION, HIGH_CAPACITY_MARKET_NOTE, ranked_groups, render_html
 from mooch_section import section as mooch_section
-ROOT=Path(__file__).resolve().parent; OUT=ROOT/'dist'; PDF='AKB_96V_Comparative_Study_2026-09-21.pdf'; RELEASE='20260922-r10'
+from test_sections import section as updated_test_section, manufacturer
+ROOT=Path(__file__).resolve().parent; OUT=ROOT/'dist'; PDF='AKB_96V_Comparative_Study_2026-09-30.pdf'; RELEASE='20260930-r11'
 data=json.loads((ROOT/'calculated.json').read_text()); rows=data['rows']; models=data['models']; photos=json.loads((ROOT/'photos.json').read_text())
 mooch_json=(OUT/'mooch_data.json').read_text(); mooch_data=json.loads(mooch_json); forum_threads=len(mooch_data['forum'])
 data['photos']=photos
@@ -42,19 +43,27 @@ conclusion=SECTIONS[-1][2]
 source_html=''.join(f'<div class="source-item" id="source-{s["id"]}"><a href="{esc(s["url"])}" target="_blank" rel="noopener">[{s["id"]}] {esc(s["title"])}</a><p>{esc(s["note"])}</p></div>' if s['url'] else f'<div class="source-item" id="source-{s["id"]}"><strong>[{s["id"]}] {esc(s["title"])}</strong><p>{esc(s["note"])}</p></div>' for s in data['sources'])
 opts=''.join(f'<option value="{r["id"]}">{esc(r["name"])}</option>' for r in rows if r['candidate'])
 p_opts=''.join(f'<option value="{p["id"]}">{esc(p["name"])}</option>' for p in data['profiles'])
-embedded_data=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')
+# Embed only fields consumed by the three interactive plots. Numerical
+# integration and the full calculation output retain all diagnostics.
+import copy
+web_data=copy.deepcopy(data)
+for web_row in web_data['rows']:
+ for simulation in web_row['simulations'].values():
+  if simulation:
+   simulation['trace']=[{k:t[k] for k in ('minute','soc','temp','power')} for t in simulation['trace']]
+embedded_data=json.dumps(web_data,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')
 doc=f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Инженерный отбор ячеек для тяговой АКБ 96 В: компоновка, масса, энергоёмкость, ограничения мощности и тепловая оценка."><title>Выбор ячеек для тяговой АКБ 96 В</title><link rel="stylesheet" href="report.css?v={RELEASE}"></head><body>
 <nav class="nav" aria-label="Основная навигация"><div class="wrap"><a href="#" class="brand">АКБ 96 В</a><a href="#compare">Сравнение</a><a href="#mooch">Тесты 21700</a><a class="hide-mobile" href="#research">Исследование</a><a class="hide-mobile" href="#choice">Вывод</a><a class="pill" href="{PDF}">Скачать PDF</a></div></nav>
-<main><div class="wrap"><aside class="release-note" id="release"><strong>Редакция {RELEASE}</strong><span>{len(models)} моделей · {len(rows)} конфигурация · {forum_threads} тем ECF</span><a href="#mooch">Испытания и выгрузки</a></aside><header class="hero"><div><p class="eyebrow">Предварительный инженерный отбор · 22 сентября 2026</p><h1>Выбор ячеек для<br>тяговой АКБ 96 В</h1><p>Сравнение цилиндрических и пакетных ячеек для двух съёмных блоков. Каждый блок должен обеспечивать 15 кВт длительно и до 30 кВт в пиковом режиме.</p></div><div class="hero-stats"><div><strong>230×400×340</strong><span>мм · наружные Ш×Г×В</span></div><div><strong>≤40 кг</strong><span>целевая масса готового блока</span></div><div><strong>≈15 кВт·ч</strong><span>целевая энергия двух блоков</span></div><div><strong>26S</strong><span>109,2 В при заряде до 4,2 В/яч.</span></div></div></header></div>
-<section class="soft section" id="compare"><div class="wrap"><div class="section-top"><div><p class="eyebrow">Расчётное сравнение конфигураций</p><h2>Энергия, длительность работы и тепловыделение</h2><p>В обзор включены {candidate_21700} моделей 21700 и {candidate_pouch} моделей pouch. Результаты отсортированы по выбранному показателю; для пробега и времени — по убыванию, для тепловыделения — по возрастанию.</p></div></div><div class="panel">
-<div class="toolbar"><div class="field"><label for="blocks">Подключено одновременно</label><select id="blocks"><option value="1">Один блок</option><option value="2" selected>Два одинаковых блока</option></select></div><div class="field"><label for="profile">Запрос мощности</label><select id="profile">{p_opts}</select></div><div class="field"><label for="cooling">Сценарий теплоотвода</label><select id="cooling"><option value="5">Слабый · G = 5 Вт/К</option><option value="20">Улучшенный · G = 20 Вт/К</option></select></div><div class="field wide"><label for="selection">Сборка</label><select id="selection"><option value="all">Все кандидаты</option>{opts}</select></div></div>
+<main><div class="wrap"><aside class="release-note" id="release"><strong>Редакция {RELEASE}</strong><span>{len(models)} моделей · {len(rows)} конфигурация · {forum_threads} тем ECF</span><a href="#mooch">Испытания и выгрузки</a></aside><header class="hero"><div><p class="eyebrow">Предварительный инженерный отбор · 30 сентября 2026</p><h1>Выбор ячеек для<br>тяговой АКБ 96 В</h1><p>Сравнение цилиндрических и пакетных ячеек для двух съёмных блоков. Каждый блок должен обеспечивать 15 кВт длительно и до 30 кВт в пиковом режиме.</p></div><div class="hero-stats"><div><strong>230×400×340</strong><span>мм · наружные Ш×Г×В</span></div><div><strong>≤40 кг</strong><span>целевая масса готового блока</span></div><div><strong>≈15 кВт·ч</strong><span>целевая энергия двух блоков</span></div><div><strong>26S</strong><span>109,2 В при заряде до 4,2 В/яч.</span></div></div></header></div>
+<section class="soft section" id="compare"><div class="wrap"><div class="section-top"><div><p class="eyebrow">Расчётное сравнение конфигураций</p><h2>Энергия, длительность работы и тепловыделение</h2><p>В обзор включены {candidate_21700} моделей 21700 и {candidate_pouch} моделей pouch. Результаты отсортированы по выбранному показателю; для пробега и времени — по убыванию, для максимальной средней температуры — по возрастанию.</p></div></div><div class="panel">
+<div class="toolbar"><div class="field"><label for="blocks">Подключено одновременно</label><select id="blocks"><option value="1">Один блок</option><option value="2" selected>Два одинаковых блока</option></select></div><div class="field"><label for="profile">Запрос мощности</label><select id="profile">{p_opts}</select></div><div class="field"><label for="cooling">Сценарий теплоотвода</label><select id="cooling"><option value="0">Без теплоотвода · G = 0 Вт/К</option><option value="5">Сценарий · G = 5 Вт/К</option><option value="20">Сценарий · G = 20 Вт/К</option></select></div><div class="field wide"><label for="selection">Сборка</label><select id="selection"><option value="all">Все кандидаты</option>{opts}</select></div></div>
 <div class="segmented" aria-label="Показатель графика"><button data-metric="range" aria-pressed="true">Пробег</button><button data-metric="runtime" aria-pressed="false">Время работы</button><button data-metric="heat" aria-pressed="false">Нагрев</button></div><div class="chart-heading"><h3 id="chart-title"></h3><button class="text-button" id="back-all" hidden>← Все сборки</button></div><div id="chart-legend" class="legend"></div><div class="bars" id="bars"></div><div id="axis" class="axis"></div><p id="chart-note" class="note" style="margin-top:24px"></p><div class="detail" id="detail" hidden></div>
-<div class="callout"><strong>Ограничение тяги, а не фиксированный ток.</strong> Модель учитывает падение напряжения, рейтинг ячейки и выбранное снижение мощности по SOC и температуре. Карты управления предварительные; 50% SOC не универсальная граница. <a href="#control">Методика расчёта</a></div>
+<div class="callout"><strong>Ограничение тяги, а не фиксированный ток.</strong> Для идентифицированных 21700 используются оцифрованные кривые V(Ah,I), для остальных — общая OCV. Модель учитывает падение напряжения, рейтинг ячейки и выбранное снижение мощности по SOC и температуре. Карты управления предварительные; 50% SOC не универсальная граница. <a href="#control">Методика расчёта</a></div>
 </div></div></section>
-<section class="section" id="catalog"><div class="wrap"><p class="eyebrow">{len(models)} моделей · {len(rows)} конфигурация</p><h2>Исходные данные и расчётные параметры</h2><div class="segmented" aria-label="Вид таблицы"><button data-view="energy" aria-pressed="true">Энергия и компоновка</button><button data-view="electrical" aria-pressed="false">Ток и сопротивление</button><button data-view="modes" aria-pressed="false">Режимы работы</button><button data-view="cells" aria-pressed="false">Паспорта элементов</button></div><div class="tables-intro"><p id="table-state"></p><button class="text-button" id="reset-sort">Сбросить сортировку ↺</button></div><p class="note">Сортировка выполняется нажатием на заголовок. Стоимость NKON рассчитывается по лучшей опубликованной ступени для числа ячеек в строке: один и два блока; доставка не включена, цена и наличие зафиксированы на дату снимка. Пустые значения всегда помещаются в конец таблицы.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Сравнение сборок, таблицу можно прокручивать"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div><p class="note" style="margin-top:18px">* Граница по энергии без подтверждённой токоотдачи и тепловой модели. Размеры используются для предварительной CAD-компоновки. Для цилиндрических ячеек не учтены держатели, шины и теплопроводящие элементы.</p></div></section>
-{mooch_section()}<section class="soft section" id="research"><div class="wrap"><div class="knowledge"><p class="eyebrow">Методика расчёта</p><h2>Допущения, ограничения и проверяемые параметры</h2>{knowledge}</div></div></section>
+<section class="section" id="catalog"><div class="wrap"><p class="eyebrow">{len(models)} моделей · {len(rows)} конфигурация</p><h2>Исходные данные и расчётные параметры</h2><div class="segmented" aria-label="Вид таблицы"><button data-view="energy" aria-pressed="true">Энергия и компоновка</button><button data-view="electrical" aria-pressed="false">Ток и сопротивление</button><button data-view="modes" aria-pressed="false">Режимы работы</button><button data-view="cells" aria-pressed="false">Паспорта элементов</button></div><div class="tables-intro"><p id="table-state"></p><button class="text-button" id="reset-sort">Сбросить сортировку ↺</button></div><p class="note">Сортировка выполняется нажатием на заголовок. Цена Alibaba из предложения пользователя на 30.09.2026 приведена в USD отдельно от NKON; неизвестная цена не равна нулю. Стоимость NKON рассчитывается по лучшей опубликованной ступени для числа ячеек в строке: один и два блока; доставка не включена, цена и наличие зафиксированы на дату снимка. Пустые значения всегда помещаются в конец таблицы.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Сравнение сборок, таблицу можно прокручивать"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div><p class="note" style="margin-top:18px">* Граница по энергии без подтверждённой токоотдачи и тепловой модели. Размеры используются для предварительной CAD-компоновки. Для цилиндрических ячеек не учтены держатели, шины и теплопроводящие элементы.</p></div></section>
+{updated_test_section(esc)}{mooch_section()}<section class="soft section" id="research"><div class="wrap"><div class="knowledge"><p class="eyebrow">Методика расчёта</p><h2>Допущения, ограничения и проверяемые параметры</h2>{knowledge}</div></div></section>
 {render_html(esc,linked,photos,data)}
-<section class="section" id="sources"><div class="wrap"><p class="eyebrow">Проверяемые источники</p><h2>Паспорта, каталоги и независимые испытания</h2><div class="sources">{source_html}</div></div></section></main><footer class="footer"><div class="wrap">Редакция 10 · Предварительный инженерный отбор · <a href="{PDF}">Полный отчёт PDF</a></div></footer><noscript>Для интерактивного сравнения включите JavaScript. Таблицы и расчёты также доступны в PDF.</noscript><script type="application/json" id="report-data">{embedded_data}</script><script src="report.js?v={RELEASE}" defer></script><script id="mooch-data" type="application/json">{mooch_json}</script><script src="mooch.js?v={RELEASE}" defer></script></body></html>'''
+<section class="section" id="sources"><div class="wrap"><p class="eyebrow">Проверяемые источники</p><h2>Паспорта, каталоги и независимые испытания</h2><div class="sources">{source_html}</div></div></section></main><footer class="footer"><div class="wrap">Редакция 11 · Предварительный инженерный отбор · <a href="{PDF}">Полный отчёт PDF</a></div></footer><noscript>Для интерактивного сравнения включите JavaScript. Таблицы и расчёты также доступны в PDF.</noscript><script type="application/json" id="report-data">{embedded_data}</script><script src="report.js?v={RELEASE}" defer></script><script id="mooch-data" type="application/json">{mooch_json}</script><script src="mooch.js?v={RELEASE}" defer></script></body></html>'''
 (OUT/'index.html').write_text(doc)
 
 # PDF: broad tables separated into views, then model cards and complete methodology.
@@ -112,7 +121,7 @@ def chart(metric,b=2,g=5,p='mixed'):
  return dr
 
 add('АКБ квадроцикла','Cover');add('Энергия, мощность и температура','Heading1')
-add('Редакция 10 · 22.09.2026. Два съёмных блока; каждый должен самостоятельно питать двигатель 15/30 кВт. Наружные Ш×Г×В 230×400×340 мм, цель до 40 кг. Все токи относятся к DC-стороне батареи.')
+add('Редакция 11 · 30.09.2026. Два съёмных блока; каждый должен самостоятельно питать двигатель 15/30 кВт. Наружные Ш×Г×В 230×400×340 мм, цель до 40 кг. Все токи относятся к DC-стороне батареи.')
 table(['Объём блока','Целевая масса','Энергия двух блоков','Полный заряд 26S'],[['31,28 л','≤40 кг','Около 15 кВт·ч','109,2 В при 4,2 В/яч.; S45A до 113,1 В']],[1,1,1,2])
 for t in [
  'В первую очередь испытать имеющийся на NKON BAK 50D2 26S16P и сравнить его с Reliance RS50 после поступления. EVE 50PL и Tenpower 50XG интересны после согласования версии и партии. Molicel P50B — документированный, но более дорогой ориентир; Samsung 50S — доступный контрольный образец с принятым пределом 20 А по тесту Mooch.',
@@ -137,8 +146,8 @@ for r in rows:
  s=sim(r)
  if s:
   a=sim(r,p='mixed');two=sim(r,2);cool=sim(r,1,20)
-  vals.append([r['model'],r['name'],r['format'],n(a['minutes'],0)+' / '+n(a['utility_equiv'],0),n(s['full_minutes'])+' / '+n(s['minutes']),n(s['heat_mean'],0)+' / '+n(s['t_end'],0),n(two['full_minutes'])+' / '+n(two['minutes']),n(cool['full_minutes'])+' / '+n(cool['t_end'],0),s['first_limit']])
-table(['Фото','Сборка','Тип','Умеренно: мин / рабочий км-экв.','15 кВт: мин полный / всего','15 кВт: Вт / °C','Два: мин полный / всего','G=20: мин полный / °C','Первое ограничение'],vals,[.8,1.5,.7,1,1.1,1,1.1,1,1.2],0)
+  vals.append([r['model'],r['name'],r['format'],n(a['minutes'],0)+' / '+n(a['utility_equiv'],0),n(s['full_minutes'])+' / '+n(s['minutes']),n(s['heat_mean'],0)+' / '+n(s['t_peak'],0),n(two['full_minutes'])+' / '+n(two['minutes']),n(cool['full_minutes'])+' / '+n(cool['t_end'],0),s['first_limit']])
+table(['Фото','Сборка','Тип','Умеренно: мин / рабочий км-экв.','15 кВт: мин полный / всего','15 кВт: Вт / Tmax °C','Два: мин полный / всего','G=20: мин полный / °C','Первое ограничение'],vals,[.8,1.5,.7,1,1.1,1,1.1,1,1.2],0)
 page('Весь каталог: энергия и компоновка')
 add('Исходный порядок: тип → производитель → модель. Масса обвязки оценочная: цилиндры +8–13 кг, pouch по сложности +8–15 кг. Полный жидкостный контур может потребовать дополнительной массы. Корпус — для дальнейшей проработки, не гарантированный минимум.','Small')
 vals=[]
@@ -173,6 +182,24 @@ for key,title,texts in SECTIONS:
  if key=='thermal':
   table(['Сборка','0,75×R: мин полный / T конца','1,5×R: мин полный / T конца'],[[r['name'],n(r['sensitivity15'][0]['full_minutes'])+' / '+n(r['sensitivity15'][0]['t_end'])+' °C',n(r['sensitivity15'][1]['full_minutes'])+' / '+n(r['sensitivity15'][1]['t_end'])+' °C'] for r in rows if r['id'] in ['C03','C16','C17','C18']],[2,2,2])
   add('Чувствительность для запроса 15 кВт, одного блока, G=5. Множители сопротивления выбраны для проверки устойчивости вывода, не являются доверительным интервалом измерений.','Small')
+page('Новые разряды: энергия и температура при 20 А')
+add('23 графика пользователя от 30.09.2026. Энергия — приближённая оцифровка ∫V dAh; температуры — подписанные максимумы при начальных около 25 °C. Порог модели 3,0 В показан отдельно от Mooch 2,8 В. Конфликт BAK 65E 25/30 А не исправлен догадкой. Ampace: имя файла CCC, подпись no CCC; используется подпись.','Small')
+vals=[]
+for ds in data['discharge_tests']['datasets']:
+ for c in ds['curves']:
+  if c['current_A']==20:vals.append([ds['title'],ds['test_date'],n(c['energy_2_8_Wh'],2),n(c['energy_3_0_Wh'],2),n(c['capacity_3_0_Ah'],2),n(c['max_C'],0),n(c['delta_C'],0)])
+vals.sort(key=lambda x:float(x[3].replace(',','.')) if x[3]!='—' else -1,reverse=True)
+table(['Модель / версия','Дата','≈Wh до 2,8 В','≈Wh до 3,0 В','≈Ah до 3,0 В','Tmax, °C','ΔT от 25 °C'],vals,[3,1.1,1,1,1,1,1])
+page('Проверка прежней тепловой модели по разрядам')
+add('Одинаковый постоянный ток до конца наблюдаемого участка; c=1000 Дж/(кг·К), прежний DCIR и множитель SOC. G=5/416 и 20/416 распределяют условный теплоотвод 416-ячеечного блока поровну. Снижение мощности отключено только для этого сопоставления. Числа не являются измеренным теплоотводом стенда или прогнозом рабочей температуры готового блока.','Small')
+table(['Модель','I, А','Измерено, °C','G=5/416, °C','G=20/416, °C','Подгонка стенда, °C','Остаток, °C'],[[a['title'],a['current_A'],n(a['measured_C']),n(a['pack_G5_equivalent_C']),n(a['pack_G20_equivalent_C']),n(a['bench_fit_C']),n(a['bench_residual_C'])] for a in data['discharge_tests']['thermal_audit'] if a['current_A']==20],[3,1,1,1,1,1,1])
+add('Максимумы без T(t) не идентифицируют независимо R(SOC,T), теплоёмкость и конвекцию. Подобранный G стенда не переносится в блок. В рабочую модель добавлены потери обвязки внутри корпуса, сценарий G=0 и максимум температуры; G=5/20 остаются сценарными до испытания собранного блока.','Small')
+page('Цены продавца Vapcell / Alibaba — 30.09.2026')
+add(data['quotes']['source']+'. '+data['quotes']['conditions'],'Small')
+table(['Модель','USD/шт.','Статус','416 шт., USD','832 шт., USD','Ограничение идентичности'],[[o['model'],n(o['price'],2),{'quoted':'Цена получена','out_of_stock':'Нет в наличии','pending_confirmation':'Ожидается подтверждение'}[o['availability']],n(None if o['price'] is None else 416*o['price'],2),n(None if o['price'] is None else 832*o['price'],2),o['note']] for o in data['quotes']['offers']],[1.5,.7,1.3,1,1,3])
+page('Приложенный рейтинг 18650 — 15.09.2026')
+add('Изображение относится к 18650, не к 21700. Оно не меняет значения одноимённых 21700. Использует разряды до 2,8 В. Автор просит не распространять после 15.03.2027. Полное изображение доступно в отдельном блоке сайта.','Small')
+img=Image(str(OUT/'tests/mooch-18650-2026-09-15.jpg'));factor=min(avail/img.imageWidth,(H-180)/img.imageHeight);img.drawWidth=img.imageWidth*factor;img.drawHeight=img.imageHeight*factor;story.append(img)
 page('Источники и основания расчёта')
 for s in data['sources']:
  entry=[para('['+s['id']+'] '+s['title'],'Heading3'),Spacer(1,8),para(s['note'],'Small'),Spacer(1,8)]
@@ -183,7 +210,7 @@ add(INTRO);add(METHOD,'Small');add(HIGH_CAPACITY_MARKET_NOTE,'Small');add(GEOMET
 for title,cards in ranked_groups(data):
  if title.startswith('Топ-5 · пакетные'):page('Сводная таблица: топ-5 pouch')
  add(title,'Heading3')
- table(['Элемент','Сборка','Энергия пары','Ячейки / блок','На обвязку','NKON / блок','Тепло при 15 кВт'],[[c['title'],c['config'],c['energy'],c['mass'],c['budget'],c.get('market_price','—'),c['heat_short']] for c in cards],[18,18,13,13,13,15,17])
+ table(['Элемент','Сборка','Энергия пары','Ячейки / блок','На обвязку','Цена ячеек / блок','Тепло при 15 кВт'],[[c['title'],c['config'],c['energy'],c['mass'],c['budget'],c.get('market_price','—'),c['heat_short']] for c in cards],[18,18,13,13,13,15,17])
 page('Метод сравнения тепловыделения и габаритов')
 add(HEAT_METHOD);add('Исправление размеров Farasis','Heading2');add(DIMENSION_NOTE)
 styles.add(ParagraphStyle('ChoiceBody',fontName='DV',fontSize=10.5,leading=15,textColor=colors.HexColor('#303039')))
@@ -195,7 +222,7 @@ for title,cards in ranked_groups(data):
    panel=[para(c['role'],'Small'),para(c['title'],'Heading2'),para(c['config'],'Small'),Spacer(1,10)]
    panel.extend(pdf_photo(c['key']));panel.append(Spacer(1,10))
    panel.append(para('Энергия пары: '+c['energy']+' · ячейки/блок: '+c['mass']+' · на обвязку ≤'+c['budget'],'ChoiceBody'))
-   fields=[('Основание включения','why')]+([('Рынок и стоимость','market')] if 'market' in c else [])+[('Масса','mass_note'),('Габариты','geometry'),('Тепловыделение одного блока','heat'),('Охлаждение','cooling'),('Ограничения','trade'),('Требуемая проверка','check')]
+   fields=[('Производитель','manufacturer'),('Основание включения','why')]+([('Рынок и стоимость','market')] if 'market' in c else [])+[('Масса','mass_note'),('Габариты','geometry'),('Тепловыделение одного блока','heat'),('Охлаждение','cooling'),('Ограничения','trade'),('Требуемая проверка','check')]
    for label,key in fields:
     panel.extend([Spacer(1,9),raw('<b>'+esc(label)+'.</b> '+linked(c[key],True),'ChoiceBody')])
    panels.append(panel)
@@ -215,7 +242,7 @@ for c in POUCH:
 page('Конфигурации для прототипирования')
 add(DECISION)
 def footer(c,doc):
- c.setFont('DV',9);c.setFillColor(colors.HexColor('#626269'));c.drawString(margin,22,'АКБ 96 В · редакция 10 · 22.09.2026 · расчёт с ограничениями SOC / температуры');c.drawRightString(W-margin,22,str(doc.page))
+ c.setFont('DV',9);c.setFillColor(colors.HexColor('#626269'));c.drawString(margin,22,'АКБ 96 В · редакция 11 · 30.09.2026 · расчёт с ограничениями SOC / температуры');c.drawRightString(W-margin,22,str(doc.page))
 pdfdoc=SimpleDocTemplate(str(OUT/PDF),pagesize=(W,H),leftMargin=margin,rightMargin=margin,topMargin=35,bottomMargin=42,title='Выбор ячеек для тяговой АКБ 96 В',author='Исследование для проекта квадроцикла')
 pdfdoc.build(story,onFirstPage=footer,onLaterPages=footer)
 print('Built',len(rows),'configurations;',len(models),'models;',PDF)

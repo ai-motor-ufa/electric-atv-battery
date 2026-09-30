@@ -12,7 +12,9 @@ for r in d['rows']:
         assert s['heat_kj']/3600<=s['chemical_kwh']-s['output_kwh']+1e-8
         assert 0<=s['full_minutes']<=s['minutes']
         assert 9.999<s['end_soc']<=95
-        assert 25<=s['t_end']<=60.1
+        assert 25<=s['t_end']<=s['t_peak']<=60.00001
+        assert s['line_heat_kj']>=0
+        assert (s['heat_kj']+s['line_heat_kj'])/3600<=s['chemical_kwh']-s['output_kwh']+1e-8
         assert 0<=s['mean_power']<=30
         ts=s['trace'];assert all(a['soc']>=b['soc'] for a,b in zip(ts,ts[1:]))
         assert all(a['minute']<=b['minute'] for a,b in zip(ts,ts[1:]))

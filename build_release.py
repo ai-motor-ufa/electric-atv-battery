@@ -6,14 +6,16 @@ from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parent
 DIST = ROOT / "dist"
-PDF = "AKB_96V_Comparative_Study_2026-09-21.pdf"
+PDF = "AKB_96V_Comparative_Study_2026-09-30.pdf"
 FILES = [
     "index.html", "report.js", "report.css", "mooch.js", "mooch_data.json",
     "mooch_21700_photo.csv", "mooch_21700_forum.csv", "mooch_21700_comparison.csv",
     "Mooch_21700_2026-09-21.xlsx", PDF,
-    "assets/t50xg.png", "assets/p73d.jpg",
+    "assets/t50xg.png", "assets/p73d.jpg", "discharge_tests.json", "discharge_energy_temperature.csv", "alibaba_quotes.json", "alibaba_quotes_2026-09-30.csv",
 ]
 
+
+FILES.extend(str(p.relative_to(DIST)) for p in sorted((DIST/"tests").glob("*.jpg")))
 
 def fingerprint(relative):
     content = (DIST / relative).read_bytes()
@@ -23,8 +25,8 @@ def fingerprint(relative):
 calculated = json.loads((ROOT / "calculated.json").read_text())
 mooch = json.loads((DIST / "mooch_data.json").read_text())
 payload = {
-    "release": "20260922-r10",
-    "date": "2026-09-22",
+    "release": "20260930-r11",
+    "date": "2026-09-30",
     "models": len(calculated["models"]),
     "configurations": len(calculated["rows"]),
     "overview_21700": sum(r["candidate"] and r["format"] == "21700" for r in calculated["rows"]),
@@ -36,6 +38,9 @@ payload = {
     "forum_archive_complete": False,
     "pdf_pages": len(PdfReader(DIST / PDF).pages),
     "files": {name: fingerprint(name) for name in FILES},
+    "discharge_charts": 23,
+    "initial_cell_temperature_C": 25,
+    "thermal_model_status": "scenario_only_not_validated_sealed_pack",
     "conclusion": {
         "top_21700": 5,
         "attention_21700": 3,

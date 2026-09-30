@@ -10,7 +10,7 @@ const state={metric:'range',blocks:2,profile:'mixed',cooling:5,selection:'all',v
 const getSim=r=>r.simulations[`${state.blocks}_${state.cooling}_${state.profile}`];
 const sources=Object.fromEntries(DATA.sources.map(s=>[s.id,s]));
 const sourceLink=id=>sources[id]?.url?`<a href="${esc(sources[id].url)}" target="_blank" rel="noopener">${esc(id)} ↗</a>`:esc(id);
-const metricValue=(r,metric)=>{const s=getSim(r);return metric==='range'?(s?s.wmtc_equiv:r.energy_ceiling_wmtc*state.blocks):metric==='runtime'?(s?s.minutes:null):(s?s.heat_mean:null);};
+const metricValue=(r,metric)=>{const s=getSim(r);return metric==='range'?(s?s.wmtc_equiv:r.energy_ceiling_wmtc*state.blocks):metric==='runtime'?(s?s.minutes:null):(s?s.t_peak:null);};
 const availabilityLabel=s=>({in_stock:'в наличии',out_of_stock:'нет в наличии',page_allows_add_to_cart:'доступно к заказу',not_found_on_nkon:'точная модель на NKON не найдена'}[s]||(s?.startsWith('expected_')?`ожидается ${s.slice(9).split('-').reverse().join('.')}`:s||'статус не указан'));
 const priceAt=(nk,qty)=>{
  if(!nk||nk.price==null)return null;
@@ -31,6 +31,7 @@ function marketInfo(m){
   const tiers=(nk.quantity_tiers||[]).map(t=>`от ${t.min_quantity}: ${num(t.unit_price,2)} ${esc(t.currency||nk.currency||'EUR')}`).join(' · ');
   links.push(`${title}<span class="sub">${esc(availabilityLabel(nk.availability))} · снимок ${esc(nk.observed_at||'')}</span>${tiers?`<span class="sub">${tiers}</span>`:''}${nk.note?`<span class="sub">${esc(nk.note)}</span>`:''}`);
  }
+ if(market.alibaba)links.push(alibabaInfo(m,416));
  return links.join('<br>')||'<span class="unknown">Ссылки отсутствуют</span>';
 }
 function marketCost(r){
@@ -39,6 +40,11 @@ function marketCost(r){
  return `${num(one.total,2)} €<span class="sub">${num(one.unit,2)} €/яч. · ${r.n} шт.</span><span class="sub">Два блока: ${num(two.total,2)} € · ${num(two.unit,2)} €/яч.</span><span class="sub">${esc(availabilityLabel(nk.availability))}; без доставки</span>`;
 }
 
+function alibabaInfo(m,qty){
+ const o=m.market?.alibaba;if(!o)return '<span class="unknown">Нет точного предложения; см. отдельный реестр Alibaba</span>';
+ const status=({quoted:'Цена получена; остаток не подтверждён',out_of_stock:'Нет в наличии у продавца',pending_confirmation:'Ожидается подтверждение'})[o.availability];
+ return `${o.price==null?'—':`${num(o.price,2)} USD/шт. · ${num(o.price*qty,2)} USD/блок · ${num(o.price*qty*2,2)} USD/два`}<span class="sub">${esc(status)} · ${esc(o.observed_at)}</span><span class="sub">Без доставки/налогов. ${esc(o.note)}</span>`;
+}
 function sortedRows(rows,key,ascending=true){
  if(!key||key==='photo'||key==='name')return [...rows].sort((a,b)=>a.order-b.order);
  const c=columns().find(x=>x.key===key);if(!c)return [...rows];
@@ -48,17 +54,17 @@ function setMetric(metric){state.metric=metric;if(state.view==='modes'){state.so
 function renderChart(){
  const candidates=ROWS.filter(r=>r.candidate).sort((a,b)=>{const x=metricValue(a,state.metric),y=metricValue(b,state.metric);if(x==null)return y==null?a.order-b.order:1;if(y==null)return -1;return (state.metric==='heat'?x-y:y-x)||a.order-b.order;});
  const rows=state.selection==='all'?candidates:candidates.filter(r=>r.id===state.selection);
- const title={range:'WMTC: энергетический эквивалент',runtime:'Время до ограничения и до резерва',heat:'Среднее тепло в ячейках одного блока'}[state.metric];
+ const title={range:'WMTC: энергетический эквивалент',runtime:'Время до ограничения и до резерва',heat:'Максимальная средняя температура ячеек, °C'}[state.metric];
  $('chart-title').textContent=title;$('back-all').hidden=state.selection==='all';
- $('chart-note').textContent=state.metric==='range'?'Километры — пересчёт выданной энергии по индексу BRP, а не моделирование графика скорости WMTC. Штриховка: только граница по энергии, без проверки неизвестных потерь и тока.':'Сценарная модель при 25 °C. Время после снижения мощности не равно работе с прежней тягой. Пустое значение означает нехватку данных, а не нулевой нагрев.';
+ $('chart-note').textContent=state.metric==='heat'?'Tmax — максимум средней температуры до выбранного резерва, включая снижение тяги; локальные горячие точки не рассчитаны. Начало 25 °C. G — условный теплоотвод всего блока, не измеренная характеристика. Под температурой показаны средние потери ячеек и обвязки. Сравнение с разрядами Mooch находится ниже в разделе проверки модели.':state.metric==='range'?'Километры — пересчёт выданной энергии по индексу BRP, а не моделирование графика скорости WMTC. Штриховка: только граница по энергии, без проверки неизвестных потерь и тока.':'Сценарная модель при 25 °C. Время после снижения мощности не равно работе с прежней тягой. Пустое значение означает нехватку данных, а не нулевой нагрев.';
  $('chart-legend').innerHTML=state.metric==='runtime'?'<span>Без снижения запроса</span><span class="rest">После снижения, до резерва</span>':'<span>Модель с ограничениями</span><span class="uncertain">Только энергетическая граница / данных нет</span>';
  const vals=rows.map(r=>metricValue(r,state.metric));
  const max=Math.max(...vals.filter(x=>x!=null),1)*1.07;
  $('bars').innerHTML=rows.map((r,i)=>{const s=getSim(r),v=vals[i],uncertain=!s;let bar='';
   if(v!=null){if(state.metric==='runtime')bar=`<i class="bar-total" style="width:${v/max*100}%"></i><i class="bar-full" style="width:${s.full_minutes/max*100}%"></i>`;else bar=`<i class="bar-fill ${uncertain?'estimate':''}" style="width:${v/max*100}%"></i>`;}
-  const label=state.metric==='runtime'&&s?`${num(s.full_minutes,0)} / ${num(v,0)} <small>мин: полный / всего</small>`:v==null?'—<small>нет данных</small>':`${uncertain?'≤ ':''}${num(v,0)} ${state.metric==='range'?'км':'Вт'}${uncertain?'<small>граница по энергии</small>':''}`;
+  const label=state.metric==='runtime'&&s?`${num(s.full_minutes,0)} / ${num(v,0)} <small>мин: полный / всего</small>`:v==null?'—<small>нет данных</small>':`${uncertain?'≤ ':''}${num(v,0)} ${state.metric==='range'?'км':'°C'}${uncertain?'<small>граница по энергии</small>':state.metric==='heat'?`<small>${num(s.heat_enclosed_mean,0)} Вт / блок</small>`:''}`;
   return `<button class="bar-row" data-select="${r.id}" aria-label="Подробно: ${esc(r.name)}"><span class="bar-label">${esc(r.cell_name)}<small>${r.s}S${r.p}P · ${num(r.energy,2)} кВт·ч/блок${r.dc_basis.startsWith('Независимый')?' · DCIR теста':''}</small></span><span class="bar-track">${bar}</span><span class="bar-value">${label}</span></button>`;}).join('');
- $('axis').innerHTML=`<span>0</span><span>${num(max/2,0)}</span><span>${num(max,0)} ${state.metric==='range'?'км':state.metric==='runtime'?'мин':'Вт'}</span>`;
+ $('axis').innerHTML=`<span>0</span><span>${num(max/2,0)}</span><span>${num(max,0)} ${state.metric==='range'?'км':state.metric==='runtime'?'мин':'°C'}</span>`;
  $('detail').hidden=state.selection==='all';if(rows.length===1)renderDetail(rows[0]);
 }
 function plot(trace,key,label,color,limit){
@@ -75,10 +81,10 @@ function plot(trace,key,label,color,limit){
 function renderDetail(r){const s=getSim(r),m=MODELS[r.model];
  $('detail').innerHTML=`<div class="detail-top"><div>${photo(r,false)}</div><div><p class="eyebrow">${esc(r.format)} · ${r.n} элементов в блоке</p><h3>${esc(r.name)}</h3><span class="muted">${num(r.finished[0])}–${num(r.finished[1])} кг · корпус ${dim(r.box)} мм</span></div></div>`;
  if(!s){$('detail').innerHTML+=`<div class="empty">Тепловой прогноз и время сохранения мощности не рассчитаны: ${esc(r.dc_model==null?'нет DCIR':'нет полной применимой карты тока')}. ${esc(m.note)}</div><p class="note">Верхняя граница энергетического эквивалента для ${state.blocks} блоков: ${num(r.energy_ceiling_wmtc*state.blocks,0)} км по индексу WMTC / ${num(r.energy_ceiling_utility*state.blocks,0)} км по рабочему индексу. Это не подтверждение допустимой нагрузки.</p>`;return;}
- $('detail').innerHTML+=`<div class="kpis"><div class="kpi"><strong>${num(s.full_minutes)}</strong><span>мин без снижения запроса</span></div><div class="kpi"><strong>${num(s.minutes)}</strong><span>мин всего до резерва</span></div><div class="kpi"><strong>${num(s.utility_equiv,0)} км</strong><span>рабочий энергетический эквивалент</span></div><div class="kpi"><strong>${num(s.heat_mean,0)} Вт</strong><span>среднее тепло ячеек / блок</span></div></div>
- <div class="plots"><div class="plot"><h4>Запас заряда, %</h4>${plot(s.trace,'soc','SOC по времени','#0071e3',10)}<p>Время, мин. Нижний резерв — 10% SOC либо 85% бюджета Eном.</p></div><div class="plot"><h4>Температура ячеек, °C</h4>${plot(s.trace,'temp','Средняя температура по времени','#bc690b',45)}<p>Пунктир — начало снижения потолка при 45 °C. Горячие точки не рассчитаны.</p></div><div class="plot"><h4>Фактическая мощность на валу, кВт</h4>${plot(s.trace,'power','Доступная мощность по времени','#237c55',null)}<p>Для смешанного режима — средняя по долям, не высота отдельных импульсов.</p></div></div>
- <div class="callout"><strong>Первое ограничение:</strong> ${esc(s.first_limit)}.${s.first_soc!=null?` В модели это происходит около ${num(s.first_soc,0)}% SOC, при ${num(s.first_voltage,1)} В под нагрузкой и средней температуре ${num(s.first_temp,0)} °C.`:''} Максимальный ток одного блока в сценарии: ${num(s.max_current,0)} А / ${num(s.max_current/r.p)} А на ячейку. Выдано ${num(s.output_kwh,2)} кВт·ч; средняя мощность на валу ${num(s.mean_power,1)} кВт. Тепло всех подключённых ячеек: ${num(s.heat_kj,0)} кДж.</div>
- <p class="note">DCIR: ${num(r.dc_model,2)} мОм/яч. · ${esc(r.dc_basis)}. В тяжёлом условном маршруте 250–400 Вт·ч/км: ${num(s.rough_range[0],0)}–${num(s.rough_range[1],0)} км. Предварительная оценка зависит от принятой карты управления; это не гарантия диапазона.</p>`;
+ $('detail').innerHTML+=`<div class="kpis"><div class="kpi"><strong>${num(s.full_minutes)}</strong><span>мин без снижения запроса</span></div><div class="kpi"><strong>${num(s.minutes)}</strong><span>мин до резерва / остановки</span></div><div class="kpi"><strong>${num(s.utility_equiv,0)} км</strong><span>рабочий энергетический эквивалент</span></div><div class="kpi"><strong>${num(s.heat_mean,0)} Вт</strong><span>среднее тепло ячеек / блок</span></div></div>
+ <div class="plots"><div class="plot"><h4>Запас заряда, %</h4>${plot(s.trace,'soc','SOC по времени','#0071e3',10)}<p>Время, мин. Нижний резерв — 10% SOC либо 85% бюджета Eном.</p></div><div class="plot"><h4>Температура ячеек, °C</h4>${plot(s.trace,'temp','Сценарная средняя температура по времени','#bc690b',45)}<p>Максимум ${num(s.t_peak,1)} °C; конец ${num(s.t_end,1)} °C. Пунктир — начало снижения потолка при 45 °C. Горячие точки не рассчитаны.</p></div><div class="plot"><h4>Фактическая мощность на валу, кВт</h4>${plot(s.trace,'power','Доступная мощность по времени','#237c55',null)}<p>Для смешанного режима — средняя по долям, не высота отдельных импульсов.</p></div></div>
+ <div class="callout"><strong>Первое ограничение:</strong> ${esc(s.first_limit)}.${s.first_soc!=null?` В модели это происходит около ${num(s.first_soc,0)}% SOC, при ${num(s.first_voltage,1)} В под нагрузкой и средней температуре ${num(s.first_temp,0)} °C.`:''} Максимальный ток одного блока в сценарии: ${num(s.max_current,0)} А / ${num(s.max_current/r.p)} А на ячейку. Завершение: ${esc(s.stop_reason)}. Выдано ${num(s.output_kwh,2)} кВт·ч; средняя мощность на валу ${num(s.mean_power,1)} кВт. Тепло всех подключённых ячеек: ${num(s.heat_kj,0)} кДж.</div>
+ <p class="note">Максимальная средняя температура ${num(s.t_peak,1)} °C, конец ${num(s.t_end,1)} °C. Тепло обвязки ${num(s.line_heat_kj,0)} кДж; всё условно отнесено внутрь корпуса. <a href="#thermal-audit">Сопоставление с температурами Mooch</a>. ${esc(s.voltage_basis)}. DCIR: ${num(r.dc_model,2)} мОм/яч. · ${esc(r.dc_basis)}. В тяжёлом условном маршруте 250–400 Вт·ч/км: ${num(s.rough_range[0],0)}–${num(s.rough_range[1],0)} км. Предварительная оценка зависит от принятой карты управления; это не гарантия диапазона.</p>`;
 }
 const col=(key,label,render,sort)=>({key,label,render,sort});
 function columns(){
@@ -90,6 +96,7 @@ function columns(){
   col('layout','Предлагаемое размещение',r=>esc(r.layout),r=>r.layout),col('fit','В 230×400×340 мм',r=>esc(r.fit),r=>r.fit),
   col('box','Корпус для CAD',r=>`${dim(r.box)} мм<span class="sub">Δ ${r.delta.map(x=>(x>=0?'+':'')+x).join(' / ')} мм</span>`,r=>r.box.reduce((a,b)=>a*b,1)),
   col('reserve','Обвязка до 40 кг',r=>`${num(40-r.mass,2)} кг`,r=>40-r.mass),
+  col('alibaba-cost','Стоимость Alibaba (USD)',r=>alibabaInfo(MODELS[r.model],r.n),r=>{const o=MODELS[r.model].market?.alibaba;return o?.price==null?null:o.price*r.n;}),
   col('market-cost','Стоимость NKON',r=>marketCost(r),r=>{const nk=MODELS[r.model].market?.nkon,p=priceAt(nk,r.n);return p?.total??null;})]);
  if(state.view==='electrical')return base.concat([
   col('volt','Uном / Uзаряд',r=>`${num(r.voltage)} / ${num(r.vmax)} В`,r=>r.voltage),
@@ -103,7 +110,8 @@ function columns(){
   col('total','Мин всего',r=>num(getSim(r)?.minutes),r=>getSim(r)?.minutes),
   col('range','WMTC-эквивалент',r=>getSim(r)?`${num(getSim(r).wmtc_equiv,0)} км`:`≤ ${num(r.energy_ceiling_wmtc*state.blocks,0)} км*`,r=>getSim(r)?.wmtc_equiv??null),
   col('utility','Рабочий эквивалент',r=>getSim(r)?`${num(getSim(r).utility_equiv,0)} км`:'—',r=>getSim(r)?.utility_equiv),
-  col('heat','Среднее тепло / блок',r=>`${num(getSim(r)?.heat_mean,0)} Вт`,r=>getSim(r)?.heat_mean),
+  col('heat','Tmax средняя',r=>`${num(getSim(r)?.t_peak,1)} °C`,r=>getSim(r)?.t_peak),
+  col('losses','Тепло ячеек + обвязки',r=>`${num(getSim(r)?.heat_enclosed_mean,0)} Вт`,r=>getSim(r)?.heat_enclosed_mean),
   col('temp','T к резерву',r=>`${num(getSim(r)?.t_end,0)} °C`,r=>getSim(r)?.t_end),
   col('cause','Первое ограничение',r=>esc(getSim(r)?.first_limit??'Нужны исходные данные'),r=>getSim(r)?.first_limit??null)]);
  return base.concat([

@@ -1,6 +1,6 @@
 {
-  "release": "20260922-r10",
-  "date": "2026-09-22",
+  "release": "20260930-r11",
+  "date": "2026-09-30",
   "models": 37,
   "configurations": 42,
   "overview_21700": 16,
@@ -10,15 +10,15 @@
   "forum_threads": 51,
   "full_text_articles": 48,
   "forum_archive_complete": false,
-  "pdf_pages": 52,
+  "pdf_pages": 58,
   "files": {
     "index.html": {
-      "bytes": 8690659,
-      "sha256": "af44a6074c41800698e401bf076dd239aac1de3db9da812b825c138f89eaf777"
+      "bytes": 8476319,
+      "sha256": "1d4afb180a902bdd60c944ba560746b37bfe2a0c4ba08914c33c63197eb7a168"
     },
     "report.js": {
-      "bytes": 20942,
-      "sha256": "e5a5e7c99fa63c0e3222eab7a17be9639d2d52c591ee0c2eaba86118fa06962a"
+      "bytes": 23236,
+      "sha256": "b9bbe7926999bd64f60731772895657302c03957459c15bd24d3f0bbd7e2fd20"
     },
     "report.css": {
       "bytes": 15556,
@@ -48,9 +48,9 @@
       "bytes": 22035,
       "sha256": "d7a73b201dc2947aaf1d46caff11787b3fae6c830be3ca1145ebd46f83f9e3b4"
     },
-    "AKB_96V_Comparative_Study_2026-09-21.pdf": {
-      "bytes": 683898,
-      "sha256": "ba3eeb076556ab8d2bb6c95b8984ea8e07e6fae8a46f15e1eb29f235856d853a"
+    "AKB_96V_Comparative_Study_2026-09-30.pdf": {
+      "bytes": 1944450,
+      "sha256": "3314abb61332d2bfb3aeb606bd82fd5f69652d03a42e9f08a951a11934358a13"
     },
     "assets/t50xg.png": {
       "bytes": 217870,
@@ -59,8 +59,123 @@
     "assets/p73d.jpg": {
       "bytes": 171086,
       "sha256": "412312be4247765e2f0dbce19c34e5904c133e7e1f2aba45bbfdc1188bb10159"
+    },
+    "discharge_tests.json": {
+      "bytes": 660850,
+      "sha256": "3415cd1f344345cb45b3b09c490d907d980016be75dfe0d08672cd87b8d6cdc6"
+    },
+    "discharge_energy_temperature.csv": {
+      "bytes": 16400,
+      "sha256": "f9f3b37fabb0510f49c81969e5530b630d5e56288845da962e2eb451bcae4687"
+    },
+    "alibaba_quotes.json": {
+      "bytes": 4582,
+      "sha256": "77a569bed9254f7f5bd8e81c5a54ccef8f8455ffb4d0a898aad438986ddbca78"
+    },
+    "alibaba_quotes_2026-09-30.csv": {
+      "bytes": 3182,
+      "sha256": "1d0977901f5f253c583fc1cbd2b0a9fc5fea59e045164bb5fba432bd417d4a03"
+    },
+    "tests/amprius50q.jpg": {
+      "bytes": 436029,
+      "sha256": "619bbe667a99254acafd98c56baa2047cb16f7183107dae49e24b3b5c5e5126c"
+    },
+    "tests/bak50d2.jpg": {
+      "bytes": 453223,
+      "sha256": "da5749135caa8ae163a1697ad2b6190c68ca0eacfeb002e1cb7d6073bfab64b7"
+    },
+    "tests/bak65e.jpg": {
+      "bytes": 368220,
+      "sha256": "4da9618da6405f361091a8e17ad57cfd5c1265914109c11ca43440f6f070e7d1"
+    },
+    "tests/eve50pl.jpg": {
+      "bytes": 454588,
+      "sha256": "fdb4689ea4d61e64f58ddf59e54fa4d87c3ac1032da32e3d06733d3e5108d5f3"
+    },
+    "tests/g50.jpg": {
+      "bytes": 480973,
+      "sha256": "16040d35b8fae65d507d9e7014cc1e03635c18f8a2fde6d9288b7b1a1ac3d8c0"
+    },
+    "tests/gp50q.jpg": {
+      "bytes": 465667,
+      "sha256": "649531b628cf069ccfc8343fc60918210fa1776889e958ba5d3dcf0a69a7a12c"
+    },
+    "tests/gp60q.jpg": {
+      "bytes": 449406,
+      "sha256": "b1d82d579faeeb5630071fc240d9fe82905fbf81c4c0517ac0532a7492898f3e"
+    },
+    "tests/h51t.jpg": {
+      "bytes": 132604,
+      "sha256": "2c33b51a875d2eee73cc11e29722633bcdfb72332871c714fcf427ad0cef149b"
+    },
+    "tests/jp50p1.jpg": {
+      "bytes": 465542,
+      "sha256": "11c3f0086a17230e025295faf96937112f9ec56121513ae7ec9cd53d5fe3645e"
+    },
+    "tests/lg.jpg": {
+      "bytes": 212741,
+      "sha256": "bb9dc13996ff6d238ea26de2f0d41b85538a25d76748acd116f557ffd40a72ec"
+    },
+    "tests/link50t.jpg": {
+      "bytes": 492119,
+      "sha256": "607b926f34c2656ae0f82ad6a09ea01a7a2f92838846fa656ebe84008fe90479"
+    },
+    "tests/link55p.jpg": {
+      "bytes": 440363,
+      "sha256": "dcce54f48a2fa9bd732a009b48ba3dd70b079bba356b2cb12d4a7dbf52a62f27"
+    },
+    "tests/link60p.jpg": {
+      "bytes": 407645,
+      "sha256": "4a609c58d4dc3c099415446678f183965ff4ffd357f332d7fc237dfe269d2725"
+    },
+    "tests/link65p.jpg": {
+      "bytes": 169912,
+      "sha256": "2ac2cc9b9ea04dde06267eac2cba7dae0019d979f4ed70604bee7265271e0eb0"
+    },
+    "tests/m50a.jpg": {
+      "bytes": 474979,
+      "sha256": "f9944b298ae2ad3c196dd4c25a6781c0ebce3693ecfb9cb767a85d8335fcbd4e"
+    },
+    "tests/mooch-18650-2026-09-15.jpg": {
+      "bytes": 990958,
+      "sha256": "9c555ba65a5d7a3a56109b1d77877ff35811a856cf479f9bf03aec158c673e47"
+    },
+    "tests/p50b.jpg": {
+      "bytes": 475444,
+      "sha256": "d4cc416be9f63e8bed9302ed2bd14729453fd83682047c3621a9ffe1df34abe1"
+    },
+    "tests/p50b_sample.jpg": {
+      "bytes": 357199,
+      "sha256": "749048442f3770e02be4e784ea04655922c83ec8052b37ef217fb2a279401db3"
+    },
+    "tests/rh60.jpg": {
+      "bytes": 406985,
+      "sha256": "a528d17085e6dd9efd39993468d1e477675f10d49bda12925a533459537e0c2e"
+    },
+    "tests/rs50.jpg": {
+      "bytes": 479265,
+      "sha256": "212f8b2b6cc8e88290656e1387d9f70a4d0332c97d5e831570e53221ef470ae4"
+    },
+    "tests/rs60.jpg": {
+      "bytes": 443414,
+      "sha256": "9495e9a2bc2f9b8a8b04e4bac936955a1102867bf02af126738b9e3af397344c"
+    },
+    "tests/sa112.jpg": {
+      "bytes": 384678,
+      "sha256": "5c113458f2ea91f3270e063b68df4a106d40ebf7a4379d46cc79895d7723fcce"
+    },
+    "tests/t50xg.jpg": {
+      "bytes": 415072,
+      "sha256": "9fd72cc7f25ce9ba0bf41838bbeae1c2bd027a083536d606175cd19e2c0284ae"
+    },
+    "tests/tp60xg.jpg": {
+      "bytes": 491232,
+      "sha256": "f1ac0c2c675f16b27f19dcf80030b97df67ddcec1bf1dd50b5f996bd48709e69"
     }
   },
+  "discharge_charts": 23,
+  "initial_cell_temperature_C": 25,
+  "thermal_model_status": "scenario_only_not_validated_sealed_pack",
   "conclusion": {
     "top_21700": 5,
     "attention_21700": 3,
