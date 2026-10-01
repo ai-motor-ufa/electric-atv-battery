@@ -3,6 +3,7 @@ const fs=require('fs'),vm=require('vm'),assert=require('assert');
 const html=fs.readFileSync('dist/index.html','utf8');
 const json=html.match(/<script type="application\/json" id="report-data">([\s\S]*?)<\/script>/)[1];
 const data=JSON.parse(json),nodes=new Map();
+assert(html.includes('<option value="5" selected>Сценарий · G = 5 Вт/К</option>'),'Cooling selector must show the actual initial G=5 calculation');
 function node(id){if(!nodes.has(id))nodes.set(id,{id,innerHTML:'',textContent:'',hidden:false,value:'',handlers:{},dataset:{},addEventListener(k,f){this.handlers[k]=f;},setAttribute(k,v){this[k]=v;}});return nodes.get(id);}
 node('report-data').textContent=json;
 const metricButtons=['range','runtime','heat'].map(k=>Object.assign(node('metric-'+k),{dataset:{metric:k}}));
@@ -41,7 +42,7 @@ assert(!data.rows.some(r=>r.format.includes('LFP')));for(const k of ['bak50d2','
 assert(!Object.values(data.models).some(m=>/LFP|LMFP/i.test(m.type)));
 assert.deepStrictEqual([...new Set(data.rows.map(r=>r.model))].sort(),Object.keys(data.models).sort());
 for(const k of ['t50xg','e61v','e63b','e66a'])assert(data.models[k]);
-assert.equal(data.models.s50s.dc_test,10);assert.equal(data.models.s50s2.dc_test,13.35);assert.deepStrictEqual(data.models.s50s2.test_capacity_ah,[5.111,5.143]);
+assert.equal(data.models.s50s.dc_test,10);assert.equal(data.models.s50s2.dc_test,13.4);assert.deepStrictEqual(data.models.s50s2.test_capacity_ah,[5.111,5.143]);
 for(const k of ['bak50d2','s50s','p42a','p45b','rs60'])assert(data.models[k].market?.nkon?.price!=null,'Missing NKON price for '+k);
 for(const k of ['amprius50q','gp50q','link60p','link65p'])assert.equal(data.models[k].market?.nkon?.availability,'not_found_on_nkon');
 const anchorIds=new Set(Array.from(html.matchAll(/\bid="([^"]+)"/g),m=>m[1]));

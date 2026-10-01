@@ -6,6 +6,10 @@ root=Path(__file__).parent
 d=json.loads((root/'discharge_tests.json').read_text())
 by={x['key']:x for x in d['datasets']}
 assert len(by)==23
+# These visible source traces reach the cutoff. A mid-plot raster dropout
+# must not silently remove the lowest measured-current curve.
+assert 17.7<next(c for c in by['rs60']['curves'] if c['current_A']==5)['energy_3_0_Wh']<18.2
+assert next(c for c in by['amprius50q']['curves'] if c['current_A']==10)['energy_3_0_Wh'] is not None
 # Independent exact trapezoid fixture: 4->3 V across 2 Ah = 7 Wh.
 assert integral([[0,4],[2,3]],3)==(7.,2.)
 assert integral([[0,4],[1,3.5]],3)==(None,None)
@@ -31,7 +35,7 @@ assert '50T' in by['link50t']['title']
 assert not any(c['current_A'] in [25,30] for c in by['bak65e']['curves'])
 assert any(c['thermal_stop'] and c['energy_3_0_Wh'] is None for c in by['link60p']['curves'])
 q=json.loads((root/'alibaba_quotes.json').read_text())
-assert len(q['offers'])==16
+assert len(q['offers'])==24
 for o in q['offers']:
  if o['availability']!='quoted':assert o['price'] is None
 for name in ['Ampace JP50','Linkdata INR21700S-50P','Vapcell T60','Vapcell Q65']:
@@ -45,4 +49,4 @@ for r in calc['rows']:
    assert s['heat_enclosed_mean']>=s['heat_mean']
    assert s['t_peak']>=s['t_end'] and s['t_peak']<=60.00001
    assert s['voltage_basis']==r['voltage_basis']
-print('PASS: curve integration, cutoffs, annotated temperatures, identity separation, all 16 quotes, maximum temperature and enclosed losses.')
+print('PASS: curve integration, cutoffs, annotated temperatures, identity separation, all 24 offers, maximum temperature and enclosed losses.')

@@ -46,7 +46,9 @@ STOP_ENDPOINTS = {('link55p',50):4.03, ('tp60xg',50):4.32,
 def mask_for(a,color):
  r,g,b=[a[:,:,i].astype(float) for i in range(3)]
  if color=='red':return (r>160)&(g<140)&(b<140)&(r-g>90)&(r-b>90)
- if color=='green':return (g>155)&(r<155)&(b<155)&(g-r>130)&(g-b>130)
+ # JPEG antialiasing and the grey watermark desaturate the bright green
+ # trace. Requiring a 130-level difference truncated the RS60 5 A curve.
+ if color=='green':return (g>150)&(r<205)&(b<205)&(g-r>65)&(g-b>65)
  if color=='blue':return (b>150)&(r<155)&(g<160)&(b-r>60)&(b-g>60)
  if color=='pink':return (r>170)&(b>160)&(g<200)&(r-g>25)&(b-g>25)
  if color=='purple':return (r>65)&(b>70)&(g<90)&(r-g>40)&(b-g>40)&(r<200)

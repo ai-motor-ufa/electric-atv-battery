@@ -1,0 +1,25 @@
+﻿Модель;USD/шт;Продавец / предложение;Дата предложения;Статус;USD/416 ячеек (условно);USD/832 ячейки (условно);Примечание;Дата;Источник
+Yichuan 21700 50PL 5000 мА·ч 10C;2.75;Vapcell / vapcelltech.en.alibaba.com;2026-09-30;quoted;1144.0;2288.0;"Наименование продавца. Не приравнено к EVE 50PL; изготовитель и паспорт не подтверждены.";2026-09-30;https://vapcelltech.en.alibaba.com/
+Great Power 50Q;2.75;Vapcell / vapcelltech.en.alibaba.com;2026-09-30;quoted;1144.0;2288.0;"50 А — заявление продавца; в расчёте сохранён отдельный предел по независимому тесту.";2026-09-30;https://vapcelltech.en.alibaba.com/
+Linkdata INR21700S-50P;3.05;Vapcell / vapcelltech.en.alibaba.com;2026-09-30;quoted;1268.8;2537.6;"Не Linkdata 50T из архива; результаты 50T не перенесены.";2026-09-30;https://vapcelltech.en.alibaba.com/
+Vapcell T60;4.3;Vapcell / vapcelltech.en.alibaba.com;2026-09-30;quoted;1788.8;3577.6;"6000 мА·ч/40 А заявлены продавцом; в архиве испытания другой модели G50.";2026-09-30;https://vapcelltech.en.alibaba.com/
+Linkdata 65P;7.45;Vapcell / vapcelltech.en.alibaba.com;2026-09-30;quoted;3099.2;6198.4;52 А на предложении не приравнены к разрешённому длительному току.;2026-09-30;https://vapcelltech.en.alibaba.com/
+Vapcell Q65;3.6;Vapcell / vapcelltech.en.alibaba.com;2026-09-30;quoted;1497.6;2995.2;"6500 мА·ч/40 А заявлены продавцом; идентичность базовой ячейки не подтверждена.";2026-09-30;https://vapcelltech.en.alibaba.com/
+Reliance RS50;3.7;Vapcell / vapcelltech.en.alibaba.com;2026-10-01;quoted;1539.2;3078.4;При поставке сверить CCC/spiral и редакцию с графиком.;2026-10-01;https://vapcelltech.en.alibaba.com/
+Reliance RS60;;Vapcell / vapcelltech.en.alibaba.com;2026-10-01;out_of_stock;;;Цена не сообщена.;2026-10-01;https://vapcelltech.en.alibaba.com/
+BAK 50D2;;Vapcell / vapcelltech.en.alibaba.com;2026-10-01;out_of_stock;;;Отсутствие у Vapcell не отменяет отдельный снимок NKON.;2026-10-01;https://vapcelltech.en.alibaba.com/
+BAK 60D;;Vapcell / vapcelltech.en.alibaba.com;2026-10-01;out_of_stock;;;"Не BAK 65E; испытаний 60D в архиве нет.";2026-10-01;https://vapcelltech.en.alibaba.com/
+EVE 50PL;2.7;Vapcell / vapcelltech.en.alibaba.com;2026-10-01;quoted;1123.2;2246.4;Перед заказом подтвердить редакцию и массу.;2026-10-01;https://vapcelltech.en.alibaba.com/
+Tenpower 50XG;3.45;Vapcell / vapcelltech.en.alibaba.com;2026-10-01;quoted;1435.2;2870.4;Сверить серийную партию и массу.;2026-10-01;https://vapcelltech.en.alibaba.com/
+Tenpower 60XG;;Vapcell / vapcelltech.en.alibaba.com;2026-10-01;pending_confirmation;;;Цена и наличие ожидают подтверждения.;2026-10-01;https://vapcelltech.en.alibaba.com/
+Linkdata 60P;5.4;Vapcell / vapcelltech.en.alibaba.com;2026-10-01;quoted;2246.4;4492.8;Условия тока и температуры по независимому тесту показаны отдельно.;2026-10-01;https://vapcelltech.en.alibaba.com/
+Great Power 60Q;3.75;Vapcell / vapcelltech.en.alibaba.com;2026-10-01;quoted;1560.0;3120.0;"График CCC от 22.08.2026 добавлен; паспорт/масса для сборки требуют подтверждения.";2026-10-01;https://vapcelltech.en.alibaba.com/
+Ampace JP50;3.45;Vapcell / vapcelltech.en.alibaba.com;2026-10-01;quoted;1435.2;2870.4;Предложение JP50 отдельно от испытанной JP50P1 no CCC.;2026-10-01;https://vapcelltech.en.alibaba.com/
+EVE 50PL;2.99;Alibaba · предложение A (продавец не указан);2026-10-01;quoted;1243.84;2487.68;"Продавец и партия не названы; наличие и редакцию подтвердить. ";2026-10-01;
+Reliance RS50;3.67;Alibaba · предложение A (продавец не указан);2026-10-01;quoted;1526.72;3053.44;"Продавец и партия не названы; наличие и редакцию подтвердить. ";2026-10-01;
+Samsung 50S;2.79;Alibaba · предложение A (продавец не указан);2026-10-01;quoted;1160.64;2321.28;"Продавец и партия не названы; наличие и редакцию подтвердить. 50S не приравнен к 50S2.";2026-10-01;
+BAK 50D2;3.33;Alibaba · предложение B (продавец не указан);2026-10-01;quoted;1385.28;2770.56;"Продавец и партия не названы; наличие и редакцию подтвердить. ";2026-10-01;
+EVE 50PL;3.28;Alibaba · предложение B (продавец не указан);2026-10-01;quoted;1364.48;2728.96;"Продавец и партия не названы; наличие и редакцию подтвердить. ";2026-10-01;
+Tenpower 60XG;5.2;Alibaba · предложение B (продавец не указан);2026-10-01;quoted;2163.2;4326.4;"Продавец и партия не названы; наличие и редакцию подтвердить. Предсерия / ZG13 не определены предложением.";2026-10-01;
+Linkdata 60P;5.3;Alibaba · предложение B (продавец не указан);2026-10-01;quoted;2204.8;4409.6;"Продавец и партия не названы; наличие и редакцию подтвердить. ";2026-10-01;
+Ampace JP50P1;3.98;Alibaba · предложение B (продавец не указан);2026-10-01;quoted;1655.68;3311.36;"Продавец и партия не названы; наличие и редакцию подтвердить. JP50P1 не приравнен к JP50.";2026-10-01;

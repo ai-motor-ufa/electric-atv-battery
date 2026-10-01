@@ -1,122 +1,298 @@
 {
-  "date": "2026-09-30",
-  "source": "Коммерческое предложение продавца, передано пользователем 30.09.2026; веб-цены не проверялись",
-  "seller": "Vapcell / vapcelltech.en.alibaba.com",
+  "date": "2026-10-01",
+  "source": "Предложения пользователя от 30.09 и 01.10.2026. A и B — отдельные наборы цен без имени продавца; V — ранее названный Vapcell. Веб-цены не проверялись.",
+  "seller": "Alibaba · предложения A, B и Vapcell",
   "seller_url": "https://vapcelltech.en.alibaba.com/",
   "currency": "USD",
-  "conditions": "Без доставки, налогов, пошлин, BMS и корпуса. MOQ, объём скидки и условия оплаты не указаны; сумма на блок — арифметическая оценка при неизменной цене/шт. Статус «цена получена» не подтверждает остаток на складе.",
+  "conditions": "Без доставки, налогов, пошлин, BMS и корпуса. MOQ, объём скидки и условия оплаты не указаны; сумма на блок — арифметическая оценка при неизменной цене/шт. Статус «цена получена» не подтверждает остаток на складе. Разные предложения не усредняются; цена не означает подтверждённое наличие. Повторённые пользователем позиции Vapcell сохранены один раз.",
   "offers": [
     {
       "model": "Yichuan 21700 50PL 5000 мА·ч 10C",
       "key": null,
       "price": 2.75,
       "availability": "quoted",
-      "note": "Наименование продавца. Не приравнено к EVE 50PL; изготовитель и паспорт не подтверждены."
+      "note": "Наименование продавца. Не приравнено к EVE 50PL; изготовитель и паспорт не подтверждены.",
+      "offer_id": "V01",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-09-30"
     },
     {
       "model": "Great Power 50Q",
       "key": "gp50q",
       "price": 2.75,
       "availability": "quoted",
-      "note": "50 А — заявление продавца; в расчёте сохранён отдельный предел по независимому тесту."
+      "note": "50 А — заявление продавца; в расчёте сохранён отдельный предел по независимому тесту.",
+      "offer_id": "V02",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-09-30"
     },
     {
       "model": "Linkdata INR21700S-50P",
       "key": null,
       "price": 3.05,
       "availability": "quoted",
-      "note": "Не Linkdata 50T из архива; результаты 50T не перенесены."
+      "note": "Не Linkdata 50T из архива; результаты 50T не перенесены.",
+      "offer_id": "V03",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-09-30"
     },
     {
       "model": "Vapcell T60",
       "key": null,
       "price": 4.3,
       "availability": "quoted",
-      "note": "6000 мА·ч/40 А заявлены продавцом; в архиве испытания другой модели G50."
+      "note": "6000 мА·ч/40 А заявлены продавцом; в архиве испытания другой модели G50.",
+      "offer_id": "V04",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-09-30"
     },
     {
       "model": "Linkdata 65P",
       "key": "link65p",
       "price": 7.45,
       "availability": "quoted",
-      "note": "52 А на предложении не приравнены к разрешённому длительному току."
+      "note": "52 А на предложении не приравнены к разрешённому длительному току.",
+      "offer_id": "V05",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-09-30"
     },
     {
       "model": "Vapcell Q65",
       "key": null,
       "price": 3.6,
       "availability": "quoted",
-      "note": "6500 мА·ч/40 А заявлены продавцом; идентичность базовой ячейки не подтверждена."
+      "note": "6500 мА·ч/40 А заявлены продавцом; идентичность базовой ячейки не подтверждена.",
+      "offer_id": "V06",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-09-30"
     },
     {
       "model": "Reliance RS50",
       "key": "rs50",
       "price": 3.7,
       "availability": "quoted",
-      "note": "При поставке сверить CCC/spiral и редакцию с графиком."
+      "note": "При поставке сверить CCC/spiral и редакцию с графиком.",
+      "offer_id": "V07",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-10-01"
     },
     {
       "model": "Reliance RS60",
       "key": "rs60",
       "price": null,
       "availability": "out_of_stock",
-      "note": "Цена не сообщена."
+      "note": "Цена не сообщена.",
+      "offer_id": "V08",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-10-01"
     },
     {
       "model": "BAK 50D2",
       "key": "bak50d2",
       "price": null,
       "availability": "out_of_stock",
-      "note": "Отсутствие у Vapcell не отменяет отдельный снимок NKON."
+      "note": "Отсутствие у Vapcell не отменяет отдельный снимок NKON.",
+      "offer_id": "V09",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-10-01"
     },
     {
       "model": "BAK 60D",
       "key": null,
       "price": null,
       "availability": "out_of_stock",
-      "note": "Не BAK 65E; испытаний 60D в архиве нет."
+      "note": "Не BAK 65E; испытаний 60D в архиве нет.",
+      "offer_id": "V10",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-10-01"
     },
     {
       "model": "EVE 50PL",
       "key": "eve50pl",
       "price": 2.7,
       "availability": "quoted",
-      "note": "Перед заказом подтвердить редакцию и массу."
+      "note": "Перед заказом подтвердить редакцию и массу.",
+      "offer_id": "V11",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-10-01"
     },
     {
       "model": "Tenpower 50XG",
       "key": "t50xg",
       "price": 3.45,
       "availability": "quoted",
-      "note": "Сверить серийную партию и массу."
+      "note": "Сверить серийную партию и массу.",
+      "offer_id": "V12",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-10-01"
     },
     {
       "model": "Tenpower 60XG",
       "key": "tp60xg",
       "price": null,
       "availability": "pending_confirmation",
-      "note": "Цена и наличие ожидают подтверждения."
+      "note": "Цена и наличие ожидают подтверждения.",
+      "offer_id": "V13",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-10-01"
     },
     {
       "model": "Linkdata 60P",
       "key": "link60p",
       "price": 5.4,
       "availability": "quoted",
-      "note": "Условия тока и температуры по независимому тесту показаны отдельно."
+      "note": "Условия тока и температуры по независимому тесту показаны отдельно.",
+      "offer_id": "V14",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-10-01"
     },
     {
       "model": "Great Power 60Q",
       "key": "gp60q",
       "price": 3.75,
       "availability": "quoted",
-      "note": "График CCC от 22.08.2026 добавлен; паспорт/масса для сборки требуют подтверждения."
+      "note": "График CCC от 22.08.2026 добавлен; паспорт/масса для сборки требуют подтверждения.",
+      "offer_id": "V15",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-10-01"
     },
     {
       "model": "Ampace JP50",
       "key": null,
       "price": 3.45,
       "availability": "quoted",
-      "note": "Предложение JP50 отдельно от испытанной JP50P1 no CCC."
+      "note": "Предложение JP50 отдельно от испытанной JP50P1 no CCC.",
+      "offer_id": "V16",
+      "seller_id": "vapcell",
+      "seller": "Vapcell / vapcelltech.en.alibaba.com",
+      "seller_url": "https://vapcelltech.en.alibaba.com/",
+      "observed_at": "2026-10-01"
+    },
+    {
+      "offer_id": "A01",
+      "model": "EVE 50PL",
+      "key": "eve50pl",
+      "price": 2.99,
+      "availability": "quoted",
+      "seller_id": "alibaba_a",
+      "seller": "Alibaba · предложение A (продавец не указан)",
+      "seller_url": "",
+      "observed_at": "2026-10-01",
+      "note": "Продавец и партия не названы; наличие и редакцию подтвердить. "
+    },
+    {
+      "offer_id": "A02",
+      "model": "Reliance RS50",
+      "key": "rs50",
+      "price": 3.67,
+      "availability": "quoted",
+      "seller_id": "alibaba_a",
+      "seller": "Alibaba · предложение A (продавец не указан)",
+      "seller_url": "",
+      "observed_at": "2026-10-01",
+      "note": "Продавец и партия не названы; наличие и редакцию подтвердить. "
+    },
+    {
+      "offer_id": "A03",
+      "model": "Samsung 50S",
+      "key": "s50s",
+      "price": 2.79,
+      "availability": "quoted",
+      "seller_id": "alibaba_a",
+      "seller": "Alibaba · предложение A (продавец не указан)",
+      "seller_url": "",
+      "observed_at": "2026-10-01",
+      "note": "Продавец и партия не названы; наличие и редакцию подтвердить. 50S не приравнен к 50S2."
+    },
+    {
+      "offer_id": "B04",
+      "model": "BAK 50D2",
+      "key": "bak50d2",
+      "price": 3.33,
+      "availability": "quoted",
+      "seller_id": "alibaba_b",
+      "seller": "Alibaba · предложение B (продавец не указан)",
+      "seller_url": "",
+      "observed_at": "2026-10-01",
+      "note": "Продавец и партия не названы; наличие и редакцию подтвердить. "
+    },
+    {
+      "offer_id": "B05",
+      "model": "EVE 50PL",
+      "key": "eve50pl",
+      "price": 3.28,
+      "availability": "quoted",
+      "seller_id": "alibaba_b",
+      "seller": "Alibaba · предложение B (продавец не указан)",
+      "seller_url": "",
+      "observed_at": "2026-10-01",
+      "note": "Продавец и партия не названы; наличие и редакцию подтвердить. "
+    },
+    {
+      "offer_id": "B06",
+      "model": "Tenpower 60XG",
+      "key": "tp60xg",
+      "price": 5.2,
+      "availability": "quoted",
+      "seller_id": "alibaba_b",
+      "seller": "Alibaba · предложение B (продавец не указан)",
+      "seller_url": "",
+      "observed_at": "2026-10-01",
+      "note": "Продавец и партия не названы; наличие и редакцию подтвердить. Предсерия / ZG13 не определены предложением."
+    },
+    {
+      "offer_id": "B07",
+      "model": "Linkdata 60P",
+      "key": "link60p",
+      "price": 5.3,
+      "availability": "quoted",
+      "seller_id": "alibaba_b",
+      "seller": "Alibaba · предложение B (продавец не указан)",
+      "seller_url": "",
+      "observed_at": "2026-10-01",
+      "note": "Продавец и партия не названы; наличие и редакцию подтвердить. "
+    },
+    {
+      "offer_id": "B08",
+      "model": "Ampace JP50P1",
+      "key": "jp50p1",
+      "price": 3.98,
+      "availability": "quoted",
+      "seller_id": "alibaba_b",
+      "seller": "Alibaba · предложение B (продавец не указан)",
+      "seller_url": "",
+      "observed_at": "2026-10-01",
+      "note": "Продавец и партия не названы; наличие и редакцию подтвердить. JP50P1 не приравнен к JP50."
     }
   ]
 }

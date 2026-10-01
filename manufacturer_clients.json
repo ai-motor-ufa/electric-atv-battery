@@ -1,0 +1,56 @@
+{
+  "accessed_at": "2026-10-01",
+  "scope": "Исторические корпоративные связи отделены от использования конкретной модели",
+  "manufacturers": {
+    "EVE": {
+      "id": "OEM_EVE",
+      "text": "BMW официально объявила EVE поставщиком новых крупных цилиндрических элементов для NEUE KLASSE. Это другой формат; документ не подтверждает применение 50PL в автомобилях BMW.",
+      "url": "https://www.press.bmwgroup.com/united-kingdom/article/detail/T0403568EN_GB/more-performance-co2-reduced-production-significantly-lower-costs:-bmw-group-to-use-innovative-round-bmw-battery-cells-in-neue-klasse-from-2025",
+      "title": "BMW: контракты на ячейки NEUE KLASSE, 09.09.2022"
+    },
+    "Tenpower": {
+      "id": "OEM_TENPOWER",
+      "text": "Среди названных компанией клиентов — Bosch, Metabo, Stanley Black & Decker, TTI и Electrolux. В 2025 году Tenpower получила Bosch Global Supplier Award в категории литий-ионных батарей. Конкретные устройства с 50XG/60XG источники не перечисляют.",
+      "url": "https://www.tenpowercell.com/news/1401.html",
+      "extra_url": "https://www.tenpowercell.com/news/134.html",
+      "title": "Tenpower: Bosch Supplier Award 2025 и опубликованные клиенты"
+    },
+    "BAK": {
+      "id": "OEM_BAK",
+      "text": "В исторической публикации BAK названы робот-пылесос Xiaomi, самобалансирующийся Ninebot и фотопринтер HP Sprocket с батареями компании. Это исторические примеры применения других элементов, а не свидетельство применения 50D2 в этих устройствах.",
+      "url": "https://www.bakpower.com/mediashow.php?cid=46&id=24",
+      "title": "BAK: Xiaomi, Ninebot и HP Sprocket"
+    },
+    "Great Power": {
+      "id": "OEM_GP",
+      "text": "В фирменном каталоге потребительских батарей среди ключевых клиентов указаны Xiaomi, Philips, HARMAN, Honeywell и TTI. Каталог не указывает, что именно модели 50Q или 60Q установлены в их продуктах.",
+      "url": "https://www.greatpower.net/vancheerfile/files/2024/4/20240423141821719.pdf",
+      "title": "Great Power: потребительский каталог, Key Customers, стр. 4"
+    },
+    "Molicel": {
+      "id": "OEM_MOLICEL",
+      "text": "Знаковый проект — электрический гиперкар McMurtry Spéirling PURE: производитель прямо указывает применение P50B. Также объявлено соглашение с Archer Aviation для самолёта Midnight; модели ячеек и статус каждого проекта надо проверять отдельно.",
+      "url": "https://www.molicel.com/newsroom/molicel-showcased-groundbreaking-ultra-high-power-cell-inr-21700-p50b-at-ces-2024-redefining-the-ev-hypercar-industry-with-mcmurtry/",
+      "extra_url": "https://investors.archer.com/news/news-details/2022/Archer-Selects-Molicel-to-Supply-Battery-Cells-for-its-Production-Midnight-Aircraft/default.aspx",
+      "title": "Molicel: McMurtry/P50B; Archer: соглашение для Midnight"
+    },
+    "Farasis": {
+      "id": "OEM_FARASIS",
+      "text": "Корпоративные партнёры Farasis — Mercedes-Benz, Geely и Togg; с Togg создано Siro. Применение конкретных S46/P84 в этих машинах источник не подтверждает.",
+      "url": "https://www.farasis-energy.com/en/farasis-energy-europe-celebrates-5-years-of-leading-innovation-in-battery-technology/",
+      "title": "Farasis: Mercedes-Benz, Geely и Togg/Siro, 2024"
+    },
+    "Ampace": {
+      "id": "OEM_AMPACE",
+      "text": "CHERVON и Ampace объявили в январе 2026 года меморандум о совместных разработках литиевых батарей и технологии полного токосъёма. Это подтверждённое партнёрство, но не подтверждение установленной JP50P1 в конкретном инструменте.",
+      "url": "https://global.chervongroup.com/en/chervon-holdings-and-xiamen-ampace-forge-strategic-partnership",
+      "title": "CHERVON: меморандум с Ampace, 20.01.2026"
+    },
+    "Reliance": {
+      "text": "В проверенных публичных материалах конкретные крупные заказчики RS50/RS60 не установлены. Связь с Dyson, Xiaomi или автоконцернами не приписывается без источника."
+    },
+    "Linkdata": {
+      "text": "В проверенных материалах нет подтверждения поставок именно 60P/65P для конкретного крупного бренда. Перечень заказчиков не восстанавливается по объявлениям продавцов."
+    }
+  }
+}

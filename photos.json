@@ -1,146 +1,107 @@
 {
-  "s46": {
-    "file": "assets/s46.png",
-    "caption": "Изображение из каталога",
-    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
-    "page": 25
+  "jp50p1": {
+    "file": "assets/cells/jp50p1.jpg",
+    "caption": "Реальный элемент из присланного архива; маркировка показана на снимке.",
+    "source": "assets/cells/jp50p1.jpg",
+    "source_filename": "Ampace JP50P1 - 5000mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "683d73b092eec39c6b5fd01d7c427bce7ceebfff1cf59153df56af36d59e71af"
   },
-  "p51": {
-    "file": "assets/p51.png",
-    "caption": "Изображение из каталога",
-    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
-    "page": 27
-  },
-  "p30a": {
-    "file": "assets/p30a.png",
-    "caption": "Изображение из каталога",
-    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
-    "page": 28
-  },
-  "p73": {
-    "file": "assets/p73.png",
-    "caption": "Изображение из каталога",
-    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
-    "page": 22
-  },
-  "p76": {
-    "file": "assets/p76.png",
-    "caption": "Изображение из каталога",
-    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
-    "page": 23
-  },
-  "p79": {
-    "file": "assets/p79.png",
-    "caption": "Изображение из каталога",
-    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
-    "page": 29
-  },
-  "p84": {
-    "file": "assets/p84.png",
-    "caption": "Изображение из каталога",
-    "source": "https://www.farasis-energy.com/app/uploads/2026/03/Cell-Catalogue-2026_Current.pdf",
-    "page": 30
-  },
-  "p50b": {
-    "file": "assets/p50b.png",
-    "caption": "Изображение производителя",
-    "source": "https://www.molicel.com/inr-21700-p50b/",
-    "image_url": "https://www.molicel.com/wp-content/uploads/molicel_p50b_battery_mobile.png"
-  },
-  "p45b": {
-    "file": "assets/p45b.png",
-    "caption": "Изображение производителя",
-    "source": "https://www.molicel.com/inr-21700-p45b/",
-    "image_url": "https://www.molicel.com/wp-content/uploads/molicel-battery.png"
-  },
-  "m65a": {
-    "file": "assets/m65a.png",
-    "caption": "Изображение производителя",
-    "source": "https://www.molicel.com/inr-21700-m65a/",
-    "image_url": "https://www.molicel.com/wp-content/uploads/m65a-m.png"
-  },
-  "p30b": {
-    "file": "assets/p30b.png",
-    "caption": "Изображение производителя",
-    "source": "https://www.molicel.com/inr-18650-p30b/",
-    "image_url": "https://www.molicel.com/wp-content/uploads/INR18650-P30B-product.png"
-  },
-  "lrle": {
-    "file": "assets/lrle.png",
-    "caption": "Изображение производителя",
-    "source": "https://en.lishen.com.cn/content/details_616_2816.html",
-    "image_url": "https://en.lishen.com.cn/upload/image/2026/01/26/455970f5-2553-407c-a6cf-ddea48d66190.png"
-  },
-  "h52a": {
-    "file": "assets/h52a.png",
-    "caption": "Изображение из исследования",
-    "source": "https://www.aboutenergy.io/post/lg-h52a-battery-performance-analysis-aerospace",
-    "image_url": "https://static.wixstatic.com/media/92f430_07e21462dd93480b8425d9526f4d0fb6~mv2.png/v1/fill/w_2500,h_1406,al_c/92f430_07e21462dd93480b8425d9526f4d0fb6~mv2.png"
-  },
-  "s50u": {
-    "file": "assets/s50u.png",
-    "source": "https://www.aboutenergy.io/post/samsung-50u-battery-performance-analysis-aerospace",
-    "image_url": "https://static.wixstatic.com/media/92f430_084f299cab9e4ff4852c6549e3a5985f~mv2.png/v1/fill/w_2500,h_1406,al_c/92f430_084f299cab9e4ff4852c6549e3a5985f~mv2.png",
-    "caption": "Изображение из исследования"
-  },
-  "s50s": {
-    "file": "assets/s50s.png",
-    "source": "https://18650pro.ru/blog/test/samsung-inr21700-50s-obzor/",
-    "image_url": "https://18650pro.ru/upload/medialibrary/c7a/9atsgb3f0jfidfaw1n3xd6fzev7undnz.png",
-    "caption": "Фото из обзора"
-  },
-  "t50sg": {
-    "file": "assets/t50sg.png",
-    "source": "https://www.machineu.com/lithiumlifepo4-battery/pz71ec4e6-tenpower-inr21700-50sg-rechargeable-lithium-battery-5000mah-20a-high-discharge.html",
-    "image_url": "https://img.machineu.com/nimg/91/1c/484130eb493a93483c73b5783b6f-600x600-0/tenpower_inr21700_50sg_rechargeable_lithium_battery_5000mah_20a_high_discharge.jpg",
-    "caption": "Фото продавца"
-  },
-  "lg": {
-    "file": "assets/lg.png",
-    "source": "https://www.liionbatterybms.com/sale-35900385-lithium-ion-cell-21700-3-7v-5000mah-discharge-rechargeable.html",
-    "image_url": "https://www.liionbatterybms.com/photo/liionbatterybms/editor/20221124160307_68220.jpg",
-    "caption": "Фото продавца"
-  },
-  "p42a": {
-    "file": "assets/p42a.png",
-    "source": "https://www.falconpev.com.sg/products/molicel-p42a-21700-battery-cell",
-    "image_url": "https://www.falconpev.com.sg/cdn/shop/products/molicel_21700_p42a.jpg?v=1658811832",
-    "caption": "Фото продавца"
-  },
-  "m35a": {
-    "file": "assets/m35a.png",
-    "source": "https://18650pro.ru/blog/test/molicel-inr18650-m35a-obzor-i-testirovanie/",
-    "image_url": "https://18650pro.ru/upload/medialibrary/7f6/371wtaepvz8qrzbhnos4zpquda7sey5c.png",
-    "caption": "Фото из обзора"
+  "amprius50q": {
+    "file": "assets/cells/amprius50q.jpg",
+    "caption": "Реальный элемент из присланного архива; маркировка показана на снимке.",
+    "source": "assets/cells/amprius50q.jpg",
+    "source_filename": "Amprius 50Q - 5000mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "77c23f0c143a5d88496b9d0d5b86a1dccb879fa825ee81b2d817ccab79aff8a5"
   },
   "bak50d2": {
-    "file": "assets/bak50d2.jpg",
-    "caption": "Фото линейки BAK; 50D2 справа от центра",
-    "source": "https://www.evlithiumcharger.com/News/bak-battery-2170-50d2-all-tab-cihf-2026.html",
-    "image_url": "https://www.evlithiumcharger.com/ueditor/php/upload/image/20260325/1774409281733409.jpg"
+    "file": "assets/cells/bak50d2.jpg",
+    "caption": "Реальный элемент из присланного архива; маркировка показана на снимке.",
+    "source": "assets/cells/bak50d2.jpg",
+    "source_filename": "BAK 50D2 - 4950mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "a32c5020aa9df230c350d5ed3544e83f1369046444d06a131a7ec29e77f83a29"
   },
-  "rs50": {
-    "file": "assets/rs50.jpg",
-    "caption": "Фото RS50, DIY500AMP",
-    "source": "https://diy500amp.com/products/reliance-21700-rs50-5000mah-70a-lithium-ion-battery-tabless-cell-high-performance",
-    "image_url": "https://diy500amp.com/cdn/shop/files/reliance-rs50-21700-5000mah-70a-tabless-lithium-ion-battery-cell-front-side-view.jpg?v=1775573502"
+  "bak65e": {
+    "file": "assets/cells/bak65e.jpg",
+    "caption": "Реальный элемент из присланного архива; маркировка показана на снимке.",
+    "source": "assets/cells/bak65e.jpg",
+    "source_filename": "BAK 65E - 6500mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "05337c588732c893d93bd9031d56cfea86b7fb3bd8ef8e4c68d58b7d21f1803e"
   },
   "eve50pl": {
-    "file": "assets/eve50pl.jpg",
-    "caption": "Фото 50PL; партия может отличаться",
-    "source": "https://diy500amp.com/products/eve-50pl-21700-battery",
-    "image_url": "https://diy500amp.com/cdn/shop/files/IMG-7531.jpg?v=1766867572&width=3024"
+    "file": "assets/cells/eve50pl.jpg",
+    "caption": "Фото 50PL с CCC. График апреля 2025 и редакции паспорта рассматриваются отдельно.",
+    "source": "assets/cells/eve50pl.jpg",
+    "source_filename": "EVE 50PL - 5000mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "c3da57b210a2314ee5515a2a554d2d34b71a36fff9f793947ec666b0c66d9f79"
   },
-  "t50xg": {
-    "file": "assets/t50xg.png",
-    "caption": "Фото ячейки, испытанной Batemo",
-    "source": "https://www.batemo.com/products/batemo-cell-explorer/tenpower-inr21700-50xg/",
-    "image_url": "https://www.batemo.com/wp-content/uploads/Tenpower_INR2170050XG_1.png"
+  "gp50q": {
+    "file": "assets/cells/gp50q.jpg",
+    "caption": "Реальный элемент из присланного архива; маркировка показана на снимке.",
+    "source": "assets/cells/gp50q.jpg",
+    "source_filename": "Great Power 50Q - 5000mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "ec18f139922551904a12c12d1471fecd1cd3550e1c224bd3e096efdf93e1aaf1"
   },
-  "p73d": {
-    "file": "assets/p73d.jpg",
-    "caption": "Фото из карточки P73D продавца Misen; партия не подтверждена",
-    "source": "https://www.misenpower.com/Farasis-3-7V-73Ah-P73D-Pouch-Cell-NMC-Lithium-Polymer-Battery-pd521153548.html",
-    "image_url": "https://ilrorwxhjpjplk5p.leadongcdn.com/cloud/lmBprKiolpSRklikjmppkq/3-7v-73ah-cell-800-800.jpg"
+  "gp60q": {
+    "file": "assets/cells/gp60q.jpg",
+    "caption": "Реальный элемент из присланного архива; маркировка показана на снимке.",
+    "source": "assets/cells/gp60q.jpg",
+    "source_filename": "Great Power 60Q - 6000mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "b5261a717a6a70839d7d30bb09d782174a161e8504001c8f25f29f2e00adaba9"
+  },
+  "link50t": {
+    "file": "assets/cells/link50t.jpg",
+    "caption": "Реальный элемент из присланного архива; маркировка показана на снимке.",
+    "source": "assets/cells/link50t.jpg",
+    "source_filename": "Linkdata 50T - 5000mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "d569d0639ddc8e0c22e0d005b28a0631436f116e75be37a824b0d7182f5cc5e7"
+  },
+  "link55p": {
+    "file": "assets/cells/link55p.jpg",
+    "caption": "Реальный элемент из присланного архива; маркировка показана на снимке.",
+    "source": "assets/cells/link55p.jpg",
+    "source_filename": "Linkdata 55P - 5500mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "679b225ad3f3737a3f579c149ae6b7548086319c26ffca58b73c512d8053bcda"
+  },
+  "link60p": {
+    "file": "assets/cells/link60p.jpg",
+    "caption": "Реальный элемент из присланного архива; маркировка показана на снимке.",
+    "source": "assets/cells/link60p.jpg",
+    "source_filename": "Linkdata 60P - 6000mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "2a28f98bbccbeb152b68f703085da609a0dde979a1398971c0bedd8bd2a61627"
+  },
+  "link65p": {
+    "file": "assets/cells/link65p.jpg",
+    "caption": "Реальный элемент из присланного архива; маркировка показана на снимке.",
+    "source": "assets/cells/link65p.jpg",
+    "source_filename": "Linkdata 65P - 52A 6500mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "e5583d8dcee577be02d71ab398163b2849ed8018b23d199360b727b8c61f4588",
+    "alternate": "assets/cells/link65p-alt.jpg"
+  },
+  "rs50": {
+    "file": "assets/cells/rs50.jpg",
+    "caption": "Реальный элемент из присланного архива; маркировка показана на снимке.",
+    "source": "assets/cells/rs50.jpg",
+    "source_filename": "Reliance RS50 - 4950mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "e9d08036cc9d25c33f8999b3c4464d35bf3c90ef734bc6af413fcc126c6ace09"
+  },
+  "tp60xg": {
+    "file": "assets/cells/tp60xg.jpg",
+    "caption": "Фото 60XG с кодом ZG13. График июня относится к предсерии; фото не подтверждает её параметры.",
+    "source": "assets/cells/tp60xg.jpg",
+    "source_filename": "Tenpower 60XG - 6000mAh 21700.jpeg",
+    "archive": "21700 Battery Cell.zip",
+    "original_sha256": "b6e4b10a8ff3778a882fa8e84dbeed0479d2422305377514dab53329f60ee7bb"
   }
 }
