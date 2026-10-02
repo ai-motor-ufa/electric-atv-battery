@@ -19,7 +19,7 @@ def calculate_audit():
                     v['branches']=2;v['time_temperature_current_basis']='На одну независимую ветвь'
                 independent[k]=v
         rows.append(dict(id=r['id'],model=r['model'],name=r['name'],nominal_kwh_per_block=r['energy'],finished_kg_per_block=r['finished'],cells_per_block=r['n'],voltage_basis=r['voltage_basis'],scenarios=scenarios,two_independent_motors=independent))
-    audit=dict(release='20261002-r14',assumptions=data['assumptions'],profiles=data['profiles'],method='Номинальный эквивалент = энергия номинала / индекс BRP; сценарный = выданная энергия / индекс BRP. Два двигателя: независимые ветви с запросом на каждый. Дорожный цикл не моделируется.',configurations=len(rows),scenarios_per_configuration=108,rows=rows)
+    audit=dict(release='20261002-r14a',assumptions=data['assumptions'],profiles=data['profiles'],method='Номинальный эквивалент = энергия номинала / индекс BRP; сценарный = выданная энергия / индекс BRP. Два двигателя: независимые ветви с запросом на каждый. Дорожный цикл не моделируется.',configurations=len(rows),scenarios_per_configuration=108,rows=rows)
     (ROOT/'dist/calculation_audit.json').write_text(json.dumps(audit,ensure_ascii=False,separators=(',',':'))+'\n')
     return audit
 if __name__=='__main__':

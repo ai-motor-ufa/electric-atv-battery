@@ -140,7 +140,7 @@ def simulate(row,profile,blocks=1,g=5.,rscale=1.,peak_soc=.50,cutoff=2.9):
     ns,np=row['s'],row['p']; soc=1.; temp=25.; peak_temp=25.; secs=chem=output=heat=lineheat=0.
     budget=float('inf'); c=row['mass']*CP; trace=[]
     first=reason=None; first_soc=first_voltage=first_temp=None; maxi=maxh=work=limited_secs=0.
-    voltage_stop=False
+    voltage_stop=False; data_stop=False
     sample=dict(seconds=0,minute=0,soc=100,temp=25,power=0,voltage=0,current=0,heat=0)
     while secs<8*3600 and soc>floor+1e-7 and chem<budget-1e-8 and temp<60:
         voc=interp(soc,OCV)*ns
@@ -149,9 +149,12 @@ def simulate(row,profile,blocks=1,g=5.,rscale=1.,peak_soc=.50,cutoff=2.9):
         thermal_cap=interp(temp,[(25,30),(45,30),(55,5),(60,0)])
         curves=empirical_curves(row['model'])
         q=(1-soc)*D['models'][row['model']]['ah']
-        curve_values=[(c['current_A'],interp(q,c['points']) if q<=c['points'][-1][0] else 2.79) for c in curves]
+        curve_values=[(c['current_A'],interp(q,c['points'])) for c in curves if q<=c['points'][-1][0]+1e-9]
+        if curves and not curve_values:
+            data_stop=True
+            break
         icap=cell_limit(row['model'],temp)*np
-        if curves:icap=min(icap,curves[-1]['current_A']*np)
+        if curves:icap=min(icap,curve_values[-1][0]*np)
         ia=hs=hl=po=pc=shaft=0.; limited=False; causes=set(); highest_i=0.; lowest_v=voc
         # Repeat an explicit 100 s cycle; each stage is a real pulse, not an averaged load.
         phase=secs%100.; endpoint=0.; phase_left=100.
@@ -215,6 +218,10 @@ def simulate(row,profile,blocks=1,g=5.,rscale=1.,peak_soc=.50,cutoff=2.9):
             voltage_stop=True
             break
         dt=min(DT,phase_left,(soc-floor)*row['ah']*3600/max(ia,1e-9))
+        if curves:
+            measured_left=(max(c['points'][-1][0] for c in curves)-q)*np
+            dt=min(dt,max(0,measured_left)*3600/max(ia,1e-9))
+            if dt<1e-5:data_stop=True
         net_heat=hs+hl-g*(temp-25)
         if net_heat>0:dt=min(dt,max(0,(60-temp)*c/net_heat))
         if dt<1e-5:break
@@ -232,7 +239,7 @@ def simulate(row,profile,blocks=1,g=5.,rscale=1.,peak_soc=.50,cutoff=2.9):
        first_limit=reason or 'До завершения без снижения запроса',first_soc=first_soc,first_voltage=first_voltage,first_temp=first_temp,end_soc=max(0,soc)*100,
        output_kwh=output,chemical_kwh=chem,heat_kj=heat,heat_mean=heat*1000/max(secs,1)/blocks,
        heat_peak=maxh,max_current=maxi,mean_power=work/max(secs,1),t_end=temp,
-       stop_reason='Температурная остановка 60 °C' if temp>=59.99 else ('Исчерпана ёмкость' if tabless else 'Резерв заряда 10%') if soc<=floor+.00001 else 'Минимальное напряжение группы'  if voltage_stop else 'Предел времени / интегрирования',t_peak=peak_temp,line_heat_kj=lineheat,heat_enclosed_mean=(heat+lineheat)*1000/max(secs,1)/blocks,
+       stop_reason='Граница измеренных разрядных данных' if data_stop else 'Температурная остановка 60 °C' if temp>=59.99 else ('Исчерпана ёмкость' if tabless else 'Резерв заряда 10%') if soc<=floor+.00001 else 'Минимальное напряжение группы'  if voltage_stop else 'Предел времени / интегрирования',t_peak=peak_temp,line_heat_kj=lineheat,heat_enclosed_mean=(heat+lineheat)*1000/max(secs,1)/blocks,
        cutoff_V=vmin,soc_policy='Без ограничения по заряду' if tabless else 'Предварительная карта по заряду',voltage_basis=row['voltage_basis'],thermal_status='Сценарный прогноз; теплоотвод собранного блока не измерен',
        limited_pct=100*limited_secs/max(secs,1),wmtc_equiv=output/WMTC_INDEX,utility_equiv=output/UTILITY_INDEX,
        nominal_wmtc_equiv=row['nominal_wmtc']*blocks,

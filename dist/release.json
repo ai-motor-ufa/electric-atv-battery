@@ -1,5 +1,5 @@
 {
-  "release": "20261002-r14",
+  "release": "20261002-r14a",
   "date": "2026-10-02",
   "models": 32,
   "configurations": 33,
@@ -13,12 +13,12 @@
   "pdf_pages": 17,
   "files": {
     "index.html": {
-      "bytes": 2758386,
-      "sha256": "f4943c73c75ecd650999abb7dccbc4a4558c4f656254794c4ad5c9581beb0a64"
+      "bytes": 2771403,
+      "sha256": "9bcdc5f5cffb9f4f816dc480ece4c9336de973d11ed8d0bac1da57a1ee5035ae"
     },
     "report.js": {
-      "bytes": 27642,
-      "sha256": "20f78762fc67ba821b278039721c8059d3ddd476aace6ed9e99179afa8012935"
+      "bytes": 27643,
+      "sha256": "b73b5664df9935cadb6ba2be266e3dabd8ae3fb441fc1332094d655cd7e0410c"
     },
     "report.css": {
       "bytes": 16694,
@@ -45,8 +45,8 @@
       "sha256": "dd07c7e2cee846ef076dd60e93f6b85ed0d42eda4dadc8817f667d160d7cb6ba"
     },
     "AKB_96V_Comparative_Study_2026-10-02.pdf": {
-      "bytes": 299786,
-      "sha256": "ae831c3ae4defd8e4a73eb4db9fbd90c28dcfda1eef3a0a5bdece5934829a80d"
+      "bytes": 299830,
+      "sha256": "dd11a6be3153f5092f4d6d12c0f03efc6893031943810d46046fee86cb9d955b"
     },
     "assets/mooch-21700-2026-09-27.jpg": {
       "bytes": 860440,
@@ -69,16 +69,16 @@
       "sha256": "f4fdf19f08f240d5bddaa26656ae6d9ac22a075968e5daaccbba66c43235d4d9"
     },
     "calculation_audit.json": {
-      "bytes": 3714588,
-      "sha256": "03431602fca1be218be28f7288945de3971c7294fc1417841e6e5e7ffbbd5073"
+      "bytes": 3734221,
+      "sha256": "22db26afe7bbd6f32ff8809f89528128275f2af6e694c7484738a18632a4638c"
     },
     "traces/C02.json": {
-      "bytes": 458341,
-      "sha256": "ca789f88b1960b097e3ce87e851464a1a0ea37d425032ce518ebe4c8a686e289"
+      "bytes": 458356,
+      "sha256": "509f49db7b46612a7e58bd696020a49415c717b55b94a3a64f2ad664e7261e4d"
     },
     "traces/C03.json": {
       "bytes": 482674,
-      "sha256": "912bbc3e3b9658e6d45b6b82db9af73e13df7c6328df8e799756c2b06aa7d0e4"
+      "sha256": "4133899ebbc1b41233f07ca14d4a40a165df5bf13b80129c2ec5d9fcafbd08f0"
     },
     "traces/C08.json": {
       "bytes": 442339,
@@ -97,48 +97,48 @@
       "sha256": "bafef6dcfe8475335a0e9fcc44311973ed7757d1c4ca0e7c5bb9cfa560be7ffe"
     },
     "traces/C16.json": {
-      "bytes": 477590,
-      "sha256": "aebc190d9dbe69c02280e4cde15820db655d84e93993957e37125a52a0a3c3fd"
+      "bytes": 483889,
+      "sha256": "702c2de5227fe9eee19016c53fcd152c5a2f743b822abc92692dbec81514ded1"
     },
     "traces/C17.json": {
-      "bytes": 477504,
-      "sha256": "820a515efe0610411fda280d610a22efccb0b9b41e735122dc977566511c1811"
+      "bytes": 481218,
+      "sha256": "54fb4ceebac3accc76b82d6b7bfc2867ba811fb11554ebaf0b7df021fbe3557d"
     },
     "traces/C18.json": {
-      "bytes": 467163,
-      "sha256": "c30ed83100f72a328181f6253564e703525a80202cc4873429b2393a8ba91ab4"
+      "bytes": 444476,
+      "sha256": "2600377e5de30adecb272f868bff2fb7eb18582a7ef3e0e980a16430325531a5"
     },
     "traces/C19.json": {
-      "bytes": 457290,
-      "sha256": "f460c1d9203ce009d1081eef9df82e841220cb9c75cf9d3209c78441c43a4743"
+      "bytes": 446655,
+      "sha256": "2e6b8dc029ac26d566853ed191a8c400972dd47f3a425e2156845c24a1dce53b"
     },
     "traces/C20.json": {
-      "bytes": 449956,
-      "sha256": "b16248b1351e50fc5f5a69edac37e30726c5d6883754c2d121bbbae37b19f590"
+      "bytes": 430185,
+      "sha256": "244c7e9f7a804d80046001ec7368835a7b96aeb630ffa833ad4cc7c370c0ceb8"
     },
     "traces/C21.json": {
-      "bytes": 475571,
-      "sha256": "01fdeaf5af543e3a64ecb0e4e6639ebb8233da569072db9602f74508e586c036"
+      "bytes": 463409,
+      "sha256": "38daf008b75752d9cb27789367ec81802dca49a721a8882f7327eae79fbdb00d"
     },
     "traces/C22.json": {
-      "bytes": 477923,
-      "sha256": "0cf80638a3bc36dcac0cb30d7817fa20f38d69bd5f9a9e6aeafc44ede2a72baa"
+      "bytes": 482162,
+      "sha256": "0db7e38fe2b2eee5d7a4759bb6487d412746fd85c25541f04a691f45a353176e"
     },
     "traces/C23.json": {
-      "bytes": 482234,
-      "sha256": "6ef946c0375b605c743eff7b90e90ead1e6eca64d7b79edccb598b2df5a8f394"
+      "bytes": 494929,
+      "sha256": "5c8882e33bff45bed909f10b0acf6694510322e0e6b7cca8bc7d22d3188bbb6e"
     },
     "traces/C24.json": {
-      "bytes": 520444,
-      "sha256": "78e9f91f6dc43cf9d690dbb53939169683225e809d62d731c78404425cfcb61c"
+      "bytes": 530554,
+      "sha256": "91cf6468b99bba04281fe0f11a9ef380302aeb8bfed6b4c54d8fbedcd3e792eb"
     },
     "traces/C25.json": {
-      "bytes": 480737,
-      "sha256": "06cbb8f19298ca957411d5abffc4f0128ff786dba3b185ffbf793341df212a44"
+      "bytes": 487708,
+      "sha256": "55bc49cc23f7ef7bd3cdc860c62966bb313a1c2ba95fba77a7fcc932638e07c4"
     },
     "traces/C26.json": {
-      "bytes": 481227,
-      "sha256": "3f10731515b2f4878e5e26bc05ea6261e939b1dbc1c9d2abbf00ada2a7a45848"
+      "bytes": 489459,
+      "sha256": "cd52bbb4f3d5345868c6fef703155aaa0a751736942f7141d7cf96e163b8ef72"
     },
     "traces/C27.json": {
       "bytes": 489718,

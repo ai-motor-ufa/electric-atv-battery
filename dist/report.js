@@ -88,7 +88,7 @@ function renderDetail(r){const s=getSim(r),m=MODELS[r.model];
  if(s&&(!s.trace||!s.trace.length)){
   if(traceCache[r.id]){for(const [key,points] of Object.entries(traceCache[r.id]))if(r.simulations[key])r.simulations[key].trace=points.map(t=>({minute:t[0],soc:t[1],temp:t[2],power:t[3]}));renderDetail(r);return;}
   $('detail').innerHTML='<p>Загрузка графиков выбранной сборки…</p>';
-  if(!tracePending[r.id])tracePending[r.id]=fetch(`traces/${r.id}.json?v=20261002-r14`).then(v=>{if(!v.ok)throw Error('Нет графиков');return v.json();}).then(v=>{traceCache[r.id]=v;delete tracePending[r.id];if(state.selection===r.id)renderDetail(r);}).catch(()=>{$('detail').innerHTML='<p>Графики не загрузились. Перечисленные результаты доступны в таблице.</p>';delete tracePending[r.id];});return;
+  if(!tracePending[r.id])tracePending[r.id]=fetch(`traces/${r.id}.json?v=20261002-r14a`).then(v=>{if(!v.ok)throw Error('Нет графиков');return v.json();}).then(v=>{traceCache[r.id]=v;delete tracePending[r.id];if(state.selection===r.id)renderDetail(r);}).catch(()=>{$('detail').innerHTML='<p>Графики не загрузились. Перечисленные результаты доступны в таблице.</p>';delete tracePending[r.id];});return;
  }
 
  $('detail').innerHTML=`<div class="detail-top"><div>${photo(r,false)}</div><div><p class="eyebrow">${esc(r.format)} · ${r.n} элементов в блоке</p><h3>${esc(r.name)}</h3><span class="muted">${num(r.finished[0])}–${num(r.finished[1])} кг · корпус ${dim(r.box)} мм</span></div></div>`;

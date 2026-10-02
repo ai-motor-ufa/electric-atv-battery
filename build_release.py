@@ -28,7 +28,7 @@ def fingerprint(relative):
 calculated = json.loads((ROOT / "calculated.json").read_text())
 mooch = json.loads((DIST / "mooch_data.json").read_text())
 payload = {
-    "release": "20261002-r14",
+    "release": "20261002-r14a",
     "date": "2026-10-02",
     "models": len(calculated["models"]),
     "configurations": len(calculated["rows"]),
