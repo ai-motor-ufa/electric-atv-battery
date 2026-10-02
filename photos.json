@@ -103,5 +103,12 @@
     "source_filename": "Tenpower 60XG - 6000mAh 21700.jpeg",
     "archive": "21700 Battery Cell.zip",
     "original_sha256": "b6e4b10a8ff3778a882fa8e84dbeed0479d2422305377514dab53329f60ee7bb"
+  },
+  "t50xg": {
+    "file": "assets/cells/t50xg.jpg",
+    "caption": "Фото Tenpower 50XG из вложения пользователя; маркировка INR21700-50XG. Автор снимка: Battery Mooch.",
+    "source": "assets/cells/t50xg.jpg",
+    "source_filename": "Tenpower 50XG 5000mAh 21700(1).jpeg",
+    "original_sha256": "76b170e5f5b929eb5b6cb6a54fd48b5a68fb7cc31192b4c3fa8e7060be753e1c"
   }
 }

@@ -6,7 +6,7 @@ from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parent
 DIST = ROOT / "dist"
-PDF = "AKB_96V_Comparative_Study_2026-10-01.pdf"
+PDF = "AKB_96V_Comparative_Study_2026-10-02.pdf"
 FILES = [
     "index.html", "report.js", "report.css", "mooch.js", "mooch_data.json",
     "mooch_21700_photo.csv", "mooch_21700_forum.csv", "mooch_21700_comparison.csv",
@@ -16,6 +16,7 @@ FILES = [
 
 
 FILES.append("calculation_audit.json")
+FILES.extend(str(p.relative_to(DIST)) for p in sorted((DIST/"traces").glob("*.json")))
 FILES.extend(str(p.relative_to(DIST)) for p in sorted((DIST/'assets/cells').glob('*.jpg')))
 FILES.extend(str(p.relative_to(DIST)) for p in sorted((DIST/"tests").glob("*.jpg")))
 
@@ -27,12 +28,12 @@ def fingerprint(relative):
 calculated = json.loads((ROOT / "calculated.json").read_text())
 mooch = json.loads((DIST / "mooch_data.json").read_text())
 payload = {
-    "release": "20261001-r13",
-    "date": "2026-10-01",
+    "release": "20261002-r14",
+    "date": "2026-10-02",
     "models": len(calculated["models"]),
     "configurations": len(calculated["rows"]),
     "overview_21700": sum(r["candidate"] and r["format"] == "21700" for r in calculated["rows"]),
-    "overview_pouch": sum(r["candidate"] and r["format"] == "Pouch" for r in calculated["rows"]),
+    "overview_pouch": sum(r["candidate"] and r["format"] == "Пакетный" for r in calculated["rows"]),
     "photo_rows": len(mooch["photo"]),
     "comparison_rows": len(mooch["combined"]),
     "forum_threads": len(mooch["forum"]),
@@ -44,7 +45,7 @@ payload = {
     "calculation_audit": "calculation_audit.json",
     "wmtc_index_kwh_km": calculated["assumptions"]["wmtc_index_kwh_km"],
     "initial_cell_temperature_C": 25,
-    "product_photo_files": 14, "product_photo_models": 13,
+    "product_photo_files": 15, "product_photo_models": 14,
     "commercial_offers": 24, "photo_rating_date": "2026-09-27",
     "disqualified_configurations_removed": 9,
     "thermal_model_status": "scenario_only_not_validated_sealed_pack",

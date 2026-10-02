@@ -12,3 +12,7 @@ def price_range(summary,multiplier=1):
  if summary['price'] is None:return '—'
  fmt=lambda n:f'{n*multiplier:.2f}'.replace('.',',')
  return fmt(summary['price']) if summary['price']==summary['price_max'] else fmt(summary['price'])+'–'+fmt(summary['price_max'])
+
+def best_offer(offers):
+    usable=[o for o in offers if o.get('price') is not None and o.get('availability')!='out_of_stock']
+    return min(usable,key=lambda o:o['price']) if usable else None

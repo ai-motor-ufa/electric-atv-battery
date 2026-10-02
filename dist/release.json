@@ -1,6 +1,6 @@
 {
-  "release": "20261001-r13",
-  "date": "2026-10-01",
+  "release": "20261002-r14",
+  "date": "2026-10-02",
   "models": 32,
   "configurations": 33,
   "overview_21700": 16,
@@ -10,19 +10,19 @@
   "forum_threads": 51,
   "full_text_articles": 48,
   "forum_archive_complete": false,
-  "pdf_pages": 58,
+  "pdf_pages": 17,
   "files": {
     "index.html": {
-      "bytes": 6061654,
-      "sha256": "4da0b2ba072f19e57a4d55063cf0cc37e297b0d91a348af64a09c483e328db2d"
+      "bytes": 2758386,
+      "sha256": "f4943c73c75ecd650999abb7dccbc4a4558c4f656254794c4ad5c9581beb0a64"
     },
     "report.js": {
-      "bytes": 25027,
-      "sha256": "b7e99aaaab93f05af4c8ed05cf67095510acafeb4c3a091488026aae237c7357"
+      "bytes": 27642,
+      "sha256": "20f78762fc67ba821b278039721c8059d3ddd476aace6ed9e99179afa8012935"
     },
     "report.css": {
-      "bytes": 16144,
-      "sha256": "e7c71825f0911261105bb5a2623722044b57549258a6248ede8bce9887a735a1"
+      "bytes": 16694,
+      "sha256": "a4d687968fa71ec23d5576edc154d80cbd386bc8a98d9490a4c6945a07f29787"
     },
     "mooch.js": {
       "bytes": 1329,
@@ -44,9 +44,9 @@
       "bytes": 8014,
       "sha256": "dd07c7e2cee846ef076dd60e93f6b85ed0d42eda4dadc8817f667d160d7cb6ba"
     },
-    "AKB_96V_Comparative_Study_2026-10-01.pdf": {
-      "bytes": 1529430,
-      "sha256": "5ee7f43300dff205dd0d50b4fb44adcfd1dc62d1978c1475df2d0af1a3ed22da"
+    "AKB_96V_Comparative_Study_2026-10-02.pdf": {
+      "bytes": 299786,
+      "sha256": "ae831c3ae4defd8e4a73eb4db9fbd90c28dcfda1eef3a0a5bdece5934829a80d"
     },
     "assets/mooch-21700-2026-09-27.jpg": {
       "bytes": 860440,
@@ -69,8 +69,84 @@
       "sha256": "f4fdf19f08f240d5bddaa26656ae6d9ac22a075968e5daaccbba66c43235d4d9"
     },
     "calculation_audit.json": {
-      "bytes": 413342,
-      "sha256": "5229662a73b0136e24d59442654ac2ca7f4fc42d61a79f741511d8926510e19d"
+      "bytes": 3714588,
+      "sha256": "03431602fca1be218be28f7288945de3971c7294fc1417841e6e5e7ffbbd5073"
+    },
+    "traces/C02.json": {
+      "bytes": 458341,
+      "sha256": "ca789f88b1960b097e3ce87e851464a1a0ea37d425032ce518ebe4c8a686e289"
+    },
+    "traces/C03.json": {
+      "bytes": 482674,
+      "sha256": "912bbc3e3b9658e6d45b6b82db9af73e13df7c6328df8e799756c2b06aa7d0e4"
+    },
+    "traces/C08.json": {
+      "bytes": 442339,
+      "sha256": "1a8f2d0eecd9b9b515e3fe5918954b8a3669881af059658bc5be34490edbcdfa"
+    },
+    "traces/C09.json": {
+      "bytes": 412225,
+      "sha256": "27e71dcca77b54e876ba48b751dd19ac9f96acc56ff86a9d970d17817907c790"
+    },
+    "traces/C10.json": {
+      "bytes": 480037,
+      "sha256": "3b89ce6b07b39e37ded31becd405f3135823a58b8aad6db76e8a660333033f34"
+    },
+    "traces/C11.json": {
+      "bytes": 526456,
+      "sha256": "bafef6dcfe8475335a0e9fcc44311973ed7757d1c4ca0e7c5bb9cfa560be7ffe"
+    },
+    "traces/C16.json": {
+      "bytes": 477590,
+      "sha256": "aebc190d9dbe69c02280e4cde15820db655d84e93993957e37125a52a0a3c3fd"
+    },
+    "traces/C17.json": {
+      "bytes": 477504,
+      "sha256": "820a515efe0610411fda280d610a22efccb0b9b41e735122dc977566511c1811"
+    },
+    "traces/C18.json": {
+      "bytes": 467163,
+      "sha256": "c30ed83100f72a328181f6253564e703525a80202cc4873429b2393a8ba91ab4"
+    },
+    "traces/C19.json": {
+      "bytes": 457290,
+      "sha256": "f460c1d9203ce009d1081eef9df82e841220cb9c75cf9d3209c78441c43a4743"
+    },
+    "traces/C20.json": {
+      "bytes": 449956,
+      "sha256": "b16248b1351e50fc5f5a69edac37e30726c5d6883754c2d121bbbae37b19f590"
+    },
+    "traces/C21.json": {
+      "bytes": 475571,
+      "sha256": "01fdeaf5af543e3a64ecb0e4e6639ebb8233da569072db9602f74508e586c036"
+    },
+    "traces/C22.json": {
+      "bytes": 477923,
+      "sha256": "0cf80638a3bc36dcac0cb30d7817fa20f38d69bd5f9a9e6aeafc44ede2a72baa"
+    },
+    "traces/C23.json": {
+      "bytes": 482234,
+      "sha256": "6ef946c0375b605c743eff7b90e90ead1e6eca64d7b79edccb598b2df5a8f394"
+    },
+    "traces/C24.json": {
+      "bytes": 520444,
+      "sha256": "78e9f91f6dc43cf9d690dbb53939169683225e809d62d731c78404425cfcb61c"
+    },
+    "traces/C25.json": {
+      "bytes": 480737,
+      "sha256": "06cbb8f19298ca957411d5abffc4f0128ff786dba3b185ffbf793341df212a44"
+    },
+    "traces/C26.json": {
+      "bytes": 481227,
+      "sha256": "3f10731515b2f4878e5e26bc05ea6261e939b1dbc1c9d2abbf00ada2a7a45848"
+    },
+    "traces/C27.json": {
+      "bytes": 489718,
+      "sha256": "42cce73a04938d8a10ddbb4003d97665cad43ef2b4adc4c70eaf58f00c6ce2c4"
+    },
+    "traces/F16.json": {
+      "bytes": 527470,
+      "sha256": "71e9d3caaa1ff81e53986f6ba5896f020a553a348612b3baae5c82964bf58f1c"
     },
     "assets/cells/amprius50q.jpg": {
       "bytes": 198449,
@@ -123,6 +199,10 @@
     "assets/cells/rs50.jpg": {
       "bytes": 190594,
       "sha256": "eb49cc4f22ba884e5ac7dc512a235ffdb82e9997e3f62b55205f2071d9372a88"
+    },
+    "assets/cells/t50xg.jpg": {
+      "bytes": 215021,
+      "sha256": "76b170e5f5b929eb5b6cb6a54fd48b5a68fb7cc31192b4c3fa8e7060be753e1c"
     },
     "assets/cells/tp60xg.jpg": {
       "bytes": 153764,
@@ -225,8 +305,8 @@
   "calculation_audit": "calculation_audit.json",
   "wmtc_index_kwh_km": 0.11125,
   "initial_cell_temperature_C": 25,
-  "product_photo_files": 14,
-  "product_photo_models": 13,
+  "product_photo_files": 15,
+  "product_photo_models": 14,
   "commercial_offers": 24,
   "photo_rating_date": "2026-09-27",
   "disqualified_configurations_removed": 9,

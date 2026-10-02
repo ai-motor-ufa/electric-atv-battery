@@ -11,17 +11,16 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.graphics.shapes import Drawing,Rect,String,Line,PolyLine
 from report_content import SECTIONS,TEST_ROWS
-from calculation_audit import section as calculation_audit_section
 from recommendations import INTRO, METHOD, GEOMETRY, HEAT_METHOD, COOLING, DIMENSION_NOTE, POUCH_INTRO, POUCH, DECISION, HIGH_CAPACITY_MARKET_NOTE, ranked_groups, render_html
 from mooch_section import section as mooch_section
 from test_sections import section as updated_test_section, manufacturer, exports as export_test_tables
-ROOT=Path(__file__).resolve().parent; OUT=ROOT/'dist'; PDF='AKB_96V_Comparative_Study_2026-10-01.pdf'; RELEASE='20261001-r13'
+ROOT=Path(__file__).resolve().parent; OUT=ROOT/'dist'; PDF='AKB_96V_Comparative_Study_2026-10-02.pdf'; RELEASE='20261002-r14'
 data=json.loads((ROOT/'calculated.json').read_text()); rows=data['rows']; models=data['models']; photos=json.loads((ROOT/'photos.json').read_text())
 mooch_json=(OUT/'mooch_data.json').read_text(); mooch_data=json.loads(mooch_json); forum_threads=len(mooch_data['forum'])
 data['photos']=photos
 export_test_tables()
 candidate_21700=sum(r['candidate'] and r['format']=='21700' for r in rows)
-candidate_pouch=sum(r['candidate'] and r['format']=='Pouch' for r in rows)
+candidate_pouch=sum(r['candidate'] and r['format']=='Пакетный' for r in rows)
 SOURCES={s['id']:s for s in data['sources']}
 esc=lambda x:html.escape(str(x))
 def n(x,d=1):return '—' if x is None else f'{x:.{d}f}'.replace('.',',')
@@ -40,36 +39,73 @@ def linked(text,pdf=False):
         return '['+', '.join(ls)+']'
     return re.sub(r'\[([A-Z0-9, ]+)\]',sub,text)
 def pic(key):return esc(photos[key]['file']) if key in photos else ''
-knowledge=''.join(f'<details id="{key}"><summary>{esc(title)}</summary>'+''.join('<p>'+linked(t)+'</p>' for t in texts)+'</details>' for key,title,texts in SECTIONS if key!='conclusion')
-conclusion=SECTIONS[-1][2]
-source_html=''.join(f'<div class="source-item" id="source-{s["id"]}"><a href="{esc(s["url"])}" target="_blank" rel="noopener">[{s["id"]}] {esc(s["title"])}</a><p>{esc(s["note"])}</p></div>' if s['url'] else f'<div class="source-item" id="source-{s["id"]}"><strong>[{s["id"]}] {esc(s["title"])}</strong><p>{esc(s["note"])}</p></div>' for s in data['sources'])
+
 opts=''.join(f'<option value="{r["id"]}">{esc(r["name"])}</option>' for r in rows if r['candidate'])
 p_opts=''.join(f'<option value="{p["id"]}">{esc(p["name"])}</option>' for p in data['profiles'])
-# Embed only fields consumed by the three interactive plots. Numerical
-# integration and the full calculation output retain all diagnostics.
 import copy
-web_data=copy.deepcopy(data)
-web_data.pop('discharge_tests',None) # Source curves are downloadable separately.
-for web_row in web_data['rows']:
- for simulation in web_row['simulations'].values():
-  if simulation:
-   simulation['trace']=[{k:t[k] for k in ('minute','soc','temp','power')} for t in simulation['trace']]
-embedded_data=json.dumps(web_data,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')
-doc=f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Инженерный отбор ячеек для тяговой АКБ 96 В: компоновка, масса, энергоёмкость, ограничения мощности и тепловая оценка."><title>Выбор ячеек для тяговой АКБ 96 В</title><link rel="stylesheet" href="report.css?v={RELEASE}"></head><body>
-<nav class="nav" aria-label="Основная навигация"><div class="wrap"><a href="#" class="brand">АКБ 96 В</a><a href="#compare">Сравнение</a><a href="#mooch">Тесты 21700</a><a class="hide-mobile" href="#research">Исследование</a><a class="hide-mobile" href="#choice">Вывод</a><a class="pill" href="{PDF}">Скачать PDF</a></div></nav>
-<main><div class="wrap"><aside class="release-note" id="release"><strong>Редакция {RELEASE}</strong><span>{len(models)} моделей · {len(rows)} конфигурация · {forum_threads} тем ECF</span><a href="#mooch">Испытания и выгрузки</a></aside><header class="hero"><div><p class="eyebrow">Предварительный инженерный отбор · 1 октября 2026</p><h1>Выбор ячеек для<br>тяговой АКБ 96 В</h1><p>Сравнение цилиндрических и пакетных ячеек для двух съёмных блоков. Каждый блок должен обеспечивать 15 кВт длительно и до 30 кВт в пиковом режиме.</p></div><div class="hero-stats"><div><strong>230×400×340</strong><span>мм · наружные Ш×Г×В</span></div><div><strong>≤40 кг</strong><span>целевая масса готового блока</span></div><div><strong>≈15 кВт·ч</strong><span>целевая энергия двух блоков</span></div><div><strong>26S</strong><span>109,2 В при заряде до 4,2 В/яч.</span></div></div></header></div>
-<section class="soft section" id="compare"><div class="wrap"><div class="section-top"><div><p class="eyebrow">Расчётное сравнение конфигураций</p><h2>Энергия, длительность работы и тепловыделение</h2><p>В обзор включены {candidate_21700} моделей 21700 и {candidate_pouch} моделей pouch. Результаты отсортированы по выбранному показателю; для пробега и времени — по убыванию, для максимальной средней температуры — по возрастанию.</p></div></div><div class="panel">
-<div class="toolbar"><div class="field"><label for="blocks">Подключено одновременно</label><select id="blocks"><option value="1">Один блок</option><option value="2" selected>Два одинаковых блока</option></select></div><div class="field"><label for="profile">Запрос мощности</label><select id="profile">{p_opts}</select></div><div class="field"><label for="cooling">Сценарий теплоотвода</label><select id="cooling"><option value="0">Без теплоотвода · G = 0 Вт/К</option><option value="5" selected>Сценарий · G = 5 Вт/К</option><option value="20">Сценарий · G = 20 Вт/К</option></select></div><div class="field wide"><label for="selection">Сборка</label><select id="selection"><option value="all">Все кандидаты</option>{opts}</select></div></div>
-<div class="segmented" aria-label="Показатель графика"><button data-metric="range" aria-pressed="true">Пробег</button><button data-metric="runtime" aria-pressed="false">Время работы</button><button data-metric="heat" aria-pressed="false">Нагрев</button></div><div class="chart-heading"><h3 id="chart-title"></h3><button class="text-button" id="back-all" hidden>← Все сборки</button></div><div id="chart-legend" class="legend"></div><div class="bars" id="bars"></div><div id="axis" class="axis"></div><p id="chart-note" class="note" style="margin-top:24px"></p><div class="detail" id="detail" hidden></div>
-<div class="callout"><strong>Ограничение тяги, а не фиксированный ток.</strong> Для идентифицированных 21700 используются оцифрованные кривые V(Ah,I), для остальных — общая OCV. Модель учитывает падение напряжения, рейтинг ячейки и выбранное снижение мощности по SOC и температуре. Карты управления предварительные; 50% SOC не универсальная граница. <a href="#control">Методика расчёта</a></div>
-</div></div></section>
-<section class="section" id="catalog"><div class="wrap"><p class="eyebrow">{len(models)} моделей · {len(rows)} конфигурация</p><h2>Исходные данные и расчётные параметры</h2><div class="segmented" aria-label="Вид таблицы"><button data-view="energy" aria-pressed="true">Энергия и компоновка</button><button data-view="electrical" aria-pressed="false">Ток и сопротивление</button><button data-view="modes" aria-pressed="false">Режимы работы</button><button data-view="cells" aria-pressed="false">Паспорта элементов</button></div><div class="tables-intro"><p id="table-state"></p><button class="text-button" id="reset-sort">Сбросить сортировку ↺</button></div><p class="note">Сортировка выполняется нажатием на заголовок. Цена Alibaba из предложения пользователя на 01.10.2026 приведена в USD отдельно от NKON; неизвестная цена не равна нулю. Стоимость NKON рассчитывается по лучшей опубликованной ступени для числа ячеек в строке: один и два блока; доставка не включена, цена и наличие зафиксированы на дату снимка. Пустые значения всегда помещаются в конец таблицы.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Сравнение сборок, таблицу можно прокручивать"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div><p class="note" style="margin-top:18px">* Граница по энергии без подтверждённой токоотдачи и тепловой модели. Размеры используются для предварительной CAD-компоновки. Для цилиндрических ячеек не учтены держатели, шины и теплопроводящие элементы.</p></div></section>
-{calculation_audit_section(esc)}{updated_test_section(esc)}{mooch_section()}<section class="soft section" id="research"><div class="wrap"><div class="knowledge"><p class="eyebrow">Методика расчёта</p><h2>Допущения, ограничения и проверяемые параметры</h2>{knowledge}</div></div></section>
-{render_html(esc,linked,photos,data)}
-<section class="section" id="sources"><div class="wrap"><p class="eyebrow">Проверяемые источники</p><h2>Паспорта, каталоги и независимые испытания</h2><div class="sources">{source_html}</div></div></section></main><footer class="footer"><div class="wrap">Редакция 13 · Предварительный инженерный отбор · <a href="{PDF}">Полный отчёт PDF</a></div></footer><noscript>Для интерактивного сравнения включите JavaScript. Таблицы и расчёты также доступны в PDF.</noscript><script type="application/json" id="report-data">{embedded_data}</script><script src="report.js?v={RELEASE}" defer></script><script id="mooch-data" type="application/json">{mooch_json}</script><script src="mooch.js?v={RELEASE}" defer></script></body></html>'''
+web_data=copy.deepcopy(data);web_data.pop('discharge_tests',None)
+(OUT/'traces').mkdir(exist_ok=True)
+for r in web_data['rows']:
+ traces={}
+ for simkey in list(r['simulations']):
+  if simkey.count('_')==2:del r['simulations'][simkey];continue
+  v=copy.deepcopy(r['simulations'][simkey]);r['simulations'][simkey]=v
+  if v:
+   stride=max(1,len(v['trace'])//320)
+   sampled=v['trace'][::stride]
+   if sampled[-1]!=v['trace'][-1]:sampled.append(v['trace'][-1])
+   traces[simkey]=[[t[k] for k in ('minute','soc','temp','power')] for t in sampled]
+   del v['trace']
+ if traces:(OUT/'traces'/f"{r['id']}.json").write_text(json.dumps(traces,separators=(',',':')))
+embedded_data=json.dumps(web_data,ensure_ascii=False,separators=(',',':')).replace('</',r'<\/')
+method=[
+ 'Начало: полный заряд и 25 °C. Для ячеек с распределённым токосъёмом выбрана отсечка 2,9 В под нагрузкой; доступны 2,8 и 3,0 В. Ограничения 50% заряда и 85% энергии сняты. Для Linkdata 60P/65P паспорт рекомендует запас над 2,5 В в последовательной батарее, например 3,0 В: 2,8–2,9 В здесь проверочный сценарий, требующий согласования и контроля разбаланса. Для остальных ячеек оставлены 3,0 В и прежняя предварительная карта по заряду. Это сценарий управления, а не подтверждение допустимости каждого режима паспортом.',
+ 'Запрос 15 или 30 кВт может поступать на любом уровне заряда ячеек с распределённым токосъёмом. Фактическая мощность ограничивается током ячейки, проверенным диапазоном разрядных кривых, напряжением и температурой. Удлинённый импульс не считается автоматически разрешённым: при недостатке тока тяга снижается сразу.',
+ 'КПД двигателя с контроллером принят 88%, вспомогательная нагрузка — 0,2 кВт на ветвь. Карты КПД, нагрева двигателя и контроллера отсутствуют. Нужны паспорт или измерения для расчёта их температур и допустимой длительности пика.',
+ 'Умеренная поездка: повторяющийся цикл 100 с — 10 с без тяги, 75 с при 3 кВт, 12 с при 10 кВт, 3 с при 30 кВт. Частые разгоны: 5 с без тяги, 45 с при 5 кВт, 35 с при 15 кВт, 15 с при 30 кВт. Эти длительности — принятые сценарии для сравнения, не запись реальной поездки.',
+ 'Энергия интегрируется по напряжению и току на клеммах; заряд — по отданным ампер-часам. Температура: C·dT/dt = I²R − G·(T−25), с потерями обвязки 1 мОм внутри корпуса. Теплоёмкость 1000 Дж/(кг·К); снижение тяги начинается при средней температуре 45 °C, остановка при 60 °C. Это консервативные настройки модели, не паспортные предельные температуры и не температура наиболее горячей ячейки.',
+ 'Оцифрованные кривые используются только в наблюдаемом диапазоне. Неизвестные хвосты ниже измеренной ёмкости не достраиваются. Для моделей без подходящих кривых используется общая зависимость напряжения от заряда; без сопротивления или рейтинга тока численный результат отсутствует.',
+ 'BRP Outlander Electric 2026: 8,9 кВт·ч, 80 км по WMTC, 50 км в средней эксплуатации, сухая масса 398 кг. Ваш квадроцикл принят с той же сухой массой, без поправки по массе. Водитель и груз предполагаются сопоставимыми. Различия шин, трансмиссии, рекуперации и дороги не рассчитаны.',
+ 'Номинальный эквивалент = число блоков × номинальная энергия / индекс BRP. Сценарный эквивалент = выданная энергия / индекс BRP. Индексы 0,11125 и 0,178 кВт·ч/км основаны на заявленной ёмкости BRP; его полезная энергия неизвестна. Поэтому это условное сравнение, а не воспроизведение WMTC или обещание реального пробега.',
+ 'Два двигателя: на каждый приходится один блок 26S16P и собственный запрос 15/30 кВт. Суммарный запрос — 30/60 кВт. Для одинаковых ветвей длительность и температура каждого блока такие же, как для одной ветви, а суммарная энергия, мощность и выделенное тепло удваиваются. Это отличается от двух блоков, делящих нагрузку одного двигателя. Для пакетных конфигураций применяется собственная компоновка строки, а не 26S16P.'
+]
+method_html=''.join('<p>'+esc(t)+'</p>' for t in method)
+source_html=''.join(f'<p id="source-{s["id"]}"><a href="{esc(s["url"])}">Источник {esc(s["id"])}</a></p>' for s in data['sources'] if s['url'])
+brp_url='https://can-am.brp.com/content/dam/global/en/can-am-off-road/my26/spec-sheets/na/atv/en/ORV_ATV_MY26_5_SPEC_OUT_EV_ENNA_HR.pdf'
+doc=f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>АКБ квадроцикла — редакция 14</title><link rel="stylesheet" href="report.css?v={RELEASE}"></head><body>
+<header class="nav"><div class="wrap"><a href="#compare">Сравнение</a> · <a href="#catalog">Ячейки и цены</a> · <a href="{PDF}">Отчёт PDF</a></div></header>
+<main><section class="hero section"><div class="wrap"><p class="eyebrow">Редакция 14 · 02.10.2026</p><h1>АКБ квадроцикла</h1><p>Сравнение энергии, времени работы и нагрева. Один блок по умолчанию; отдельный вариант с двумя двигателями 15/30 кВт.</p></div></section>
+<section class="section" id="compare"><div class="wrap"><p class="eyebrow">Расчётное сравнение конфигураций</p><h2>Энергия, длительность работы и тепловыделение</h2>
+<div class="segmented"><button data-metric="range" aria-pressed="true">Пробег</button><button data-metric="runtime" aria-pressed="false">Время работы</button><button data-metric="heat" aria-pressed="false">Нагрев</button></div>
+<div class="toolbar"><div class="field"><label for="range-mode">Ориентир пробега</label><select id="range-mode"><option value="wmtc">По циклу WMTC</option><option value="utility">Средняя эксплуатация</option></select></div>
+<div class="field"><label for="motors">Двигателей 15/30 кВт</label><select id="motors"><option value="1">Один</option><option value="2">Два: свой блок на каждый</option></select></div>
+<div class="field"><label for="blocks">Подключено одновременно</label><select id="blocks"><option value="1" selected>Один блок</option><option value="2">Два одинаковых блока</option></select></div>
+<div class="field"><label for="cutoff">Отсечка ячеек с распределённым токосъёмом</label><select id="cutoff"><option value="2.8">2,8 В</option><option value="2.9" selected>2,9 В</option><option value="3.0">3,0 В</option></select></div>
+<div class="field"><label for="profile">Запрос на один двигатель</label><select id="profile">{p_opts}</select></div>
+<div class="field"><label for="cooling">Теплоотвод одного блока</label><select id="cooling"><option value="0">Без теплоотвода</option><option value="5" selected>5 Вт/К</option><option value="20">20 Вт/К</option></select></div>
+<div class="field wide"><label for="selection">Сборка</label><select id="selection"><option value="all">Все кандидаты</option>{opts}</select></div></div>
+<div class="chart"><h3 id="chart-title"></h3><button id="back-all" class="text-button" hidden>Все сборки</button><div id="chart-legend" class="legend"></div><div id="bars"></div><div id="axis" class="axis"></div><p id="chart-note" class="note"></p></div><div id="detail" class="detail" hidden></div>
+<details id="control"><summary>Как рассчитаны энергия, импульсы и температура</summary>{method_html}<p><a href="{brp_url}">Паспорт BRP</a> · <a href="calculation_audit.json">Все расчётные сценарии</a></p></details>
+</div></section>
+<section class="section soft" id="catalog"><div class="wrap"><h2>Исходные данные и расчётные параметры</h2><p class="note">Закупка прежде всего на Alibaba. Показано самое дешёвое предложение точной модели с указанной ценой, кроме отсутствующих в наличии. Стоимость рассчитана для выбранного числа блоков и относится только к ячейкам; наличие, партия и доставка требуют уточнения. <a href="alibaba_quotes_2026-10-01.csv">Все исходные предложения</a></p>
+<div class="segmented"><button data-view="energy" aria-pressed="true">Энергия и цена</button><button data-view="modes" aria-pressed="false">Результаты режима</button><button data-view="electrical" aria-pressed="false">Электрические параметры</button><button data-view="cells" aria-pressed="false">Паспорта</button></div><div class="tables-intro"><p id="table-state"></p><button id="reset-sort" class="text-button">Сбросить сортировку</button></div><div class="table-wrap"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div></div></section>
+<section class="section"><div class="wrap"><details><summary>Разрядные испытания и проверка температуры</summary>{updated_test_section(esc).split('<section class="soft section" id="alibaba">')[0]}</details><details><summary>Источники и паспорта</summary>{source_html}</details></div></section>
+</main><footer class="footer"><div class="wrap">Редакция 14 · <a href="{PDF}">Отчёт PDF</a></div></footer><script type="application/json" id="report-data">{embedded_data}</script><script src="report.js?v={RELEASE}" defer></script></body></html>'''
+# Russian prose replacements outside scripts, preserving source URLs and names.
+from html.parser import HTMLParser
+class RussianHTML(HTMLParser):
+ def __init__(self):super().__init__(convert_charrefs=False);self.parts=[];self.script=False
+ def handle_starttag(self,tag,attrs):self.parts.append(self.get_starttag_text());self.script=tag=='script' or self.script
+ def handle_endtag(self,tag):self.parts.append('</'+tag+'>');self.script=False if tag=='script' else self.script
+ def handle_data(self,t):
+  if not self.script:
+   for a,b in [('tabless','с распределённым токосъёмом'),('no CCC logo','без маркировки CCC'),('no CCC','без маркировки CCC'),('identity unconfirmed','идентичность не подтверждена'),('gray legend 25 A / curve label 30 A','серая подпись 25 А / кривая 30 А'),('April 2025','апрель 2025'),('not 50P','не 50P'),('not H51','не H51'),('small spiral CCC retest','повторное испытание малой спирали с CCC'),('engineering sample','инженерный образец'),('production','серийная версия'),('Pouch','Пакетные'),('pouch','пакетные'),('Datasheet','Паспорт'),('≈Wh','≈Вт·ч'),('≈Ah','≈А·ч'),('Tmax','Максимум температуры'),('SOC','заряд'),('CAD','трёхмерная компоновка')]:t=t.replace(a,b)
+  self.parts.append(t)
+ def handle_entityref(self,n):self.parts.append('&'+n+';')
+ def handle_charref(self,n):self.parts.append('&#'+n+';')
+ def handle_decl(self,d):self.parts.append('<!'+d+'>')
+parser=RussianHTML();parser.feed(doc);doc=''.join(parser.parts)
 (OUT/'index.html').write_text(doc)
-
-# PDF: broad tables separated into views, then model cards and complete methodology.
 pdfmetrics.registerFont(TTFont('DV','/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'))
 pdfmetrics.registerFont(TTFont('DV-Bold','/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'))
 pdfmetrics.registerFontFamily('DV',normal='DV',bold='DV-Bold')
@@ -84,7 +120,9 @@ story=[]
 def para(s,style='BodyText'):return Paragraph(linked(s,True),styles[style])
 def raw(s,style='Cell'):return Paragraph(s,styles[style])
 def add(text,style='BodyText'):story.extend([para(text,style),Spacer(1,10)])
-def page(title):story.append(PageBreak());add(title,'Heading1')
+def page(title):
+ while story and isinstance(story[-1],Spacer):story.pop()
+ story.append(PageBreak());add(title,'Heading1')
 def pdf_photo(k,width=76):
  p=photos.get(k)
  if not p:return [raw('Фото точной модели не найдено','Small')]
@@ -94,7 +132,7 @@ def pdf_photo(k,width=76):
   raster=source.convert('RGBA');background=RasterImage.new('RGB',raster.size,'white');background.paste(raster,mask=raster.getchannel('A'))
   stream=BytesIO();background.save(stream,format='JPEG',quality=90);stream.seek(0)
  im=Image(stream);scale=min(width/im.imageWidth,64/im.imageHeight);im.drawWidth=im.imageWidth*scale;im.drawHeight=im.imageHeight*scale
- return [im,raw(esc(p['caption']),'Small')]
+ return [im]
 def table(head,values,widths,photo_col=None):
  items=[[raw('<b>'+esc(h)+'</b>') for h in head]]
  for row in values:
@@ -103,160 +141,59 @@ def table(head,values,widths,photo_col=None):
  t.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('BACKGROUND',(0,0),(-1,0),colors.HexColor('#e9eef4')),('ROWBACKGROUNDS',(0,1),(-1,-1),[colors.white,colors.HexColor('#f7f7f9')]),('LINEBELOW',(0,0),(-1,-1),.35,colors.HexColor('#dedee3')),('LEFTPADDING',(0,0),(-1,-1),8),('RIGHTPADDING',(0,0),(-1,-1),8),('TOPPADDING',(0,0),(-1,-1),10),('BOTTOMPADDING',(0,0),(-1,-1),10)]))
  story.append(t)
 def sim(r,b=1,g=5,p='constant15'):return r['simulations'][f'{b}_{g}_{p}']
-def chart(metric,b=2,g=5,p='mixed'):
- rr=[r for r in rows if r['candidate']]; step=25; bar_h=13; ht=len(rr)*step+34; dr=Drawing(avail,ht);left=245;plotw=avail-left-130
+def chart(metric,b=1,g=5,p='mixed'):
+ rr=[r for r in rows if r['candidate']]; step=25; bar_h=13; ht=(len(rr)+1)*step+34; dr=Drawing(avail,ht);left=245;plotw=avail-left-130
  vals=[]
  for r in rr:
-  s=sim(r,b,g,p);vals.append((s['wmtc_equiv'] if s else r['energy_ceiling_wmtc']*b) if metric=='range' else (None if not s else s['minutes' if metric=='runtime' else 'heat_mean']))
+  s=sim(r,b,g,p);vals.append((s['wmtc_equiv' if metric=='range' else 'utility_equiv'] if s else None) if metric in ['range','utility'] else (None if not s else s['minutes' if metric=='runtime' else 'heat_mean']))
  pairs=sorted(zip(rr,vals),key=lambda item:(item[1] is None, (item[1] if metric=='heat' else -item[1]) if item[1] is not None else 0))
  rr,vals=map(list,zip(*pairs))
- mx=max(v for v in vals if v is not None)*1.07
+ mx=max([v for v in vals if v is not None]+([80 if metric=='range' else 50] if metric in ['range','utility'] else [1]))*1.07
+ if metric in ['range','utility']:
+  y=ht-24;v=80 if metric=='range' else 50
+  dr.add(String(0,y+3,'BRP Outlander Electric 2026',fontName='DV',fontSize=10.5))
+  dr.add(Rect(left,y,plotw*v/mx,bar_h,fillColor=colors.HexColor('#ed9296'),strokeColor=None))
+  dr.add(String(left+plotw+14,y+3,str(v)+' км',fontName='DV',fontSize=10.5))
  for i,(r,v) in enumerate(zip(rr,vals)):
-  y=ht-24-i*step;s=sim(r,b,g,p)
-  dr.add(String(0,y+3,r['name'],fontName='DV',fontSize=10.5,fillColor=colors.HexColor('#1d1d1f')))
+  y=ht-24-(i+1)*step;s=sim(r,b,g,p)
+  dr.add(String(0,y+3,(r['name'] if len(r['name'])<39 else r['name'][:36]+'…'),fontName='DV',fontSize=10.5,fillColor=colors.HexColor('#1d1d1f')))
   dr.add(Rect(left,y,plotw,bar_h,fillColor=colors.HexColor('#f1f1f5'),strokeColor=None))
   if v is not None:
    dr.add(Rect(left,y,plotw*v/mx,bar_h,fillColor=colors.HexColor('#0071e3' if s else '#c9c9d0'),strokeColor=None))
    if metric=='runtime' and s:
     dr.add(Rect(left,y,plotw*v/mx,bar_h,fillColor=colors.HexColor('#b4d6f7'),strokeColor=None))
     dr.add(Rect(left,y,plotw*s['full_minutes']/mx,bar_h,fillColor=colors.HexColor('#0071e3'),strokeColor=None))
-  label='нет данных' if v is None else (('≤ ' if not s else '')+n(v,0)+(' км' if metric=='range' else ' мин' if metric=='runtime' else ' Вт'))
+  label='нет данных' if v is None else (('≤ ' if not s else '')+n(v,0)+(' км' if metric in ['range','utility'] else ' мин' if metric=='runtime' else ' Вт'))
   if metric=='runtime' and s:label=n(s['full_minutes'],0)+' / '+n(v,0)+' мин'
   dr.add(String(left+plotw+14,y+3,label,fontName='DV',fontSize=10.5,fillColor=colors.HexColor('#626269')))
  return dr
 
-add('АКБ квадроцикла','Cover');add('Энергия, мощность и температура','Heading1')
-add('Редакция 13 · 01.10.2026. Два съёмных блока; каждый должен самостоятельно питать двигатель 15/30 кВт. Наружные Ш×Г×В 230×400×340 мм, цель до 40 кг. Все токи относятся к DC-стороне батареи.')
-table(['Объём блока','Целевая масса','Энергия двух блоков','Полный заряд 26S'],[['31,28 л','≤40 кг','Около 15 кВт·ч','109,2 В при 4,2 В/яч.']],[1,1,1,2])
-for t in [
- 'В первую очередь испытать имеющийся на NKON BAK 50D2 26S16P и сравнить его с Reliance RS50 после поступления. EVE 50PL и Tenpower 50XG интересны после согласования версии и партии. Molicel P50B — документированный, но более дорогой ориентир; Samsung 50S — доступный контрольный образец с принятым пределом 20 А по тесту Mooch.',
- 'Расчёт больше не задаёт условный постоянный ток батареи: он определяется запросом мощности, напряжением, просадкой и ограничениями. Контроллер должен снижать тягу по данным BMS, а не ждать аварийного отключения.',
- 'Время до первого снижения мощности и полное время до резерва показаны раздельно. Пробег — энергетический эквивалент по индексам BRP, а не сертифицированный WMTC. После снижения мощности соблюдение графика WMTC не подтверждается.',
- 'Численные температуры — предварительная модель средней температуры. Нет DCIR или применимого рейтинга тока — нет достоверного теплового прогноза. «Нет данных» не означает отсутствие нагрева.'
-]:add(t)
-add('Как читать отчёт: обзорные графики → сводка режимов → полный каталог компоновок → паспорта элементов → методика и источники → окончательный выбор. На сайте те же данные доступны с сортировкой и индивидуальными графиками.','Small')
-page('Расчётный энергетический эквивалент кандидатов')
-add('Два одинаковых блока одновременно; умеренный сценарий; G=5 Вт/К. Синий — расчёт выданной энергии с ограничениями. Серый — только граница 85% Eном, без доказанной токоотдачи и неизвестных потерь. Километры — энергетический эквивалент по индексу WMTC, не дорожный прогноз.','Small')
-story.append(chart('range'))
-page('Время работы до ограничения мощности')
-add('Один блок; постоянный запрос 15 кВт на валу; G=5 Вт/К. Синий — до снижения запрошенной мощности более чем на 2%; светло-синий — работа после снижения до выбранного резерва. Модель не доказывает ресурс или отсутствие локального перегрева.','Small')
-story.append(chart('runtime',1,5,'constant15'))
-page('Тепловыделение при запросе 15 кВт')
-add('Среднее тепловыделение в ячейках одного блока за всю поездку с действующим ограничением мощности. Это не тепло при неизменных 15 кВт на всём протяжении. Неизвестные DCIR не заменены ACIR. Внешние потери линии проверяются отдельно.','Small')
-story.append(chart('heat',1,5,'constant15'))
-page('Режимы: измеримые исходные данные')
-add('Один блок, 25 °C, G=5 Вт/К. Точность округления не означает точность модели. Тепло и температура из независимого DCIR имеют статус условного переноса на сборку.','Small')
-vals=[]
+
+add('АКБ квадроцикла','Cover');add('Энергия, время работы и нагрев','Heading1')
+add('Редакция 14 · 02.10.2026. Один блок по умолчанию; один или два двигателя 15/30 кВт. Для цилиндрических кандидатов — 26S16P; корпус 230×400×340 мм, цель до 40 кг на блок.')
+for t in method:add(t.replace('tabless','с распределённым токосъёмом'))
+for metric,title in [('range','Пробег: энергетический ориентир WMTC'),('utility','Пробег: средняя эксплуатация'),('runtime','Длительность умеренной поездки'),('heat','Среднее тепловыделение в умеренной поездке')]:
+ page(title);add('Один блок; полный заряд; 25 °C; теплоотвод 5 Вт/К. Сценарная оценка. Светло-красный ориентир — BRP; синий — результат расчёта. Неизвестные данные не заменены границами по энергии.','Small');story.append(chart(metric))
+page('Номинальная и выданная энергия: все конфигурации')
+table(['Сборка','Номинал, кВт·ч','Выдано, кВт·ч','WMTC, км-экв.','Средняя эксплуатация, км-экв.','Мин полный / всего','Максимум температуры, °C','Завершение'],[[r['name'],n(r['energy'],2),n(sim(r,p='mixed')['output_kwh'],2) if sim(r,p='mixed') else '—',n(sim(r,p='mixed')['wmtc_equiv'],0) if sim(r,p='mixed') else '—',n(sim(r,p='mixed')['utility_equiv'],0) if sim(r,p='mixed') else '—',n(sim(r,p='mixed')['full_minutes'],0)+' / '+n(sim(r,p='mixed')['minutes'],0) if sim(r,p='mixed') else '—',n(sim(r,p='mixed')['t_peak'],1) if sim(r,p='mixed') else '—',sim(r,p='mixed')['stop_reason'] if sim(r,p='mixed') else 'Нужны исходные данные'] for r in rows],[2,1,1,1,1.2,1.1,1,1.7])
+page('Два двигателя: отдельный блок 26S16P на каждый')
+add('Суммарный запрос 30/60 кВт; каждый блок питает свой двигатель 15/30 кВт. Время и температура относятся к каждой ветви; энергия и тепло — сумма двух. По постоянному запросу 15 кВт на каждый двигатель.','Small')
+table(['Сборка','Энергия двух блоков, кВт·ч','Выдано вместе, кВт·ч','Мин без снижения / всего','Максимум температуры, °C','Тепло ячеек вместе, кДж','Средняя суммарная мощность, кВт'],[[r['name'],n(2*r['energy'],2),n(2*sim(r)['output_kwh'],2) if sim(r) else '—',n(sim(r)['full_minutes'],0)+' / '+n(sim(r)['minutes'],0) if sim(r) else '—',n(sim(r)['t_peak'],1) if sim(r) else '—',n(2*sim(r)['heat_kj'],0) if sim(r) else '—',n(2*sim(r)['mean_power'],1) if sim(r) else '—'] for r in rows if r['s']==26 and r['p']==16],[2,1.3,1.3,1.3,1.1,1.2,1.4])
+page('Исходные данные и закупка на Alibaba')
+from procurement import best_offer
+values=[]
 for r in rows:
- s=sim(r)
- if s:
-  a=sim(r,p='mixed');two=sim(r,2);cool=sim(r,1,20)
-  vals.append([r['model'],r['name'],r['format'],n(a['minutes'],0)+' / '+n(a['utility_equiv'],0),n(s['full_minutes'])+' / '+n(s['minutes']),n(s['heat_mean'],0)+' / '+n(s['t_peak'],0),n(two['full_minutes'])+' / '+n(two['minutes']),n(cool['full_minutes'])+' / '+n(cool['t_end'],0),s['first_limit']])
-table(['Фото','Сборка','Тип','Умеренно: мин / рабочий км-экв.','15 кВт: мин полный / всего','15 кВт: Вт / Tmax °C','Два: мин полный / всего','G=20: мин полный / °C','Первое ограничение'],vals,[.8,1.5,.7,1,1.1,1,1.1,1,1.2],0)
-page('WMTC: проверка всех конфигураций')
-add('Два одинаковых блока, умеренный сценарий, 95% SOC / 25 °C, G=5 Вт/К на блок. Номинальный эквивалент = 2 × Eном / 0,11125; сценарный = Eвыданная / 0,11125. Индекс BRP основан на заявленной батарее 8,9 кВт·ч и 80 км, а не измеренном расходе на клеммах. Нет скоростной трассы WMTC. При отсутствии DCIR / рейтинга тока сценарный результат неизвестен. Небольшие различия сопоставимы с погрешностью JPEG.','Small')
-audit=json.loads((OUT/'calculation_audit.json').read_text())
-vals=[]
-for r in audit['rows']:
- s=r['scenarios']['2_5_mixed']
- vals.append([r['name'],n(r['nominal_kwh_per_block'],2),n(2*r['nominal_wmtc_km_per_block'],1),n(None if s is None else s['previous_wmtc_equiv'],1),n(None if s is None else s['output_kwh'],2),n(None if s is None else s['wmtc_equiv'],1),n(None if s is None else s['end_soc'],1),'Нет DCIR / рейтинга тока' if s is None else s['stop_reason']])
-table(['Сборка','Eном / блок, кВт·ч','Номинальный эквивалент пары, км','Прежний черновик, км','Выдано, кВт·ч','Исправленный эквивалент, км','SOC в конце, %','Завершение'],vals,[1.7,.85,1.1,1,1,1.2,.7,1.6])
-page('Весь каталог: энергия и компоновка')
-add('Исходный порядок: тип → производитель → модель. Масса обвязки оценочная: цилиндры +8–13 кг, pouch по сложности +8–15 кг. Полный жидкостный контур может потребовать дополнительной массы. Корпус — для дальнейшей проработки, не гарантированный минимум.','Small')
-vals=[]
-for r in rows:
- vals.append([r['model'],r['name']+'\n'+r['format'],r['n'],n(r['energy'],2)+' / '+n(2*r['energy'],2),n(r['mass'],2)+'\n'+n(r['finished'][0])+'–'+n(r['finished'][1]),r['layout'],r['fit'],dim(r['box'])+'\nΔ '+ '/'.join(f'{x:+d}' for x in r['delta']),n(40-r['mass'],2)])
-table(['Фото','Элемент / тип / сборка','Число','Энергия 1 / 2, кВт·ч','Ячейки / готовый, кг','Предлагаемое размещение, мм','Оценка для 230×400×340','Корпус для CAD / Δ, мм','Обвязка до 40 кг'],vals,[.8,1.5,.45,.8,1,1.8,1.25,1.1,.7],0)
-page('Паспорта элементов и электрические ограничения')
-add('Фото служит идентификации модели; оно не подтверждает партию. В строках EVE 50PL масса выбранной редакции и независимый DCIR не принадлежат доказанно одному исполнению. На графике такой перенос условный. Сопротивление при разных длительностях импульса нельзя сравнивать как одну и ту же величину.','Small')
-seen=set();vals=[]
-for r in rows:
- k=r['model']
- if k in seen:continue
- seen.add(k);m=models[k]
- rating=[]
- if m.get('continuous'):rating.append(n(m['continuous'],0)+' А; условия в примечании')
- if m.get('conditional_current'):rating.append(n(m['conditional_current'],0)+' А с температурной отсечкой')
- if m.get('pulse'):rating.append(n(m['pulse'],0)+' А / '+str(m['seconds'])+' с')
- if m.get('reported_current'):rating.append(n(m['reported_current'],0)+' А по исследованию')
- vals.append([k,m['name']+'\n'+r['format'],n(m['ah'],2)+' А·ч\n'+n(m['v'],2)+' В',cell_dim(m)+' мм\n'+n(m['kg']*1000,1)+' г','; '.join(rating) or 'Не подтверждён',m['res']+(('\nВ модели '+n(r['dc_model'],2)+' мОм; '+r['dc_basis']) if r['dc_model'] else ''),m['note']+' ['+m['source']+']'])
-table(['Фото','Модель / тип','Номиналы','Размер / масса','Ток ячейки','Сопротивление','Условия и редакция'],vals,[.9,1.25,.7,1.0,1.25,1.55,3.3],0)
-page('Сопротивление последовательной ветви и линии')
-add('r — DCIR одной ячейки в мОм. Ветвь: Ns×r; эквивалент всей сборки: Ns/Np×r. Линия дополнительно включает условный 1 мОм внешних проводников и коммутации. При неизвестном DCIR приведена формула, численного прогноза тепла нет.','Small')
-table(['Сборка','Источник DCIR','DCIR, мОм','Ветвь, мОм','Сборка + линия, мОм','Ток ячейки для 30 кВт при Uном'],[[r['name'],r['dc_basis'],n(r['dc_model'],2),n(r['r_string'],2) if r['r_string'] else str(r['s'])+'r',n(r['r_total'],2) if r['r_total'] else n(r['s']/r['p'],3)+'r + 1',n(34290.909/r['voltage']/r['p'])+' А / '+n(r['voltage'])+' В'] for r in rows],[2,1.8,1,1,1.4,2.1])
-for key,title,texts in SECTIONS:
- if key=='conclusion':continue
- page(title)
- for t in texts:add(t)
- if key=='control':
-  table(['Напряжение под нагрузкой','15 кВт на валу: ток блока','30 кВт на валу: ток блока','30 кВт: ток ячейки 16P'],[[str(v)+' В',n((15/.88+.2)*1000/v)+' А',n((30/.88+.2)*1000/v)+' А',n((30/.88+.2)*1000/v/16)+' А'] for v in [109.2,105,100,95,90,85]],[1,1,1,1])
-  add('Все строки показывают требуемый ток до ограничений по току ячейки, SOC и температуре. Ни 90 В, ни 85 В не считаются универсальным порогом мощности. Напряжение после отдыха и напряжение при полном газе не взаимозаменяемы.','Small')
- if key=='tests':table(['Ток','Ячейки','Источник','Результат / ограничение'],[[*r[:4]] for r in TEST_ROWS],[.7,1.5,1.3,4])
- if key=='thermal':
-  table(['Сборка','0,75×R: мин полный / T конца','1,5×R: мин полный / T конца'],[[r['name'],n(r['sensitivity15'][0]['full_minutes'])+' / '+n(r['sensitivity15'][0]['t_end'])+' °C',n(r['sensitivity15'][1]['full_minutes'])+' / '+n(r['sensitivity15'][1]['t_end'])+' °C'] for r in rows if r['id'] in ['C03','C16','C17','C18']],[2,2,2])
-  add('Чувствительность для запроса 15 кВт, одного блока, G=5. Множители сопротивления выбраны для проверки устойчивости вывода, не являются доверительным интервалом измерений.','Small')
-page('Новые разряды: энергия и температура при 20 А')
-add('23 графика пользователя от 01.10.2026. Энергия — приближённая оцифровка ∫V dAh; температуры — подписанные максимумы при начальных около 25 °C. Порог модели 3,0 В показан отдельно от Mooch 2,8 В. Конфликт BAK 65E 25/30 А не исправлен догадкой. Ampace: имя файла CCC, подпись no CCC; используется подпись.','Small')
-vals=[]
-for ds in data['discharge_tests']['datasets']:
- if ds['key'] in {'sa112','lg','m50a','g50'}:continue
- for c in ds['curves']:
-  if c['current_A']==20:vals.append([ds['title'],ds['test_date'],n(c['energy_2_8_Wh'],2),n(c['energy_3_0_Wh'],2),n(c['capacity_3_0_Ah'],2),n(c['max_C'],0),n(c['delta_C'],0)])
-vals.sort(key=lambda x:float(x[3].replace(',','.')) if x[3]!='—' else -1,reverse=True)
-table(['Модель / версия','Дата','≈Wh до 2,8 В','≈Wh до 3,0 В','≈Ah до 3,0 В','Tmax, °C','ΔT от 25 °C'],vals,[3,1.1,1,1,1,1,1])
-page('Проверка прежней тепловой модели по разрядам')
-add('Одинаковый постоянный ток до конца наблюдаемого участка; c=1000 Дж/(кг·К), прежний DCIR и множитель SOC. G=5/416 и 20/416 распределяют условный теплоотвод 416-ячеечного блока поровну. Снижение мощности отключено только для этого сопоставления. Числа не являются измеренным теплоотводом стенда или прогнозом рабочей температуры готового блока.','Small')
-table(['Модель','I, А','Измерено, °C','G=5/416, °C','G=20/416, °C','Подгонка стенда, °C','Остаток, °C'],[[a['title'],a['current_A'],n(a['measured_C']),n(a['pack_G5_equivalent_C']),n(a['pack_G20_equivalent_C']),n(a['bench_fit_C']),n(a['bench_residual_C'])] for a in data['discharge_tests']['thermal_audit'] if a['current_A']==20 and a['key'] not in {'sa112','lg','m50a','g50'}],[3,1,1,1,1,1,1])
-add('Максимумы без T(t) не идентифицируют независимо R(SOC,T), теплоёмкость и конвекцию. Подобранный G стенда не переносится в блок. В рабочую модель добавлены потери обвязки внутри корпуса, сценарий G=0 и максимум температуры; G=5/20 остаются сценарными до испытания собранного блока.','Small')
-page('Отдельные предложения Alibaba — 01.10.2026')
-add(data['quotes']['source']+'. '+data['quotes']['conditions'],'Small')
-table(['Модель','USD/шт.','Предложение / продавец','Статус','416 шт., USD','832 шт., USD','Ограничение идентичности'],[[o['model'],n(o['price'],2),o['seller']+' · '+o['observed_at'],{'quoted':'Цена получена','out_of_stock':'Нет в наличии','pending_confirmation':'Ожидается подтверждение'}[o['availability']],n(None if o['price'] is None else 416*o['price'],2),n(None if o['price'] is None else 832*o['price'],2),o['note']] for o in data['quotes']['offers']],[1.5,.7,1.7,1.3,1,1,2.5])
-page('Приложенный рейтинг 21700 — 27.09.2026')
-add('Новый рейтинг 21700 от 27.09.2026; E-Scores до 2,8 В. Предсерия 60XG и ZG13 различаются. Автор просит не распространять после 27.03.2027 без обновления.','Small')
-img=Image(str(OUT/'assets/mooch-21700-2026-09-27.jpg'));factor=min(avail/img.imageWidth,(H-180)/img.imageHeight);img.drawWidth=img.imageWidth*factor;img.drawHeight=img.imageHeight*factor;story.append(img)
-page('Источники и основания расчёта')
-for s in data['sources']:
- entry=[para('['+s['id']+'] '+s['title'],'Heading3'),Spacer(1,8),para(s['note'],'Small'),Spacer(1,8)]
- if s['url']:entry.append(raw(f'<a href="{esc(s["url"])}" color="#0071e3">Открыть источник</a>','Small'))
- entry.append(Spacer(1,16));story.append(KeepTogether(entry))
-page('Ранжирование: 5 основных и 3 резервных 21700, 5 pouch')
-add(INTRO);add(METHOD,'Small');add(HIGH_CAPACITY_MARKET_NOTE,'Small');add(GEOMETRY,'Small')
-for title,cards in ranked_groups(data):
- if title.startswith('Топ-5 · пакетные'):page('Сводная таблица: топ-5 pouch')
- add(title,'Heading3')
- table(['Элемент','Сборка','Энергия пары','Ячейки / блок','На обвязку','Цена ячеек / блок','Тепло при 15 кВт'],[[c['title'],c['config'],c['energy'],c['mass'],c['budget'],c.get('market_price','—'),c['heat_short']] for c in cards],[18,18,13,13,13,15,17])
-page('Метод сравнения тепловыделения и габаритов')
-add(HEAT_METHOD);add('Исправление размеров Farasis','Heading2');add(DIMENSION_NOTE)
-styles.add(ParagraphStyle('ChoiceBody',fontName='DV',fontSize=10,leading=14,textColor=colors.HexColor('#303039')))
-for title,cards in ranked_groups(data):
- for offset in range(0,len(cards),2):
-  page(title)
-  panels=[]
-  for c in cards[offset:offset+2]:
-   panel=[para(c['role'],'Small'),para(c['title'],'Heading2'),para(c['config'],'Small'),Spacer(1,10)]
-   panel.extend(pdf_photo(c['key'],260));panel.append(Spacer(1,10))
-   panel.append(para('Энергия пары: '+c['energy']+' · ячейки/блок: '+c['mass']+' · на обвязку ≤'+c['budget'],'ChoiceBody'))
-   fields=[('Производитель','manufacturer'),('Основание включения','why')]+([('Рынок и стоимость','market')] if 'market' in c else [])+[('Масса','mass_note'),('Габариты','geometry'),('Тепловыделение одного блока','heat'),('Охлаждение','cooling'),('Ограничения','trade'),('Требуемая проверка','check')]
-   for label,key in fields:
-    panel.extend([Spacer(1,9),raw('<b>'+esc(label)+'.</b> '+linked(c[key],True),'ChoiceBody')])
-   panels.append(panel)
-  if len(panels)==1:panels.append('')
-  t=Table([panels],colWidths=[avail/2,avail/2],hAlign='LEFT')
-  t.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),12),('RIGHTPADDING',(0,0),(-1,-1),18),('LINEBEFORE',(1,0),(1,0),.5,colors.HexColor('#dddde5'))]))
-  story.append(t)
-page('Охлаждение и герметичность блока')
-for title,txt in COOLING:
- add(title,'Heading3');add(txt,'ChoiceBody')
-for c in POUCH:
- page('Паспорт пользователя: '+c['title'])
- add(POUCH_INTRO,'Small');add(c['verdict'],'Heading2');add(c['facts'])
- add('Несоответствие исходным требованиям','Heading3');add(c['why'])
- add('Необходимые компромиссы','Heading3');add(c['trade'])
- add('Допустимый сценарий применения','Heading3');add(c['condition'])
-page('Конфигурации для прототипирования')
-add(DECISION)
-def footer(c,doc):
- c.setFont('DV',9);c.setFillColor(colors.HexColor('#626269'));c.drawString(margin,22,'АКБ 96 В · редакция 13 · 01.10.2026 · расчёт с ограничениями SOC / температуры');c.drawRightString(W-margin,22,str(doc.page))
-pdfdoc=SimpleDocTemplate(str(OUT/PDF),pagesize=(W,H),leftMargin=margin,rightMargin=margin,topMargin=35,bottomMargin=42,title='Выбор ячеек для тяговой АКБ 96 В',author='Исследование для проекта квадроцикла')
-pdfdoc.build(story,onFirstPage=footer,onLaterPages=footer)
-print('Built',len(rows),'configurations;',len(models),'models;',PDF)
+ o=best_offer(models[r['model']].get('market',{}).get('alibaba',{}).get('offers',[]))
+ values.append([r['model'],r['cell_name'],str(r['s'])+'S'+str(r['p'])+'P',n(r['energy'],2),n(r['mass'],1)+' / '+n(r['finished'][0])+'–'+n(r['finished'][1]),dim(models[r['model']]['dims']), '—' if o is None else n(o['price'],2)+' / '+n(o['price']*r['n'],2)+' $',r['fit']])
+table(['Фото','Ячейка','Сборка','Номинал, кВт·ч','Масса ячеек / блока, кг','Размер, мм','Alibaba: шт. / блок','Компоновка'],values,[.9,1.8,.8,.8,1.2,1.2,1.2,1.8],0)
+page('Электрические ограничения')
+table(['Модель','Сопротивление, мОм','Источник сопротивления','Предел тока и условия'],[[r['cell_name'],n(r['dc_model'],2),r['dc_basis'],models[r['model']]['note']] for r in rows],[1.6,.8,1.3,5])
+page('Источники')
+add('Паспорт BRP: '+brp_url,'Small')
+for v in data['sources']:
+ if v['url']:add('Источник '+v['id']+' — '+v['url'],'Small')
+def footer(canvas,doc):
+ canvas.setFont('DV',9);canvas.drawString(margin,20,'Редакция 14 · 02.10.2026');canvas.drawRightString(W-margin,20,str(doc.page))
+while story and isinstance(story[-1],Spacer):story.pop()
+SimpleDocTemplate(str(OUT/PDF),pagesize=landscape(A3),rightMargin=margin,leftMargin=margin,topMargin=margin,bottomMargin=margin,title='АКБ квадроцикла · редакция 14',author='').build(story,onFirstPage=footer,onLaterPages=footer)
+print('Built',OUT/PDF)
