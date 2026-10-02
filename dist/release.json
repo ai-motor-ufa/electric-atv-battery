@@ -1,6 +1,11 @@
 {
-  "release": "20261002-r14a",
+  "release": "20261002-r15",
   "date": "2026-10-02",
+  "numeric_model_revision": "20261002-r14a",
+  "default_motors": 2,
+  "default_blocks": 2,
+  "range_default_basis": "nominal",
+  "selection_ratings": "selection_ratings.json",
   "models": 32,
   "configurations": 33,
   "overview_21700": 16,
@@ -10,19 +15,19 @@
   "forum_threads": 51,
   "full_text_articles": 48,
   "forum_archive_complete": false,
-  "pdf_pages": 17,
+  "pdf_pages": 23,
   "files": {
     "index.html": {
-      "bytes": 2771403,
-      "sha256": "9bcdc5f5cffb9f4f816dc480ece4c9336de973d11ed8d0bac1da57a1ee5035ae"
+      "bytes": 2806918,
+      "sha256": "4c35d60e8e249a5439c160837bd4a01b176d4f3d29f4743b064972032fd5ee88"
     },
     "report.js": {
-      "bytes": 27643,
-      "sha256": "b73b5664df9935cadb6ba2be266e3dabd8ae3fb441fc1332094d655cd7e0410c"
+      "bytes": 31340,
+      "sha256": "eaa6dfc9001bbe8eeff86e29641f94e0c39e55c22506f92bd404b9c9d10a4233"
     },
     "report.css": {
-      "bytes": 16694,
-      "sha256": "a4d687968fa71ec23d5576edc154d80cbd386bc8a98d9490a4c6945a07f29787"
+      "bytes": 17034,
+      "sha256": "a88146806cf125620c1961ee0046c42ffa2b2bd64a4d64c52379f51e6170b977"
     },
     "mooch.js": {
       "bytes": 1329,
@@ -45,8 +50,8 @@
       "sha256": "dd07c7e2cee846ef076dd60e93f6b85ed0d42eda4dadc8817f667d160d7cb6ba"
     },
     "AKB_96V_Comparative_Study_2026-10-02.pdf": {
-      "bytes": 299830,
-      "sha256": "dd11a6be3153f5092f4d6d12c0f03efc6893031943810d46046fee86cb9d955b"
+      "bytes": 319523,
+      "sha256": "63ac37ba464057a5ffa43b93d249f75de5c99ddc02b521b45a754b080f3f908f"
     },
     "assets/mooch-21700-2026-09-27.jpg": {
       "bytes": 860440,
@@ -71,6 +76,10 @@
     "calculation_audit.json": {
       "bytes": 3734221,
       "sha256": "22db26afe7bbd6f32ff8809f89528128275f2af6e694c7484738a18632a4638c"
+    },
+    "selection_ratings.json": {
+      "bytes": 31012,
+      "sha256": "4d91ee6bfc6781bafdc8f91d474c0e57d67c1f119f6c379e70f887c0cc471ec8"
     },
     "traces/C02.json": {
       "bytes": 458356,
@@ -314,7 +323,7 @@
   "conclusion": {
     "top_21700": 5,
     "attention_21700": 3,
-    "top_pouch": 5,
+    "top_pouch": 0,
     "sealed_immersion_cooling": true,
     "farasis_dimensions_checked": true
   }

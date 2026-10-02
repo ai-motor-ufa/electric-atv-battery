@@ -16,6 +16,7 @@ FILES = [
 
 
 FILES.append("calculation_audit.json")
+FILES.append("selection_ratings.json")
 FILES.extend(str(p.relative_to(DIST)) for p in sorted((DIST/"traces").glob("*.json")))
 FILES.extend(str(p.relative_to(DIST)) for p in sorted((DIST/'assets/cells').glob('*.jpg')))
 FILES.extend(str(p.relative_to(DIST)) for p in sorted((DIST/"tests").glob("*.jpg")))
@@ -28,8 +29,13 @@ def fingerprint(relative):
 calculated = json.loads((ROOT / "calculated.json").read_text())
 mooch = json.loads((DIST / "mooch_data.json").read_text())
 payload = {
-    "release": "20261002-r14a",
+    "release": "20261002-r15",
     "date": "2026-10-02",
+    "numeric_model_revision": "20261002-r14a",
+    "default_motors": 2,
+    "default_blocks": 2,
+    "range_default_basis": "nominal",
+    "selection_ratings": "selection_ratings.json",
     "models": len(calculated["models"]),
     "configurations": len(calculated["rows"]),
     "overview_21700": sum(r["candidate"] and r["format"] == "21700" for r in calculated["rows"]),
@@ -52,7 +58,7 @@ payload = {
     "conclusion": {
         "top_21700": 5,
         "attention_21700": 3,
-        "top_pouch": 5,
+        "top_pouch": 0,
         "sealed_immersion_cooling": True,
         "farasis_dimensions_checked": True,
     },

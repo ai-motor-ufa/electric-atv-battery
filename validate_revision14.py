@@ -26,7 +26,8 @@ for m in x['models'].values():
  os=m.get('market',{}).get('alibaba',{}).get('offers',[]);o=best_offer(os)
  if o:assert all(o['price']<=b['price'] for b in os if b['price'] is not None and b['availability']!='out_of_stock')
 html=Path('dist/index.html').read_text()
-assert '<option value="1" selected>Один блок</option>' in html
+assert '<option value="2" selected>Два одинаковых блока</option>' in html
+assert '<option value="2" selected>Два: свой блок на каждый</option>' in html
 assert 'Цены Alibaba: отдельные предложения' not in html
 assert 'id="wmtc-audit"' not in html
 assert Path('dist/assets/cells/t50xg.jpg').exists()
