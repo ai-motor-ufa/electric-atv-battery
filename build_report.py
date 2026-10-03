@@ -13,11 +13,12 @@ from reportlab.graphics.shapes import Drawing,Rect,String,Line,PolyLine
 from report_content import SECTIONS,TEST_ROWS
 from recommendations import INTRO, METHOD, GEOMETRY, HEAT_METHOD, COOLING, DIMENSION_NOTE, POUCH_INTRO, POUCH, DECISION, HIGH_CAPACITY_MARKET_NOTE, ranked_groups, render_html
 from mooch_section import section as mooch_section
-from test_sections import section as updated_test_section, manufacturer, exports as export_test_tables
-ROOT=Path(__file__).resolve().parent; OUT=ROOT/'dist'; PDF='AKB_96V_Comparative_Study_2026-10-03.pdf'; RELEASE='20261003-r16a'
+from test_sections import section as updated_test_section, manufacturer, test_cards, test_archive, exports as export_test_tables
+ROOT=Path(__file__).resolve().parent; OUT=ROOT/'dist'; PDF='AKB_96V_Comparative_Study_2026-10-04.pdf'; RELEASE='20261004-r17'
 data=json.loads((ROOT/'calculated.json').read_text()); rows=data['rows']; models=data['models']; photos=json.loads((ROOT/'photos.json').read_text())
 mooch_json=(OUT/'mooch_data.json').read_text(); mooch_data=json.loads(mooch_json); forum_threads=len(mooch_data['forum'])
 data['photos']=photos
+data['discharge_cards']=test_cards(esc=lambda x:html.escape(str(x)),include_photo=False)
 from manufacturer_context import load as load_manufacturers
 manufacturer_data=load_manufacturers()
 (OUT/'manufacturer_profiles.json').write_text(json.dumps(manufacturer_data,ensure_ascii=False,indent=2)+'\n')
@@ -47,7 +48,7 @@ def linked(text,pdf=False):
     return re.sub(r'\[([A-Z0-9, ]+)\]',sub,text)
 def pic(key):return esc(photos[key]['file']) if key in photos else ''
 
-opts=''.join(f'<option value="{r["id"]}">{esc(r["name"])}</option>' for r in rows if r['candidate'])
+opts=''.join(f'<option value="{r["id"]}">{esc(r["name"])}</option>' for r in rows)
 p_opts=''.join(f'<option value="{p["id"]}">{esc(p["name"])}</option>' for p in data['profiles'])
 import copy
 web_data=copy.deepcopy(data);web_data.pop('discharge_tests',None)
@@ -77,12 +78,19 @@ method=[
  'Два двигателя: на каждый приходится один блок 26S16P и собственный запрос 15/30 кВт. Суммарный запрос — 30/60 кВт. Для одинаковых ветвей длительность и температура каждого блока такие же, как для одной ветви, а суммарная энергия, мощность и выделенное тепло удваиваются. Это отличается от двух блоков, делящих нагрузку одного двигателя. Для пакетных конфигураций применяется собственная компоновка строки, а не 26S16P.'
 ]
 method_html=''.join('<p>'+esc(t)+'</p>' for t in method)
-brp_explanation='Номинальная ёмкость и выданная энергия — разные величины. BRP: 8,9 кВт·ч и заявленные 80/50 км. Для одного Linkdata 65P: 9,734 кВт·ч номинально, около 8,472 кВт·ч выдано в умеренном сценарии; для Tenpower 60XG: 8,986 и около 8,037 кВт·ч. По одинаковой номинальной основе получаются 87,5 и 80,8 км-экв. WMTC против 80 км у BRP. Прежние 76,2 и 72,2 км-экв. получены из выданной энергии наших сборок, а полезная энергия BRP неизвестна. Это не доказывает больший расход BRP или худшие ячейки. Плотность энергии ячейки не равна энергии всей батареи; масса и данные ячеек BRP не установлены. Из одинаковой массы квадроцикла нельзя вывести одинаковый расход.'
+care_text=[
+ 'Остаток заряда при остановке — расчётная доля номинальной ёмкости по отданным ампер-часам. Это не остаток энергии, которую можно немедленно использовать: расчёт может завершиться по напряжению под нагрузкой, температуре или границе измеренных кривых. Напряжение после снятия нагрузки восстанавливается, поэтому 2,9 В не соответствуют одному фиксированному проценту заряда.',
+ 'Для повседневной эксплуатации с приоритетом ресурса предварительный выбор для этой сборки — отсечка 3,0 В под нагрузкой и завершение обычной поездки с запасом около 15–20% фактического заряда. Это инженерный ориентир для проверки на стенде, а не паспортная рекомендация всех производителей. Он не меняет выбранный на странице сценарий 2,9 В. Отсечки 2,8–2,9 В оставлены для оценки более глубокого разряда; применимость проверяется по паспорту конкретной партии, температуре и самой слабой последовательной группе.',
+ 'Паспортный минимум и режим для ресурса различаются. Например, Molicel P50B имеет в паспорте нижнюю границу разряда 2,5 В; это не доказательство оптимального ресурса при ежедневном достижении 2,5 В. Для 26S уровни 3,0 / 2,9 / 2,8 В соответствуют 78,0 / 75,4 / 72,8 В только при равных напряжениях всех групп. Защита должна следить за каждой группой, а не только за суммарным напряжением. Точные пороги снижения мощности и аварийного отключения выбираются после испытаний блока.',
+ 'В транспорте настройки зависят от модели и химии батареи. Tesla советует чаще подзаряжать батарею, избегать длительного пребывания около 0% и 100%, а для машин с рекомендованным пределом 80% соблюдать его в повседневных поездках. Zero в текущем руководстве по хранению описывает контроль заряда системой управления батареей и подзарядку при падении ниже 30%; указания по хранению нельзя превращать в отсечку тяги. Производители не публикуют единого универсального нижнего напряжения для всех автомобилей и мотоциклов.'
+]
+care_sources=[('Паспорт Molicel P50B','https://www.molicel.com/wp-content/uploads/Product-Data-Sheet-of-INR-21700-P50B-80122.pdf'),('Рекомендации Tesla','https://www.tesla.com/ownersmanual/model3/en_eu/GUID-7FE78D73-0A17-47C4-B21B-54F641FFAEF4.html'),('Рекомендации Zero по хранению','https://zeromotorcycles.com/en-gb/stories/long-term-storage'),('Исследование зависимости старения от условий эксплуатации','https://research-hub.nlr.gov/en/publications/degradation-and-modeling-of-large-format-commercial-lithium-ion-c-2/')]
+care_html='<details id="battery-care"><summary>Остаток заряда, напряжение отсечки и ресурс</summary>'+''.join('<p>'+esc(t)+'</p>' for t in care_text)+'<p>'+ ' · '.join('<a href="'+esc(url)+'">'+esc(title)+'</a>' for title,url in care_sources)+'</p></details>'
 source_html=''.join(f'<p id="source-{s["id"]}"><a href="{esc(s["url"])}">Источник {esc(s["id"])}</a></p>' for s in data['sources'] if s['url'])
 brp_url='https://can-am.brp.com/content/dam/global/en/can-am-off-road/my26/spec-sheets/na/atv/en/ORV_ATV_MY26_5_SPEC_OUT_EV_ENNA_HR.pdf'
-doc=f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>АКБ квадроцикла — редакция 16</title><link rel="stylesheet" href="report.css?v={RELEASE}"></head><body>
+doc=f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>АКБ квадроцикла — редакция 17</title><link rel="stylesheet" href="report.css?v={RELEASE}"></head><body>
 <header class="nav"><div class="wrap"><a href="#compare">Сравнение</a> · <a href="#catalog">Ячейки и цены</a> · <a href="#choice">Вывод и рейтинг</a> · <a href="{PDF}">Отчёт PDF</a></div></header>
-<main><section class="hero section"><div class="wrap"><p class="eyebrow">Редакция 16 · 03.10.2026</p><h1>АКБ квадроцикла</h1><p>Сравнение энергии, времени работы и нагрева. По умолчанию два двигателя 15/30 кВт, каждый со своим блоком 26S16P.</p></div></section>
+<main><section class="hero section"><div class="wrap"><p class="eyebrow">Редакция 17 · 04.10.2026</p><h1>АКБ квадроцикла</h1><p>Сравнение энергии, времени работы и нагрева. По умолчанию два двигателя 15/30 кВт, каждый со своим блоком 26S16P.</p></div></section>
 <section class="section" id="compare"><div class="wrap"><p class="eyebrow">Расчётное сравнение конфигураций</p><h2>Энергия, длительность работы и тепловыделение</h2>
 <div class="segmented"><button data-metric="range" aria-pressed="true">Пробег</button><button data-metric="runtime" aria-pressed="false">Время работы</button><button data-metric="heat" aria-pressed="false">Нагрев</button></div>
 <div class="toolbar"><div class="field"><label for="range-basis">Основа сравнения пробега</label><select id="range-basis"><option value="nominal" selected>Номинальная энергия</option><option value="delivered">Выданная энергия сценария</option></select></div><div class="field"><label for="range-mode">Ориентир пробега</label><select id="range-mode"><option value="wmtc">По циклу WMTC</option><option value="utility">Средняя эксплуатация</option></select></div>
@@ -93,13 +101,13 @@ doc=f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="v
 <div class="field"><label for="cooling">Теплоотвод одного блока</label><select id="cooling"><option value="0">Без теплоотвода</option><option value="5" selected>5 Вт/К</option><option value="20">20 Вт/К</option></select></div>
 <div class="field wide"><label for="selection">Сборка</label><select id="selection"><option value="all">Все кандидаты</option>{opts}</select></div></div>
 <div class="chart"><h3 id="chart-title"></h3><button id="back-all" class="text-button" hidden>Все сборки</button><div id="chart-legend" class="legend"></div><div id="bars"></div><div id="axis" class="axis"></div><p id="chart-note" class="note"></p></div><div id="detail" class="detail" hidden></div>
-<details id="brp-comparison"><summary>Почему большая ёмкость могла выглядеть хуже BRP</summary><p>{esc(brp_explanation)}</p><p><a href="{brp_url}">Паспорт BRP</a></p></details><details id="control"><summary>Как рассчитаны энергия, импульсы и температура</summary>{method_html}<p><a href="{brp_url}">Паспорт BRP</a> · <a href="calculation_audit.json">Все расчётные сценарии</a></p></details>
+{test_archive(esc)}{care_html}<details id="control"><summary>Как рассчитаны энергия, импульсы и температура</summary>{method_html}<p><a href="{brp_url}">Паспорт BRP</a> · <a href="calculation_audit.json">Все расчётные сценарии</a></p></details>
 </div></section>
 <section class="section soft" id="catalog"><div class="wrap"><h2>Исходные данные и расчётные параметры</h2><p class="note">Закупка прежде всего на Alibaba. Показано самое дешёвое предложение точной модели с указанной ценой, кроме отсутствующих в наличии. Стоимость рассчитана для выбранного числа блоков и относится только к ячейкам; наличие, партия и доставка требуют уточнения. <a href="alibaba_quotes_2026-10-01.csv">Все исходные предложения</a></p>
-<div class="segmented"><button data-view="energy" aria-pressed="true">Энергия и цена</button><button data-view="modes" aria-pressed="false">Результаты режима</button><button data-view="electrical" aria-pressed="false">Электрические параметры</button><button data-view="cells" aria-pressed="false">Паспорта</button></div><div class="tables-intro"><p id="table-state"></p><button id="reset-sort" class="text-button">Сбросить сортировку</button></div><div class="table-wrap"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div></div></section>
+<div class="segmented"><button data-view="energy" aria-pressed="true">Энергия и цена</button><button data-view="modes" aria-pressed="false">Результаты режима</button><button data-view="electrical" aria-pressed="false">Электрические параметры</button><button data-view="cells" aria-pressed="false">Паспорта</button></div><p id="end-charge-note" class="note" hidden>Остаток заряда при остановке рассчитан по отданным ампер-часам. Это остаток ёмкости, а не процент ещё доступной энергии или напряжение: сценарий может закончиться по напряжению, температуре либо границе измеренных кривых.</p><div class="tables-intro"><p id="table-state"></p><button id="reset-sort" class="text-button">Сбросить сортировку</button></div><div class="table-wrap"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div></div></section>
 {selection_section(rating,esc,n,photos)}
 <section class="section"><div class="wrap"><details><summary>Разрядные испытания и проверка температуры</summary>{updated_test_section(esc).split('<section class="soft section" id="alibaba">')[0]}</details><details><summary>Источники и паспорта</summary>{source_html}</details></div></section>
-</main><footer class="footer"><div class="wrap">Редакция 16 · <a href="{PDF}">Отчёт PDF</a></div></footer><script type="application/json" id="report-data">{embedded_data}</script><script src="report.js?v={RELEASE}" defer></script></body></html>'''
+</main><footer class="footer"><div class="wrap">Редакция 17 · <a href="{PDF}">Отчёт PDF</a></div></footer><script type="application/json" id="report-data">{embedded_data}</script><script src="report.js?v={RELEASE}" defer></script></body></html>'''
 # Russian prose replacements outside scripts, preserving source URLs and names.
 from html.parser import HTMLParser
 class RussianHTML(HTMLParser):
@@ -142,7 +150,7 @@ def pdf_photo(k,width=76):
   raster=source.convert('RGBA');background=RasterImage.new('RGB',raster.size,'white');background.paste(raster,mask=raster.getchannel('A'))
   stream=BytesIO();background.save(stream,format='JPEG',quality=90);stream.seek(0)
  im=Image(stream);scale=min(width/im.imageWidth,64/im.imageHeight);im.drawWidth=im.imageWidth*scale;im.drawHeight=im.imageHeight*scale
- return [im,raw("На фото LG H51T. Параметры LG H51 не подтверждает.","Small")] if p.get("related_model") else [im]
+ return [im]
 def table(head,values,widths,photo_col=None):
  items=[[raw('<b>'+esc(h)+'</b>') for h in head]]
  for row in values:
@@ -182,12 +190,15 @@ def chart(metric,g=5,p='mixed'):
 
 
 add('АКБ квадроцикла','Cover');add('Энергия, время работы и нагрев','Heading1')
-add('Редакция 16 · 03.10.2026. По умолчанию два двигателя 15/30 кВт и два независимых блока 26S16P. Для цилиндрических кандидатов — 26S16P; корпус 230×400×340 мм, цель до 40 кг на блок.')
+add('Редакция 17 · 04.10.2026. По умолчанию два двигателя 15/30 кВт и два независимых блока 26S16P. Для цилиндрических кандидатов — 26S16P; корпус 230×400×340 мм, цель до 40 кг на блок.')
 for t in method:add(t.replace('tabless','с распределённым токосъёмом'),'Method')
 for metric,title in [('range','Пробег: энергетический ориентир WMTC'),('utility','Пробег: средняя эксплуатация'),('runtime','Длительность умеренной поездки'),('heat','Среднее тепловыделение в умеренной поездке')]:
  page(title);add('Два двигателя, свой блок 26S16P на каждый; 25 °C и 5 Вт/К на блок. Для пробега: светло-синий — номинальный эквивалент двух блоков; синий — выданная энергия сценария. Подпись: номинальный / сценарный. Красный — заявленный BRP. Это энергетические эквиваленты, не дорожный прогноз.','Small');story.append(chart(metric))
+page('Остаток заряда, напряжение отсечки и ресурс')
+for t in care_text:add(t,'Method')
+for title,url in care_sources:add(title+' — '+url,'Small')
 page('Сравнение с BRP: одинаковая основа и ограничения')
-add(brp_explanation)
+
 table(['Один блок / BRP','Номинальная энергия, кВт·ч','Выдано в нашем сценарии, кВт·ч','Номинальный эквивалент WMTC, км','Сценарный эквивалент, км'],[['BRP Outlander Electric 2026','8,90','Не опубликовано','80 заявлено','Не рассчитано для нашей нагрузки']]+[[r['cell_name'],n(r['energy'],3),n(sim(r,p='mixed')['output_kwh'],3),n(r['nominal_wmtc'],1),n(sim(r,p='mixed')['wmtc_equiv'],1)] for r in rows if r['model'] in ['link65p','tp60xg']],[1.9,1.2,1.5,1.6,1.6])
 add('Для двух независимых блоков номинальный и сценарный энергетические эквиваленты удваиваются. Время и температура каждой ветви остаются прежними. Скорость, путь и расход двух двигателей требуют отдельной дорожной модели; нельзя обещать удвоение реального пробега.','Small')
 rb={e['id']:e for e in rating['entries']}
@@ -220,7 +231,6 @@ page('Два двигателя: отдельный блок 26S16P на каж�
 add('Суммарный запрос 30/60 кВт; каждый блок питает свой двигатель 15/30 кВт. Время и температура относятся к каждой ветви; энергия и тепло — сумма двух. По постоянному запросу 15 кВт на каждый двигатель.','Small')
 table(['Сборка','Энергия двух блоков, кВт·ч','Выдано вместе, кВт·ч','Мин без снижения / всего','Максимум температуры, °C','Тепло ячеек вместе, кДж','Средняя суммарная мощность, кВт'],[[r['name'],n(2*r['energy'],2),n(2*sim(r)['output_kwh'],2) if sim(r) else '—',n(sim(r)['full_minutes'],0)+' / '+n(sim(r)['minutes'],0) if sim(r) else '—',n(sim(r)['t_peak'],1) if sim(r) else '—',n(2*sim(r)['heat_kj'],0) if sim(r) else '—',n(2*sim(r)['mean_power'],1) if sim(r) else '—'] for r in rows if r['s']==26 and r['p']==16],[2,1.3,1.3,1.3,1.1,1.2,1.4])
 page('Исходные данные и закупка на Alibaba')
-add('На снимке для строки LG H51 показана родственная LG H51T. Идентичность H51 и H51T не подтверждена; расчётные параметры по фотографии не переносились.','Small')
 from procurement import best_offer
 values=[]
 for r in rows:
@@ -234,7 +244,7 @@ add('Паспорт BRP: '+brp_url,'Small')
 for v in data['sources']:
  if v['url']:add('Источник '+v['id']+' — '+v['url'],'Small')
 def footer(canvas,doc):
- canvas.setFont('DV',9);canvas.drawString(margin,20,'Редакция 16 · 03.10.2026');canvas.drawRightString(W-margin,20,str(doc.page))
+ canvas.setFont('DV',9);canvas.drawString(margin,20,'Редакция 17 · 04.10.2026');canvas.drawRightString(W-margin,20,str(doc.page))
 while story and isinstance(story[-1],Spacer):story.pop()
-SimpleDocTemplate(str(OUT/PDF),pagesize=landscape(A3),rightMargin=margin,leftMargin=margin,topMargin=margin,bottomMargin=margin,title='АКБ квадроцикла · редакция 16',author='').build(story,onFirstPage=footer,onLaterPages=footer)
+SimpleDocTemplate(str(OUT/PDF),pagesize=landscape(A3),rightMargin=margin,leftMargin=margin,topMargin=margin,bottomMargin=margin,title='АКБ квадроцикла · редакция 17',author='').build(story,onFirstPage=footer,onLaterPages=footer)
 print('Built',OUT/PDF)

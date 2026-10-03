@@ -6,7 +6,7 @@ from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parent
 DIST = ROOT / "dist"
-PDF = "AKB_96V_Comparative_Study_2026-10-03.pdf"
+PDF = "AKB_96V_Comparative_Study_2026-10-04.pdf"
 FILES = [
     "index.html", "report.js", "report.css", "mooch.js", "mooch_data.json",
     "mooch_21700_photo.csv", "mooch_21700_forum.csv", "mooch_21700_comparison.csv",
@@ -30,8 +30,8 @@ def fingerprint(relative):
 calculated = json.loads((ROOT / "calculated.json").read_text())
 mooch = json.loads((DIST / "mooch_data.json").read_text())
 payload = {
-    "release": "20261003-r16a",
-    "date": "2026-10-03",
+    "release": "20261004-r17",
+    "date": "2026-10-04",
     "numeric_model_revision": "20261002-r14a",
     "default_motors": 2,
     "default_blocks": 2,

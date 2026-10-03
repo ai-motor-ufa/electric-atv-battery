@@ -1,6 +1,6 @@
 {
-  "release": "20261003-r16a",
-  "date": "2026-10-03",
+  "release": "20261004-r17",
+  "date": "2026-10-04",
   "numeric_model_revision": "20261002-r14a",
   "default_motors": 2,
   "default_blocks": 2,
@@ -15,19 +15,19 @@
   "forum_threads": 51,
   "full_text_articles": 48,
   "forum_archive_complete": false,
-  "pdf_pages": 28,
+  "pdf_pages": 29,
   "files": {
     "index.html": {
-      "bytes": 2846258,
-      "sha256": "34b51ee586c67c2ce25c8029309d33327179bddd313332c3ee1bc3fe1173d4d1"
+      "bytes": 2890545,
+      "sha256": "48daf65381ecb7bda0e2b021c1439f9acb11631e9259e483054ae2ddf6604f96"
     },
     "report.js": {
-      "bytes": 31436,
-      "sha256": "f79f1c480681a0d5c31634a5546ac43342cd13a3de33fe6f23ac5d299c67ed55"
+      "bytes": 32103,
+      "sha256": "1c81683dac1971c42b60d53aa38935184a007e6eaee7494e145d357a7b31e616"
     },
     "report.css": {
-      "bytes": 17478,
-      "sha256": "bdd4b1f90a1994bf7eaaa16c04186ddd654db298881da1aa52b5a03fc116a621"
+      "bytes": 17864,
+      "sha256": "0e150932af3c49d9b83daa02022c55fb6d52ef5453aa52983aa9dd1beff689d1"
     },
     "mooch.js": {
       "bytes": 1329,
@@ -49,9 +49,9 @@
       "bytes": 8014,
       "sha256": "dd07c7e2cee846ef076dd60e93f6b85ed0d42eda4dadc8817f667d160d7cb6ba"
     },
-    "AKB_96V_Comparative_Study_2026-10-03.pdf": {
-      "bytes": 576434,
-      "sha256": "165ccd34d42011b9fb875b6c45c1ff8ec08ec605a2198ff08141ac8d487230fa"
+    "AKB_96V_Comparative_Study_2026-10-04.pdf": {
+      "bytes": 578636,
+      "sha256": "7d18a8a6753ab02d339fdada22f48910cf5deb6f5203e0ca33b3e560be361fd8"
     },
     "assets/mooch-21700-2026-09-27.jpg": {
       "bytes": 860440,
