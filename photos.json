@@ -176,10 +176,11 @@
     "caption": "На фото LG H51T. В расчётах строка LG H51: идентичность H51 и H51T не подтверждена; снимок не удостоверяет параметры LG H51.",
     "display_name": "LG H51T",
     "source": "assets/cells/h51.jpg",
-    "source_filename": "LG H51T - 20A 5000mAh 21700.jpeg",
-    "original_sha256": "ee1470a7a87e98697aa9f5bb7ade16b8c2c91ac096e4061311e51ffdd714dec1",
+    "source_filename": "LG H51T.jpg",
+    "original_sha256": "1b7e628aaa234599b923b94655227466eb334cf811549b4cbd73d928e71a921a",
     "added_at": "2026-10-03",
-    "related_model": true
+    "related_model": true,
+    "updated_at": "2026-10-03"
   },
   "p50b": {
     "file": "assets/cells/p50b.jpg",
@@ -200,5 +201,25 @@
     "original_sha256": "2898a845bbdf7c1960f745345f60359e5f103772f49d809a24b53433f7057b49",
     "added_at": "2026-10-03",
     "related_model": false
+  },
+  "s50u": {
+    "file": "assets/cells/s50u.jpg",
+    "source": "assets/cells/s50u.jpg",
+    "source_filename": "Samsung 50U.jpg",
+    "original_sha256": "42fcf95fd0bb0c0ca4c1e2f743f49acb7c2b968200e1f63ece0de08da3c14f33",
+    "display_name": "Samsung 50U",
+    "added_at": "2026-10-03",
+    "related_model": false,
+    "caption": "Фото Samsung 50U из вложения пользователя; параметры расчёта взяты из источников, а не из имени файла."
+  },
+  "s50s2": {
+    "file": "assets/cells/s50s2.jpg",
+    "source": "assets/cells/s50s2.jpg",
+    "source_filename": "Samsung 50S2 - 5000mAh 21700.jpeg",
+    "original_sha256": "96053f7e6ee1e0ca3a94a631fdffaa47279105246d9263cc44491ef10183feae",
+    "display_name": "Samsung 50S2",
+    "added_at": "2026-10-03",
+    "related_model": false,
+    "caption": "Фото Samsung 50S2 из вложения пользователя; параметры расчёта взяты из источников, а не из имени файла."
   }
 }

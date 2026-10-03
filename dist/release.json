@@ -1,5 +1,5 @@
 {
-  "release": "20261003-r16",
+  "release": "20261003-r16a",
   "date": "2026-10-03",
   "numeric_model_revision": "20261002-r14a",
   "default_motors": 2,
@@ -18,12 +18,12 @@
   "pdf_pages": 28,
   "files": {
     "index.html": {
-      "bytes": 2844535,
-      "sha256": "71c08986f942181cc69cff1835631a6f67f6122531b3e76e3248c9e367920f90"
+      "bytes": 2846258,
+      "sha256": "34b51ee586c67c2ce25c8029309d33327179bddd313332c3ee1bc3fe1173d4d1"
     },
     "report.js": {
-      "bytes": 31373,
-      "sha256": "b268fe82a4c3fcdf64d4a3d9f7896051331c0000a2cac11703946ecceac835b9"
+      "bytes": 31436,
+      "sha256": "f79f1c480681a0d5c31634a5546ac43342cd13a3de33fe6f23ac5d299c67ed55"
     },
     "report.css": {
       "bytes": 17478,
@@ -50,8 +50,8 @@
       "sha256": "dd07c7e2cee846ef076dd60e93f6b85ed0d42eda4dadc8817f667d160d7cb6ba"
     },
     "AKB_96V_Comparative_Study_2026-10-03.pdf": {
-      "bytes": 547111,
-      "sha256": "b86c1e666f07d789fe7920d274dedee6eafa46c742daa12eb7d2b4813589cfba"
+      "bytes": 576434,
+      "sha256": "165ccd34d42011b9fb875b6c45c1ff8ec08ec605a2198ff08141ac8d487230fa"
     },
     "assets/mooch-21700-2026-09-27.jpg": {
       "bytes": 860440,
@@ -186,8 +186,8 @@
       "sha256": "7b3b6f9e0d8f95221f5b44903d7638cafcc8086f7503cc2b63a441c631c039e4"
     },
     "assets/cells/h51.jpg": {
-      "bytes": 265583,
-      "sha256": "ee1470a7a87e98697aa9f5bb7ade16b8c2c91ac096e4061311e51ffdd714dec1"
+      "bytes": 42301,
+      "sha256": "1b7e628aaa234599b923b94655227466eb334cf811549b4cbd73d928e71a921a"
     },
     "assets/cells/h52a.jpg": {
       "bytes": 17112,
@@ -244,6 +244,14 @@
     "assets/cells/s50s.jpg": {
       "bytes": 253027,
       "sha256": "73feb303b6c9651dc0f379cd27bf8a1791fafcfbcafd1cfc71f3dedd2e8b0bc6"
+    },
+    "assets/cells/s50s2.jpg": {
+      "bytes": 268869,
+      "sha256": "96053f7e6ee1e0ca3a94a631fdffaa47279105246d9263cc44491ef10183feae"
+    },
+    "assets/cells/s50u.jpg": {
+      "bytes": 27493,
+      "sha256": "42fcf95fd0bb0c0ca4c1e2f743f49acb7c2b968200e1f63ece0de08da3c14f33"
     },
     "assets/cells/t50sg.jpg": {
       "bytes": 256173,
@@ -354,8 +362,8 @@
   "calculation_audit": "calculation_audit.json",
   "wmtc_index_kwh_km": 0.11125,
   "initial_cell_temperature_C": 25,
-  "product_photo_files": 24,
-  "product_photo_models": 23,
+  "product_photo_files": 26,
+  "product_photo_models": 25,
   "related_model_photos": 1,
   "manufacturer_profiles": 5,
   "manufacturer_context_checked_at": "2026-10-03",

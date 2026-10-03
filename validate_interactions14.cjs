@@ -10,7 +10,7 @@ const api=ctx.reportTesting;
 function change(id,value){node(id).handlers.change({target:{value}});}
 async function flush(){for(let i=0;i<5;i++)await new Promise(r=>setImmediate(r));}
 (async()=>{
-for(const k of ['s50s','p45b','p42a','h52a','lrle','t50sg','h51','p50b','rs60'])assert(node('table-body').innerHTML.includes(data.photos[k].file));assert(node('table-body').innerHTML.includes('На фото LG H51T'));
+for(const k of ['s50s','p45b','p42a','h52a','lrle','t50sg','h51','p50b','rs60','s50u','s50s2'])assert(node('table-body').innerHTML.includes(data.photos[k].file));assert(node('table-body').innerHTML.includes('На фото LG H51T'));
 assert.equal(api.state.blocks,2);assert.equal(api.state.motors,2);assert.equal(api.state.rangeBasis,'nominal');assert(node('bars').innerHTML.includes('80 км'));assert(node('bars').innerHTML.includes('#ed9296'));
 const link=data.rows.find(r=>r.model==='link65p');const nominal=2*link.nominal_wmtc;assert(node('bars').innerHTML.includes(nominal.toLocaleString('ru-RU',{minimumFractionDigits:1,maximumFractionDigits:1})+' км-экв.'));
 change('range-basis','delivered');assert.equal(api.state.rangeBasis,'delivered');assert(node('chart-note').textContent.includes('Полезная энергия BRP неизвестна'));
