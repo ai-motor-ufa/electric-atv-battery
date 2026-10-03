@@ -110,5 +110,95 @@
     "source": "assets/cells/t50xg.jpg",
     "source_filename": "Tenpower 50XG 5000mAh 21700(1).jpeg",
     "original_sha256": "76b170e5f5b929eb5b6cb6a54fd48b5a68fb7cc31192b4c3fa8e7060be753e1c"
+  },
+  "s50s": {
+    "file": "assets/cells/s50s.jpg",
+    "caption": "Фото Samsung 50S из вложения пользователя; параметры расчёта взяты из источников, а не из имени файла.",
+    "display_name": "Samsung 50S",
+    "source": "assets/cells/s50s.jpg",
+    "source_filename": "Samsung 50S - 25A 5000mAh 21700.jpeg",
+    "original_sha256": "73feb303b6c9651dc0f379cd27bf8a1791fafcfbcafd1cfc71f3dedd2e8b0bc6",
+    "added_at": "2026-10-03",
+    "related_model": false
+  },
+  "p45b": {
+    "file": "assets/cells/p45b.jpg",
+    "caption": "Фото Molicel P45B из вложения пользователя; параметры расчёта взяты из источников, а не из имени файла.",
+    "display_name": "Molicel P45B",
+    "source": "assets/cells/p45b.jpg",
+    "source_filename": "Molicel P45B - 50A 4500mAh 21700.jpeg",
+    "original_sha256": "a20da84383aa1c275ef56cc181804e08e46f05aeada35768f0b2e989399c190c",
+    "added_at": "2026-10-03",
+    "related_model": false
+  },
+  "p42a": {
+    "file": "assets/cells/p42a.jpg",
+    "caption": "Фото Molicel P42A из вложения пользователя; параметры расчёта взяты из источников, а не из имени файла.",
+    "display_name": "Molicel P42A",
+    "source": "assets/cells/p42a.jpg",
+    "source_filename": "Molicel P42A 4000mAh 21700.jpeg",
+    "original_sha256": "24f11c0ff79d223bb1ec3731cc70fdd1580f5f3240641ec8bd28d48b5b2c731f",
+    "added_at": "2026-10-03",
+    "related_model": false
+  },
+  "h52a": {
+    "file": "assets/cells/h52a.jpg",
+    "caption": "Фото LG H52A из вложения пользователя; параметры расчёта взяты из источников, а не из имени файла.",
+    "display_name": "LG H52A",
+    "source": "assets/cells/h52a.jpg",
+    "source_filename": "LG H52A.jpg",
+    "original_sha256": "e4156c78b5745b1801f1e133cdcb2323152729958ca6175d120e1b9d9c8e7bf6",
+    "added_at": "2026-10-03",
+    "related_model": false
+  },
+  "lrle": {
+    "file": "assets/cells/lrle.jpg",
+    "caption": "Фото Lishen LR2170LE из вложения пользователя; параметры расчёта взяты из источников, а не из имени файла.",
+    "display_name": "Lishen LR2170LE",
+    "source": "assets/cells/lrle.jpg",
+    "source_filename": "Lishen 2170LE.jpg",
+    "original_sha256": "2719c87c42b03f751b134b126ffabc838a82849e103a0477f51f40bc3806fe31",
+    "added_at": "2026-10-03",
+    "related_model": false
+  },
+  "t50sg": {
+    "file": "assets/cells/t50sg.jpg",
+    "caption": "Фото Tenpower 50SG из вложения пользователя; параметры расчёта взяты из источников, а не из имени файла.",
+    "display_name": "Tenpower 50SG",
+    "source": "assets/cells/t50sg.jpg",
+    "source_filename": "Tenpower 50SG - 5000mAh 21700.jpeg",
+    "original_sha256": "2e257cb0757f68abf053da8a24d0735bdaba7dfd0ff4f2dc35a4ebcd97482386",
+    "added_at": "2026-10-03",
+    "related_model": false
+  },
+  "h51": {
+    "file": "assets/cells/h51.jpg",
+    "caption": "На фото LG H51T. В расчётах строка LG H51: идентичность H51 и H51T не подтверждена; снимок не удостоверяет параметры LG H51.",
+    "display_name": "LG H51T",
+    "source": "assets/cells/h51.jpg",
+    "source_filename": "LG H51T - 20A 5000mAh 21700.jpeg",
+    "original_sha256": "ee1470a7a87e98697aa9f5bb7ade16b8c2c91ac096e4061311e51ffdd714dec1",
+    "added_at": "2026-10-03",
+    "related_model": true
+  },
+  "p50b": {
+    "file": "assets/cells/p50b.jpg",
+    "caption": "Фото Molicel P50B из вложения пользователя; параметры расчёта взяты из источников, а не из имени файла.",
+    "display_name": "Molicel P50B",
+    "source": "assets/cells/p50b.jpg",
+    "source_filename": "Molicel P50B - 60A 5000mAh 21700.jpeg",
+    "original_sha256": "956a97b5bcbd397cab7bb9ccdf2e2c0c0cd2ded739107fcbc1541eb3fabc8341",
+    "added_at": "2026-10-03",
+    "related_model": false
+  },
+  "rs60": {
+    "file": "assets/cells/rs60.jpg",
+    "caption": "Фото Reliance RS60 из вложения пользователя; параметры расчёта взяты из источников, а не из имени файла.",
+    "display_name": "Reliance RS60",
+    "source": "assets/cells/rs60.jpg",
+    "source_filename": "Reliance RS60 - 50A 5850mAh 21700.jpeg",
+    "original_sha256": "2898a845bbdf7c1960f745345f60359e5f103772f49d809a24b53433f7057b49",
+    "added_at": "2026-10-03",
+    "related_model": false
   }
 }

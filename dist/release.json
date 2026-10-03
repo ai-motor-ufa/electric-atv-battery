@@ -1,6 +1,6 @@
 {
-  "release": "20261002-r15",
-  "date": "2026-10-02",
+  "release": "20261003-r16",
+  "date": "2026-10-03",
   "numeric_model_revision": "20261002-r14a",
   "default_motors": 2,
   "default_blocks": 2,
@@ -15,19 +15,19 @@
   "forum_threads": 51,
   "full_text_articles": 48,
   "forum_archive_complete": false,
-  "pdf_pages": 23,
+  "pdf_pages": 28,
   "files": {
     "index.html": {
-      "bytes": 2806918,
-      "sha256": "4c35d60e8e249a5439c160837bd4a01b176d4f3d29f4743b064972032fd5ee88"
+      "bytes": 2844535,
+      "sha256": "71c08986f942181cc69cff1835631a6f67f6122531b3e76e3248c9e367920f90"
     },
     "report.js": {
-      "bytes": 31340,
-      "sha256": "eaa6dfc9001bbe8eeff86e29641f94e0c39e55c22506f92bd404b9c9d10a4233"
+      "bytes": 31373,
+      "sha256": "b268fe82a4c3fcdf64d4a3d9f7896051331c0000a2cac11703946ecceac835b9"
     },
     "report.css": {
-      "bytes": 17034,
-      "sha256": "a88146806cf125620c1961ee0046c42ffa2b2bd64a4d64c52379f51e6170b977"
+      "bytes": 17478,
+      "sha256": "bdd4b1f90a1994bf7eaaa16c04186ddd654db298881da1aa52b5a03fc116a621"
     },
     "mooch.js": {
       "bytes": 1329,
@@ -49,9 +49,9 @@
       "bytes": 8014,
       "sha256": "dd07c7e2cee846ef076dd60e93f6b85ed0d42eda4dadc8817f667d160d7cb6ba"
     },
-    "AKB_96V_Comparative_Study_2026-10-02.pdf": {
-      "bytes": 319523,
-      "sha256": "63ac37ba464057a5ffa43b93d249f75de5c99ddc02b521b45a754b080f3f908f"
+    "AKB_96V_Comparative_Study_2026-10-03.pdf": {
+      "bytes": 547111,
+      "sha256": "b86c1e666f07d789fe7920d274dedee6eafa46c742daa12eb7d2b4813589cfba"
     },
     "assets/mooch-21700-2026-09-27.jpg": {
       "bytes": 860440,
@@ -80,6 +80,10 @@
     "selection_ratings.json": {
       "bytes": 31012,
       "sha256": "4d91ee6bfc6781bafdc8f91d474c0e57d67c1f119f6c379e70f887c0cc471ec8"
+    },
+    "manufacturer_profiles.json": {
+      "bytes": 20159,
+      "sha256": "c535f4f575831a71fe76ae2fc6d18338b3ed63e632fd244251c5c7731a6e0bce"
     },
     "traces/C02.json": {
       "bytes": 458356,
@@ -181,6 +185,14 @@
       "bytes": 211424,
       "sha256": "7b3b6f9e0d8f95221f5b44903d7638cafcc8086f7503cc2b63a441c631c039e4"
     },
+    "assets/cells/h51.jpg": {
+      "bytes": 265583,
+      "sha256": "ee1470a7a87e98697aa9f5bb7ade16b8c2c91ac096e4061311e51ffdd714dec1"
+    },
+    "assets/cells/h52a.jpg": {
+      "bytes": 17112,
+      "sha256": "e4156c78b5745b1801f1e133cdcb2323152729958ca6175d120e1b9d9c8e7bf6"
+    },
     "assets/cells/jp50p1.jpg": {
       "bytes": 182590,
       "sha256": "863d3d7e29c5007462d8aba4aa54c240823f0c4f86b783973c839f9157d35f4a"
@@ -205,9 +217,37 @@
       "bytes": 164603,
       "sha256": "6d63aaa2d3d6e2d04012a244ec0bdc042aa80d6dea2200f8a024349015024606"
     },
+    "assets/cells/lrle.jpg": {
+      "bytes": 38929,
+      "sha256": "2719c87c42b03f751b134b126ffabc838a82849e103a0477f51f40bc3806fe31"
+    },
+    "assets/cells/p42a.jpg": {
+      "bytes": 691466,
+      "sha256": "24f11c0ff79d223bb1ec3731cc70fdd1580f5f3240641ec8bd28d48b5b2c731f"
+    },
+    "assets/cells/p45b.jpg": {
+      "bytes": 212895,
+      "sha256": "a20da84383aa1c275ef56cc181804e08e46f05aeada35768f0b2e989399c190c"
+    },
+    "assets/cells/p50b.jpg": {
+      "bytes": 252402,
+      "sha256": "956a97b5bcbd397cab7bb9ccdf2e2c0c0cd2ded739107fcbc1541eb3fabc8341"
+    },
     "assets/cells/rs50.jpg": {
       "bytes": 190594,
       "sha256": "eb49cc4f22ba884e5ac7dc512a235ffdb82e9997e3f62b55205f2071d9372a88"
+    },
+    "assets/cells/rs60.jpg": {
+      "bytes": 200787,
+      "sha256": "2898a845bbdf7c1960f745345f60359e5f103772f49d809a24b53433f7057b49"
+    },
+    "assets/cells/s50s.jpg": {
+      "bytes": 253027,
+      "sha256": "73feb303b6c9651dc0f379cd27bf8a1791fafcfbcafd1cfc71f3dedd2e8b0bc6"
+    },
+    "assets/cells/t50sg.jpg": {
+      "bytes": 256173,
+      "sha256": "2e257cb0757f68abf053da8a24d0735bdaba7dfd0ff4f2dc35a4ebcd97482386"
     },
     "assets/cells/t50xg.jpg": {
       "bytes": 215021,
@@ -314,8 +354,11 @@
   "calculation_audit": "calculation_audit.json",
   "wmtc_index_kwh_km": 0.11125,
   "initial_cell_temperature_C": 25,
-  "product_photo_files": 15,
-  "product_photo_models": 14,
+  "product_photo_files": 24,
+  "product_photo_models": 23,
+  "related_model_photos": 1,
+  "manufacturer_profiles": 5,
+  "manufacturer_context_checked_at": "2026-10-03",
   "commercial_offers": 24,
   "photo_rating_date": "2026-09-27",
   "disqualified_configurations_removed": 9,
