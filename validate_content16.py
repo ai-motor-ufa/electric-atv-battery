@@ -53,8 +53,18 @@ pdf=PdfReader('dist/AKB_96V_Comparative_Study_2026-10-04.pdf');text=' '.join(' '
 for p in profiles['profiles'].values():assert p['company'] in text
 for phrase in ['337-TA-1518','21700 50Q']:assert phrase in text,phrase
 release=json.loads(Path('dist/release.json').read_text())
-assert release['release']=='20261004-r18' and release['product_photo_files']==26 and release['product_photo_models']==25
+assert release['release']=='20261004-r19' and release['product_photo_files']==26 and release['product_photo_models']==25
 assert release['default_motors']==2 and release['default_blocks']==2
+from turtle_range import ROUTES, ranges
+assert b['turtle_routes']==ROUTES and release['turtle_distance_routes']==ROUTES
+known=ranges(dict(turtle_start_min=10,turtle_output_kwh=1.2),branches=2)
+assert known['road']==[2400/180,2400/120]
+assert known['terrain']==[2400/250,2400/180]
+assert known['offroad']==[2400/400,2400/250]
+assert ranges(dict(turtle_start_min=None,turtle_output_kwh=0)) is None
+assert ranges(None) is None
+for phrase in ['Режим черепаха: предварительный пробег','120–180','180–250','250–400']:assert phrase in text,phrase
+
 for path,meta in release['files'].items():
  b=(Path('dist')/path).read_bytes();assert len(b)==meta['bytes'] and hashlib.sha256(b).hexdigest()==meta['sha256']
 print('PASS: supplied photographs, removed H51T caption, five source-based manufacturer cards, unchanged two-block defaults, PDF contents and manifest hashes.')

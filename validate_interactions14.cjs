@@ -21,11 +21,12 @@ for(const [model,keys] of [['link65p',['link65p']],['p50b',['p50b','p50b_sample'
 assert(node('detail').innerHTML.includes('остановка при 2,65 В'));
 change('motors',2);await flush();assert(node('blocks').disabled);assert(node('detail').innerHTML.includes('2 блок(а), 2 двигатель(я)'));assert.equal((node('detail').innerHTML.match(/<svg/g)||[]).length,3);
 const r=data.rows.find(r=>r.id==='C19'),s=r.simulations['1_5_mixed_2.9'];assert(node('detail').innerHTML.includes((2*s.output_kwh).toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2})));
+for(const motors of [1,2]){change('motors',motors);if(motors===1)change('blocks',1);await flush();const factor=motors===2?2:1;for(const route of data.turtle_routes){const [lo,hi]=route.wh_km,wh=factor*s.turtle_output_kwh*1000;const fmt=v=>v.toLocaleString('ru-RU',{minimumFractionDigits:1,maximumFractionDigits:1});assert(node('detail').innerHTML.includes(route.name));assert(node('detail').innerHTML.includes(`${fmt(wh/hi)}–${fmt(wh/lo)} км`));}assert(!/NaN|undefined|Infinity/.test(node('detail').innerHTML));}
 for(const opt of node('selection').options){if(opt.value==='all')continue;const r=data.rows.find(r=>r.id===opt.value);assert.equal(opt.disabled,r.s!==26||r.p!==16);}
 change('selection','all');
 for(const motors of [1,2])for(const b of [1,2])for(const g of [0,5,20])for(const p of data.profiles)for(const c of ['2.9']){change('motors',motors);change('blocks',b);change('cooling',g);change('profile',p.id);change('cutoff',c);for(const m of mb){m.handlers.click();assert(!/NaN|undefined|Infinity/.test(node('bars').innerHTML));}}
 for(const b of vb){b.handlers.click();for(const c of api.columns()){node('table-head').handlers.click({target:{closest:()=>({dataset:{sort:c.key}})}});assert(!/NaN|undefined|Infinity/.test(node('table-body').innerHTML));}}
-change('motors',1);change('selection',data.rows.find(r=>r.model==='s50s').id);await flush();assert(node('detail').innerHTML.includes('нет применимого графика'));change('selection','F02');await flush();assert(node('detail').innerHTML.includes('нет DCIR'));
+change('motors',1);change('selection',data.rows.find(r=>r.model==='s50s').id);await flush();assert(node('detail').innerHTML.includes('нет применимого графика'));assert(node('detail').innerHTML.includes('Пробег в «черепахе» не определён'));change('selection','F02');await flush();assert(node('detail').innerHTML.includes('нет DCIR'));
 const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));for(const m of html.matchAll(/href="#([^"]+)"/g))assert(ids.has(m[1]),m[1]);
 console.log('PASS: BRP references, motor/block/cutoff/profile/thermal controls, loaded traces, energy doubling, sorted views, missing data and anchors.');
 })().catch(e=>{console.error(e);process.exit(1)});

@@ -1,7 +1,33 @@
 {
-  "release": "20261004-r18",
+  "release": "20261004-r19",
   "date": "2026-10-04",
   "numeric_model_revision": "20261004-r18",
+  "turtle_distance_routes": [
+    {
+      "id": "road",
+      "name": "Дорога с твёрдым покрытием",
+      "wh_km": [
+        120,
+        180
+      ]
+    },
+    {
+      "id": "terrain",
+      "name": "Пересечённая местность",
+      "wh_km": [
+        180,
+        250
+      ]
+    },
+    {
+      "id": "offroad",
+      "name": "Тяжёлое бездорожье",
+      "wh_km": [
+        250,
+        400
+      ]
+    }
+  ],
   "default_motors": 2,
   "default_blocks": 2,
   "range_default_basis": "nominal",
@@ -15,15 +41,15 @@
   "forum_threads": 51,
   "full_text_articles": 48,
   "forum_archive_complete": false,
-  "pdf_pages": 31,
+  "pdf_pages": 33,
   "files": {
     "index.html": {
-      "bytes": 1435118,
-      "sha256": "ad9c9d7886595bedd78568aed2f5399032bb23435bef21a281472b5d1b243ee3"
+      "bytes": 1438175,
+      "sha256": "c8268899afc59f123db7e49c6ff40af3049d22abd96cebb25e6985579a0447f4"
     },
     "report.js": {
-      "bytes": 33469,
-      "sha256": "4777114bed136a124a30dad00c626cc61b89e0659e5a18fdab81c11fb389d857"
+      "bytes": 34672,
+      "sha256": "f18ed28a6d416b5170ec455b64aa16bfb61b4bd70076fcd4b0278ce2e9b64bf3"
     },
     "report.css": {
       "bytes": 17864,
@@ -50,8 +76,8 @@
       "sha256": "dd07c7e2cee846ef076dd60e93f6b85ed0d42eda4dadc8817f667d160d7cb6ba"
     },
     "AKB_96V_Comparative_Study_2026-10-04.pdf": {
-      "bytes": 583622,
-      "sha256": "bf80f00a98f9093888740689df70b94e8931f9365bfe1006c968e84409a382e7"
+      "bytes": 588911,
+      "sha256": "b7850f53b74e8f717a44ccf0c614ac5403d512539ff863c54f54c7dc9390f6a2"
     },
     "assets/mooch-21700-2026-09-27.jpg": {
       "bytes": 860440,

@@ -30,9 +30,10 @@ def fingerprint(relative):
 calculated = json.loads((ROOT / "calculated.json").read_text())
 mooch = json.loads((DIST / "mooch_data.json").read_text())
 payload = {
-    "release": "20261004-r18",
+    "release": "20261004-r19",
     "date": "2026-10-04",
     "numeric_model_revision": "20261004-r18",
+    "turtle_distance_routes": __import__("turtle_range").ROUTES,
     "default_motors": 2,
     "default_blocks": 2,
     "range_default_basis": "nominal",
