@@ -1,7 +1,7 @@
 {
-  "release": "20261004-r17",
+  "release": "20261004-r18",
   "date": "2026-10-04",
-  "numeric_model_revision": "20261002-r14a",
+  "numeric_model_revision": "20261004-r18",
   "default_motors": 2,
   "default_blocks": 2,
   "range_default_basis": "nominal",
@@ -15,15 +15,15 @@
   "forum_threads": 51,
   "full_text_articles": 48,
   "forum_archive_complete": false,
-  "pdf_pages": 29,
+  "pdf_pages": 31,
   "files": {
     "index.html": {
-      "bytes": 2890545,
-      "sha256": "48daf65381ecb7bda0e2b021c1439f9acb11631e9259e483054ae2ddf6604f96"
+      "bytes": 1435118,
+      "sha256": "ad9c9d7886595bedd78568aed2f5399032bb23435bef21a281472b5d1b243ee3"
     },
     "report.js": {
-      "bytes": 32103,
-      "sha256": "1c81683dac1971c42b60d53aa38935184a007e6eaee7494e145d357a7b31e616"
+      "bytes": 33469,
+      "sha256": "4777114bed136a124a30dad00c626cc61b89e0659e5a18fdab81c11fb389d857"
     },
     "report.css": {
       "bytes": 17864,
@@ -50,8 +50,8 @@
       "sha256": "dd07c7e2cee846ef076dd60e93f6b85ed0d42eda4dadc8817f667d160d7cb6ba"
     },
     "AKB_96V_Comparative_Study_2026-10-04.pdf": {
-      "bytes": 578636,
-      "sha256": "7d18a8a6753ab02d339fdada22f48910cf5deb6f5203e0ca33b3e560be361fd8"
+      "bytes": 583622,
+      "sha256": "bf80f00a98f9093888740689df70b94e8931f9365bfe1006c968e84409a382e7"
     },
     "assets/mooch-21700-2026-09-27.jpg": {
       "bytes": 860440,
@@ -74,92 +74,92 @@
       "sha256": "f4fdf19f08f240d5bddaa26656ae6d9ac22a075968e5daaccbba66c43235d4d9"
     },
     "calculation_audit.json": {
-      "bytes": 3734221,
-      "sha256": "22db26afe7bbd6f32ff8809f89528128275f2af6e694c7484738a18632a4638c"
+      "bytes": 1557824,
+      "sha256": "56287a3606487a31c9585f52069ea141941f3580deb3baa70157190cea927c50"
     },
     "selection_ratings.json": {
-      "bytes": 31012,
-      "sha256": "4d91ee6bfc6781bafdc8f91d474c0e57d67c1f119f6c379e70f887c0cc471ec8"
+      "bytes": 31058,
+      "sha256": "f27f17972739edb8394f7f10620ef46f80e5e1682ba6cf235e8a837cd9b2bff3"
     },
     "manufacturer_profiles.json": {
       "bytes": 20159,
       "sha256": "c535f4f575831a71fe76ae2fc6d18338b3ed63e632fd244251c5c7731a6e0bce"
     },
     "traces/C02.json": {
-      "bytes": 458356,
-      "sha256": "509f49db7b46612a7e58bd696020a49415c717b55b94a3a64f2ad664e7261e4d"
+      "bytes": 304768,
+      "sha256": "e6f39a072f6f2bbc905b355d130f8904600db58a034157e19db359d9ab06c758"
     },
     "traces/C03.json": {
-      "bytes": 482674,
-      "sha256": "4133899ebbc1b41233f07ca14d4a40a165df5bf13b80129c2ec5d9fcafbd08f0"
+      "bytes": 320958,
+      "sha256": "b6a67f8834fb866586cc66833f27f9623217af704dabe40786d07b372b64bf0a"
     },
     "traces/C08.json": {
-      "bytes": 442339,
-      "sha256": "1a8f2d0eecd9b9b515e3fe5918954b8a3669881af059658bc5be34490edbcdfa"
+      "bytes": 295048,
+      "sha256": "9b485498d8d25d17e0c77293d9438aa940b67c6ed16b3d2ef51310266fcf42c1"
     },
     "traces/C09.json": {
-      "bytes": 412225,
-      "sha256": "27e71dcca77b54e876ba48b751dd19ac9f96acc56ff86a9d970d17817907c790"
+      "bytes": 275256,
+      "sha256": "bc4ae1ee7b4e1ce569be0f55cee443d829e34b54500946b90951f6c3e979118c"
     },
     "traces/C10.json": {
-      "bytes": 480037,
-      "sha256": "3b89ce6b07b39e37ded31becd405f3135823a58b8aad6db76e8a660333033f34"
+      "bytes": 320053,
+      "sha256": "65b0a1876db482f867d502c552c1b30bb645aab1fbe65a60031db872f6d195d9"
     },
     "traces/C11.json": {
-      "bytes": 526456,
-      "sha256": "bafef6dcfe8475335a0e9fcc44311973ed7757d1c4ca0e7c5bb9cfa560be7ffe"
+      "bytes": 349652,
+      "sha256": "793031661328fd305943ff87ee4dda46ab8d638d38ba08d7bec0f92c7984b64a"
     },
     "traces/C16.json": {
-      "bytes": 483889,
-      "sha256": "702c2de5227fe9eee19016c53fcd152c5a2f743b822abc92692dbec81514ded1"
+      "bytes": 339683,
+      "sha256": "edb7a35f858f5be41d4b2e3b90623d460c7cda3758ca225339f2f51c74d8ad7c"
     },
     "traces/C17.json": {
-      "bytes": 481218,
-      "sha256": "54fb4ceebac3accc76b82d6b7bfc2867ba811fb11554ebaf0b7df021fbe3557d"
+      "bytes": 335679,
+      "sha256": "5e1a44193f6a04d948afa67be5ad354a09056befd57c8b263220b24a77f92321"
     },
     "traces/C18.json": {
-      "bytes": 444476,
-      "sha256": "2600377e5de30adecb272f868bff2fb7eb18582a7ef3e0e980a16430325531a5"
+      "bytes": 303252,
+      "sha256": "c452a126b37fd59a4ce4b6c6e9256bd922578871aad0031530853cf3dfff4a15"
     },
     "traces/C19.json": {
-      "bytes": 446655,
-      "sha256": "2e6b8dc029ac26d566853ed191a8c400972dd47f3a425e2156845c24a1dce53b"
+      "bytes": 333162,
+      "sha256": "ed88e9d4325af0781137e110491249da8758fc66b7ef9bfb9345c1ae6c69a120"
     },
     "traces/C20.json": {
-      "bytes": 430185,
-      "sha256": "244c7e9f7a804d80046001ec7368835a7b96aeb630ffa833ad4cc7c370c0ceb8"
+      "bytes": 311542,
+      "sha256": "692fae140a20885a47965e78eb72fa8582976f0548f954649d0aa0cc7723914d"
     },
     "traces/C21.json": {
-      "bytes": 463409,
-      "sha256": "38daf008b75752d9cb27789367ec81802dca49a721a8882f7327eae79fbdb00d"
+      "bytes": 314681,
+      "sha256": "15c6ef84aab65d498b5bf6a9a683de9c04790c46560161386b761874664af213"
     },
     "traces/C22.json": {
-      "bytes": 482162,
-      "sha256": "0db7e38fe2b2eee5d7a4759bb6487d412746fd85c25541f04a691f45a353176e"
+      "bytes": 335694,
+      "sha256": "d35699cc1875cfbc75f0cb82f3c7c474d7f22c2be7cadef1c3eadc9b29abf541"
     },
     "traces/C23.json": {
-      "bytes": 494929,
-      "sha256": "5c8882e33bff45bed909f10b0acf6694510322e0e6b7cca8bc7d22d3188bbb6e"
+      "bytes": 357921,
+      "sha256": "a6d36c4f5a9cb531a4d9b2254f813e97ea075f0baaf81f35ef9ae627d60d5051"
     },
     "traces/C24.json": {
-      "bytes": 530554,
-      "sha256": "91cf6468b99bba04281fe0f11a9ef380302aeb8bfed6b4c54d8fbedcd3e792eb"
+      "bytes": 386715,
+      "sha256": "a26ea3ea2e8a7d70ea04959645cd356f68862887e891110c2aa44a3724722615"
     },
     "traces/C25.json": {
-      "bytes": 487708,
-      "sha256": "55bc49cc23f7ef7bd3cdc860c62966bb313a1c2ba95fba77a7fcc932638e07c4"
+      "bytes": 341895,
+      "sha256": "32c87084d791e6a30a18926dbc7079dd49665eae0044fb7c419b253a07c1c321"
     },
     "traces/C26.json": {
-      "bytes": 489459,
-      "sha256": "cd52bbb4f3d5345868c6fef703155aaa0a751736942f7141d7cf96e163b8ef72"
+      "bytes": 348754,
+      "sha256": "2ccb665948bb38a6006aa9203dd4cea39a136da7c5b304ef36dd5929ab1eb930"
     },
     "traces/C27.json": {
-      "bytes": 489718,
-      "sha256": "42cce73a04938d8a10ddbb4003d97665cad43ef2b4adc4c70eaf58f00c6ce2c4"
+      "bytes": 326615,
+      "sha256": "c133d268c8c3c42f9755ddf739a51194b53e84615da48c8faf381e65eb8c7846"
     },
     "traces/F16.json": {
-      "bytes": 527470,
-      "sha256": "71e9d3caaa1ff81e53986f6ba5896f020a553a348612b3baae5c82964bf58f1c"
+      "bytes": 349457,
+      "sha256": "b1db051fa2bb22152053fb9fc11eb395c99e4c33f1e6938ab83d4d3f476cbc29"
     },
     "assets/cells/amprius50q.jpg": {
       "bytes": 198449,

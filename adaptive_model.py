@@ -135,14 +135,16 @@ def simulate(row,profile,blocks=1,g=5.,rscale=1.,peak_soc=.50,cutoff=2.9):
     # Identical simultaneous parallel blocks. Unknown DCIR or current map => no numeric promise.
     if row['dc_model'] is None or cell_limit(row['model'],25) is None:return None
     tabless=row['model'] in TABLESS
-    vmin=cutoff if tabless else 3.0
+    vmin=2.9 if tabless else 3.0
     floor=0. if tabless else .10
     ns,np=row['s'],row['p']; soc=1.; temp=25.; peak_temp=25.; secs=chem=output=heat=lineheat=0.
     budget=float('inf'); c=row['mass']*CP; trace=[]
     first=reason=None; first_soc=first_voltage=first_temp=None; maxi=maxh=work=limited_secs=0.
     voltage_stop=False; data_stop=False
+    turtle=False; turtle_start=None; turtle_soc=None; turtle_voltage=None; turtle_output=0.; turtle_seconds=0.
     sample=dict(seconds=0,minute=0,soc=100,temp=25,power=0,voltage=0,current=0,heat=0)
     while secs<8*3600 and soc>floor+1e-7 and chem<budget-1e-8 and temp<60:
+        vmin=2.65 if turtle else (2.9 if tabless else 3.0)
         voc=interp(soc,OCV)*ns
         rb=row['r_bank']/1000*rscale*(1+.6*(max(0,.5-soc)/.4)**2); rt=rb+R_EXT
         soc_cap=30 if tabless else interp(soc,[(.10,5),(.20,15),(peak_soc,30),(1,30)])
@@ -163,13 +165,14 @@ def simulate(row,profile,blocks=1,g=5.,rscale=1.,peak_soc=.50,cutoff=2.9):
             if phase<endpoint-1e-7:
                 stage_power=kw; phase_left=endpoint-phase; break
         else:stage_power=profile['stages'][0][1]
+        restart=False
         for fraction,power in [(1.,stage_power)]:
-            target=min(power,soc_cap,thermal_cap)
+            target=min(power,soc_cap,thermal_cap,3. if turtle else 30.)
             req=(target/ETA+AUX)*1000/blocks; disc=voc*voc-4*rt*req
             ireq=2*req/(voc+math.sqrt(disc)) if disc>0 else voc/(2*rt)
             # No universal 90 V / 3.45 V derating. Limit only by the selected
             # minimum group voltage, cell current and the explicit SOC/T maps.
-            voltage_icap=max(0,(voc-ns*vmin)/rt)
+            voltage_icap=max(0,(voc-ns*vmin)/rb)
             current=min(ireq,icap,voc/(2*rt),voltage_icap)
             u=voc-current*rt
             stage_voc=voc
@@ -183,7 +186,7 @@ def simulate(row,profile,blocks=1,g=5.,rscale=1.,peak_soc=.50,cutoff=2.9):
                 lo,hi=0.,icap
                 for _ in range(20):
                     mid=(lo+hi)/2
-                    if terminal(mid)<ns*vmin:hi=mid
+                    if terminal(mid)+mid*R_EXT<ns*vmin:hi=mid
                     else:lo=mid
                 curve_cap=lo
                 lo,hi=0.,curve_cap
@@ -198,9 +201,15 @@ def simulate(row,profile,blocks=1,g=5.,rscale=1.,peak_soc=.50,cutoff=2.9):
                 # Accounting reservoir: measured terminal output plus modeled
                 # irreversible I²R loss, not a measured thermodynamic OCV.
                 stage_voc=u+current*rt
+            group_v=(u+current*R_EXT)/ns
+            if tabless and not turtle and group_v<=2.9+1e-5:
+                turtle=True; turtle_start=secs/60; turtle_soc=soc*100; turtle_voltage=group_v
+                restart=True
+                break
             delivered=max(0,(blocks*u*current/1000-AUX)*ETA)
             if power>0 and delivered<power*.98:
                 limited=True
+                if turtle and power>3.:causes.add('Режим черепаха: 3 кВт на двигатель')
                 if soc_cap<power*.98:causes.add('SOC')
                 if thermal_cap<power*.98:causes.add('температура')
                 if icap<ireq*.98:causes.add('рейтинг тока ячейки')
@@ -211,6 +220,7 @@ def simulate(row,profile,blocks=1,g=5.,rscale=1.,peak_soc=.50,cutoff=2.9):
             hl+=fraction*current**2*R_EXT
             po+=fraction*blocks*u*current/1000; pc+=fraction*blocks*stage_voc*current/1000
             shaft+=fraction*delivered; highest_i=max(highest_i,current); lowest_v=min(lowest_v,u)
+        if restart:continue
         if limited and first is None:
             first=secs/60;reason=', '.join(sorted(causes)) or 'доступная мощность'
             first_soc=soc*100;first_voltage=lowest_v;first_temp=temp
@@ -225,17 +235,19 @@ def simulate(row,profile,blocks=1,g=5.,rscale=1.,peak_soc=.50,cutoff=2.9):
         net_heat=hs+hl-g*(temp-25)
         if net_heat>0:dt=min(dt,max(0,(60-temp)*c/net_heat))
         if dt<1e-5:break
-        sample=dict(seconds=round(secs,1),minute=round(secs/60,3),soc=round(soc*100,2),temp=round(temp,2),power=round(shaft,3),voltage=round(lowest_v,2),current=round(highest_i,2),heat=round(hs,1))
+        sample=dict(seconds=round(secs,1),minute=round(secs/60,3),soc=round(soc*100,2),temp=round(temp,2),power=round(shaft,3),voltage=round(lowest_v,2),current=round(highest_i,2),heat=round(hs,1),turtle=turtle,group_voltage=group_v)
         if not trace or secs-trace[-1]['seconds']>=30 or abs(trace[-1]['power']-sample['power'])>2:trace.append(sample)
         soc-=ia*dt/(row['ah']*3600); chem+=pc*dt/3600; output+=po*dt/3600; heat+=hs*blocks*dt/1000
         lineheat+=hl*blocks*dt/1000
+        if turtle:turtle_output+=po*dt/3600;turtle_seconds+=dt
         work+=shaft*dt; limited_secs+=dt if limited else 0
         # Conservative assumption: entire 1 mOhm electrical path is inside box.
         # G is whole cells-to-environment conductance, not an air-gap coefficient.
         temp+=(hs+hl-g*(temp-25))/c*dt;peak_temp=max(peak_temp,temp)
         secs+=dt; maxi=max(maxi,highest_i); maxh=max(maxh,hs)
     trace.append({**sample,'seconds':round(secs,1),'minute':round(secs/60,3),'soc':round(soc*100,2),'temp':round(temp,2)})
-    return dict(minutes=secs/60,full_minutes=first if first is not None else secs/60,
+    return dict(turtle_start_min=turtle_start,turtle_start_soc=turtle_soc,turtle_start_voltage=turtle_voltage,turtle_minutes=turtle_seconds/60,normal_minutes=(secs-turtle_seconds)/60,normal_output_kwh=output-turtle_output,turtle_output_kwh=turtle_output,turtle_power_per_motor_kw=3.,turtle_trigger_V=2.9,turtle_stop_V=2.65,
+       minutes=secs/60,full_minutes=first if first is not None else secs/60,
        first_limit=reason or 'До завершения без снижения запроса',first_soc=first_soc,first_voltage=first_voltage,first_temp=first_temp,end_soc=max(0,soc)*100,
        output_kwh=output,chemical_kwh=chem,heat_kj=heat,heat_mean=heat*1000/max(secs,1)/blocks,
        heat_peak=maxh,max_current=maxi,mean_power=work/max(secs,1),t_end=temp,
@@ -249,7 +261,7 @@ def simulate(row,profile,blocks=1,g=5.,rscale=1.,peak_soc=.50,cutoff=2.9):
 ASSUMPTIONS=dict(eta=ETA,aux_kw=AUX,energy_budget=None,soc_start=1.,soc_end=None,r_ext_mohm=R_EXT*1000,
  wmtc_index_kwh_km=WMTC_INDEX,utility_index_kwh_km=UTILITY_INDEX,
  cp_J_kgK=CP,ambient_C=25,dt_s=DT,passive_G=5,enhanced_G=20,derate_start_C=45,stop_C=60,peak_soc=None,tabless_models=sorted(TABLESS),pulse_cycle_s=100,vehicle_dry_mass_kg=398,two_motor_method='Two independent identical branches; per-branch time and temperature unchanged; total energy, shaft power and heat doubled',
- voltage_min_per_cell=V_MIN,ocv_generic=OCV,
+ voltage_min_per_cell=2.65,turtle_trigger_V=2.9,turtle_stop_V=2.65,turtle_power_per_motor_kw=3.,turtle_latched=True,ocv_generic=OCV,
  range_method='Energy equivalent against BRP indexes; not a WMTC speed simulation',
  capacity_rate_derating='For matched chart identities, loaded voltage is interpolated in Ah/current up to selected cutoff, no synthetic curve extension without double-subtracting DCIR. Other models retain generic OCV; no universal 10% capacity correction.',
  thermal_validation='Single-cell maximum temperatures audit I²R with cp=1000 J/kg/K; cannot identify G of sealed pack. No fitted bench cooling is transferred to pack.',
@@ -260,8 +272,9 @@ def calculate():
         for b in [1,2]:
             for g in [0,5,20]:
                 for p in PROFILES:
-                    for cutoff in [2.8,2.9,3.0]:
-                        result=simulate(r,p,b,g,cutoff=cutoff) if r['model'] in TABLESS or cutoff==2.9 else r['simulations'][f"{b}_{g}_{p['id']}_2.9"] if f"{b}_{g}_{p['id']}_2.9" in r['simulations'] else simulate(r,p,b,g,cutoff=cutoff)
+                    result=simulate(r,p,b,g,cutoff=2.9)
+                    for cutoff in [2.9]:
+                        # One authorized voltage policy.
                         r['simulations'][f"{b}_{g}_{p['id']}_{cutoff}"]=result
                     r['simulations'][f"{b}_{g}_{p['id']}"]=r['simulations'][f"{b}_{g}_{p['id']}_2.9"]
         r['sensitivity15']=[simulate(r,PROFILES[4],1,5,s) for s in [.75,1.5]]

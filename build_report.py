@@ -14,7 +14,7 @@ from report_content import SECTIONS,TEST_ROWS
 from recommendations import INTRO, METHOD, GEOMETRY, HEAT_METHOD, COOLING, DIMENSION_NOTE, POUCH_INTRO, POUCH, DECISION, HIGH_CAPACITY_MARKET_NOTE, ranked_groups, render_html
 from mooch_section import section as mooch_section
 from test_sections import section as updated_test_section, manufacturer, test_cards, test_archive, exports as export_test_tables
-ROOT=Path(__file__).resolve().parent; OUT=ROOT/'dist'; PDF='AKB_96V_Comparative_Study_2026-10-04.pdf'; RELEASE='20261004-r17'
+ROOT=Path(__file__).resolve().parent; OUT=ROOT/'dist'; PDF='AKB_96V_Comparative_Study_2026-10-04.pdf'; RELEASE='20261004-r18'
 data=json.loads((ROOT/'calculated.json').read_text()); rows=data['rows']; models=data['models']; photos=json.loads((ROOT/'photos.json').read_text())
 mooch_json=(OUT/'mooch_data.json').read_text(); mooch_data=json.loads(mooch_json); forum_threads=len(mooch_data['forum'])
 data['photos']=photos
@@ -62,13 +62,13 @@ for r in web_data['rows']:
    stride=max(1,len(v['trace'])//320)
    sampled=v['trace'][::stride]
    if sampled[-1]!=v['trace'][-1]:sampled.append(v['trace'][-1])
-   traces[simkey]=[[t[k] for k in ('minute','soc','temp','power')] for t in sampled]
+   traces[simkey]=[[t[k] for k in ('minute','soc','temp','power','turtle','group_voltage')] for t in sampled]
    del v['trace']
  if traces:(OUT/'traces'/f"{r['id']}.json").write_text(json.dumps(traces,separators=(',',':')))
 embedded_data=json.dumps(web_data,ensure_ascii=False,separators=(',',':')).replace('</',r'<\/')
 method=[
- 'Начало: полный заряд и 25 °C. Для ячеек с распределённым токосъёмом выбрана отсечка 2,9 В под нагрузкой; доступны 2,8 и 3,0 В. Ограничения 50% заряда и 85% энергии сняты. Для Linkdata 60P/65P паспорт рекомендует запас над 2,5 В в последовательной батарее, например 3,0 В: 2,8–2,9 В здесь проверочный сценарий, требующий согласования и контроля разбаланса. Для остальных ячеек оставлены 3,0 В и прежняя предварительная карта по заряду. Это сценарий управления, а не подтверждение допустимости каждого режима паспортом.',
- 'Запрос 15 или 30 кВт может поступать на любом уровне заряда ячеек с распределённым токосъёмом. Фактическая мощность ограничивается током ячейки, проверенным диапазоном разрядных кривых, напряжением и температурой. Удлинённый импульс не считается автоматически разрешённым: при недостатке тока тяга снижается сразу.',
+ 'Начало: полный заряд и 25 °C. Для ячеек с распределённым токосъёмом при достижении 2,9 В под нагрузкой включается режим «черепаха»: не более 3 кВт на двигатель, остановка при 2,65 В. После восстановления напряжения режим остаётся включённым до завершения поездки. Ограничения 50% заряда и 85% энергии сняты. Для Linkdata 60P/65P паспорт рекомендует запас над 2,5 В в последовательной батарее, например 3,0 В: настройка «черепаха до 2,65 В» здесь является пользовательским проверочным сценарием, требующим согласования и контроля разбаланса. Для остальных ячеек оставлены 3,0 В и прежняя предварительная карта по заряду. Это сценарий управления, а не подтверждение допустимости каждого режима паспортом.',
+ 'Запрос 15 или 30 кВт разрешён только до включения режима «черепаха». Ниже порога 2,9 В мощность ограничивается 3 кВт на двигатель. Фактическая мощность ограничивается током ячейки, проверенным диапазоном разрядных кривых, напряжением и температурой. Удлинённый импульс не считается автоматически разрешённым: при недостатке тока тяга снижается сразу.',
  'КПД двигателя с контроллером принят 88%, вспомогательная нагрузка — 0,2 кВт на ветвь. Карты КПД, нагрева двигателя и контроллера отсутствуют. Нужны паспорт или измерения для расчёта их температур и допустимой длительности пика.',
  'Умеренная поездка: повторяющийся цикл 100 с — 10 с без тяги, 75 с при 3 кВт, 12 с при 10 кВт, 3 с при 30 кВт. Частые разгоны: 5 с без тяги, 45 с при 5 кВт, 35 с при 15 кВт, 15 с при 30 кВт. Эти длительности — принятые сценарии для сравнения, не запись реальной поездки.',
  'Энергия интегрируется по напряжению и току на клеммах; заряд — по отданным ампер-часам. Температура: C·dT/dt = I²R − G·(T−25), с потерями обвязки 1 мОм внутри корпуса. Теплоёмкость 1000 Дж/(кг·К); снижение тяги начинается при средней температуре 45 °C, остановка при 60 °C. Это консервативные настройки модели, не паспортные предельные температуры и не температура наиболее горячей ячейки.',
@@ -80,7 +80,7 @@ method=[
 method_html=''.join('<p>'+esc(t)+'</p>' for t in method)
 care_text=[
  'Остаток заряда при остановке — расчётная доля номинальной ёмкости по отданным ампер-часам. Это не остаток энергии, которую можно немедленно использовать: расчёт может завершиться по напряжению под нагрузкой, температуре или границе измеренных кривых. Напряжение после снятия нагрузки восстанавливается, поэтому 2,9 В не соответствуют одному фиксированному проценту заряда.',
- 'Для повседневной эксплуатации с приоритетом ресурса предварительный выбор для этой сборки — отсечка 3,0 В под нагрузкой и завершение обычной поездки с запасом около 15–20% фактического заряда. Это инженерный ориентир для проверки на стенде, а не паспортная рекомендация всех производителей. Он не меняет выбранный на странице сценарий 2,9 В. Отсечки 2,8–2,9 В оставлены для оценки более глубокого разряда; применимость проверяется по паспорту конкретной партии, температуре и самой слабой последовательной группе.',
+ 'Выбранная пользователем политика: при 2,9 В под нагрузкой включается режим «черепаха», не более 3 кВт на каждый двигатель; остановка при 2,65 В. Мощность 15/30 кВт после переключения недоступна. Для двух двигателей общий потолок — 6 кВт. Отдельно учитываются энергия и время до переключения и после него. По кривым, заканчивающимся около 2,8 В, расчёт завершается на границе данных; неизмеренный участок до 2,65 В не достраивается.',
  'Паспортный минимум и режим для ресурса различаются. Например, Molicel P50B имеет в паспорте нижнюю границу разряда 2,5 В; это не доказательство оптимального ресурса при ежедневном достижении 2,5 В. Для 26S уровни 3,0 / 2,9 / 2,8 В соответствуют 78,0 / 75,4 / 72,8 В только при равных напряжениях всех групп. Защита должна следить за каждой группой, а не только за суммарным напряжением. Точные пороги снижения мощности и аварийного отключения выбираются после испытаний блока.',
  'В транспорте настройки зависят от модели и химии батареи. Tesla советует чаще подзаряжать батарею, избегать длительного пребывания около 0% и 100%, а для машин с рекомендованным пределом 80% соблюдать его в повседневных поездках. Zero в текущем руководстве по хранению описывает контроль заряда системой управления батареей и подзарядку при падении ниже 30%; указания по хранению нельзя превращать в отсечку тяги. Производители не публикуют единого универсального нижнего напряжения для всех автомобилей и мотоциклов.'
 ]
@@ -88,15 +88,15 @@ care_sources=[('Паспорт Molicel P50B','https://www.molicel.com/wp-content
 care_html='<details id="battery-care"><summary>Остаток заряда, напряжение отсечки и ресурс</summary>'+''.join('<p>'+esc(t)+'</p>' for t in care_text)+'<p>'+ ' · '.join('<a href="'+esc(url)+'">'+esc(title)+'</a>' for title,url in care_sources)+'</p></details>'
 source_html=''.join(f'<p id="source-{s["id"]}"><a href="{esc(s["url"])}">Источник {esc(s["id"])}</a></p>' for s in data['sources'] if s['url'])
 brp_url='https://can-am.brp.com/content/dam/global/en/can-am-off-road/my26/spec-sheets/na/atv/en/ORV_ATV_MY26_5_SPEC_OUT_EV_ENNA_HR.pdf'
-doc=f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>АКБ квадроцикла — редакция 17</title><link rel="stylesheet" href="report.css?v={RELEASE}"></head><body>
-<header class="nav"><div class="wrap"><a href="#compare">Сравнение</a> · <a href="#catalog">Ячейки и цены</a> · <a href="#choice">Вывод и рейтинг</a> · <a href="{PDF}">Отчёт PDF</a></div></header>
-<main><section class="hero section"><div class="wrap"><p class="eyebrow">Редакция 17 · 04.10.2026</p><h1>АКБ квадроцикла</h1><p>Сравнение энергии, времени работы и нагрева. По умолчанию два двигателя 15/30 кВт, каждый со своим блоком 26S16P.</p></div></section>
+doc=f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>АКБ квадроцикла — редакция 18</title><link rel="stylesheet" href="report.css?v={RELEASE}"></head><body>
+<header class="nav"><div class="wrap"><a href="#compare">Сравнение</a> · <a href="#catalog">Ячейки и цены</a> · <a href="#choice">Вывод и рейтинг</a> · <a href="{PDF}?v={RELEASE}">Отчёт PDF</a></div></header>
+<main><section class="hero section"><div class="wrap"><p class="eyebrow">Редакция 18 · 04.10.2026</p><h1>АКБ квадроцикла</h1><p>Сравнение энергии, времени работы и нагрева. По умолчанию два двигателя 15/30 кВт, каждый со своим блоком 26S16P.</p></div></section>
 <section class="section" id="compare"><div class="wrap"><p class="eyebrow">Расчётное сравнение конфигураций</p><h2>Энергия, длительность работы и тепловыделение</h2>
 <div class="segmented"><button data-metric="range" aria-pressed="true">Пробег</button><button data-metric="runtime" aria-pressed="false">Время работы</button><button data-metric="heat" aria-pressed="false">Нагрев</button></div>
 <div class="toolbar"><div class="field"><label for="range-basis">Основа сравнения пробега</label><select id="range-basis"><option value="nominal" selected>Номинальная энергия</option><option value="delivered">Выданная энергия сценария</option></select></div><div class="field"><label for="range-mode">Ориентир пробега</label><select id="range-mode"><option value="wmtc">По циклу WMTC</option><option value="utility">Средняя эксплуатация</option></select></div>
 <div class="field"><label for="motors">Двигателей 15/30 кВт</label><select id="motors"><option value="1">Один</option><option value="2" selected>Два: свой блок на каждый</option></select></div>
 <div class="field"><label for="blocks">Подключено одновременно</label><select id="blocks" disabled><option value="1">Один блок</option><option value="2" selected>Два одинаковых блока</option></select></div>
-<div class="field"><label for="cutoff">Отсечка ячеек с распределённым токосъёмом</label><select id="cutoff"><option value="2.8">2,8 В</option><option value="2.9" selected>2,9 В</option><option value="3.0">3,0 В</option></select></div>
+<div class="field"><label for="cutoff">Режим ограничения по напряжению</label><select id="cutoff" disabled><option value="2.9" selected>Черепаха: 2,9 В → 3 кВт → 2,65 В</option></select></div>
 <div class="field"><label for="profile">Запрос на один двигатель</label><select id="profile">{p_opts}</select></div>
 <div class="field"><label for="cooling">Теплоотвод одного блока</label><select id="cooling"><option value="0">Без теплоотвода</option><option value="5" selected>5 Вт/К</option><option value="20">20 Вт/К</option></select></div>
 <div class="field wide"><label for="selection">Сборка</label><select id="selection"><option value="all">Все кандидаты</option>{opts}</select></div></div>
@@ -107,7 +107,7 @@ doc=f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="v
 <div class="segmented"><button data-view="energy" aria-pressed="true">Энергия и цена</button><button data-view="modes" aria-pressed="false">Результаты режима</button><button data-view="electrical" aria-pressed="false">Электрические параметры</button><button data-view="cells" aria-pressed="false">Паспорта</button></div><p id="end-charge-note" class="note" hidden>Остаток заряда при остановке рассчитан по отданным ампер-часам. Это остаток ёмкости, а не процент ещё доступной энергии или напряжение: сценарий может закончиться по напряжению, температуре либо границе измеренных кривых.</p><div class="tables-intro"><p id="table-state"></p><button id="reset-sort" class="text-button">Сбросить сортировку</button></div><div class="table-wrap"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div></div></section>
 {selection_section(rating,esc,n,photos)}
 <section class="section"><div class="wrap"><details><summary>Разрядные испытания и проверка температуры</summary>{updated_test_section(esc).split('<section class="soft section" id="alibaba">')[0]}</details><details><summary>Источники и паспорта</summary>{source_html}</details></div></section>
-</main><footer class="footer"><div class="wrap">Редакция 17 · <a href="{PDF}">Отчёт PDF</a></div></footer><script type="application/json" id="report-data">{embedded_data}</script><script src="report.js?v={RELEASE}" defer></script></body></html>'''
+</main><footer class="footer"><div class="wrap">Редакция 18 · <a href="{PDF}?v={RELEASE}">Отчёт PDF</a></div></footer><script type="application/json" id="report-data">{embedded_data}</script><script src="report.js?v={RELEASE}" defer></script></body></html>'''
 # Russian prose replacements outside scripts, preserving source URLs and names.
 from html.parser import HTMLParser
 class RussianHTML(HTMLParser):
@@ -190,7 +190,7 @@ def chart(metric,g=5,p='mixed'):
 
 
 add('АКБ квадроцикла','Cover');add('Энергия, время работы и нагрев','Heading1')
-add('Редакция 17 · 04.10.2026. По умолчанию два двигателя 15/30 кВт и два независимых блока 26S16P. Для цилиндрических кандидатов — 26S16P; корпус 230×400×340 мм, цель до 40 кг на блок.')
+add('Редакция 18 · 04.10.2026. По умолчанию два двигателя 15/30 кВт и два независимых блока 26S16P. Для цилиндрических кандидатов — 26S16P; корпус 230×400×340 мм, цель до 40 кг на блок.')
 for t in method:add(t.replace('tabless','с распределённым токосъёмом'),'Method')
 for metric,title in [('range','Пробег: энергетический ориентир WMTC'),('utility','Пробег: средняя эксплуатация'),('runtime','Длительность умеренной поездки'),('heat','Среднее тепловыделение в умеренной поездке')]:
  page(title);add('Два двигателя, свой блок 26S16P на каждый; 25 °C и 5 Вт/К на блок. Для пробега: светло-синий — номинальный эквивалент двух блоков; синий — выданная энергия сценария. Подпись: номинальный / сценарный. Красный — заявленный BRP. Это энергетические эквиваленты, не дорожный прогноз.','Small');story.append(chart(metric))
@@ -224,6 +224,9 @@ for id in rating['top_five']:
  add(manufacturer_data['interpretation'],'Small')
  for item in p['sources']:
   story.extend([raw('<a href="'+esc(item['url'])+'" color="#0071e3">'+esc(item['title'])+'</a>','Small'),Spacer(1,5)])
+page('Режим черепаха: время и энергия')
+add('При 2,9 В под нагрузкой: 3 кВт на двигатель; остановка при 2,65 В либо раньше по температуре или границе данных. Умеренная поездка, одна ветвь, 25 °C, 5 Вт/К. Измеренные кривые не продлеваются ниже их окончания.','Small')
+table(['Сборка','До черепахи, мин','В черепахе, мин','До черепахи, кВт·ч','В черепахе, кВт·ч','Завершение'],[[r['name']]+[n(sim(r,p='mixed')[k],2) if sim(r,p='mixed') else '—' for k in ['normal_minutes','turtle_minutes','normal_output_kwh','turtle_output_kwh']]+[sim(r,p='mixed')['stop_reason'] if sim(r,p='mixed') else 'Нет расчёта'] for r in rows],[2,1,1,1,1,2])
 page('Номинальная и выданная энергия: все конфигурации')
 add('Справочная таблица для одного блока каждой компоновки: умеренная поездка, 25 °C, теплоотвод 5 Вт/К. Для двух независимых одинаковых блоков энергия и энергетические эквиваленты суммируются; время и температура каждой ветви остаются прежними.','Small')
 table(['Сборка','Номинал, кВт·ч','Выдано, кВт·ч','WMTC, км-экв.','Средняя эксплуатация, км-экв.','Мин полный / всего','Максимум температуры, °C','Завершение'],[[r['name'],n(r['energy'],2),n(sim(r,p='mixed')['output_kwh'],2) if sim(r,p='mixed') else '—',n(sim(r,p='mixed')['wmtc_equiv'],0) if sim(r,p='mixed') else '—',n(sim(r,p='mixed')['utility_equiv'],0) if sim(r,p='mixed') else '—',n(sim(r,p='mixed')['full_minutes'],0)+' / '+n(sim(r,p='mixed')['minutes'],0) if sim(r,p='mixed') else '—',n(sim(r,p='mixed')['t_peak'],1) if sim(r,p='mixed') else '—',sim(r,p='mixed')['stop_reason'] if sim(r,p='mixed') else 'Нужны исходные данные'] for r in rows],[2,1,1,1,1.2,1.1,1,1.7])
@@ -244,7 +247,7 @@ add('Паспорт BRP: '+brp_url,'Small')
 for v in data['sources']:
  if v['url']:add('Источник '+v['id']+' — '+v['url'],'Small')
 def footer(canvas,doc):
- canvas.setFont('DV',9);canvas.drawString(margin,20,'Редакция 17 · 04.10.2026');canvas.drawRightString(W-margin,20,str(doc.page))
+ canvas.setFont('DV',9);canvas.drawString(margin,20,'Редакция 18 · 04.10.2026');canvas.drawRightString(W-margin,20,str(doc.page))
 while story and isinstance(story[-1],Spacer):story.pop()
-SimpleDocTemplate(str(OUT/PDF),pagesize=landscape(A3),rightMargin=margin,leftMargin=margin,topMargin=margin,bottomMargin=margin,title='АКБ квадроцикла · редакция 17',author='').build(story,onFirstPage=footer,onLaterPages=footer)
+SimpleDocTemplate(str(OUT/PDF),pagesize=landscape(A3),rightMargin=margin,leftMargin=margin,topMargin=margin,bottomMargin=margin,title='АКБ квадроцикла · редакция 18',author='').build(story,onFirstPage=footer,onLaterPages=footer)
 print('Built',OUT/PDF)

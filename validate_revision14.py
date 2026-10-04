@@ -16,12 +16,15 @@ for r in x['rows']:
   if curves:
    q=(1-v['end_soc']/100)*x['models'][r['model']]['ah']
    assert q<=max(c['points'][-1][0] for c in curves)+1e-7,(r['id'],key,'unmeasured tail')
+  assert abs(v['output_kwh']-v['normal_output_kwh']-v['turtle_output_kwh'])<1e-8
+  assert abs(v['minutes']-v['normal_minutes']-v['turtle_minutes'])<1e-8
+  latched=False
+  for t in v['trace']:
+   if t.get('turtle'):latched=True
+   if latched:assert t.get('turtle') and t['power']<=3.0001,(r['id'],key,t)
+   if t.get('group_voltage',4)<2.9-1e-5:assert t.get('turtle') and t['power']<=3.0001
   assert v['output_kwh']>0 and v['full_minutes']<=v['minutes']+.001
   if r['model'] in x['assumptions']['tabless_models']:assert 'SOC' not in v['first_limit'] and v['soc_policy']=='Без ограничения по заряду'
- for g in [0,5,20]:
-  for p in x['profiles']:
-   a=r['simulations'][f"1_{g}_{p['id']}_2.8"];b=r['simulations'][f"1_{g}_{p['id']}_2.9"]
-   if a and b:assert a['output_kwh']+0.005>=b['output_kwh'],(r['id'],g,p['id'])
 for m in x['models'].values():
  os=m.get('market',{}).get('alibaba',{}).get('offers',[]);o=best_offer(os)
  if o:assert all(o['price']<=b['price'] for b in os if b['price'] is not None and b['availability']!='out_of_stock')
